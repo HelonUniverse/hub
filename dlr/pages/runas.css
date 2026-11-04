@@ -1,9 +1,6 @@
 /* Runas · suavizado para que combine con el resto de Desde la Red */
 html[data-dlr-app=runas] h1{font-size:42px!important;letter-spacing:-.01em}
-html[data-dlr-app=runas] .b1art,html[data-dlr-app=runas] .b1readingArt{border-radius:22px;overflow:hidden;border:1px solid rgba(127,227,245,.28);box-shadow:0 12px 34px rgba(0,0,0,.4)}
-html[data-dlr-app=runas] .b1art img,html[data-dlr-app=runas] .b1readingArt img,html[data-dlr-app=runas] .b1art,html[data-dlr-app=runas] .b1readingArt{filter:saturate(.62) brightness(.88) contrast(.94)}
-html[data-dlr-app=runas] .b1art::after,html[data-dlr-app=runas] .b1readingArt::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,26,52,.12),rgba(8,26,52,.55));mix-blend-mode:multiply}
-html[data-dlr-app=runas] .b1art,html[data-dlr-app=runas] .b1readingArt{position:relative}
+html[data-dlr-app=runas] .b1art::before,html[data-dlr-app=runas] .b1readingArt::before{filter:saturate(.58) brightness(.86) contrast(.94);border-radius:22px;-webkit-mask-image:linear-gradient(#000 72%,transparent);mask-image:linear-gradient(#000 72%,transparent)}
 html[data-dlr-app=runas] .controls button{border-radius:18px!important;border:1px solid rgba(127,227,245,.3)!important;background:linear-gradient(160deg,rgba(21,76,104,.5),rgba(8,32,54,.7))!important;box-shadow:0 8px 22px rgba(0,0,0,.35)!important}
-html[data-dlr-app=runas] .stone,html[data-dlr-app=runas] .stones>*{filter:saturate(.75) drop-shadow(0 0 8px rgba(127,227,245,.18))}
+html[data-dlr-app=runas] .stones>*{filter:saturate(.7) drop-shadow(0 0 8px rgba(127,227,245,.18))}
 html[data-dlr-app=runas] .meaning,html[data-dlr-app=runas] .modalbox{border-radius:20px;border:1px solid rgba(127,227,245,.3);background:linear-gradient(160deg,rgba(21,76,104,.5),rgba(8,32,54,.75))}
