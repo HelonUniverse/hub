@@ -1,0 +1,226 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#06162c"><title>Biodecodificación · Desde la Red</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>:root{--cy:#7fe3f5;--gold:#eacb88;--mut:#a9c4d2;--line:rgba(127,227,245,.42)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:radial-gradient(ellipse at 50% -10%,#1d4f7c 0%,#0a2140 42%,#050d1f 90%) fixed;color:#eef9ff;font:15px/1.5 'Albert Sans',system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+button,input,textarea,select{font:inherit;color:inherit}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main{position:relative;z-index:1;max-width:620px;margin:auto;padding:calc(14px + env(safe-area-inset-top)) 18px 60px}
+.hero{text-align:center;padding:6px 0 10px}
+.eb{font-size:11px;letter-spacing:.24em;color:#8fd6e6;text-transform:uppercase}
+h1{font:400 clamp(34px,10vw,46px)/1.05 'Instrument Serif',Georgia,serif;margin:6px 0 4px;letter-spacing:-.01em}
+h1 em{color:var(--cy);font-style:italic}
+h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 8px;color:#f3e2b8}
+.lead{color:var(--mut);font-size:14px;margin:0 auto;max-width:420px}
+.card{border-radius:22px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(21,76,104,.55),rgba(8,32,54,.75));box-shadow:0 12px 34px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06);padding:18px;margin-top:14px}
+.in{width:100%;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:13px 14px;font-size:15px;outline:0}
+.in:focus{box-shadow:0 0 14px rgba(80,220,255,.35)}
+.btn{appearance:none;border:0;border-radius:999px;padding:13px 16px;background:linear-gradient(135deg,#8ff0ff,#1fb5dc);color:#06162c;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 6px 18px rgba(40,200,240,.35);width:100%}
+.btn.ghost{background:none;color:var(--cy);border:1px solid var(--line);box-shadow:none;font-weight:500}
+.btn:disabled{opacity:.5}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 0 4px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{appearance:none;flex:none;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer}
+.chip.on{background:rgba(127,227,245,.16);box-shadow:0 0 14px rgba(80,220,255,.35)}
+.note{color:#8fa9b8;font-size:12px;text-align:center;margin:18px 6px 0}
+.back{appearance:none;background:none;border:0;color:var(--cy);font-size:14px;padding:6px 0;cursor:pointer}
+.logo{display:block;margin:0 auto;width:104px;height:auto}
+[hidden]{display:none!important}
+
+.warn{font-size:13px;color:#dff1f7;border-left:2px solid var(--gold);padding:2px 0 2px 12px;margin:0 0 14px}
+.cnt{color:var(--mut);font-size:12.5px;margin:12px 2px 6px}
+.it{margin-top:8px;border-radius:16px;border:1px solid rgba(127,227,245,.25);background:rgba(6,22,44,.55);overflow:hidden}
+.it summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 14px;font-weight:500}
+.it summary::-webkit-details-marker{display:none}
+.it summary::after{content:'+';margin-left:auto;color:var(--cy);font-size:20px;line-height:1}
+.it[open] summary::after{content:'–'}
+.tag{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#06162c;background:var(--cy);border-radius:999px;padding:2px 8px;font-weight:600}
+.tag.e{background:var(--gold)}
+.body{padding:0 14px 14px}
+.body h4{margin:12px 0 2px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.body p{margin:0;color:#dff1f7;font-size:14.5px;line-height:1.55}
+.fte{margin-top:10px;font-size:12px;color:var(--mut)}.fte a{color:var(--cy)}
+.how{margin-top:16px}.how summary{cursor:pointer;color:var(--cy);font-size:14px;padding:6px 0}
+.how h3{font:400 20px/1.1 'Instrument Serif',serif;color:#f3e2b8;margin:14px 0 4px}
+.how p{color:#dff1f7;font-size:14px;margin:0}
+.sg{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+</style></head><body><canvas id="bg"></canvas><main>
+<img class="logo" src="/logo.webp" alt="Desde la Red">
+<div class="hero"><div class="eb">Cuerpo · Emoción · Conciencia</div><h1><em>Biodecodificación</em></h1><p class="lead">Un diccionario de consulta para explorar cómo te sientes, con calma y sin diagnósticos.</p></div>
+<div class="card">
+<p class="warn">Es una lectura simbólica y de autoconocimiento. No es un diagnóstico ni un tratamiento: ante un síntoma, consulta a un profesional de salud.</p>
+<input id="q" class="in" type="search" placeholder="Ansiedad, insomnio, culpa, soledad…" aria-label="Buscar en el diccionario">
+<div class="sg" id="sg"></div>
+<div class="chips" id="tabs"></div>
+<div class="cnt" id="cnt"></div>
+<div id="list"></div>
+<details class="how" id="how"><summary>Cómo leer este diccionario</summary><div id="howb"></div></details>
+</div>
+<p class="note">Basado en el «Diccionario de biodescodificación emocional» (edición de consulta). Sus correspondencias no cuentan con respaldo clínico suficiente; sirve para reflexionar, no para decidir sobre tu salud.</p>
+</main>
+<script>/* Diccionario de biodescodificación emocional · Desde la Red
+   Basado en el documento "Diccionario de biodescodificación emocional" (edición de consulta, octubre de 2026).
+   Lectura simbólica y de autoconocimiento. No es un diagnóstico ni un tratamiento. */
+window.DLR_DIC={
+fuentes:{
+1:["MedlinePlus · Alergia","https://medlineplus.gov/spanish/allergy.html"],
+2:["NIEHS · Allergens","https://www.niehs.nih.gov/health/topics/agents/allergens"],
+3:["NHS · Get help with stress","https://www.nhs.uk/mental-health/feelings-symptoms-behaviours/feelings-and-symptoms/stress/"],
+4:["NHS · Symptoms of IBS","https://www.nhs.uk/conditions/irritable-bowel-syndrome-ibs/symptoms/"],
+5:["NHS · Atopic eczema","https://www.nhs.uk/conditions/atopic-eczema/"],
+6:["NHS · Gastritis","https://www.nhs.uk/conditions/gastritis/"],
+7:["MedlinePlus · Hipotiroidismo","https://medlineplus.gov/spanish/hypothyroidism.html"],
+8:["MedlinePlus · Menopausia","https://medlineplus.gov/spanish/menopause.html"],
+9:["Maldita Ciencia · Revisión crítica de la biodescodificación","https://maldita.es/malditaciencia/20210728/biodescodificacion-la-peligrosa-pseudoterapia-que-culpa-a-los-enfermos-de-sus-patologias/"],
+10:["National Cancer Institute · Stress and Cancer","https://www.cancer.gov/about-cancer/coping/feelings/stress-fact-sheet"]
+},
+sugerencias:["Ansiedad","Insomnio","Migraña","Alergias","Dolor de espalda","Culpa","Soledad","Tristeza"],
+entradas:[
+{t:"Acidez y reflujo",k:"c",a:"ardor agruras estomago digestion gastroesofagico",s:"El ardor digestivo necesita una valoración según su frecuencia y gravedad; no prueba que haya enojo reprimido.",r:"¿En qué momentos del día siento más presión y cómo afectan mis horarios de comida y descanso?",p:"Anota horarios, alimentos y molestias sin atribuirles automáticamente un significado emocional."},
+{t:"Acné",k:"c",a:"granos espinillas piel",s:"Una alteración de la piel no demuestra rechazo a uno mismo ni conflictos de identidad.",r:"¿Cómo me hablo cuando mi piel no se ve como quisiera?",p:"Reemplaza una crítica a tu apariencia por una descripción neutral y mantén tu cuidado dermatológico."},
+{t:"Alergia a alimentos",k:"c",a:"alergia comida alimentaria alimento",f:[1,2],s:"No significa rechazo a quien prepara la comida ni falta de amor familiar. Puede causar reacciones graves.",r:"¿Me cuesta explicar mis necesidades alimentarias por miedo a incomodar?",p:"Ensaya: «Tengo una alergia y necesito confirmar los ingredientes». No pruebes el alimento para sanar una emoción."},
+{t:"Alergia a animales",k:"c",a:"alergia mascota gato perro pelo",f:[1,2],s:"Los alérgenos de animales pueden desencadenar síntomas; querer o no querer al animal no determina la alergia.",r:"¿Siento culpa por necesitar distancia de una mascota que quiero?",p:"Busca con tu profesional medidas de protección que sean compatibles con tu bienestar y el del animal."},
+{t:"Alergia a medicamentos",k:"c",a:"alergia medicina pastillas reaccion",f:[1,2],s:"Una reacción no representa resistencia a recibir ayuda. Debe comunicarse al equipo de salud.",r:"¿Qué miedo o incertidumbre siento después de una reacción?",p:"Lleva un registro del medicamento y la reacción. No vuelvas a tomarlo como prueba por tu cuenta."},
+{t:"Alergia al polen",k:"c",a:"alergia primavera estacional fiebre del heno",f:[1,2],s:"No demuestra un conflicto con la primavera, la sexualidad o la fertilidad. El polen es un alérgeno.",r:"¿Qué emociones aparecen cuando los síntomas limitan mis actividades al aire libre?",p:"Separa en tu registro la exposición ambiental del estado de ánimo, sin confundir coincidencia con causa."},
+{t:"Alergia al polvo o ácaros",k:"c",a:"alergia polvo acaros casa",f:[1,2],s:"El polvo puede contener alérgenos, incluidos ácaros. No significa que rechaces tu casa o tu pasado.",r:"¿Qué apoyo necesito para que el cuidado de mi casa no recaiga solamente en mí?",p:"Pide ayuda concreta con una tarea y consulta las medidas ambientales adecuadas para tu alergia."},
+{t:"Alergias: visión general",k:"c",a:"alergia alergias alergico rechazo",f:[1,2],s:"Son reacciones del sistema inmunitario a alérgenos; no equivalen a rechazo emocional.",r:"¿Cómo afecta la alergia mi tranquilidad, mi vida social o mi sensación de seguridad?",p:"Registra exposición, síntomas y tratamiento indicado. La reflexión emocional acompaña, no elimina el alérgeno."},
+{t:"Asma",k:"c",a:"respirar respiracion falta de aire pulmones bronquios",s:"No puede interpretarse como un deseo de retener a alguien ni como falta de espacio afectivo.",r:"¿Qué necesito para sentir apoyo al convivir con esta enfermedad?",p:"Ten accesible tu plan médico. Una crisis respiratoria no debe tratarse solamente con reflexión o relajación."},
+{t:"Bruxismo",k:"c",a:"dientes mandibula rechinar apretar",s:"Apretar o rechinar los dientes no demuestra una única emoción escondida; conviene evaluación odontológica.",r:"¿Noto tensión al trabajar, conducir o afrontar conversaciones difíciles?",p:"Observa cuándo aprietas la mandíbula y comenta el patrón con tu dentista; no fuerces ejercicios dolorosos."},
+{t:"Caída del cabello",k:"c",a:"pelo alopecia calvicie",s:"No indica necesariamente pérdida de poder o inseguridad. No debe deducirse su causa desde una metáfora.",r:"¿Qué significa para mí este cambio y qué apoyo me haría bien?",p:"Anota cuándo comenzó y los cambios recientes para conversar con un profesional."},
+{t:"Cansancio persistente",k:"c",a:"fatiga agotamiento sin energia cansada",s:"No debe atribuirse automáticamente a falta de motivación o a cargar con problemas ajenos.",r:"¿Estoy descansando lo suficiente y puedo pedir ayuda sin sentir culpa?",p:"Reduce una obligación prescindible y consulta si la fatiga persiste o limita tu vida."},
+{t:"Cistitis y molestias urinarias",k:"c",a:"orina urinaria vejiga infeccion urinaria ardor al orinar",s:"No prueban invasión de territorio ni conflictos de pareja. Ardor, urgencia o dolor requieren atención clínica.",r:"¿Me doy permiso para atender mis necesidades básicas durante el día?",p:"Evita postergar la consulta por buscar primero un conflicto emocional; fiebre o dolor lumbar requieren atención pronta."},
+{t:"Colon irritable",k:"c",a:"intestino digestivo colitis sii",f:[4],s:"El estrés y la ansiedad pueden desencadenar brotes, pero no explican por sí solos todos los síntomas digestivos.",r:"¿Qué situaciones alteran mis rutinas o me ponen en alerta?",p:"Registra alimentos, descanso, síntomas y estrés para revisar patrones con tu profesional, sin imponer dietas extremas."},
+{t:"Contracturas y tensión muscular",k:"c",a:"musculo cuello tension nudos dolor muscular",f:[3],s:"El estrés puede acompañarse de tensión muscular; una zona tensa no revela qué persona o conflicto la causó.",r:"¿En qué momentos siento que debo mantenerme firme todo el tiempo?",p:"Haz una pausa cómoda, cambia de postura y busca evaluación si el dolor persiste."},
+{t:"Dermatitis y eccema",k:"c",a:"piel eccema brote alergia piel atopica",f:[5],s:"El estrés puede empeorar algunos brotes, junto con irritantes y otros factores. No prueban una herida de separación.",r:"¿Qué me genera la picazón: frustración, vergüenza, cansancio o aislamiento?",p:"Anota desencadenantes y sigue tu cuidado de piel. Pide apoyo para el impacto emocional sin culparte por el brote."},
+{t:"Diarrea",k:"c",a:"estomago intestino digestivo",s:"No significa necesariamente querer huir o expulsar una experiencia. Puede tener diferentes causas médicas.",r:"¿Qué preocupaciones aparecen cuando no puedo confiar en mi cuerpo?",p:"Prioriza la atención física y consulta ante sangre, deshidratación, dolor fuerte o persistencia."},
+{t:"Dolor de cabeza",k:"c",a:"cefalea cabeza jaqueca",f:[3],s:"El estrés puede contribuir a algunos dolores, pero no toda cefalea proviene de exigencia mental.",r:"¿Tengo demasiadas cosas encima y me estoy dando pausas reales?",p:"Registra el patrón. Un dolor súbito, muy intenso o con síntomas neurológicos requiere atención urgente."},
+{t:"Dolor de espalda",k:"c",a:"espalda lumbar columna cargar",s:"La imagen de «cargar demasiado» puede servir como metáfora personal, pero no identifica la causa del dolor.",r:"¿Qué responsabilidad concreta puedo compartir esta semana?",p:"Pide ayuda con una tarea y busca valoración del dolor sin dar por sentado su origen emocional."},
+{t:"Dolor de garganta",k:"c",a:"garganta faringitis amigdalas palabras no dichas",s:"La metáfora de «palabras no dichas» no permite explicar una infección ni diagnosticar el síntoma.",r:"¿Hay una conversación pendiente que quiero preparar con calma?",p:"Escribe lo que necesitas decir; atiende la garganta por separado y consulta si hay dificultad para respirar o tragar."},
+{t:"Dolor de hombros",k:"c",a:"hombro hombros tendinitis cargas",s:"Los «pesos sobre los hombros» son una imagen del lenguaje, no una prueba sobre la causa de una lesión.",r:"¿Cuándo me hago responsable de algo que no me corresponde?",p:"Elige una responsabilidad negociable. Consulta si hay lesión, pérdida de fuerza o dolor persistente."},
+{t:"Dolor de rodillas",k:"c",a:"rodilla rodillas articulacion",s:"No demuestra orgullo, rigidez emocional ni incapacidad para ceder.",r:"¿Dónde puedo ser flexible sin pasar por encima de mis necesidades?",p:"Distingue adaptar un plan de abandonar un límite. Cuida la articulación según la evaluación clínica."},
+{t:"Dolor pélvico",k:"c",a:"pelvis pelvico menstrual cadera vientre bajo",s:"No prueba rechazo a la sexualidad, a la maternidad o a la feminidad.",r:"¿Siento que me escuchan cuando hablo de mi dolor y mis límites?",p:"Prepara un registro de síntomas y pide atención. No aceptes dolor como obligación en una relación sexual."},
+{t:"Endometriosis",k:"c",a:"utero menstruacion regla ginecologico",s:"No es consecuencia demostrada de rechazar ser mujer o de un conflicto con la madre.",r:"¿Qué apoyo práctico y emocional necesito para convivir con el dolor?",p:"Escribe qué síntomas afectan tu trabajo, descanso e intimidad para compartirlos en consulta."},
+{t:"Estreñimiento",k:"c",a:"constipacion intestino no poder ir al bano soltar",s:"«No poder soltar» es una metáfora, no una explicación médica ni una característica de personalidad.",r:"¿Estoy postergando mis necesidades por cumplir con todo lo demás?",p:"Reserva tiempo para cuidarte y consulta si hay un cambio persistente, dolor importante o sangrado."},
+{t:"Gastritis",k:"c",a:"estomago helicobacter pylori ulcera digestion",f:[6],s:"Puede relacionarse con H. pylori, medicamentos y otras causas; no se diagnostica como «enojo acumulado».",r:"¿Qué situación me cuesta procesar y qué apoyo necesito para afrontarla?",p:"Atiende esa situación sin suspender estudios o tratamientos digestivos indicados."},
+{t:"Hinchazón abdominal",k:"c",a:"barriga hinchada inflamacion gases panza vientre",s:"No significa retener emociones o rechazar el propio cuerpo. Es un síntoma con diversas explicaciones posibles.",r:"¿Cómo cambia mi relación con la comida o con mi imagen cuando siento hinchazón?",p:"Usa ropa cómoda y registra el patrón sin castigarte ni eliminar muchos alimentos sin orientación."},
+{t:"Hipertensión",k:"c",a:"presion alta tension arterial corazon",s:"No equivale a rabia contenida. Sentirse tranquilo no garantiza que la presión arterial esté controlada.",r:"¿Qué exigencias puedo reducir mientras cuido mi salud?",p:"Sigue los controles y tratamientos indicados; conversa sobre el estrés como un aspecto adicional de cuidado."},
+{t:"Hipotiroidismo",k:"c",a:"tiroides tiroidea hormonas",f:[7],s:"La tiroides produce menos hormonas de las necesarias; no se explica por «callar mi voz» o «ir demasiado lento».",r:"¿Me estoy juzgando por mi energía o mi ritmo actual?",p:"Lleva tus síntomas a consulta y ajusta expectativas cotidianas sin modificar medicación por tu cuenta."},
+{t:"Insomnio",k:"c",a:"dormir sueno no puedo dormir desvelo descanso",f:[3],s:"El estrés puede afectar el sueño, pero no es la única explicación posible de dormir mal.",r:"¿Qué pensamientos aparecen cuando intento descansar?",p:"Anota lo pendiente antes de acostarte y pide ayuda si el problema continúa o afecta tu funcionamiento."},
+{t:"Libido baja",k:"c",a:"deseo sexual intimidad pareja sin ganas",s:"No demuestra falta de amor, bloqueo espiritual ni fracaso de pareja.",r:"¿Qué lugar tienen el descanso, la comodidad, el deseo y el consentimiento en mi intimidad?",p:"Conversa sin presión sobre lo que disfrutas y lo que no; consulta si el cambio te preocupa."},
+{t:"Menopausia y sofocos",k:"c",a:"calores bochornos hormonas climaterio",f:[8],s:"Los cambios hormonales pueden causar sofocos y alteraciones del sueño. No son un castigo ni rechazo al envejecimiento.",r:"¿Qué necesito para atravesar esta etapa con información y menos exigencia?",p:"Registra síntomas y habla de opciones de tratamiento. Tu valor no depende de tu fertilidad."},
+{t:"Migraña",k:"c",a:"jaqueca dolor de cabeza cefalea",s:"No es una prueba de perfeccionismo ni de rechazo a la vida. Requiere una evaluación y un plan individual.",r:"¿Cómo me afecta tener que reorganizar mis planes durante una crisis?",p:"Acuerda una forma de pedir apoyo y lleva un registro útil para tu consulta."},
+{t:"Náuseas",k:"c",a:"nausea ganas de vomitar vomito asco",s:"No demuestran rechazo hacia una persona o situación; no se puede inferir la causa por una coincidencia.",r:"¿Qué preocupaciones acompañan este malestar, sin asumir que lo provocaron?",p:"Registra circunstancias y busca evaluación si son recurrentes, intensas o impiden hidratarte."},
+{t:"Palpitaciones",k:"c",a:"corazon latidos taquicardia pecho",f:[3],s:"Pueden aparecer con estrés, pero no deben asumirse emocionales sin valorar otras causas.",r:"¿Qué siento antes y después de notar los latidos, y qué me ayuda a pedir asistencia?",p:"Busca atención urgente si se acompañan de dolor de pecho, desmayo o dificultad para respirar."},
+{t:"Pérdida de peso involuntaria",k:"c",a:"adelgazar bajar de peso sin querer peso",s:"No representa necesariamente querer desaparecer ni soltar una carga emocional.",r:"¿Qué cambios noto en mi alimentación, energía y bienestar?",p:"Pide evaluación médica; no uses una explicación simbólica para demorar el estudio de un cambio involuntario."},
+{t:"Picazón",k:"c",a:"comezon prurito rascar piel",s:"No significa necesariamente irritación emocional. Puede formar parte de distintas afecciones de la piel u otras condiciones.",r:"¿Qué me ayudaría a tolerar mejor el malestar mientras recibo atención?",p:"Anota dónde aparece y qué la precede; evita asumir que rascarte revela un conflicto."},
+{t:"Psoriasis",k:"c",a:"piel placas escamas",s:"No prueba falta de afecto, rechazo a uno mismo o una necesidad inconsciente de aislamiento.",r:"¿Cómo impacta en mi autoestima y mis vínculos que la piel esté visible?",p:"Elige a alguien con quien hablar sin vergüenza y mantén la atención dermatológica."},
+{t:"Retención de líquidos",k:"c",a:"hinchazon piernas edema liquidos",s:"No debe interpretarse como retener tristeza o negarse a soltar. La hinchazón necesita contexto clínico.",r:"¿Estoy atendiendo mis cambios físicos con la misma atención que doy a otras personas?",p:"Consulta por hinchazón nueva o persistente; si hay falta de aire, busca atención urgente."},
+{t:"Rinitis y sinusitis",k:"c",a:"nariz congestion mocos sinusitis rinitis alergica resfriado",s:"No son equivalentes ni significan que «alguien me molesta». Los síntomas nasales necesitan valoración según su evolución.",r:"¿Cómo afecta este malestar mi descanso y mi tolerancia a las demandas diarias?",p:"Registra duración y posibles exposiciones para facilitar una consulta, sin adjudicar culpa a un vínculo."},
+{t:"Sobrepeso y cambios de peso",k:"c",a:"obesidad gordura subir de peso bajar de peso peso kilos",s:"El peso no permite deducir una necesidad de protección, una carencia afectiva ni un defecto personal.",r:"¿Qué mensajes sobre mi cuerpo me lastiman y qué hábitos me ayudan a cuidarme?",p:"Elige una meta de bienestar concreta, evitando castigos, comparaciones y promesas de adelgazar sanando emociones."},
+{t:"Tinnitus o zumbidos",k:"c",a:"oido oidos zumbido pitido silbido",s:"No demuestra que no quieras escuchar algo. El síntoma merece evaluación, especialmente si es nuevo.",r:"¿Qué emociones aparecen ante un sonido que no puedo controlar?",p:"Busca orientación clínica. Una pérdida súbita de audición requiere atención urgente."},
+{t:"Tos persistente",k:"c",a:"tos tosiendo pecho garganta",s:"No es una forma demostrada de pedir atención ni de expresar palabras reprimidas.",r:"¿Estoy pidiendo la atención y el descanso que necesito mientras me siento mal?",p:"Consulta por persistencia; dificultad para respirar o sangre requieren atención pronta."},
+{t:"Urticaria",k:"c",a:"ronchas habones piel alergia",s:"No siempre es alérgica y no demuestra un conflicto de separación o rechazo.",r:"¿Cómo manejo la incertidumbre cuando aparecen ronchas?",p:"Registra duración y exposiciones. Hinchazón de lengua o garganta y dificultad respiratoria son una urgencia."},
+{t:"Vértigo y mareos",k:"c",a:"mareo mareada mareado equilibrio vertigo",s:"No equivalen a falta de rumbo en la vida ni a miedo al futuro.",r:"¿Cómo me afecta perder confianza en mi equilibrio o en mi autonomía?",p:"Prioriza prevenir caídas y consulta; síntomas neurológicos nuevos requieren atención urgente."},
+{t:"Vitíligo",k:"c",a:"piel manchas blancas",s:"No prueba que rechaces tu identidad, tu familia o tu pertenencia.",r:"¿Qué comentarios sobre mi apariencia necesito dejar de aceptar?",p:"Practica un límite respetuoso y busca información dermatológica si necesitas orientación."},
+{t:"Voz y afonía",k:"c",a:"voz afonia ronquera sin voz",s:"«Quedarme sin voz» puede inspirar una reflexión, pero no explica por sí solo una alteración de la voz.",r:"¿Dónde me cuesta participar o hacerme escuchar?",p:"Prepara una frase breve para expresar tu necesidad y consulta si la afonía persiste."},
+{t:"Vulvovaginitis y molestias íntimas",k:"c",a:"vaginal vagina flujo infeccion intima ginecologico",s:"No demuestran culpa sexual ni rechazo a una pareja. Los síntomas necesitan evaluación clínica.",r:"¿Puedo expresar incomodidad y pedir cuidado con seguridad?",p:"Evita autodiagnosticarte por un diccionario y busca atención, especialmente si los síntomas reaparecen."},
+
+{t:"Abandono, temor al",k:"e",a:"abandonar dejado solo miedo a que me dejen",d:"Es el miedo a perder apoyo o vínculo; sentirlo no confirma que alguien vaya a dejarte.",e:"Una respuesta tardía se vive como señal de distancia.",x:"¿Qué hechos tengo y qué estoy imaginando? Pide claridad sin exigir disponibilidad permanente."},
+{t:"Aceptación",k:"e",a:"aceptar resignacion",d:"Reconocer lo que ocurre no obliga a aprobarlo ni a resignarse.",e:"Admitir que una relación cambió antes de decidir qué hacer.",x:"¿Qué puedo cambiar y qué necesito dejar de discutir con la realidad?"},
+{t:"Agotamiento emocional",k:"e",a:"burnout cansancio emocional quemada quemado sobrecarga",d:"Sensación de haber gastado los recursos para responder a las demandas; no es una falla moral.",e:"Después de cuidar a otros, una petición pequeña se siente enorme.",x:"¿Qué puedo reducir hoy? Pide una ayuda específica y reserva un momento sin obligaciones."},
+{t:"Ambivalencia",k:"e",a:"dudas dos sentimientos confusion",d:"Sentir dos cosas distintas hacia la misma situación es posible.",e:"Querer un trabajo nuevo y sentir tristeza por dejar compañeros.",x:"¿Puedo reconocer ambas emociones sin obligarme a elegir una como la correcta?"},
+{t:"Ansiedad",k:"e",a:"angustia nervios nerviosa nervioso preocupacion estres panico",d:"Anticipación de amenaza o incertidumbre; si es persistente o incapacitante, merece apoyo profesional.",e:"Imaginar varios desenlaces negativos antes de una conversación.",x:"¿Cuál es el siguiente paso concreto que sí puedo dar? Vuelve a lo que está ocurriendo ahora."},
+{t:"Autoestima",k:"e",a:"valorarme quererme amor propio valgo",d:"Forma de valorar y tratar a uno mismo, también cuando algo sale mal.",e:"Confundir cometer un error con no valer como persona.",x:"¿Le hablaría así a alguien que quiero? Describe la conducta sin insultarte."},
+{t:"Autoexigencia",k:"e",a:"exigirme exigente presion nunca es suficiente",d:"Estándares rígidos que dificultan reconocer esfuerzos y límites.",e:"Terminar diez tareas y pensar solamente en la que falta.",x:"¿Qué sería suficiente hoy? Define una meta realista antes de empezar."},
+{t:"Celos",k:"e",a:"celosa celoso pareja posesion",d:"Mezcla posible de miedo, inseguridad y enojo ante una amenaza al vínculo.",e:"Sentir incomodidad ante una amistad de la pareja.",x:"¿Qué necesito conversar? La emoción no autoriza vigilancia, amenazas ni control."},
+{t:"Comparación",k:"e",a:"compararme redes sociales envidia",d:"Medir la propia vida usando una parte visible de la vida ajena.",e:"Comparar tu día difícil con una publicación feliz.",x:"¿Qué información me falta? Elige una referencia basada en tu propio progreso."},
+{t:"Control, necesidad de",k:"e",a:"controlar controladora controlador control",d:"Intento de disminuir la incertidumbre anticipando o supervisando todo.",e:"Revisar repetidamente una tarea delegada.",x:"¿Qué está realmente bajo mi responsabilidad? Prueba delegar una tarea de bajo riesgo."},
+{t:"Culpa",k:"e",a:"culpable remordimiento",d:"Malestar por creer que se hizo algo incorrecto; puede señalar una reparación o una exigencia injusta.",e:"Sentir culpa por descansar aunque no hayas incumplido nada.",x:"¿Hubo un daño concreto? Repara lo reparable y distingue responsabilidad de sacrificio."},
+{t:"Desconfianza",k:"e",a:"confiar no confio confianza traicion",d:"Dificultad para sentirse en seguridad ante alguien o una situación.",e:"Esperar otra decepción después de una promesa incumplida.",x:"¿Qué comportamientos sostenidos necesitaría observar para confiar de nuevo?"},
+{t:"Desvalorización",k:"e",a:"no valgo menos que los demas no sirvo autoestima baja",d:"Sentir que se vale menos o que no se merece, a menudo al interpretar errores como identidad.",e:"«No me eligieron; no sirvo para nada».",x:"¿Qué dice realmente este hecho y qué no dice sobre mí? Busca una descripción más precisa."},
+{t:"Duelo",k:"e",a:"perdida muerte fallecimiento separacion luto",d:"Respuesta a una pérdida de una persona, un vínculo, una etapa o un proyecto; no tiene un calendario único.",e:"Sentir tristeza meses después de una mudanza que también deseabas.",x:"¿Qué extraño y cómo puedo darle un lugar? Busca compañía sin imponerte estar bien."},
+{t:"Enojo",k:"e",a:"rabia ira enfado coraje molestia furia",d:"Respuesta que puede aparecer ante frustración, amenaza o límites vulnerados.",e:"Irritarte cuando alguien vuelve a decidir por ti.",x:"¿Qué límite necesito expresar? Habla cuando puedas hacerlo sin violencia."},
+{t:"Envidia",k:"e",a:"envidiar celos ajenos",d:"Malestar al ver en otra persona algo que deseas; puede orientar hacia una necesidad propia.",e:"Incomodarte por el tiempo libre de una amiga.",x:"¿Qué deseo mío aparece aquí? Convierte la comparación en un pedido o una meta posible."},
+{t:"Frustración",k:"e",a:"frustrada frustrado impaciencia",d:"Malestar cuando la realidad no coincide con lo esperado.",e:"Prepararte mucho y no obtener el resultado deseado.",x:"¿Necesito ajustar el plan, practicar más o aceptar un límite? Elige una acción pequeña."},
+{t:"Hipervigilancia",k:"e",a:"alerta siempre alerta tension miedo paranoia sobresalto",d:"Estado de alerta intensa frente a posibles peligros; si persiste, conviene apoyo profesional.",e:"Estar pendiente del tono de voz de todos para anticipar problemas.",x:"¿Estoy a salvo ahora? Busca apoyo y recursos de calma sin forzarte a revivir experiencias difíciles."},
+{t:"Impotencia",k:"e",a:"no puedo hacer nada sin salida atrapada atrapado",d:"Sensación de no poder cambiar algo importante.",e:"No poder resolver por otra persona una dificultad que te duele.",x:"¿Qué ayuda sí puedo ofrecer y qué no está en mis manos?"},
+{t:"Inseguridad",k:"e",a:"insegura inseguro dudas confianza en mi",d:"Duda sobre los propios recursos, decisiones o lugar en un vínculo.",e:"Pedir confirmación repetida antes de una elección cotidiana.",x:"¿Qué decisión pequeña puedo tomar y sostener por mí?"},
+{t:"Límites",k:"e",a:"poner limites decir que no no se decir no",d:"Condiciones que expresan lo que puedes, quieres o aceptas en una relación.",e:"No contestar asuntos de trabajo durante tu descanso.",x:"¿Qué puedo decir con claridad? «Hoy no puedo; mañana puedo dedicarte quince minutos»."},
+{t:"Miedo",k:"e",a:"temor susto fobia asustada asustado",d:"Respuesta ante un peligro percibido, real o anticipado.",e:"Temor al hablar en público o al recibir un resultado médico.",x:"¿Qué información, preparación o compañía necesito? No confundas valentía con ignorar riesgos."},
+{t:"Perfeccionismo",k:"e",a:"perfecta perfecto exigente nunca esta bien",d:"Búsqueda de un resultado sin errores que puede dificultar empezar, terminar o disfrutar.",e:"No publicar algo porque nunca parece suficientemente bueno.",x:"¿Cuál es el propósito real? Define de antemano cuándo la tarea estará terminada."},
+{t:"Pertenencia",k:"e",a:"pertenecer encajar sentirme fuera de lugar grupo comunidad",d:"Necesidad de conexión y de encontrar espacios donde poder ser auténtico.",e:"Sentirse fuera de lugar en un grupo con intereses distintos.",x:"¿Dónde puedo participar sin fingir? Busca un vínculo o actividad compatible con tus intereses."},
+{t:"Rechazo, sensibilidad al",k:"e",a:"rechazo rechazada rechazado exclusion excluida me ignoran",d:"Dolor o alerta ante señales de exclusión, que a veces son ambiguas.",e:"Interpretar una invitación que no llegó como prueba de que nadie te quiere.",x:"¿Qué otras explicaciones hay? Verifica antes de concluir y reconoce que el dolor merece cuidado."},
+{t:"Resentimiento",k:"e",a:"rencor resentida resentido no perdono",d:"Malestar que permanece alrededor de un daño o una injusticia percibida.",e:"Volver mentalmente a una promesa rota cada vez que hay una discusión.",x:"¿Necesito reparación, distancia o un límite? Perdonar no es una obligación ni una cura médica."},
+{t:"Rumiación",k:"e",a:"darle vueltas pensamientos repetitivos obsesion no paro de pensar",d:"Dar vueltas a los mismos pensamientos sin llegar a una acción o comprensión nueva.",e:"Repetir mentalmente una conversación antes de dormir.",x:"¿Estoy resolviendo algo? Anota una conclusión posible y el siguiente paso, si lo hay."},
+{t:"Soledad",k:"e",a:"solo sola aislamiento aislada extrano mi pais nostalgia",d:"Distancia entre la conexión que se desea y la que se experimenta; puede sentirse incluso rodeado de gente.",e:"Estar entre personas pero no sentir que te escuchan.",x:"¿Con quién puedo tener una conversación honesta? Propón un encuentro concreto."},
+{t:"Tristeza",k:"e",a:"triste llorar llanto deprimida deprimido depresion pena",d:"Emoción vinculada a pérdidas, decepciones o necesidades; no siempre tiene una causa clara.",e:"Sentir ganas de llorar al terminar una etapa importante.",x:"¿Qué necesito hoy: compañía, descanso o expresión? Si persiste o limita tu vida, pide apoyo."},
+{t:"Vacío emocional",k:"e",a:"vacio sin sentido desconexion apatia nada me llena",d:"Sensación de desconexión o falta de sentido; no es un diagnóstico por sí misma.",e:"Completar obligaciones sin sentir interés ni disfrute.",x:"¿Qué me conecta aunque sea un poco? Si es persistente, busca una evaluación de salud mental."},
+{t:"Vergüenza",k:"e",a:"verguenza pena apenada expuesta ridiculo",d:"Sensación de quedar expuesto o de no ser suficiente ante otros o ante uno mismo.",e:"Querer esconderte después de equivocarte en público.",x:"¿Puedo separar un momento incómodo de mi valor como persona? Compártelo con alguien seguro."},
+{t:"Vulnerabilidad",k:"e",a:"vulnerable fragil mostrarme pedir ayuda",d:"Reconocer necesidades, incertidumbre y posibilidad de sentirse herido.",e:"Decir «no sé cómo hacer esto y necesito ayuda».",x:"¿Con quién es seguro mostrar esta parte de mí? Elige el contexto y cuánto quieres compartir."}
+],
+extras:[
+{t:"Cómo leer este diccionario",s:[
+{h:"Una guía amplia, no una equivalencia universal",p:"Reúne 48 entradas sobre síntomas y condiciones y 32 sobre emociones y experiencias. No existe un diccionario médico validado que traduzca cada enfermedad en un conflicto emocional. La selección es amplia, pero no incluye todas las enfermedades ni pretende explicar su origen."},
+{h:"Qué propone la biodescodificación",p:"Esta corriente atribuye significados emocionales a síntomas y órganos. Sus correspondencias y promesas de curación no cuentan con respaldo clínico suficiente. Por eso este diccionario no presenta asociaciones del tipo «alergia = rechazo» como verdades.",f:[9]},
+{h:"Qué sí sabemos",p:"El estrés puede afectar el sueño, la tensión muscular y el bienestar digestivo, y puede empeorar algunas afecciones. Eso no demuestra que un órgano guarde una emoción específica ni que una persona haya provocado su enfermedad.",f:[3,4,5]},
+{h:"Cómo está escrita cada entrada",p:"En la parte física se separa una aclaración de salud de una pregunta de reflexión y un paso práctico. Las preguntas son propuestas originales: no son pruebas, tratamientos ni transcripciones de un autor de biodescodificación. En la parte emocional hay definición, ejemplo y ejercicio."},
+{h:"Una regla para cuidarte",p:"Puedes explorar tus emociones mientras recibes atención médica. No suspendas medicamentos, no te expongas a alérgenos y no retrases estudios para encontrar un conflicto. Tampoco es válido atribuir la enfermedad de un niño a emociones de sus padres."}
+]},
+{t:"Alergias: emoción y cuerpo",s:[
+{h:"Qué sucede en una alergia",p:"El sistema inmunitario reacciona frente a una sustancia que suele ser inofensiva para otras personas. Puede haber síntomas nasales, de piel, respiratorios o generales. Los alérgenos incluyen alimentos, polen, ácaros, animales y medicamentos.",f:[1,2]},
+{h:"Qué puedes explorar emocionalmente",p:"La frustración por no poder comer algo, el miedo después de una reacción, la vergüenza al pedir una adaptación o la culpa por evitar una exposición. Estas experiencias merecen cuidado por sí mismas. No prueban el origen de la alergia."},
+{h:"Ejemplo cotidiano",p:"Una persona presenta síntomas cerca de un gato y piensa: «Debe ser que rechazo la casa de mi hermana». Esa conclusión no se desprende del síntoma. Puede existir una exposición alérgica, y además puede sentir incomodidad por pedir cambios. Lo útil es atender ambas cosas por separado."},
+{h:"Una frase para expresarte",p:"«Quiero compartir tiempo contigo, pero esta exposición me hace mal. Necesito que busquemos una forma de encontrarnos que sea segura para mí». No hace falta justificar una necesidad médica con un conflicto emocional."},
+{h:"Registro útil",p:"Fecha y hora; exposición posible; síntoma y duración; medicamentos usados según indicación; qué pasó después. Puedes agregar emoción e intensidad, recordando que dos hechos que ocurren juntos no prueban una relación causal."},
+{h:"Cuándo actuar de inmediato",p:"Si hay dificultad para respirar, hinchazón de lengua o garganta, desmayo o una reacción general grave, llama al 911 en Estados Unidos. Si tienes adrenalina autoinyectable indicada para anafilaxia, úsala según tu plan de emergencia. No esperes a que una técnica emocional haga efecto."}
+]},
+{t:"Metáforas que no son diagnósticos",s:[
+{h:"«Me pesa en los hombros»",p:"Puede describir una responsabilidad agotadora. No demuestra que esa responsabilidad haya causado una tendinitis. La metáfora puede abrir una conversación; la lesión necesita evaluación."},
+{h:"«No puedo digerirlo»",p:"Puede expresar dificultad para asimilar una experiencia. No permite diagnosticar gastritis ni descartar una infección por H. pylori.",f:[6]},
+{h:"«Me quedé sin voz»",p:"Puede hablar de sentirte poco escuchado. No explica por sí sola una afonía. Puedes trabajar tu expresión y consultar por tu voz al mismo tiempo."},
+{h:"«El lado izquierdo es la madre; el derecho, el padre»",p:"No hay una regla clínica validada que permita deducir ese vínculo por el lado del cuerpo afectado. Tampoco la lateralidad permite identificar automáticamente un conflicto masculino o femenino."},
+{h:"«Los síntomas son memorias de mis antepasados»",p:"Las historias familiares pueden influir en hábitos, recursos y vínculos. Eso no demuestra que una enfermedad codifique un secreto ancestral ni permite descubrir acontecimientos desconocidos a partir del síntoma."},
+{h:"«Si no sano, es porque no solté»",p:"Esta idea puede sumar culpa a una enfermedad. Un tratamiento puede requerir tiempo, ajustes o control a largo plazo. No mejorar no demuestra falta de voluntad, conciencia o trabajo emocional."},
+{h:"Enfermedades que no deben reducirse a una emoción",p:"Cáncer, diabetes, infecciones y enfermedades autoinmunes no se diagnostican como resentimiento, falta de dulzura o rechazo personal. En particular, no hay una relación causal simple establecida entre estrés y cáncer. El acompañamiento emocional no reemplaza el tratamiento.",f:[10]}
+]},
+{t:"Cuaderno de reflexión: escucharme sin culparme",s:[
+{h:"Antes de empezar",p:"Usa una situación concreta. Si escribir aumenta mucho tu angustia, puedes detenerte."},
+{h:"1. Lo que ocurrió",p:"Describe hechos observables: qué pasó, cuándo y con quién, sin interpretar intenciones."},
+{h:"2. Lo que sentí",p:"Elige una o dos emociones y su intensidad de 0 a 10. «No sé todavía» también es una respuesta válida."},
+{h:"3. Lo que pensé",p:"Anota la frase que apareció. Separa el pensamiento de una certeza: «Pensé que no le importaba»."},
+{h:"4. Lo que necesito",p:"Podría ser descanso, información, compañía, seguridad, reconocimiento, tiempo o un límite."},
+{h:"5. Mi próximo paso",p:"Elige una acción pequeña: pedir ayuda, acordar una conversación, descansar o solicitar una consulta."},
+{h:"Si también hay síntomas físicos",p:"Regístralos por separado: inicio, duración, intensidad y cambios. No concluyas que la emoción fue la causa. Un síntoma nuevo, recurrente o que empeora merece evaluación."}
+]},
+{t:"Cuándo pedir ayuda de inmediato",urg:1,s:[
+{h:"Atención urgente",p:"Dolor de pecho intenso, dificultad respiratoria, desmayo, debilidad de un lado, confusión repentina o un dolor de cabeza súbito y extremo requieren atención inmediata. En Estados Unidos, llama al 911."},
+{h:"Apoyo emocional",p:"Si la ansiedad, la tristeza o la falta de interés persisten o interfieren con tu vida, un profesional de salud mental puede ayudarte a evaluarlo y acompañarte."}
+]}
+]
+};
+
+const D=window.DLR_DIC,$=i=>document.getElementById(i);
+const nz=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+let tab='todo';
+const E=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+function score(e,tk){if(!tk.length)return 1;const T=nz(e.t),A=nz(e.a),X=nz([e.s,e.r,e.p,e.d,e.e,e.x].join(' '));let s=0;for(const w of tk){if(T.includes(w))s+=3;else if(A.includes(w))s+=2;else if(X.includes(w))s+=1;else return 0}return s}
+function body(e){const c=E('div','body');const b=(h,t)=>{if(!t)return;c.append(E('h4',0,h),E('p',0,t))};
+if(e.k==='c'){b('Sobre la salud',e.s);b('Para reflexionar',e.r);b('Un paso concreto',e.p)}else{b('Qué es',e.d);b('Ejemplo',e.e);b('Para explorar',e.x)}
+if(e.f&&e.f.length){const f=E('div','fte','Fuentes: ');e.f.forEach((n,i)=>{const F=D.fuentes[n];if(!F)return;if(i)f.append(' · ');const a=E('a',0,F[0]);a.href=F[1];a.target='_blank';a.rel='noopener';f.append(a)});c.append(f)}return c}
+function render(){const tk=nz($('q').value).split(/\s+/).filter(Boolean);
+const L=D.entradas.filter(e=>tab==='todo'||e.k===tab).map(e=>({e,s:score(e,tk)})).filter(x=>x.s>0).sort((a,b)=>b.s-a.s||a.e.t.localeCompare(b.e.t,'es'));
+$('cnt').textContent=L.length+(L.length===1?' entrada':' entradas');const R=$('list');R.textContent='';
+if(!L.length){R.append(E('p','cnt','No encontramos esa palabra. Prueba con otra, por ejemplo «ansiedad» o «culpa».'));return}
+L.slice(0,60).forEach(x=>{const d=E('details','it'),s=E('summary');s.append(E('span','tag'+(x.e.k==='e'?' e':''),x.e.k==='c'?'Cuerpo':'Emoción'),E('span',0,x.e.t));d.append(s);let f=0;d.addEventListener('toggle',()=>{if(d.open&&!f){f=1;d.append(body(x.e))}});R.append(d)});
+if(L.length===1)R.firstChild.open=true}
+function tabs(){const T=$('tabs');T.textContent='';[['todo','Todo'],['c','Cuerpo'],['e','Emociones']].forEach(([k,l])=>{const b=E('button','chip'+(tab===k?' on':''),l);b.onclick=()=>{tab=k;tabs();render()};T.append(b)})}
+$('q').addEventListener('input',render);
+D.sugerencias.forEach(s=>{const b=E('button','chip',s);b.onclick=()=>{$('q').value=s;render();scrollTo({top:$('q').offsetTop-10,behavior:'smooth'})};$('sg').append(b)});
+D.extras.forEach(x=>{const w=$('howb');w.append(E('h3',0,x.t));(x.s||[]).forEach(s=>{w.append(E('h4',0,s.h)||'',E('p',0,s.p))})});
+tabs();render();
+(function(){const c=document.getElementById('bg'),x=c.getContext('2d');let W,H,d,S=[],raf,last=0;const R=matchMedia('(prefers-reduced-motion: reduce)');
+function rs(){d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);const n=Math.min(70,Math.max(24,W*H/16000|0));S=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.14,vy:(Math.random()-.5)*.14,r:.6+Math.random()*1,p:Math.random()*6.28}));dr(0)}
+function dr(t){x.clearRect(0,0,W,H);const D=Math.min(140,Math.max(90,W*.17));for(let i=0;i<S.length;i++){const a=S[i];if(!R.matches){a.x=(a.x+a.vx+W)%W;a.y=(a.y+a.vy+H)%H}for(let j=i+1;j<S.length;j++){const b=S[j],q=Math.hypot(a.x-b.x,a.y-b.y);if(q<D){x.strokeStyle='rgba(115,222,239,'+(.2*(1-q/D)).toFixed(3)+')';x.lineWidth=.6;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}x.fillStyle='rgba(178,242,251,'+(.4+.25*Math.sin(t*.0007+a.p)).toFixed(3)+')';x.beginPath();x.arc(a.x,a.y,a.r,0,6.283);x.fill()}}
+function f(t){if(t-last>30){dr(t);last=t}raf=requestAnimationFrame(f)}
+addEventListener('resize',rs,{passive:true});rs();if(!R.matches)raf=requestAnimationFrame(f);
+document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(raf);if(!document.hidden&&!R.matches)raf=requestAnimationFrame(f)})})();
+</script></body></html>

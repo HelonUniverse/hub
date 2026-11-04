@@ -1,0 +1,145 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#06162c"><title>Pináculo AI · Desde la Red</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>:root{--cy:#7fe3f5;--gold:#eacb88;--mut:#a9c4d2;--line:rgba(127,227,245,.42)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:radial-gradient(ellipse at 50% -10%,#1d4f7c 0%,#0a2140 42%,#050d1f 90%) fixed;color:#eef9ff;font:15px/1.5 'Albert Sans',system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+button,input,textarea,select{font:inherit;color:inherit}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main{position:relative;z-index:1;max-width:620px;margin:auto;padding:calc(14px + env(safe-area-inset-top)) 18px 60px}
+.hero{text-align:center;padding:6px 0 10px}
+.eb{font-size:11px;letter-spacing:.24em;color:#8fd6e6;text-transform:uppercase}
+h1{font:400 clamp(34px,10vw,46px)/1.05 'Instrument Serif',Georgia,serif;margin:6px 0 4px;letter-spacing:-.01em}
+h1 em{color:var(--cy);font-style:italic}
+h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 8px;color:#f3e2b8}
+.lead{color:var(--mut);font-size:14px;margin:0 auto;max-width:420px}
+.card{border-radius:22px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(21,76,104,.55),rgba(8,32,54,.75));box-shadow:0 12px 34px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06);padding:18px;margin-top:14px}
+.in{width:100%;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:13px 14px;font-size:15px;outline:0}
+.in:focus{box-shadow:0 0 14px rgba(80,220,255,.35)}
+.btn{appearance:none;border:0;border-radius:999px;padding:13px 16px;background:linear-gradient(135deg,#8ff0ff,#1fb5dc);color:#06162c;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 6px 18px rgba(40,200,240,.35);width:100%}
+.btn.ghost{background:none;color:var(--cy);border:1px solid var(--line);box-shadow:none;font-weight:500}
+.btn:disabled{opacity:.5}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 0 4px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{appearance:none;flex:none;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer}
+.chip.on{background:rgba(127,227,245,.16);box-shadow:0 0 14px rgba(80,220,255,.35)}
+.note{color:#8fa9b8;font-size:12px;text-align:center;margin:18px 6px 0}
+.back{appearance:none;background:none;border:0;color:var(--cy);font-size:14px;padding:6px 0;cursor:pointer}
+.logo{display:block;margin:0 auto;width:104px;height:auto}
+[hidden]{display:none!important}
+
+sup{font-size:.45em;color:var(--gold)}
+.sel{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:8px;margin-top:10px}
+select.in{appearance:none;padding:13px 10px;background-image:none}
+label{display:block;font-size:12px;color:var(--mut);margin:12px 2px 4px}
+.priv{font-size:12px;color:var(--mut);margin:12px 2px 0}
+.map{display:block;width:100%;max-width:360px;margin:6px auto 0}
+.map .ln{stroke:rgba(127,227,245,.35);stroke-width:1;fill:none;stroke-dasharray:300;stroke-dashoffset:300;animation:dr 1.4s .1s forwards}
+@keyframes dr{to{stroke-dashoffset:0}}
+.map .nd{fill:rgba(6,22,44,.9);stroke:var(--line);stroke-width:1}
+.map .nd.cur{stroke:var(--gold);stroke-width:1.6;filter:drop-shadow(0 0 6px rgba(234,203,136,.7))}
+.map text{fill:#eef9ff;font:400 17px 'Instrument Serif',serif;text-anchor:middle;dominant-baseline:central}
+.map .lb{fill:#8fb0c0;font:400 9px 'Albert Sans',sans-serif;letter-spacing:.12em}
+.life{display:flex;align-items:center;gap:14px;margin-top:6px}
+.life .n{font:400 58px/1 'Instrument Serif',serif;color:var(--cy);text-shadow:0 0 22px rgba(90,220,255,.4);min-width:70px;text-align:center}
+.life p{margin:0;color:#dff1f7;font-size:14px}.life b{display:block;color:var(--gold);font-weight:500;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.pc{position:relative;text-align:left;border-radius:20px;border:1px solid var(--line);padding:14px 14px 16px;cursor:pointer;background:linear-gradient(165deg,rgba(24,86,118,.75),rgba(7,26,48,.92));box-shadow:0 10px 26px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.07);overflow:hidden;min-height:190px;opacity:0;transform:translateY(12px);animation:up .5s forwards}
+@keyframes up{to{opacity:1;transform:none}}
+.pc:nth-child(2){animation-delay:.12s}.pc:nth-child(3){animation-delay:.24s}.pc:nth-child(4){animation-delay:.36s}
+.pc::before{content:'';position:absolute;inset:-40% -20% auto auto;width:140px;height:140px;background:radial-gradient(circle,rgba(127,227,245,.28),transparent 65%)}
+.pc.cur{border-color:var(--gold);box-shadow:0 0 22px rgba(234,203,136,.3),0 10px 26px rgba(0,0,0,.45)}
+.pc .k{font-size:10.5px;letter-spacing:.2em;color:#8fd6e6;text-transform:uppercase}
+.pc .n{font:400 56px/1 'Instrument Serif',serif;margin:8px 0 2px;color:#fff;text-shadow:0 0 20px rgba(120,230,255,.45)}
+.pc .a{font-size:12px;color:var(--gold)}
+.pc .t{font-size:13.5px;margin-top:8px;color:#eaf8ff;line-height:1.35}
+.pc .x{display:none;margin-top:10px;font-size:13px;color:#dff1f7;line-height:1.5}.pc .x i{display:block;font-style:normal;color:var(--gold);margin-top:8px;font-size:12.5px}
+.pc.open{grid-column:1/-1;min-height:0}.pc.open .x{display:block}
+.now{display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#06162c;background:var(--gold);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:1px}
+.ch{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.ch div{text-align:center;border:1px solid rgba(127,227,245,.25);border-radius:14px;padding:10px 4px;background:rgba(6,22,44,.55)}
+.ch b{display:block;font:400 26px/1 'Instrument Serif',serif;color:var(--cy)}.ch small{font-size:10.5px;color:var(--mut)}
+.read h3{font:400 22px/1.1 'Instrument Serif',serif;color:#f3e2b8;margin:18px 0 6px}
+.read p{margin:0 0 8px;color:#dff1f7;font-size:14.5px;line-height:1.6}
+.aff{margin-top:16px;text-align:center;font:italic 400 22px/1.3 'Instrument Serif',serif;color:var(--cy)}
+.load{text-align:center;color:var(--mut);font-size:14px;padding:20px 0}.load::before{content:'✦';display:block;font-size:22px;color:var(--gold);animation:pl 1.2s infinite alternate}
+@keyframes pl{from{opacity:.3;transform:scale(.9)}to{opacity:1;transform:scale(1.1)}}
+.err{color:#ffb4a8;font-size:13.5px;margin:10px 0 0}
+.chat{margin-top:6px}
+.bub{max-width:92%;margin:8px 0;padding:10px 13px;border-radius:16px;font-size:14.5px;line-height:1.55;white-space:pre-wrap}
+.bub.u{margin-left:auto;background:rgba(127,227,245,.16);border:1px solid var(--line)}
+.bub.a{background:rgba(6,22,44,.65);border:1px solid rgba(127,227,245,.2)}
+.send{display:flex;gap:8px;margin-top:10px}.send .btn{width:auto;padding:0 20px}
+.sug{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+</style></head><body><canvas id="bg"></canvas><main>
+<img class="logo" src="/logo.webp" alt="Desde la Red">
+<div class="hero"><div class="eb">Desde la Red · Universo interior</div><h1>Pináculo <em>AI</em></h1><p class="lead">Un mapa numerológico de tus etapas, con una lectura personal y una conversación para profundizar.</p></div>
+
+<section class="card" id="form">
+<h2>Tu punto de partida</h2>
+<label for="nm">Nombre o alias (opcional)</label><input id="nm" class="in" placeholder="¿Cómo deseas que te llamemos?" maxlength="40" autocomplete="off">
+<label>Fecha de nacimiento</label>
+<div class="sel"><select id="dd" class="in"></select><select id="mm" class="in"></select><select id="yy" class="in"></select></div>
+<div id="e1" class="err"></div>
+<button class="btn" id="go" style="margin-top:14px">Crear mi mapa ✦</button>
+<p class="priv">El mapa se calcula en tu dispositivo. A la inteligencia artificial solo enviamos los números del mapa: nunca tu nombre ni tu fecha de nacimiento.</p>
+</section>
+
+<section id="res" hidden>
+<div class="card"><div class="life"><div class="n" id="life">0</div><p><b>Tu camino de vida</b><span id="lifet"></span></p></div><svg class="map" id="map" viewBox="0 0 340 290" aria-label="Mapa de tus pináculos"></svg></div>
+<h2 style="margin:22px 2px 0">Tus cuatro pináculos</h2><p class="priv" style="margin-top:2px">Toca una carta para abrirla.</p>
+<div class="cards" id="cards"></div>
+<div class="card"><h2>Tus desafíos</h2><div class="ch" id="ch"></div></div>
+<div class="card read" id="read"><h2>Lectura con IA</h2><p class="priv" style="margin:0 0 10px">Si quieres, cuéntanos qué deseas explorar. Es opcional.</p><input id="topic" class="in" maxlength="200" placeholder="Por ejemplo: mi trabajo, mis relaciones, una decisión…"><button class="btn" id="rd" style="margin-top:12px">Recibir mi lectura ✦</button><div id="rout"></div></div>
+<div class="card chat" id="chatc" hidden><h2>Conversa con Pináculo</h2><div id="log"></div><div class="send"><input id="q" class="in" maxlength="300" placeholder="Pregunta algo sobre tu mapa…"><button class="btn" id="sd">Enviar</button></div><div id="e2" class="err"></div></div>
+<button class="btn ghost" id="again" style="margin-top:14px">Calcular otra fecha</button>
+</section>
+<p class="note">Lectura simbólica para la reflexión personal. No predice el futuro ni sustituye atención médica, psicológica, financiera o legal.</p>
+</main>
+<script>
+const $=i=>document.getElementById(i);const FN='https://xjmgtzlezsmpxfnyjrli.supabase.co/functions/v1/desdelared-pinaculo',KEY='sb_publishable_kp75fFYItrQgpr47V5xpMQ_l-_AzCSz';
+const KW={1:'Iniciativa y liderazgo',2:'Cooperación y escucha',3:'Expresión y creatividad',4:'Estructura y constancia',5:'Cambio y libertad',6:'Cuidado y responsabilidad',7:'Introspección y estudio',8:'Logro y recursos',9:'Cierre y servicio',11:'Intuición e inspiración',22:'Construcción de gran escala',33:'Entrega y guía'};
+const LT={1:'Abrir caminos propios.',2:'Tejer vínculos con calma.',3:'Dar voz a lo que sientes.',4:'Construir con paciencia.',5:'Adaptarte y explorar.',6:'Cuidar y comprometerte.',7:'Buscar tu propia verdad.',8:'Ordenar recursos y metas.',9:'Cerrar ciclos y compartir.',11:'Escuchar tu intuición.',22:'Dar forma a algo grande.',33:'Servir con ternura.'};
+const sum=n=>String(n).split('').reduce((a,c)=>a+ +c,0);
+const red=n=>{while(n>9&&![11,22,33].includes(n))n=sum(n);return n};const one=n=>{while(n>9)n=sum(n);return n};
+const E=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const MES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+(function(){const d=$('dd'),m=$('mm'),y=$('yy');d.append(new Option('Día',''));for(let i=1;i<=31;i++)d.append(new Option(i,i));m.append(new Option('Mes',''));MES.forEach((x,i)=>m.append(new Option(x,i+1)));y.append(new Option('Año',''));const Y=new Date().getFullYear();for(let i=Y;i>=1920;i--)y.append(new Option(i,i))})();
+let MAP=null,HIST=[];
+function compute(d,m,y){const M=red(m),D=red(d),Yr=red(sum(y)),L=red(M+D+Yr);const p=[red(M+D),red(D+Yr)];p.push(red(p[0]+p[1]));p.push(red(M+Yr));
+const Ls=one(L),e1=36-Ls;const rg=[[0,e1],[e1+1,e1+9],[e1+10,e1+18],[e1+19,null]];
+const now=new Date(),b=new Date(y,m-1,d);let age=now.getFullYear()-y;if(now<new Date(now.getFullYear(),m-1,d))age--;
+let cur=0;rg.forEach((r,i)=>{if(age>=r[0])cur=i});
+const mm=one(M),dd=one(D),yy=one(Yr),c1=Math.abs(mm-dd),c2=Math.abs(dd-yy),c3=Math.abs(c1-c2),c4=Math.abs(mm-yy);
+const py=red(one(D)+one(M)+one(sum(now.getFullYear())));
+return{life:L,month:M,day:D,year:Yr,pinnacles:p.map((n,i)=>({n,from:rg[i][0],to:rg[i][1]})),challenges:[c1,c2,c3,c4],current:cur,personalYear:py,age}}
+function drawMap(m){const s=$('map');s.textContent='';const NS='http://www.w3.org/2000/svg';const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+const pts={M:[60,250],D:[170,250],Y:[280,250],P1:[115,170],P2:[225,170],P3:[170,90],P4:[170,24]};
+const L=[['M','P1'],['D','P1'],['D','P2'],['Y','P2'],['P1','P3'],['P2','P3'],['P3','P4']];L.forEach(([a,b])=>s.append(mk('line',{x1:pts[a][0],y1:pts[a][1],x2:pts[b][0],y2:pts[b][1],class:'ln'})));
+const vals={M:m.month,D:m.day,Y:m.year,P1:m.pinnacles[0].n,P2:m.pinnacles[1].n,P3:m.pinnacles[2].n,P4:m.pinnacles[3].n};
+const lab={M:'MES',D:'DÍA',Y:'AÑO',P1:'PINÁCULO 1',P2:'PINÁCULO 2',P3:'PINÁCULO 3',P4:'PINÁCULO 4'};const cur=['P1','P2','P3','P4'][m.current];
+for(const k in pts){const g=mk('g',{});g.append(mk('circle',{cx:pts[k][0],cy:pts[k][1],r:k[0]=='P'?22:18,class:'nd'+(k===cur?' cur':'')}));const t=mk('text',{x:pts[k][0],y:pts[k][1]});t.textContent=vals[k];g.append(t);if(k[0]!='P'){const l=mk('text',{x:pts[k][0],y:pts[k][1]+30,class:'lb'});l.textContent=lab[k];g.append(l)}s.append(g)}}
+function show(m){MAP=m;HIST=[];$('form').hidden=true;$('res').hidden=false;$('life').textContent=m.life;$('lifet').textContent=LT[m.life]||'';drawMap(m);
+const C=$('cards');C.textContent='';m.pinnacles.forEach((p,i)=>{const c=E('button','pc'+(i===m.current?' cur':''));c.append(E('div','k','Pináculo '+(i+1)),E('div','n',p.n),E('div','a',p.from+(p.to===null?' años en adelante':'–'+p.to+' años')),E('div','t',KW[p.n]||''));if(i===m.current){const n=E('span','now','tu etapa');c.querySelector('.k').append(n)}const x=E('div','x',LT[p.n]||'');c.append(x);c.onclick=()=>c.classList.toggle('open');C.append(c)});
+const H=$('ch');H.textContent='';m.challenges.forEach((v,i)=>{const d=E('div');d.append(E('b',0,v),E('small',0,'Desafío '+(i+1)));H.append(d)});
+$('rout').textContent='';$('rd').hidden=false;$('chatc').hidden=true;$('log').textContent='';scrollTo(0,0)}
+$('go').onclick=()=>{const d=+$('dd').value,m=+$('mm').value,y=+$('yy').value;const e=$('e1');e.textContent='';if(!d||!m||!y){e.textContent='Elige día, mes y año.';return}const t=new Date(y,m-1,d);if(t.getMonth()!==m-1||t>new Date()){e.textContent='Esa fecha no es válida.';return}show(compute(d,m,y))};
+$('again').onclick=()=>{$('res').hidden=true;$('form').hidden=false;scrollTo(0,0)};
+async function call(body){const r=await fetch(FN,{method:'POST',headers:{'content-type':'application/json',apikey:KEY,authorization:'Bearer '+KEY},body:JSON.stringify(body)});const j=await r.json().catch(()=>({}));if(!r.ok)throw Error(j.error||'No pudimos completar la lectura. Inténtalo de nuevo.');return j}
+const apiMap=()=>({life:MAP.life,month:MAP.month,day:MAP.day,year:MAP.year,pinnacles:MAP.pinnacles,challenges:MAP.challenges,current:MAP.current,personalYear:MAP.personalYear});
+$('rd').onclick=async()=>{const o=$('rout');o.textContent='';o.append(E('div','load','Tejiendo tu mapa…'));$('rd').disabled=true;
+try{const j=await call({map:apiMap(),question:$('topic').value.trim()});o.textContent='';
+o.append(E('h3',0,j.title),E('p',0,j.essence));
+document.querySelectorAll('.pc').forEach((c,i)=>{const s=j.stages[i];c.querySelector('.t').textContent=s.theme;const x=c.querySelector('.x');x.textContent=s.text;const p=E('i',0,'Práctica: '+s.practice);x.append(p)});
+o.append(E('h3',0,'Tu momento actual'),E('p',0,j.now),E('h3',0,'Tus desafíos'),E('p',0,j.challenge),E('div','aff','“'+j.affirmation.replace(/^[“"]|[”"]$/g,'')+'”'));
+const t=E('p','priv','Abre cada carta para leer su interpretación.');o.append(t);$('rd').hidden=true;$('chatc').hidden=false;
+}catch(e){o.textContent='';o.append(E('div','err',e.message))}$('rd').disabled=false};
+function bub(c,t){const b=E('div','bub '+c,t);$('log').append(b);b.scrollIntoView({block:'nearest'});return b}
+$('sd').onclick=async()=>{const q=$('q').value.trim();if(!q)return;$('q').value='';$('e2').textContent='';bub('u',q);const w=bub('a','…');$('sd').disabled=true;
+try{const j=await call({mode:'chat',map:apiMap(),question:q,history:HIST});w.textContent=j.answer;HIST.push({role:'user',content:q},{role:'assistant',content:j.answer})}catch(e){w.remove();$('e2').textContent=e.message}$('sd').disabled=false};
+$('q').addEventListener('keydown',e=>{if(e.key==='Enter')$('sd').click()});
+(function(){const c=document.getElementById('bg'),x=c.getContext('2d');let W,H,d,S=[],raf,last=0;const R=matchMedia('(prefers-reduced-motion: reduce)');
+function rs(){d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);const n=Math.min(70,Math.max(24,W*H/16000|0));S=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.14,vy:(Math.random()-.5)*.14,r:.6+Math.random()*1,p:Math.random()*6.28}));dr(0)}
+function dr(t){x.clearRect(0,0,W,H);const D=Math.min(140,Math.max(90,W*.17));for(let i=0;i<S.length;i++){const a=S[i];if(!R.matches){a.x=(a.x+a.vx+W)%W;a.y=(a.y+a.vy+H)%H}for(let j=i+1;j<S.length;j++){const b=S[j],q=Math.hypot(a.x-b.x,a.y-b.y);if(q<D){x.strokeStyle='rgba(115,222,239,'+(.2*(1-q/D)).toFixed(3)+')';x.lineWidth=.6;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}x.fillStyle='rgba(178,242,251,'+(.4+.25*Math.sin(t*.0007+a.p)).toFixed(3)+')';x.beginPath();x.arc(a.x,a.y,a.r,0,6.283);x.fill()}}
+function f(t){if(t-last>30){dr(t);last=t}raf=requestAnimationFrame(f)}
+addEventListener('resize',rs,{passive:true});rs();if(!R.matches)raf=requestAnimationFrame(f);
+document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(raf);if(!document.hidden&&!R.matches)raf=requestAnimationFrame(f)})})();
+</script></body></html>
