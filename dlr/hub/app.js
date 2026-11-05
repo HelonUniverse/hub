@@ -19,7 +19,7 @@ const A=[
 {id:'dones',g:'estudio',n:'Despierta tus dones',u:API+'/api/a/dones',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@e15d7bde2a248540d677ec57d9beb19448ff4b28/dlr/tiles/dones-tile.webp'},
 {id:'dharma',g:'estudio',n:'Camino del Dharma',u:API+'/api/a/dharma',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@e15d7bde2a248540d677ec57d9beb19448ff4b28/dlr/tiles/dharma-tile.webp'},
 {id:'biodec',g:'estudio',n:'Biodecodificación',u:API+'/api/a/biodec',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@3b1c52844e6b424c0bb804f7aefa54ff0b3d4113/dlr/tiles/biodec-tile.webp'},
-{id:'musica',g:'estudio',n:'Música',d:'Álbumes para conectar contigo',tab:'musica',wide:1,img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@84c5533e88f7bd244db79121a8a9f7400cd8c58d/dlr/tiles/musica.webp'}];
+{id:'musica',g:'estudio',n:'Música',d:'Álbumes para conectar contigo',tab:'musica',wide:1,img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@e73b459aedda23e4747e2504135e6d51fef4cdbc/dlr/tiles/musica-tile.webp'}];
 const SB=supabase.createClient('https://xjmgtzlezsmpxfnyjrli.supabase.co','sb_publishable_kp75fFYItrQgpr47V5xpMQ_l-_AzCSz');
 let USER=null;const D={notes:[],saved:[],fav:{}};
 const $=i=>document.getElementById(i);
