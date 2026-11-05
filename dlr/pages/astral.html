@@ -52,7 +52,7 @@ h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 <div class="card" id="form"><h2>Tus datos de nacimiento</h2>
 <div class="lab">Fecha</div><input class="in" id="d" type="date">
 <div class="lab">Hora</div><input class="in" id="t" type="time"><label class="chk"><input type="checkbox" id="nt"> No sé mi hora de nacimiento</label>
-<div class="lab">Ciudad de nacimiento</div><input class="in" id="c" placeholder="Por ejemplo: Bogotá" autocomplete="off"><div class="sug" id="sg"></div>
+<div class="lab">Ciudad de nacimiento</div><input class="in" id="c" placeholder="Ciudad, país (ej. Ponce, Puerto Rico)" autocomplete="off"><div class="sug" id="sg"></div>
 <div class="err" id="er"></div><button class="btn" id="go">Ver mi carta</button></div>
 <div id="res"></div>
 <p class="note">Cálculo astronómico aproximado (precisión cercana a 1°). Lectura simbólica para reflexionar. Sin la hora exacta no se puede calcular el Ascendente.</p>
@@ -103,11 +103,18 @@ function wheel(pls,asc){const R=150,c=180;const rot=asc!=null?180-asc:180;const 
  const used=[];pls.forEach(p=>{let r=100;let q=pt(p.l,r);for(let k=0;k<4&&used.some(u=>Math.hypot(u[0]-q[0],u[1]-q[1])<20);k++){r-=15;q=pt(p.l,r)}used.push(q);const e=pt(p.l,122);s+='<line x1="'+e[0]+'" y1="'+e[1]+'" x2="'+q[0]+'" y2="'+q[1]+'" stroke="rgba(234,203,136,.25)"/><text x="'+q[0]+'" y="'+q[1]+'" fill="#eacb88" font-size="19" text-anchor="middle" dominant-baseline="central">'+p.g+'\uFE0E</text>'});
  return s+'</svg>'}
 let place=null;
-$('c').oninput=()=>{place=null;clearTimeout($('c')._t);const q=$('c').value.trim();$('sg').textContent='';if(q.length<3)return;$('c')._t=setTimeout(async()=>{try{const r=await fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(q)+'&count=5&language=es&format=json');const j=await r.json();$('sg').textContent='';(j.results||[]).forEach(x=>{const b=document.createElement('button');b.textContent=[x.name,x.admin1,x.country].filter(Boolean).join(', ');b.onclick=()=>{place=x;$('c').value=b.textContent;$('sg').textContent=''};$('sg').append(b)})}catch(e){}},350)};
+const nrm=x=>x.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+function showSug(list){const g=$('sg');g.textContent='';if(!list.length){const m=document.createElement('div');m.className='note';m.style.margin='8px 0 0';m.textContent='No encontré esa ciudad. Prueba con el nombre solo (ej. Ponce) o con otra ciudad cercana.';g.append(m);return}list.forEach(x=>{const b=document.createElement('button');b.textContent=[x.name,x.admin1,x.country].filter(Boolean).join(', ');b.onclick=async()=>{$('c').value=b.textContent;g.textContent='';if(!x.timezone){try{const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude='+x.latitude+'&longitude='+x.longitude+'&timezone=auto&current=temperature_2m');x.timezone=(await r.json()).timezone}catch(e){}}place=x};g.append(b)})}
+async function geo(q){const parts=q.split(',').map(s=>s.trim()).filter(Boolean),name=parts[0],rest=nrm(parts.slice(1).join(' '));let res=[];
+ try{const r=await fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(name)+'&count=15&language=es&format=json');res=(await r.json()).results||[]}catch(e){}
+ if(rest)res=res.filter(x=>nrm([x.admin1,x.country,x.admin2].filter(Boolean).join(' ')).includes(rest)||rest.split(' ').every(w=>nrm([x.admin1,x.country,x.admin2].filter(Boolean).join(' ')).includes(w)));
+ if(!res.length){try{const r=await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=6&accept-language=es&addressdetails=1&q='+encodeURIComponent(q));const j=await r.json();res=j.map(x=>{const a=x.address||{};return{name:a.city||a.town||a.village||a.municipality||a.county||x.display_name.split(',')[0],admin1:a.state||a.region,country:a.country,latitude:+x.lat,longitude:+x.lon}})}catch(e){}}
+ return res.slice(0,6)}
+$('c').oninput=()=>{place=null;clearTimeout($('c')._t);const q=$('c').value.trim();$('sg').textContent='';if(q.length<3)return;$('c')._t=setTimeout(async()=>{const l=await geo(q);if($('c').value.trim()===q)showSug(l)},400)};
 $('nt').onchange=()=>{$('t').disabled=$('nt').checked;$('t').style.opacity=$('nt').checked?.4:1};
 function P(cls,txt,tag){const e=document.createElement(tag||'p');if(cls)e.className=cls;e.textContent=txt;return e}
 $('go').onclick=()=>{const er=$('er');er.textContent='';const d=$('d').value,nt=$('nt').checked,t=nt?'12:00':$('t').value;
- if(!d)return er.textContent='Escribe tu fecha de nacimiento.';if(!nt&&!t)return er.textContent='Escribe la hora o marca que no la sabes.';if(!place)return er.textContent='Elige tu ciudad de la lista que aparece al escribir.';
+ if(!d)return er.textContent='Escribe tu fecha de nacimiento.';if(!nt&&!t)return er.textContent='Escribe la hora o marca que no la sabes.';if(!place)return er.textContent='Escribe tu ciudad y toca una opción de la lista que aparece.';
  const u=toUTC(d,t,place.timezone||'UTC'),J=jd(u),T=(J-2451545)/36525;
  const L=[sun(T),moon(T),geo('me',T),geo('ve',T),geo('ma',T),geo('ju',T),geo('sa',T),geo('ur',T),geo('ne',T),geo('pl',T)];
  const pls=PN.map((p,i)=>({n:p[0],g:p[1],f:p[2],l:L[i]}));let an=null;if(!nt)an=angles(J,place.latitude,place.longitude);
