@@ -67,7 +67,7 @@ const T=[
 {f:'kodoish-pulso-sagrado-desde-la-red',n:'Kodoish',d:'Pulso Sagrado · 3:40'},
 {f:'waheguru-pulso-de-luz',n:'Waheguru',d:'Pulso de Luz · 3:33',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@0df4999786b0e98212cea35718f59093b8742e1e/dlr/tiles/waheguru.webp'},
 {f:'gayatri-mantra-pulso-de-luz',n:'Gayatri Mantra',d:'Pulso de Luz · 3:32',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@0df4999786b0e98212cea35718f59093b8742e1e/dlr/tiles/gayatri.webp',pos:'center 24%'},
-{f:'om-namah-shivaya-pulso-de-serenidad',n:'Om Namah Shivaya',d:'Pulso de Serenidad · 3:11'},
+{f:'om-namah-shivaya-pulso-de-serenidad',n:'Om Namah Shivaya',d:'Pulso de Serenidad · 3:11',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@379491c73d91d999f4b7ae2328e88216b7f414fc/dlr/tiles/shivaya.webp',pos:'center 26%'},
 {f:'om-gam-ganapataye-namaha-pulso-de-apertura',n:'Om Gam Ganapataye Namaha',d:'Pulso de Apertura · 3:14'},
 {f:'om-hanumate-namaha-pulso-de-valenti-a',n:'Om Hanumate Namaha',d:'Pulso de Valentía · 3:33'},
 {f:'hare-krishna-pulso-de-devocio-n',n:'Hare Krishna',d:'Pulso de Devoción · 3:46'},
