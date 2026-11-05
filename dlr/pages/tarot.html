@@ -78,11 +78,49 @@ h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 .dia{display:flex;gap:16px;align-items:flex-start}.dia .slot{width:42%;flex:none}.dia .rd{margin:0;flex:1}
 
 #zoom{position:fixed;inset:0;z-index:50;background:rgba(3,6,24,.92);display:none;align-items:center;justify-content:center;padding:14px;cursor:zoom-out}#zoom.on{display:flex}#zoom img{max-width:100%;max-height:100%;border-radius:14px;box-shadow:0 0 60px rgba(140,100,255,.45)}#zoom img.rev{transform:rotate(180deg)}.fl.up{cursor:zoom-in}.r3 .ph{aspect-ratio:auto;height:64px}
+
+/* interior v2 */
+body{background:radial-gradient(ellipse at 80% -5%,rgba(130,90,236,.38),transparent 55%),radial-gradient(ellipse at 50% -10%,#1d4f7c 0%,#0a2140 42%,#050d1f 90%) fixed}
+.tabs{background:rgba(8,20,60,.5);border:1px solid rgba(190,170,255,.3);border-radius:18px;padding:5px;gap:4px}
+.tab{border:0;background:none;border-radius:13px;padding:11px 4px;color:#b8c4ee}
+.tab.on{background:linear-gradient(135deg,rgba(150,120,255,.45),rgba(60,90,220,.35));color:#fff;box-shadow:0 0 18px rgba(140,110,255,.45)}
+#panel{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,rgba(140,110,255,.26),transparent 62%),linear-gradient(160deg,rgba(21,60,120,.6),rgba(8,24,60,.88));border-color:rgba(190,170,255,.45);padding:22px 18px 20px}
+#panel::before{content:"";position:absolute;left:50%;top:-150px;width:360px;height:360px;margin-left:-180px;border-radius:50%;border:1px dashed rgba(234,203,136,.25);animation:tspin 90s linear infinite;pointer-events:none}
+@keyframes tspin{to{transform:rotate(360deg)}}
+#ttl{text-align:center;font-size:30px;color:#fff;position:relative}
+#ttl::after{content:"✦";display:block;color:var(--gold);font-size:12px;margin-top:6px;letter-spacing:.3em}
+#sub{text-align:center;position:relative}
+#qbox{position:relative}
+#qbox .in{text-align:center;border-color:rgba(234,203,136,.4);background:rgba(8,20,60,.6);font-family:'Instrument Serif',serif;font-style:italic;font-size:17px}
+#go{background:linear-gradient(135deg,#f6e3ae,#d9b45f);color:#1a1230;box-shadow:0 6px 22px rgba(234,203,136,.35);margin-top:16px;position:relative}
+#again{color:#d6c9ff;border-color:rgba(190,170,255,.5)}
+.fa{background:radial-gradient(circle at 50% 40%,#5b43c2,#1a1f6e 62%,#0a1244);border-color:rgba(234,203,136,.6)}
+.fl{filter:drop-shadow(0 12px 22px rgba(60,40,160,.5))}
+.slot .pn{color:var(--gold);letter-spacing:.2em}
+.slot .pn::before,.slot .pn::after{content:"·";margin:0 6px;opacity:.6}
+.slot .nm{font-size:19px;color:#fff}
+.slot .nm small{color:var(--gold)}
+.cnt{font-family:'Instrument Serif',serif;font-size:19px;color:var(--gold)}
+.ph{border-color:rgba(234,203,136,.4);background:rgba(140,110,255,.07)}
+.rd{margin-top:18px}
+.rd .it{border:1px solid rgba(190,170,255,.28);border-radius:18px;background:rgba(8,20,60,.55);padding:14px 16px;margin-top:10px}
+.rd .it:first-child{border:1px solid rgba(190,170,255,.28)}
+.rd h3{font-size:23px;color:#fff}
+.rd h3 span{color:var(--gold)}
+.rd .kw{font-style:italic;font-family:'Instrument Serif',serif;font-size:16px;color:#d6c9ff}
+.ai{border-top:0;margin-top:20px;padding:16px;border-radius:20px;border:1px solid rgba(234,203,136,.4);background:radial-gradient(ellipse at 50% 0%,rgba(234,203,136,.1),transparent 70%),rgba(8,20,60,.55)}
+.ai h3.t{text-align:center;font-size:27px;color:#fff}
+.ai .cn{color:var(--gold)}
+.ai .msg.u{background:rgba(150,120,255,.22)}
+.rit{display:flex;justify-content:center;gap:6px;margin:14px 0 0;position:relative;flex-wrap:wrap}
+.rit span{font-size:12px;color:#d6c9ff;border:1px solid rgba(190,170,255,.35);border-radius:999px;padding:5px 11px;background:rgba(140,110,255,.1)}
+.rit b{color:var(--gold);font-weight:500;margin-right:4px}
 </style></head><body><canvas id="bg"></canvas><main>
 <div class="hero"><div class="eb">Oráculo</div><h1>Tarot <em>Desde la Red</em></h1><p class="lead">Respira, haz tu pregunta en silencio y deja que las cartas te hablen.</p></div>
 <div class="tabs"><button class="tab on" data-m="dia">Carta del día</button><button class="tab" data-m="tres">Tirada de 3</button><button class="tab" data-m="celta">Cruz celta</button></div>
 <div class="card" id="panel">
  <h2 id="ttl"></h2><p class="lead" id="sub" style="margin:0"></p>
+ <div class="rit" id="rit"><span><b>1</b>Respira</span><span><b>2</b>Piensa tu pregunta</span><span><b>3</b>Elige tus cartas</span></div>
  <div class="q" id="qbox"><input class="in" id="q" maxlength="140" placeholder="Tu pregunta (opcional)"></div>
  <div id="out"></div>
  <button class="btn" id="go"></button>
@@ -237,10 +275,10 @@ const MODES={
  celta:{t:'Cruz celta',s:'Una lectura profunda de diez cartas, para una situación importante.',b:'Barajar y elegir mis cartas',n:10,pos:CELTA,cls:'r10'}};
 let mode='dia';
 function setMode(m){mode=m;const M=MODES[m];document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
- $('ttl').textContent=M.t;$('sub').textContent=M.s;$('go').textContent=M.b;$('go').hidden=false;$('again').hidden=true;$('out').textContent='';$('qbox').hidden=m==='dia'}
+ $('ttl').textContent=M.t;$('sub').textContent=M.s;$('go').textContent=M.b;$('go').hidden=false;$('rit').hidden=false;$('again').hidden=true;$('out').textContent='';$('qbox').hidden=m==='dia'}
 function run(){const M=MODES[mode],out=$('out'),n=M.n;out.textContent='';
  const q=$('q').value.trim();if(q&&mode!=='dia'){const e=document.createElement('p');e.className='lead';e.style.cssText='margin:14px auto 0;font-style:italic;text-align:center';e.textContent='“'+q+'”';out.append(e)}
- $('go').hidden=true;$('again').hidden=true;
+ $('go').hidden=true;$('rit').hidden=true;$('again').hidden=true;
  const deck=shuffle(78),revs=deck.map(()=>mode==='dia'?false:rnd(10)<3);
  const row=document.createElement('div');row.className='row '+(M.cls||'r1');
  const cells=Array.from({length:n},(_,i)=>{const c=document.createElement('div');c.className='slot';

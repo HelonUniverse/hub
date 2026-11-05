@@ -31,10 +31,11 @@ GR.forEach(([t,sub,ids,big])=>{const w=document.createElement('div');w.className
 
 const tabs=[...document.querySelectorAll('nav [data-t]')];let cur='inicio';
 function show(t){closeApp();if(!$('s-'+t))t='inicio';cur=t;document.querySelectorAll('.screen').forEach(s=>s.hidden=s.id!=='s-'+t);tabs.forEach(b=>b.classList.toggle('on',b.dataset.t===t));history.replaceState(null,'','#'+t);scrollTo(0,0);if(t==='yo')renderYo()}
-function openApp(id){const a=A.find(x=>x.id===id);if(!a||!a.u)return;$('vname').textContent=a.n;$('load').style.display='grid';$('frame').onload=()=>$('load').style.display='none';$('frame').src=a.u;$('viewer').classList.add('open');history.pushState({app:id},'','#app-'+id)}
+let SY=0;function backHere(){const y=SY;closeApp();requestAnimationFrame(()=>scrollTo(0,y))}
+function openApp(id){const a=A.find(x=>x.id===id);if(!a||!a.u)return;if(!$('viewer').classList.contains('open'))SY=scrollY;$('vname').textContent=a.n;$('load').style.display='grid';$('frame').onload=()=>$('load').style.display='none';$('frame').src=a.u;$('viewer').classList.add('open');history.pushState({app:id},'','#app-'+id)}
 function closeApp(){if($('viewer').classList.contains('open')){$('viewer').classList.remove('open');$('frame').removeAttribute('src')}}
-tabs.forEach(b=>b.onclick=()=>show(b.dataset.t));$('back').onclick=()=>{if(history.state&&history.state.app)history.back();else show(cur)};
-addEventListener('popstate',()=>{const h=location.hash.slice(1);h.startsWith('app-')?openApp(h.slice(4)):show(h||cur)});
+tabs.forEach(b=>b.onclick=()=>show(b.dataset.t));$('back').onclick=()=>{if(history.state&&history.state.app)history.back();else backHere()};
+addEventListener('popstate',()=>{const h=location.hash.slice(1);if(h.startsWith('app-'))openApp(h.slice(4));else if($('viewer').classList.contains('open')&&(!h||h===cur))backHere();else show(h||cur)});
 
 const DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'],MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 const now=new Date(),hh=now.getHours();
