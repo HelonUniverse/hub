@@ -65,8 +65,8 @@ function openAlb(on){$('albs').hidden=on;$('albv').hidden=!on;scrollTo(0,0)}$('a
 const AU='https://raw.githubusercontent.com/HelonUniverse/hub/3682399b9f8ac2f825fd36f7d229a1dc1523d96d/dlr/audio/';
 const T=[
 {f:'kodoish-pulso-sagrado-desde-la-red',n:'Kodoish',d:'Pulso Sagrado · 3:40'},
-{f:'waheguru-pulso-de-luz',n:'Waheguru',d:'Pulso de Luz · 3:33'},
-{f:'gayatri-mantra-pulso-de-luz',n:'Gayatri Mantra',d:'Pulso de Luz · 3:32'},
+{f:'waheguru-pulso-de-luz',n:'Waheguru',d:'Pulso de Luz · 3:33',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@0df4999786b0e98212cea35718f59093b8742e1e/dlr/tiles/waheguru.webp'},
+{f:'gayatri-mantra-pulso-de-luz',n:'Gayatri Mantra',d:'Pulso de Luz · 3:32',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@0df4999786b0e98212cea35718f59093b8742e1e/dlr/tiles/gayatri.webp'},
 {f:'om-namah-shivaya-pulso-de-serenidad',n:'Om Namah Shivaya',d:'Pulso de Serenidad · 3:11'},
 {f:'om-gam-ganapataye-namaha-pulso-de-apertura',n:'Om Gam Ganapataye Namaha',d:'Pulso de Apertura · 3:14'},
 {f:'om-hanumate-namaha-pulso-de-valenti-a',n:'Om Hanumate Namaha',d:'Pulso de Valentía · 3:33'},
