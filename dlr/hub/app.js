@@ -64,7 +64,7 @@ function openAlb(on){$('albs').hidden=on;$('albv').hidden=!on;scrollTo(0,0)}$('a
 
 const AU='https://raw.githubusercontent.com/HelonUniverse/hub/3682399b9f8ac2f825fd36f7d229a1dc1523d96d/dlr/audio/';
 const T=[
-{f:'kodoish-pulso-sagrado-desde-la-red',n:'Kodoish',d:'Pulso Sagrado · 3:40'},
+{f:'kodoish-pulso-sagrado-desde-la-red',n:'Kodoish',d:'Pulso Sagrado · 3:40',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@ecb48fe87331a0221f217b8a96f88d8de34da987/dlr/tiles/pulso.webp',pos:'center 38%'},
 {f:'waheguru-pulso-de-luz',n:'Waheguru',d:'Pulso de Luz · 3:33',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@0df4999786b0e98212cea35718f59093b8742e1e/dlr/tiles/waheguru.webp'},
 {f:'gayatri-mantra-pulso-de-luz',n:'Gayatri Mantra',d:'Pulso de Luz · 3:32',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@0df4999786b0e98212cea35718f59093b8742e1e/dlr/tiles/gayatri.webp',pos:'center 24%'},
 {f:'om-namah-shivaya-pulso-de-serenidad',n:'Om Namah Shivaya',d:'Pulso de Serenidad · 3:11',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@379491c73d91d999f4b7ae2328e88216b7f414fc/dlr/tiles/shivaya.webp',pos:'center 26%'},
@@ -74,7 +74,7 @@ const T=[
 {f:'om-tare-tuttare-ture-soha-desde-la-red',n:'Om Tare Tuttare Ture Soha',d:'Desde la Red · 3:10',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@4c9c6d7d3adaedc96d2e2e46edadcac5a0f2d78f/dlr/tiles/tara.webp',pos:'center 8%'},
 {f:'om-namo-bhagavate-vasudevaya-desde-la-red',n:'Om Namo Bhagavate Vasudevaya',d:'Desde la Red · 3:34',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@b724719f5b2e969801b7a025912e55049655ba55/dlr/tiles/vasudeva.webp',pos:'center 8%'},
 {f:'om-namo-narayanaya-desde-la-red',n:'Om Namo Narayanaya',d:'Desde la Red · 3:33'},
-{f:'nombres-sagrados-pulso-celestial-desde-la-red',n:'Nombres Sagrados',d:'Pulso Celestial · 5:50'}];
+{f:'nombres-sagrados-pulso-celestial-desde-la-red',n:'Nombres Sagrados',d:'Pulso Celestial · 5:50',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@ecb48fe87331a0221f217b8a96f88d8de34da987/dlr/tiles/pulso.webp',pos:'center 62%'}];
 let fav=D.fav,ti=-1,shuf=false,playing=false;const AUD=new Audio();AUD.preload='none';
 function row(t,i){const d=document.createElement('div');d.className='tr';d.innerHTML='<span class="p">▶</span><b><span></span><small></small></b><button class="h" aria-label="Favorito">♡</button>';if(t.img){d.classList.add('im');d.style.setProperty('--im','url('+t.img+')');if(t.pos)d.style.setProperty('--pos',t.pos)}d.querySelector('b span').textContent=t.n;d.querySelector('small').textContent=t.d;const h=d.querySelector('.h');const paint=()=>{h.textContent=fav[t.f]?'♥':'♡';h.classList.toggle('on',!!fav[t.f])};paint();
 h.onclick=async e=>{e.stopPropagation();fav[t.f]=!fav[t.f];paint();toast(fav[t.f]?'Agregado a favoritos':'Quitado de favoritos');if(cur==='yo')renderYo();if(!USER)return;if(fav[t.f])await SB.from('favoritos').upsert({usuario:USER.id,pista:t.f});else await SB.from('favoritos').delete().eq('usuario',USER.id).eq('pista',t.f)};d.onclick=()=>playAt(i);return d}
