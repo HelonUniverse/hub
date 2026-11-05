@@ -8,6 +8,11 @@ const A=[
 {id:'pinaculo',g:'oraculos',n:'Pináculo',u:API+'/api/a/pinaculo'},
 {id:'tarot',g:'oraculos',n:'Tarot',u:API+'/api/a/tarot',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@186bfd9fca4ac346c7c92e3933c4306a82ff0461/dlr/tiles/tarot.webp'},
 {id:'angeles',g:'oraculos',n:'Números angelicales',u:API+'/api/a/angeles/__dlr/angeles.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@31080a5ebaac6866ada4a97512f0aba8fede3b28/dlr/tiles/angeles.webp'},
+{id:'luna',g:'oraculos',n:'Luna del día',u:API+'/api/a/luna/__dlr/luna.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@7ac3c3a019008bac6735160697a929eb62121022/dlr/tiles/luna.webp'},
+{id:'sino',g:'oraculos',n:'Tarot de sí o no',u:API+'/api/a/sino/__dlr/sino.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@7ac3c3a019008bac6735160697a929eb62121022/dlr/tiles/sino.webp'},
+{id:'semana',g:'oraculos',n:'Carta de la semana',u:API+'/api/a/semana/__dlr/semana.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@7ac3c3a019008bac6735160697a929eb62121022/dlr/tiles/semana.webp'},
+{id:'respira',g:'oraculos',n:'Respira conmigo',u:API+'/api/a/respira/__dlr/respira.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@7ac3c3a019008bac6735160697a929eb62121022/dlr/tiles/respira.webp'},
+{id:'afirmacion',g:'oraculos',n:'Afirmación del día',u:API+'/api/a/afirmacion/__dlr/afirmacion.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@7ac3c3a019008bac6735160697a929eb62121022/dlr/tiles/afirmacion.webp'},
 {id:'dones',g:'estudio',n:'Despierta tus dones',u:API+'/api/a/dones'},
 {id:'dharma',g:'estudio',n:'Camino del Dharma',u:API+'/api/a/dharma'},
 {id:'biodec',g:'estudio',n:'Biodecodificación',u:API+'/api/a/biodec',img:CDN+'interior.webp'},
@@ -86,6 +91,8 @@ $('saved').querySelectorAll('button').forEach(b=>b.onclick=async()=>{const m=D.s
 const f=T.map((t,i)=>fav[t.f]?i:-1).filter(i=>i>=0);$('favs').innerHTML='';if(f.length)f.forEach(i=>{const r=row(T[i],i);r.dataset.f=T[i].f;$('favs').append(r)});else $('favs').innerHTML='<p class="empty">Toca el corazón en Música para guardar tus mantras.</p>';mark()}
 function ft(d){d=new Date(d);return d.getDate()+' de '+MESES[d.getMonth()]+' '+d.getFullYear()+', '+d.toTimeString().slice(0,5)}
 $('note-save').onclick=async()=>{const x=$('note').value.trim();if(!x||!USER)return;const t=new Date();const e={t:ft(t),x};D.notes.unshift(e);$('note').value='';renderYo();toast('Guardado en tu diario');const {data}=await SB.from('diario').insert({usuario:USER.id,texto:x}).select('id').single();if(data)e.id=data.id};
+
+window.addEventListener('message',async e=>{if(e.origin!==location.origin)return;const d=e.data;if(!d||d.dlr!=='diario'||typeof d.texto!=='string')return;const x=d.texto.trim().slice(0,1800);if(!x)return;if(!USER){toast('Entra a tu cuenta para guardar');return}const t=new Date();const en={t:ft(t),x};D.notes.unshift(en);if(cur==='yo')renderYo();toast('Guardado en tu diario');const {data}=await SB.from('diario').insert({usuario:USER.id,texto:x}).select('id').single();if(data)en.id=data.id});
 async function loadAll(){if(!USER)return;const [n,g,f]=await Promise.all([SB.from('diario').select('id,texto,creado').eq('usuario',USER.id).order('creado',{ascending:false}),SB.from('guardados').select('*').eq('usuario',USER.id).order('creado',{ascending:false}),SB.from('favoritos').select('pista').eq('usuario',USER.id)]);
 D.notes=(n.data||[]).map(r=>({id:r.id,t:ft(r.creado),x:r.texto}));D.saved=(g.data||[]).map(r=>({d:r.dia,i:r.carta,n:r.nombre,v:r.virtud,s:r.frase,m:r.mensaje}));for(const k in fav)delete fav[k];(f.data||[]).forEach(r=>fav[r.pista]=true);document.querySelectorAll('#list .tr .h').forEach(h=>{const k=h.closest('.tr').dataset.f;h.textContent=fav[k]?'♥':'♡';h.classList.toggle('on',!!fav[k])});updSave();if(cur==='yo')renderYo()}
 /* cuenta */
