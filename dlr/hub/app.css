@@ -130,4 +130,4 @@ nav button.on{background:linear-gradient(160deg,rgba(124,90,220,.6),rgba(30,30,9
 .msg .c.vid{display:grid;place-items:center;font-size:34px;color:#fff;background:linear-gradient(160deg,#25407f,#0a1848)}
 #nat-admin textarea,#nat-admin select{width:100%;margin-top:8px}
 
-.tr.im{background:linear-gradient(90deg,rgba(6,16,50,.92) 0,rgba(6,16,50,.6) 55%,rgba(6,16,50,.2) 100%),var(--im) center/cover!important;border-color:rgba(234,203,136,.4)!important;min-height:78px}
+.tr.im{background:linear-gradient(90deg,rgba(6,16,50,.92) 0,rgba(6,16,50,.6) 55%,rgba(6,16,50,.2) 100%),var(--im) var(--pos,center)/cover!important;border-color:rgba(234,203,136,.4)!important;min-height:78px}
