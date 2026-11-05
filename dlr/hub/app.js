@@ -5,7 +5,7 @@ const A=[
 {id:'cristales',g:'oraculos',n:'Cristales',u:API+'/api/a/cristales'},
 {id:'runas',g:'oraculos',n:'Runas',u:API+'/api/a/runas'},
 {id:'codigos',g:'oraculos',n:'Códigos Sagrados',u:API+'/api/a/codigos'},
-{id:'pinaculo',g:'oraculos',n:'Pináculo AI',u:API+'/api/a/pinaculo'},
+{id:'pinaculo',g:'oraculos',n:'Pináculo',u:API+'/api/a/pinaculo'},
 {id:'tarot',g:'oraculos',n:'Tarot',u:API+'/api/a/tarot',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@3c86cd5b627c6722c96eca8c7a7fed5c82725b8e/dlr/tiles/tarot.webp'},
 {id:'dones',g:'estudio',n:'Despierta tus dones',u:API+'/api/a/dones'},
 {id:'dharma',g:'estudio',n:'Camino del Dharma',u:API+'/api/a/dharma'},

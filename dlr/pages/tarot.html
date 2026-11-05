@@ -193,7 +193,7 @@ const FN='https://xjmgtzlezsmpxfnyjrli.supabase.co/functions/v1/desdelared-tarot
 async function callAI(body){const r=await fetch(FN,{method:'POST',headers:{'content-type':'application/json',apikey:KEY},body:JSON.stringify(body)});let d={};try{d=await r.json()}catch(e){}if(!r.ok)throw new Error(d.error||'No pudimos conectar para la lectura. Inténtalo de nuevo en un momento.');return d}
 function P(cls,txt,tag){const e=document.createElement(tag||'p');if(cls)e.className=cls;e.textContent=txt;return e}
 function buildAI(items,q){const w=document.createElement('div');w.className='ai';
- const b=document.createElement('button');b.className='btn go';b.textContent='✦ Lectura con IA de tu tirada';w.append(b);
+ const b=document.createElement('button');b.className='btn go';b.textContent='✦ Tu lectura personal';w.append(b);
  const box=document.createElement('div');w.append(box);const cards=items.map(i=>({id:i.c.id,rev:i.rev,pos:i.pos||''}));
  b.onclick=async()=>{b.hidden=true;box.textContent='';box.append(P('ld','Leyendo tus cartas…'));
   try{const d=await callAI({mode:'read',cards,question:q});box.textContent='';

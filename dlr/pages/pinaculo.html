@@ -1,4 +1,4 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#06162c"><title>Pináculo AI · Desde la Red</title>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#06162c"><title>Pináculo · Desde la Red</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>:root{--cy:#7fe3f5;--gold:#eacb88;--mut:#a9c4d2;--line:rgba(127,227,245,.42)}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%}
@@ -71,7 +71,7 @@ label{display:block;font-size:12px;color:var(--mut);margin:12px 2px 4px}
 .sug{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 </style></head><body><canvas id="bg"></canvas><main>
 <img class="logo" src="/logo.webp" alt="Desde la Red">
-<div class="hero"><div class="eb">Desde la Red · Universo interior</div><h1>Pináculo <em>AI</em></h1><p class="lead">Un mapa numerológico de tus etapas, con una lectura personal y una conversación para profundizar.</p></div>
+<div class="hero"><div class="eb">Desde la Red · Universo interior</div><h1>Pináculo <em>Desde la Red</em></h1><p class="lead">Un mapa numerológico de tus etapas, con una lectura personal y una conversación para profundizar.</p></div>
 
 <section class="card" id="form">
 <h2>Tu punto de partida</h2>
@@ -80,7 +80,7 @@ label{display:block;font-size:12px;color:var(--mut);margin:12px 2px 4px}
 <div class="sel"><select id="dd" class="in"></select><select id="mm" class="in"></select><select id="yy" class="in"></select></div>
 <div id="e1" class="err"></div>
 <button class="btn" id="go" style="margin-top:14px">Crear mi mapa ✦</button>
-<p class="priv">El mapa se calcula en tu dispositivo. A la inteligencia artificial solo enviamos los números del mapa: nunca tu nombre ni tu fecha de nacimiento.</p>
+<p class="priv">El mapa se calcula en tu dispositivo. Para tu lectura solo usamos los números del mapa: nunca tu nombre ni tu fecha de nacimiento.</p>
 </section>
 
 <section id="res" hidden>
@@ -88,7 +88,7 @@ label{display:block;font-size:12px;color:var(--mut);margin:12px 2px 4px}
 <h2 style="margin:22px 2px 0">Tus cuatro pináculos</h2><p class="priv" style="margin-top:2px">Toca una carta para abrirla.</p>
 <div class="cards" id="cards"></div>
 <div class="card"><h2>Tus desafíos</h2><div class="ch" id="ch"></div></div>
-<div class="card read" id="read"><h2>Lectura con IA</h2><p class="priv" style="margin:0 0 10px">Si quieres, cuéntanos qué deseas explorar. Es opcional.</p><input id="topic" class="in" maxlength="200" placeholder="Por ejemplo: mi trabajo, mis relaciones, una decisión…"><button class="btn" id="rd" style="margin-top:12px">Recibir mi lectura ✦</button><div id="rout"></div></div>
+<div class="card read" id="read"><h2>Tu lectura personal</h2><p class="priv" style="margin:0 0 10px">Si quieres, cuéntanos qué deseas explorar. Es opcional.</p><input id="topic" class="in" maxlength="200" placeholder="Por ejemplo: mi trabajo, mis relaciones, una decisión…"><button class="btn" id="rd" style="margin-top:12px">Recibir mi lectura ✦</button><div id="rout"></div></div>
 <div class="card chat" id="chatc" hidden><h2>Conversa con Pináculo</h2><div id="log"></div><div class="send"><input id="q" class="in" maxlength="300" placeholder="Pregunta algo sobre tu mapa…"><button class="btn" id="sd">Enviar</button></div><div id="e2" class="err"></div></div>
 <button class="btn ghost" id="again" style="margin-top:14px">Calcular otra fecha</button>
 </section>
