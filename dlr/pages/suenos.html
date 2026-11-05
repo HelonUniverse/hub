@@ -1,0 +1,149 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#06162c"><title>Geometría sagrada · Desde la Red</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>:root{--cy:#7fe3f5;--gold:#eacb88;--mut:#a9c4d2;--line:rgba(234,203,136,.38)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:radial-gradient(ellipse at 15% 8%,rgba(98,60,170,.45) 0%,transparent 55%),radial-gradient(ellipse at 90% 30%,rgba(24,150,170,.30) 0%,transparent 55%),linear-gradient(#070b24,#0a1233 55%,#050816) fixed;color:#eef9ff;font:15px/1.5 'Albert Sans',system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+button,input,textarea{font:inherit;color:inherit}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main{position:relative;z-index:1;max-width:620px;margin:auto;padding:calc(14px + env(safe-area-inset-top)) 18px 60px}
+.hero{position:relative;margin:calc(-14px - env(safe-area-inset-top)) -18px 0;height:250px;overflow:hidden;text-align:left;padding:0}.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% 50%}.hero:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,11,36,.88) 0%,rgba(7,11,36,.35) 55%,transparent 100%),linear-gradient(0deg,#070b24 0%,transparent 38%)}.hero .tt{position:absolute;left:20px;bottom:28px;z-index:2;max-width:54%}.hero h1{font-size:clamp(28px,8.4vw,38px)}
+.eb{font-size:11px;letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
+h1{font:400 clamp(34px,10vw,46px)/1.05 'Instrument Serif',Georgia,serif;margin:6px 0 4px}
+h1 em{color:var(--gold);font-style:italic}
+.lead{color:#cfd6ea;font-size:14px;margin:0;max-width:420px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 4px}
+.tab{appearance:none;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:10px 4px;font-size:13px;cursor:pointer;line-height:1.2}
+.tab.on{background:rgba(127,227,245,.16);box-shadow:0 0 14px rgba(80,220,255,.35)}
+.card{border-radius:22px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(52,36,110,.55),rgba(10,18,52,.82));backdrop-filter:blur(6px);box-shadow:0 12px 34px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06);padding:18px;margin-top:14px}
+h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
+.in{width:100%;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:13px 14px;font-size:16px;outline:0;margin-top:10px}
+.in:focus{box-shadow:0 0 14px rgba(80,220,255,.35)}
+.btn{appearance:none;border:0;border-radius:999px;padding:13px 16px;background:linear-gradient(135deg,#f6e3ae,#d9b45f);color:#1a1230;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 6px 18px rgba(234,203,136,.30);width:100%;margin-top:12px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
+.n{appearance:none;border:1px solid var(--line);border-radius:16px;background:rgba(6,22,44,.55);padding:14px 4px;cursor:pointer;font:400 26px/1 'Instrument Serif',serif;color:#f3e2b8;letter-spacing:.04em}
+.n.on{background:rgba(234,203,136,.16);border-color:rgba(234,203,136,.7);box-shadow:0 0 16px rgba(234,203,136,.3)}
+.res{margin-top:16px;text-align:center;animation:pop .5s cubic-bezier(.3,.8,.3,1)}
+@keyframes pop{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.big{font:400 76px/1 'Instrument Serif',serif;color:var(--gold);text-shadow:0 0 28px rgba(234,203,136,.55);letter-spacing:.06em}
+.res h3{font:400 26px/1.1 'Instrument Serif',serif;color:#f3e2b8;margin:6px 0 2px}
+.res .kw{color:var(--cy);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
+.res p{margin:10px 0 0;text-align:left;color:#dff1f7;font-size:14.5px;line-height:1.65}
+.res .pr{border:1px solid rgba(234,203,136,.35);border-radius:16px;padding:12px 14px;background:rgba(234,203,136,.07);margin-top:14px;text-align:left;font-size:14px;color:var(--gold)}
+.note{color:#8fa9b8;font-size:12px;text-align:center;margin:18px 6px 0}
+[hidden]{display:none!important}
+
+.btn.ghost{background:none;color:var(--gold);border:1px solid var(--line);box-shadow:none;font-weight:500}
+.btn[disabled]{opacity:.7}
+.cardimg{width:min(62%,230px);aspect-ratio:2/3;margin:6px auto 0;border-radius:14px;border:1px solid rgba(234,203,136,.55);box-shadow:0 10px 28px rgba(0,0,0,.55);overflow:hidden;background:radial-gradient(circle at 50% 40%,#1b5e86,#0a2140 70%);display:grid;place-items:center;font:400 22px/1.15 'Instrument Serif',serif;color:#f3e2b8;padding:10px;text-align:center}
+.cardimg img{width:100%;height:100%;object-fit:cover;display:block}
+.moon{position:relative;width:170px;height:170px;margin:26px auto 0;border-radius:50%;box-shadow:0 0 38px 8px rgba(255,236,170,.40),0 0 110px 30px rgba(234,203,136,.20)}.moon:before{content:'';position:absolute;inset:-18px;border-radius:50%;border:1px solid rgba(234,203,136,.55)}.moon:after{content:'✦';position:absolute;left:50%;top:-30px;transform:translateX(-50%);color:var(--gold);font-size:16px;text-shadow:0 0 10px rgba(234,203,136,.8)}
+.moon svg{width:100%;height:100%;display:block}
+.sub2{color:var(--mut);font-size:13px;text-align:center;margin-top:4px}
+.tx{margin:12px 0 0;color:#dff1f7;font-size:14.5px;line-height:1.65}
+.pr{border:1px solid rgba(234,203,136,.35);border-radius:16px;padding:12px 14px;background:rgba(234,203,136,.07);margin-top:14px;font-size:14px;color:var(--gold)}
+.nx{display:flex;gap:10px;margin-top:14px;margin-bottom:12px}.nx div{flex:1;border:1px solid var(--line);background:rgba(234,203,136,.05);border-radius:14px;padding:10px;text-align:center;font-size:12.5px;color:var(--mut)}.nx b{display:block;font:400 18px 'Instrument Serif',serif;color:#f3e2b8}
+.hero .tt{max-width:46%}.hero img{object-position:62% 50%}
+.fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.fb{appearance:none;border:1px solid var(--line);border-radius:16px;background:rgba(6,22,44,.55);padding:8px 4px 6px;cursor:pointer;color:#f3e2b8;font-size:11.5px;line-height:1.15;display:flex;flex-direction:column;align-items:center;gap:4px}
+.fb svg{width:100%;max-width:56px;height:auto}.fb.on{background:rgba(234,203,136,.16);border-color:rgba(234,203,136,.75);box-shadow:0 0 16px rgba(234,203,136,.3)}
+.fig{width:min(78%,260px);aspect-ratio:1;margin:8px auto 0;position:relative}
+.fig svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 7px rgba(234,203,136,.65))}
+.fig svg *{fill:none;stroke:#f6dc92;stroke-width:.9;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:dw 2.6s ease forwards}
+@keyframes dw{to{stroke-dashoffset:0}}
+.fig.pulse svg{animation:pu 8s ease-in-out infinite}@keyframes pu{0%,100%{transform:scale(.9)}50%{transform:scale(1.06)}}
+.dtl h2{text-align:center;margin-top:8px}.tag{text-align:center;color:var(--cy);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase}
+.row2{display:flex;gap:10px}.row2 .btn{flex:1}
+.today{border:1px solid rgba(234,203,136,.5);background:rgba(234,203,136,.08);border-radius:16px;padding:12px 14px;margin-top:14px;font-size:14px;color:var(--gold);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.today button{appearance:none;border:1px solid var(--line);background:none;color:var(--gold);border-radius:999px;padding:8px 14px;cursor:pointer;white-space:nowrap}
+.med{position:fixed;inset:0;z-index:20;background:radial-gradient(ellipse at 50% 40%,#10205a,#050816 75%);display:grid;place-items:center;text-align:center;padding:24px}
+.med .fig{width:min(80vw,320px)}.med .bt{font:400 30px 'Instrument Serif',serif;color:#f3e2b8;margin-top:18px;min-height:38px}.med .tm{color:var(--mut);margin-top:4px}
+.med .btn{max-width:260px;margin:22px auto 0}
+
+.hero .tt{max-width:62%}.hero img{object-position:78% 50%}.hero:after{background:linear-gradient(90deg,rgba(5,10,40,.82) 0%,rgba(5,10,40,.3) 58%,transparent 100%),linear-gradient(0deg,#070b24 0%,transparent 36%)}
+.ta{width:100%;min-height:110px;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:13px 14px;font-size:16px;outline:0;margin-top:10px;resize:vertical;line-height:1.5}
+.ta:focus{box-shadow:0 0 14px rgba(80,220,255,.35)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ch{appearance:none;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:999px;padding:8px 14px;font-size:13.5px;cursor:pointer;color:#eef9ff}
+.ch.on{background:rgba(234,203,136,.18);border-color:rgba(234,203,136,.8);box-shadow:0 0 14px rgba(234,203,136,.3);color:#f6e3ae}
+.ch.em.on{background:rgba(127,227,245,.16);border-color:var(--cy);box-shadow:0 0 14px rgba(80,220,255,.35);color:#dffaff}
+.sy{border:1px solid rgba(234,203,136,.3);border-radius:16px;padding:12px 14px;margin-top:10px;background:rgba(10,18,52,.55)}
+.sy h3{font:400 22px/1.1 'Instrument Serif',serif;color:#f3e2b8;margin:0 0 4px}
+.sy p{margin:6px 0 0;color:#dff1f7;font-size:14.5px;line-height:1.6}
+.sy .q{color:var(--gold);font-style:italic}
+.lb{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--cy);margin-top:10px}
+</style></head><body><canvas id="bg"></canvas><main>
+<div class="hero"><img src="https://cdn.jsdelivr.net/gh/HelonUniverse/hub@6387e0fc5da67d8fb5443e22e00d17ff86bd81a3/dlr/tiles/suenos.webp" alt=""><div class="tt"><div class="eb">Mundo de los sueños</div><h1>Intérprete de <em>sueños</em></h1><p class="lead">Escucha lo que tu mente te mostró.</p></div></div>
+<div class="card"><h2>Cuéntame tu sueño</h2><div class="sub2" style="text-align:left">Escríbelo como lo recuerdes, aunque sea en pedazos.</div><textarea class="ta" id="tx" placeholder="Soñé que…"></textarea>
+<div class="lb">¿Qué aparece en él?</div><div class="chips" id="sy"></div>
+<div class="lb">¿Cómo te sentiste?</div><div class="chips" id="em"></div>
+<button class="btn" id="go">Interpretar mi sueño</button></div>
+<div id="rs" hidden></div>
+<p class="note">La interpretación es simbólica y sirve para reflexionar. No predice el futuro ni sustituye la atención de un profesional de la salud.</p>
+</main>
+<script>
+const $=i=>document.getElementById(i);
+function guardar(btn,texto){if(window.parent===window){btn.textContent='Ábrelo desde la app para guardar';return}parent.postMessage({dlr:'diario',texto:String(texto).slice(0,1800)},location.origin);btn.textContent='✓ Guardado en tu diario';btn.disabled=true}
+function gbtn(texto){const b=document.createElement('button');b.className='btn ghost';b.textContent='♡ Guardar en mi diario';b.onclick=()=>guardar(b,texto);return b}
+const S=[
+{n:'Agua',k:'agua|río|rio|lago|piscina|lluvia|\\bolas?\\b',m:'El agua suele hablar del mundo emocional. Clara y tranquila, puede mostrar calma; turbia o agitada, emociones que piden atención.',q:'¿Cómo estaba el agua y qué hacías tú frente a ella?'},
+{n:'Mar',k:'\\bmar\\b|océano|oceano|playa',m:'Representa lo profundo e inmenso de lo que sientes. Las olas hablan del ritmo de tus emociones: calma, marea o tormenta.',q:'¿Qué emoción tuya sientes tan grande como el mar?'},
+{n:'Volar',k:'volar|vuelo|volaba|flotar|flotaba',m:'Simboliza libertad, perspectiva y ganas de elevarte sobre una situación. Si cuesta mantenerte en el aire, puede mostrar dudas sobre tus propias fuerzas.',q:'¿De qué te gustaría sentirte libre en este momento?'},
+{n:'Caer',k:'caer|caía|caia|caída|caida|vacío|vacio',m:'Suele aparecer cuando sientes que pierdes el control o el apoyo en algo: un trabajo, una relación, una decisión.',q:'¿Qué en tu vida se siente inestable ahora y qué apoyo necesitas?'},
+{n:'Ser perseguido',k:'perseguid|persigu|huía|huia|correr|corría|corria|escapar',m:'Habla de algo que estás evitando mirar: una conversación, una emoción, una responsabilidad. Lo que te persigue suele ser lo que pide ser atendido.',q:'¿Qué estoy dejando para después que me pesa?'},
+{n:'Casa',k:'\\bcasas?\\b|hogar|habitaci|cuarto|cocina',m:'La casa es una imagen de ti misma/o. Cada cuarto refleja una parte de tu vida: el sótano, lo oculto; el piso alto, tus ideas; la cocina, lo que te nutre.',q:'¿Qué parte de la casa llamó tu atención y qué te dice de ti?'},
+{n:'Escaleras',k:'escalera|subir|bajar|escalón|escalon',m:'Subir se asocia con avance y metas; bajar, con mirar hacia adentro. Si faltaban escalones, puede reflejar un paso que aún no sientes seguro.',q:'¿Hacia dónde quiero subir y qué escalón me falta?'},
+{n:'Puerta',k:'puerta|ventana|portal|entrada',m:'Una puerta es una oportunidad o un cambio posible. Abierta invita; cerrada o con llave habla de algo que aún no te permites o no te permiten.',q:'¿Qué puerta estoy dudando en abrir o en cerrar?'},
+{n:'Camino',k:'camino|sendero|carretera|viaje|viajar',m:'Muestra tu rumbo actual. Un camino claro habla de dirección; uno con desvíos o niebla, de decisiones por aclarar.',q:'¿Qué decisión me gustaría ver más clara?'},
+{n:'Coche o transporte',k:'coche|carro|\\bauto\\b|autobús|autobus|\\btren\\b|avión|avion|manejar|conducir',m:'Representa cómo llevas tu vida. Quién va al volante muestra quién siente que decide; los frenos que fallan, pérdida de control.',q:'¿Siento que yo manejo mi vida o que otros la conducen?'},
+{n:'Perro',k:'perro|cachorro',m:'Simboliza lealtad, instinto y protección. Un perro amistoso habla de vínculos de confianza; uno agresivo, de un conflicto con alguien cercano.',q:'¿En quién confío y quién me hace sentir en alerta?'},
+{n:'Gato',k:'gato|gatito',m:'Se asocia con independencia, intuición y la necesidad de espacio propio.',q:'¿Dónde necesito más independencia o escuchar mi intuición?'},
+{n:'Serpiente',k:'serpiente|culebra|víbora|vibora',m:'Es un símbolo de transformación y de mudar de piel. También puede señalar algo que te incomoda o que no confías del todo.',q:'¿Qué etapa estoy dejando atrás?'},
+{n:'Pájaro',k:'pájaro|pajaro|\\baves?\\b|mariposa|colibr',m:'Habla de ligereza, mensajes y deseos de cambio. Un ave enjaulada puede mostrar ganas de libertad contenidas.',q:'¿Qué mensaje o deseo llevo tiempo queriendo dejar salir?'},
+{n:'Bebé',k:'bebé|bebe|embaraz|recién nacido|recien nacido',m:'Representa un comienzo: un proyecto, una idea o una parte tuya que nace. No siempre se refiere a un bebé real.',q:'¿Qué está empezando en mi vida y necesita cuidado?'},
+{n:'Persona fallecida',k:'fallecid|muert|difunto|abuel',m:'Soñar con alguien que ya no está suele ser parte del recuerdo y del cariño. Puede traer consuelo, o algo que quedó por decir.',q:'¿Qué me gustaría decirle o agradecerle?'},
+{n:'Expareja',k:'\\bex\\b|expareja|exnovio|exmarido',m:'Rara vez habla de la persona; suele hablar de lo que esa etapa te dejó, una emoción o una parte tuya de entonces.',q:'¿Qué sentimiento de esa época se parece a lo que vivo hoy?'},
+{n:'Dientes',k:'diente|muela|dental',m:'Es uno de los sueños más comunes y se asocia con inseguridad, preocupación por la imagen o por cómo te expresas.',q:'¿Hay algo que me da miedo decir o que me hace sentir expuesta/o?'},
+{n:'Examen o prueba',k:'examen|prueba|\\btest\\b|exposición|exposicion|evaluar',m:'Aparece cuando sientes que te evalúan o te exiges mucho. Llegar sin estudiar habla de miedo a no estar a la altura.',q:'¿Frente a qué me estoy juzgando con dureza?'},
+{n:'Llegar tarde',k:'tarde|perder el|perdí el|perdi el|retraso',m:'Muestra presión por el tiempo o miedo a perder una oportunidad.',q:'¿Qué sentí que se me escapaba y qué sí está a mi alcance?'},
+{n:'Fuego',k:'fuego|incendio|llamas|quemar',m:'Es energía fuerte: pasión, enojo o transformación. Puede mostrar algo que se consume o algo que se enciende en ti.',q:'¿Qué me apasiona o me enoja sin que lo haya dicho?'},
+{n:'Árbol y bosque',k:'árbol|arbol|bosque|selva|jardín|jardin|flor',m:'Hablan de raíces, crecimiento y de tu conexión con lo natural. Un bosque oscuro puede mostrar incertidumbre; un jardín cuidado, tu propio crecimiento.',q:'¿Qué raíz me sostiene y qué quiero que crezca?'},
+{n:'Luna y estrellas',k:'luna|estrella|cielo|noche',m:'Representan intuición, ciclos y lo que aún no se ve del todo. Es un símbolo de guía suave.',q:'¿Qué me dice mi intuición que no he querido escuchar?'},
+{n:'Espejo',k:'espejo|reflejo',m:'Invita a mirarte. Lo que ves en él puede mostrar cómo te percibes o cómo crees que te ven.',q:'¿Qué reflejo mío necesito mirar con más cariño?'},
+{n:'Llaves',k:'llave|candado|cerradura',m:'Simbolizan acceso y soluciones. Perder una llave puede hablar de sentir que te falta un recurso para avanzar.',q:'¿Qué me falta para abrir lo que quiero?'},
+{n:'Estar desnuda/o',k:'desnud|sin ropa',m:'Habla de vulnerabilidad y miedo a ser vista/o tal como eres. A veces también es ganas de mostrarte auténtica/o.',q:'¿Dónde quiero sentirme segura/o siendo yo misma/o?'},
+{n:'Multitud',k:'gente|multitud|fiesta|público|publico',m:'Muestra cómo te sientes entre los demás: pertenencia, presión o ganas de pasar desapercibida/o.',q:'¿Me sentí parte del grupo o fuera de lugar?'}
+];
+const E=[
+['Tranquilidad','Un sueño en calma suele mostrar que algo en ti está en paz o buscando descanso. Fíjate qué lo rodeaba: eso puede estar sosteniéndote.'],
+['Miedo','El miedo en un sueño es una alarma suave: señala algo que te preocupa. No predice nada; solo te invita a ponerle nombre.'],
+['Alegría','La alegría en un sueño habla de lo que te nutre. Piensa qué la provocó y cómo llevarlo un poco a tu día.'],
+['Tristeza','La tristeza onírica deja salir lo que a veces no hay tiempo de sentir despierta. Puedes darle un momento y espacio hoy.'],
+['Confusión','La confusión suele aparecer ante decisiones sin aclarar. Escribir lo que recuerdas, aunque no tenga orden, ayuda a ver el hilo.'],
+['Ansiedad','La ansiedad en el sueño refleja tensión acumulada del día. Una pausa de respiración antes de dormir puede ayudar.'],
+['Enojo','El enojo en sueños muestra un límite que quizá aún no pones despierta. Pregúntate qué necesitas pedir o proteger.'],
+['Nostalgia','La nostalgia conecta con lo que valoras de tu historia. Puede mostrar qué parte de ella quieres traer al presente.']
+];
+const sel=new Set(),em=new Set();
+S.forEach((s,i)=>{const b=document.createElement('button');b.className='ch';b.textContent=s.n;b.onclick=()=>{sel.has(i)?sel.delete(i):sel.add(i);b.classList.toggle('on',sel.has(i))};$('sy').append(b)});
+E.forEach((e,i)=>{const b=document.createElement('button');b.className='ch em';b.textContent=e[0];b.onclick=()=>{em.has(i)?em.delete(i):em.add(i);b.classList.toggle('on',em.has(i))};$('em').append(b)});
+const nz=s=>s.toLowerCase();
+$('go').onclick=()=>{
+ const t=nz($('tx').value);const ids=new Set(sel);
+ S.forEach((s,i)=>{if(t&&new RegExp(s.k).test(t))ids.add(i)});
+ const rs=$('rs');rs.textContent='';rs.hidden=false;
+ if(!ids.size&&!em.size&&!t.trim()){rs.innerHTML='<div class="card"><p class="tx" style="margin:0">Cuéntame tu sueño o elige lo que recuerdes de él, y lo leemos juntas.</p></div>';return}
+ const c=document.createElement('div');c.className='card';const h=document.createElement('h2');h.textContent='Lo que tu sueño te muestra';c.append(h);
+ let txt='Mi sueño: '+($('tx').value.trim()||'(sin texto)').slice(0,500)+'\n';
+ if(ids.size){[...ids].slice(0,6).forEach(i=>{const s=S[i];const d=document.createElement('div');d.className='sy';d.innerHTML='<h3></h3><p></p><p class="q"></p>';d.children[0].textContent=s.n;d.children[1].textContent=s.m;d.children[2].textContent=s.q;c.append(d);txt+=s.n+': '+s.m+' '+s.q+'\n'})}
+ else{const p=document.createElement('p');p.className='tx';p.textContent='No encontré símbolos claros en lo que escribiste. Prueba a elegir arriba lo que más recuerdes: una imagen, un lugar o una persona.';c.append(p)}
+ if(em.size){const l=document.createElement('div');l.className='lb';l.textContent='Cómo te sentiste';c.append(l);[...em].forEach(i=>{const p=document.createElement('p');p.className='tx';p.textContent=E[i][0]+': '+E[i][1];c.append(p);txt+=E[i][0]+': '+E[i][1]+'\n'})}
+ const pr=document.createElement('div');pr.className='pr';pr.textContent='Para hoy: escribe en una frase qué te dejó este sueño y qué pequeña acción puedes tomar con ello.';c.append(pr);
+ const bb=gbtn(txt);bb.style.marginTop='12px';c.append(bb);
+ rs.append(c);c.scrollIntoView({behavior:'smooth',block:'start'})};
+(function(){const c=document.getElementById('bg'),x=c.getContext('2d');let W,H,d,S=[],raf,last=0;const R=matchMedia('(prefers-reduced-motion: reduce)');
+function rs(){d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);const n=Math.min(70,Math.max(24,W*H/16000|0));S=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.14,vy:(Math.random()-.5)*.14,r:.6+Math.random()*1,p:Math.random()*6.28}));dr(0)}
+function dr(t){x.clearRect(0,0,W,H);const D=Math.min(140,Math.max(90,W*.17));for(let i=0;i<S.length;i++){const a=S[i];if(!R.matches){a.x=(a.x+a.vx+W)%W;a.y=(a.y+a.vy+H)%H}for(let j=i+1;j<S.length;j++){const b=S[j],q=Math.hypot(a.x-b.x,a.y-b.y);if(q<D){x.strokeStyle='rgba(234,203,136,'+(.2*(1-q/D)).toFixed(3)+')';x.lineWidth=.6;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}x.fillStyle='rgba(255,236,190,'+(.4+.25*Math.sin(t*.0007+a.p)).toFixed(3)+')';x.beginPath();x.arc(a.x,a.y,a.r,0,6.283);x.fill()}}
+function f(t){if(t-last>30){dr(t);last=t}raf=requestAnimationFrame(f)}
+addEventListener('resize',rs,{passive:true});rs();if(!R.matches)raf=requestAnimationFrame(f)})();
+
+</script></body></html>
