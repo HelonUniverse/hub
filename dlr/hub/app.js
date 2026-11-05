@@ -25,7 +25,8 @@ const LS={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v===nu
 function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),1800)}
 
 function tile(a){const b=document.createElement('button');b.className='tile'+(a.wide?' wide':'');b.innerHTML='<span class="art"></span><span class="sh"></span><span class="t"></span><span class="ar">→</span>';b.querySelector('.art').style.setProperty('--i','url('+(a.img||CDN+a.id+'.webp')+')');if(a.wide){const d=document.createElement('span');d.className='d';d.textContent=a.d;b.append(d)}b.querySelector('.t').textContent=a.n;b.onclick=()=>a.tab?show(a.tab):openApp(a.id);return b}
-$('tiles').append(...A.map(tile));
+const GR=[['Hoy para ti','Un momento rápido para empezar bien',['afirmacion','luna','respira'],1],['Pregúntale a las cartas','Cuando necesitas una respuesta',['tarot','sino','semana']],['Conócete','Tu mapa, tus números, tu código',['astral','angeles','codigos','pinaculo']],['Guías y energía','Mensajes, piedras y símbolos',['maestros','cristales','runas']],['Aprende','Estudio a tu ritmo',['dones','dharma','biodec']],['Escucha','Música para conectar',['musica']]];
+GR.forEach(([t,sub,ids,big])=>{const w=document.createElement('div');w.className='grp';const h=document.createElement('div');h.className='gh';h.innerHTML='<b></b><small></small>';h.querySelector('b').textContent=t;h.querySelector('small').textContent=sub;const g=document.createElement('div');g.className='tiles'+(big?' feat':'');g.append(...ids.map(i=>A.find(a=>a.id===i)).filter(Boolean).map(tile));w.append(h,g);$('tiles').append(w)});
 ['oraculos','estudio'].forEach(g=>$('g-'+g).append(...A.filter(a=>a.g===g).map(tile)));
 
 const tabs=[...document.querySelectorAll('nav [data-t]')];let cur='inicio';
