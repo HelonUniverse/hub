@@ -72,7 +72,7 @@ const T=[
 {f:'om-hanumate-namaha-pulso-de-valenti-a',n:'Om Hanumate Namaha',d:'Pulso de Valentía · 3:33',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@30f18ab6e814bec52f64b70acd5d24afcdf6cdd8/dlr/tiles/hanuman.webp',pos:'center 2%'},
 {f:'hare-krishna-pulso-de-devocio-n',n:'Hare Krishna',d:'Pulso de Devoción · 3:46',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@fff99f55114ee26599d00b8929d1114fee42b1fd/dlr/tiles/krishna.webp',pos:'center 8%'},
 {f:'om-tare-tuttare-ture-soha-desde-la-red',n:'Om Tare Tuttare Ture Soha',d:'Desde la Red · 3:10',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@4c9c6d7d3adaedc96d2e2e46edadcac5a0f2d78f/dlr/tiles/tara.webp',pos:'center 8%'},
-{f:'om-namo-bhagavate-vasudevaya-desde-la-red',n:'Om Namo Bhagavate Vasudevaya',d:'Desde la Red · 3:34'},
+{f:'om-namo-bhagavate-vasudevaya-desde-la-red',n:'Om Namo Bhagavate Vasudevaya',d:'Desde la Red · 3:34',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@b724719f5b2e969801b7a025912e55049655ba55/dlr/tiles/vasudeva.webp',pos:'center 8%'},
 {f:'om-namo-narayanaya-desde-la-red',n:'Om Namo Narayanaya',d:'Desde la Red · 3:33'},
 {f:'nombres-sagrados-pulso-celestial-desde-la-red',n:'Nombres Sagrados',d:'Pulso Celestial · 5:50'}];
 let fav=D.fav,ti=-1,shuf=false,playing=false;const AUD=new Audio();AUD.preload='none';
