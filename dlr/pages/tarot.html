@@ -63,6 +63,18 @@ h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 .ai .msg{border-radius:14px;padding:10px 12px;margin-top:8px;font-size:14.5px;line-height:1.6}
 .ai .msg.u{background:rgba(127,227,245,.12);margin-left:24px}.ai .msg.a{background:rgba(6,22,44,.55);border:1px solid rgba(127,227,245,.2);margin-right:10px}
 .ai .fu{display:flex;gap:8px;margin-top:12px}.ai .fu .in{flex:1}.ai .fu .btn{width:auto;margin:0;padding:0 18px}
+
+.fan{display:flex;overflow-x:auto;padding:16px 28px 20px;margin:14px -18px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);cursor:grab}
+.fan::-webkit-scrollbar{display:none}
+.fc{flex:none;width:64px;aspect-ratio:2/3;margin-left:-40px;border-radius:9px;border:1px solid rgba(234,203,136,.55);background:radial-gradient(circle at 50% 40%,#1b5e86,#0a2140 70%);box-shadow:-3px 4px 10px rgba(0,0,0,.5);cursor:pointer;display:grid;place-items:center;padding:0;transition:transform .25s,opacity .35s}
+.fc:first-child{margin-left:0}.fc svg{width:56%;opacity:.85;pointer-events:none}
+.fc:hover,.fc:focus-visible{transform:translateY(-16px);outline:0}
+.fc.gone{opacity:0;pointer-events:none;transform:translateY(-34px)}
+@keyframes shuf{0%{transform:translateX(0)}25%{transform:translateX(calc(var(--d)*28px)) rotate(calc(var(--d)*5deg))}60%{transform:translateX(calc(var(--d)*-22px))}100%{transform:none}}
+.fan.sh .fc{animation:shuf 1s ease-in-out}
+.ph{aspect-ratio:2/3;border:1.5px dashed rgba(127,227,245,.4);border-radius:12px;display:grid;place-items:center;color:#8fd6e6;font:italic 400 15px 'Instrument Serif',serif}
+.slot.in{animation:pop .5s cubic-bezier(.3,.8,.3,1)}@keyframes pop{from{opacity:0;transform:translateY(40px) scale(.8)}to{opacity:1;transform:none}}
+.cnt{text-align:center;color:var(--gold);font-size:13.5px;margin-top:12px}
 .dia{display:flex;gap:16px;align-items:flex-start}.dia .slot{width:42%;flex:none}.dia .rd{margin:0;flex:1}
 </style></head><body><canvas id="bg"></canvas><main>
 <div class="hero"><div class="eb">Oráculo</div><h1>Tarot <em>Desde la Red</em></h1><p class="lead">Respira, haz tu pregunta en silencio y deja que las cartas te hablen.</p></div>
@@ -218,26 +230,47 @@ function reading(items,withPos){const w=document.createElement('div');w.classNam
  h.append(it.c.name);if(it.rev){const t=document.createElement('span');t.className='tag';t.textContent='invertida';h.append(t)}
  d.querySelector('.kw').textContent=it.c.kw;d.querySelector('p').textContent=it.rev?it.c.rv:it.c.up;w.append(d)});return w}
 const MODES={
- dia:{t:'Carta del día',s:'Una carta para acompañar tu jornada.',b:'Mostrar mi carta de hoy',n:1},
- tres:{t:'Tirada de 3 cartas',s:'Pasado, presente y futuro de lo que preguntas.',b:'Barajar y tirar',n:3,pos:POS3,cls:'r3'},
- celta:{t:'Cruz celta',s:'Una lectura profunda de diez cartas, para una situación importante.',b:'Barajar y tirar',n:10,pos:CELTA,cls:'r10'}};
+ dia:{t:'Carta del día',s:'Una carta para acompañar tu jornada.',b:'Elegir mi carta de hoy',n:1},
+ tres:{t:'Tirada de 3 cartas',s:'Pasado, presente y futuro de lo que preguntas.',b:'Barajar y elegir mis cartas',n:3,pos:POS3,cls:'r3'},
+ celta:{t:'Cruz celta',s:'Una lectura profunda de diez cartas, para una situación importante.',b:'Barajar y elegir mis cartas',n:10,pos:CELTA,cls:'r10'}};
 let mode='dia';
 function setMode(m){mode=m;const M=MODES[m];document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
  $('ttl').textContent=M.t;$('sub').textContent=M.s;$('go').textContent=M.b;$('go').hidden=false;$('again').hidden=true;$('out').textContent='';$('qbox').hidden=m==='dia'}
-function run(){const M=MODES[mode],out=$('out');out.textContent='';let ids,revs;
- if(mode==='dia'){const t=new Date(),key=t.getFullYear()*10000+(t.getMonth()+1)*100+t.getDate(),r=seeded(key*2654435761>>>0||7);r();r();ids=[Math.floor(r()*78)];revs=[false]}
- else{ids=shuffle(M.n);revs=ids.map(()=>rnd(10)<3)}
+function run(){const M=MODES[mode],out=$('out'),n=M.n;out.textContent='';
  const q=$('q').value.trim();if(q&&mode!=='dia'){const e=document.createElement('p');e.className='lead';e.style.cssText='margin:14px auto 0;font-style:italic;text-align:center';e.textContent='“'+q+'”';out.append(e)}
- const row=document.createElement('div');row.className='row '+(M.cls||'r1');const slots=ids.map((id,i)=>slot(DECK[id],revs[i],M.pos?M.pos[i][0]:''));row.append(...slots);out.append(row);
+ $('go').hidden=true;$('again').hidden=true;
+ const deck=shuffle(78),revs=deck.map(()=>mode==='dia'?false:rnd(10)<3);
+ const row=document.createElement('div');row.className='row '+(M.cls||'r1');
+ const cells=Array.from({length:n},(_,i)=>{const c=document.createElement('div');c.className='slot';
+  if(M.pos){const pl=document.createElement('div');pl.className='pn';pl.textContent=M.pos[i][0];c.append(pl)}
+  const ph=document.createElement('div');ph.className='ph';ph.textContent=M.pos?'':'Tu carta';c.append(ph);return c});
+ row.append(...cells);out.append(row);
+ const msg=document.createElement('p');msg.className='cnt';out.append(msg);
+ const fan=document.createElement('div');fan.className='fan sh';
+ deck.forEach((id,i)=>{const b=document.createElement('button');b.className='fc';b.style.setProperty('--d',i%2?1:-1);b.style.animationDelay=(i%12)*20+'ms';b.setAttribute('aria-label','Elegir carta');b.innerHTML=BACK;b.dataset.i=i;fan.append(b)});
+ out.append(fan);
+ const tip=document.createElement('p');tip.className='note';tip.style.margin='4px 0 0';tip.textContent='Desliza para mover las cartas y toca las que te llamen.';out.append(tip);
+ setTimeout(()=>fan.classList.remove('sh'),1200);
+ /* arrastrar con el mouse */
+ let dn=false,sx=0,sl=0,mv=false;fan.addEventListener('mousedown',e=>{dn=true;mv=false;sx=e.pageX;sl=fan.scrollLeft;fan.style.cursor='grabbing'});
+ addEventListener('mouseup',()=>{dn=false;fan.style.cursor=''});fan.addEventListener('mousemove',e=>{if(!dn)return;const d=e.pageX-sx;if(Math.abs(d)>4)mv=true;fan.scrollLeft=sl-d});
+ fan.addEventListener('click',e=>{if(mv){e.stopPropagation();e.preventDefault();mv=false}},true);
+ setTimeout(()=>{fan.scrollLeft=(fan.scrollWidth-fan.clientWidth)/2},50);
+ const chosen=[],slots=[];const upd=()=>{msg.textContent=n===1?'Elige una carta':'Elegidas '+chosen.length+' de '+n};upd();
+ fan.addEventListener('click',e=>{const b=e.target.closest('.fc');if(!b||b.classList.contains('gone')||chosen.length>=n)return;
+  const k=chosen.length,i=+b.dataset.i;b.classList.add('gone');chosen.push(i);
+  const sl=slot(DECK[deck[i]],revs[i],M.pos?M.pos[k][0]:'');sl.classList.add('in');cells[k].replaceWith(sl);cells[k]=sl;slots.push(sl);upd();
+  if(chosen.length===n){fan.remove();tip.remove();msg.remove();reveal(chosen.map(i=>deck[i]),chosen.map(i=>revs[i]),slots,row,q)}});
+}
+function reveal(ids,revs,slots,row,q){const M=MODES[mode],out=$('out');
  const items=ids.map((id,i)=>({c:DECK[id],rev:revs[i],pos:M.pos?M.pos[i][0]:'',hint:M.pos?M.pos[i][1]:''}));
  const rd=reading(items);rd.prepend(buildAI(items,q));rd.hidden=true;out.append(rd);
- $('go').hidden=true;$('again').hidden=mode==='dia';
+ $('again').hidden=false;$('again').textContent=mode==='dia'?'Elegir otra carta':'Barajar de nuevo';
  const hint=document.createElement('p');hint.className='note';hint.style.margin='12px 0 0';hint.textContent=M.n===1?'Toca la carta para voltearla.':'Toca cada carta para voltearla, o ';
  if(M.n>1){const a=document.createElement('a');a.href='#';a.style.color='var(--cy)';a.textContent='voltearlas todas';a.onclick=e=>{e.preventDefault();slots.forEach((s,i)=>setTimeout(s._flip,i*350));done()};hint.append(a)}
- out.append(hint);
+ out.insertBefore(hint,rd);
  let shown=false;function done(){if(shown)return;shown=true;setTimeout(()=>{rd.hidden=false;hint.hidden=true},M.n===1?900:slots.length*350+700)}
  slots.forEach(s=>s.querySelector('.fl').addEventListener('click',()=>{if(slots.every(x=>x.querySelector('.fl').classList.contains('up')))done()}));
- if(mode==='dia'){row.classList.add('r1')}
 }
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
 $('go').onclick=run;$('again').onclick=()=>{$('out').textContent='';run()};
