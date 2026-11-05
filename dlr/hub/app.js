@@ -201,10 +201,8 @@ cargarNatalia();
 const PUERTAS=[{n:'Primera puerta',s:'Para lo que sientes hoy',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c0922367ec97c2acb5239272cc822d3eae8a90ba/dlr/tiles/puerta-1.webp'},{n:'Segunda puerta',s:'Para lo que buscas',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c0922367ec97c2acb5239272cc822d3eae8a90ba/dlr/tiles/puerta-2.webp'},{n:'Tercera puerta',s:'Para lo que viene',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c0922367ec97c2acb5239272cc822d3eae8a90ba/dlr/tiles/puerta-3.webp'}];
 function lastDoor(p){try{return localStorage.getItem('dlr_pt'+p)}catch(e){return null}}
 function setLastDoor(p,id){try{localStorage.setItem('dlr_pt'+p,id)}catch(e){}}
-function vistosLS(p){try{return JSON.parse(localStorage.getItem('dlr_pv'+p)||'[]')}catch(e){return[]}}
-function guardaVistos(p,v){try{localStorage.setItem('dlr_pv'+p,JSON.stringify(v.slice(-400)))}catch(e){}}
-/* rotacion: nadie repite hasta ver todos los de su puerta; entre usuarios se reparte por los menos entregados */
-async function mensajeDePuerta(p){let vis=vistosLS(p);try{const r=await SB.rpc('puerta_sacar',{p:p,vistos:vis});const m=(r.data||[])[0];if(!m)return null;if(vis.includes(m.id))vis=[];vis.push(m.id);guardaVistos(p,vis);return m}catch(e){return null}}
+/* un mensaje al azar de la puerta elegida */
+async function mensajeDePuerta(p){try{const r=await SB.rpc('puerta_sacar',{p:p});return (r.data||[])[0]||null}catch(e){return null}}
 function abrirPuertas(){
  const o=elx('div','pt');o.innerHTML='<div class="pt-in"><div class="eb">DESDE LA RED</div><h2>Elige tu puerta</h2><p class="lead">Respira. Elige la que te llame. Tu mensaje es solo para ti.</p><div class="pt-doors"></div><div class="pt-msg" hidden></div><button class="btn ghost pt-x">Cerrar</button></div>';
  const ds=o.querySelector('.pt-doors'),mg=o.querySelector('.pt-msg');
