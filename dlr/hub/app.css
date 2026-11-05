@@ -134,3 +134,18 @@ nav button.on{background:linear-gradient(160deg,rgba(124,90,220,.6),rgba(30,30,9
 .albc{background:linear-gradient(90deg,rgba(6,16,50,.85) 0,rgba(6,16,50,.45) 60%,rgba(6,16,50,.15) 100%),url(https://cdn.jsdelivr.net/gh/HelonUniverse/hub@2cf942a3a4bf62dad11f6b8d4ec44e54345ab543/dlr/tiles/mantras-header.webp) 70% center/cover!important;border-color:rgba(234,203,136,.4)!important;min-height:92px}
 
 .tr.im{background:linear-gradient(90deg,rgba(6,16,50,.92) 0,rgba(6,16,50,.6) 55%,rgba(6,16,50,.2) 100%),var(--im) var(--pos,center)/cover!important;border-color:rgba(234,203,136,.4)!important;min-height:78px}
+
+#s-inicio .hero .pt-go{margin-top:12px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#f3dca0;border:1px solid rgba(234,203,136,.55);border-radius:999px;padding:8px 18px;background:rgba(6,16,50,.45)}
+.pt{position:fixed;inset:0;z-index:60;background:radial-gradient(120% 80% at 50% 0,#1a2f78 0,#07123a 55%,#030818 100%);opacity:0;transition:opacity .35s;overflow:auto;display:flex}.pt.on{opacity:1}
+.pt-in{margin:auto;width:100%;max-width:420px;padding:calc(34px + env(safe-area-inset-top)) 18px calc(30px + env(safe-area-inset-bottom));text-align:center}
+.pt-in h2{font:400 34px/1.1 'Instrument Serif',Georgia,serif;margin:6px 0 8px;color:#fff}.pt-in .eb{font-size:11px;letter-spacing:.22em;color:#9fb2e8}
+.pt-doors{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}
+.pt-door{position:relative;border:1px solid rgba(234,203,136,.45);border-radius:90px 90px 14px 14px;min-height:210px;padding:0 6px 14px;color:#fff;background:linear-gradient(180deg,rgba(255,236,180,.10),rgba(8,20,70,.85));display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+.pt-door.im{background:linear-gradient(180deg,rgba(6,16,50,0) 45%,rgba(6,16,50,.9) 100%),var(--im) center/cover}
+.pt-door .arc{position:absolute;left:50%;top:18px;width:64%;height:56%;transform:translateX(-50%);border-radius:80px 80px 6px 6px;background:radial-gradient(circle at 50% 80%,rgba(255,226,150,.9),rgba(255,200,90,.25) 55%,transparent 75%);box-shadow:0 0 28px rgba(255,214,120,.45);opacity:.8;transition:opacity .4s,transform .5s}
+.pt-door.im .arc{display:none}.pt-door b{position:relative;font:400 17px/1.1 'Instrument Serif',Georgia,serif}.pt-door small{position:relative;font-size:11px;color:#c8d2f5;line-height:1.25}
+.pt-door:active{transform:scale(.97)}.pt-door.sel{border-color:#f3dca0;box-shadow:0 0 26px rgba(255,214,120,.5)}.pt-door.open .arc{opacity:1;transform:translateX(-50%) scale(1.15)}
+.pt-doors:has(.sel) .pt-door:not(.sel){opacity:.45;transform:scale(.96)}
+.pt-msg{margin:4px 0 18px;padding:20px 18px;border-radius:20px;border:1px solid rgba(234,203,136,.4);background:rgba(8,20,70,.7);text-align:center}
+.pt-msg.load{color:#c8d2f5}.pt-msg.show{animation:ptin .6s ease both}.pt-msg .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#f3dca0;margin-bottom:10px}.pt-msg p{font:400 21px/1.4 'Instrument Serif',Georgia,serif;margin:0 0 14px;color:#fff;white-space:pre-wrap}
+@keyframes ptin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}

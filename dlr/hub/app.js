@@ -196,3 +196,28 @@ function renderAdminNatalia(){let box=document.getElementById('nat-admin');if(bo
  const first=host.querySelector('.card');host.insertBefore(box,first);pintaRec()}
 
 cargarNatalia();
+
+/* ===== Elige tu puerta: portales con mensajes de Natalia al azar ===== */
+const PUERTAS=[{n:'Primera puerta',s:'Para lo que sientes hoy',img:null},{n:'Segunda puerta',s:'Para lo que buscas',img:null},{n:'Tercera puerta',s:'Para lo que viene',img:null}];
+function lastDoor(p){try{return localStorage.getItem('dlr_pt'+p)}catch(e){return null}}
+function setLastDoor(p,id){try{localStorage.setItem('dlr_pt'+p,id)}catch(e){}}
+async function mensajeDePuerta(p){let rows=[];try{const r=await SB.from('puerta_mensajes').select('id,texto').eq('puerta',p).eq('activo',true);rows=r.data||[]}catch(e){}
+ if(!rows.length)return null;const ult=lastDoor(p);let pool=rows.filter(x=>x.id!==ult);if(!pool.length)pool=rows;const m=pool[Math.floor(Math.random()*pool.length)];setLastDoor(p,m.id);return m}
+function abrirPuertas(){
+ const o=elx('div','pt');o.innerHTML='<div class="pt-in"><div class="eb">DESDE LA RED</div><h2>Elige tu puerta</h2><p class="lead">Respira. Elige la que te llame. Tu mensaje es solo para ti.</p><div class="pt-doors"></div><div class="pt-msg" hidden></div><button class="btn ghost pt-x">Cerrar</button></div>';
+ const ds=o.querySelector('.pt-doors'),mg=o.querySelector('.pt-msg');
+ PUERTAS.forEach((d,i)=>{const b=elx('button','pt-door');b.setAttribute('aria-label',d.n);b.innerHTML='<span class="arc"></span><b></b><small></small>';b.querySelector('b').textContent=d.n;b.querySelector('small').textContent=d.s;if(d.img){b.classList.add('im');b.style.setProperty('--im','url('+d.img+')')}
+  b.onclick=async()=>{ds.querySelectorAll('.pt-door').forEach((x,j)=>x.classList.toggle('sel',j===i));b.classList.add('open');mg.hidden=false;mg.className='pt-msg load';mg.textContent='Abriendo…';
+   const m=await mensajeDePuerta(i+1);await new Promise(r=>setTimeout(r,700));mg.className='pt-msg show';mg.textContent='';
+   if(!m){mg.append(elx('p','','Tu mensaje está en camino. Vuelve pronto.'))}else{mg.append(elx('div','k','Mensaje para ti · por Natalia'));const p=elx('p','',m.texto);mg.append(p);const ot=elx('button','btn ghost','Elegir otra puerta');ot.onclick=()=>{mg.hidden=true;ds.querySelectorAll('.pt-door').forEach(x=>x.classList.remove('sel','open'));o.querySelector('.pt-in').scrollTo(0,0)};mg.append(ot)}
+   mg.scrollIntoView({behavior:'smooth',block:'center'})};ds.append(b)});
+ o.querySelector('.pt-x').onclick=()=>o.remove();document.body.append(o);requestAnimationFrame(()=>o.classList.add('on'))}
+(()=>{const h=document.querySelector('#s-inicio .hero');if(!h)return;h.style.cursor='pointer';h.setAttribute('role','button');h.setAttribute('tabindex','0');const go=elx('span','pt-go','Entrar →');h.append(go);h.onclick=abrirPuertas;h.onkeydown=e=>{if(e.key==='Enter'||e.key===' ')abrirPuertas()}})();
+/* admin: mensajes de las puertas */
+const _rAN=renderAdminNatalia;renderAdminNatalia=function(){_rAN();if(!ES_DUENO)return;const host=document.getElementById('nat-admin');if(!host||host.querySelector('#pt-admin'))return;
+ const c=elx('div','');c.id='pt-admin';c.style.marginTop='22px';c.append(elx('h3','','Mensajes de las puertas'));const sub=elx('p','sub','Cada persona recibe uno al azar de la puerta que elija.');c.append(sub);
+ const sel=document.createElement('select');sel.className='in';PUERTAS.forEach((d,i)=>{const o=document.createElement('option');o.value=i+1;o.textContent=d.n;sel.append(o)});
+ const ta=document.createElement('textarea');ta.placeholder='Mensaje para esta puerta…';ta.maxLength=2000;ta.style.minHeight='90px';const er=elx('div','err');const bt=elx('button','btn','Agregar a la puerta');bt.style.marginTop='10px';const lst=elx('div','');lst.style.marginTop='12px';c.append(sel,ta,er,bt,lst);host.append(c);
+ async function pinta(){lst.textContent='';const r=await SB.from('puerta_mensajes').select('id,puerta,texto,activo').order('creado',{ascending:false});(r.data||[]).filter(x=>String(x.puerta)===sel.value).forEach(x=>{const row=elx('div','');row.style.cssText='border-top:1px solid rgba(255,255,255,.12);padding:10px 0';row.append(elx('p','',x.texto));const a=elx('div','');a.style.cssText='display:flex;gap:12px;margin-top:6px;font-size:13px';const t=elx('button','',x.activo?'Pausar':'Activar');t.onclick=async()=>{await SB.from('puerta_mensajes').update({activo:!x.activo}).eq('id',x.id);pinta()};const d=elx('button','','Borrar');d.onclick=async()=>{await SB.from('puerta_mensajes').delete().eq('id',x.id);pinta()};[t,d].forEach(b=>{b.style.cssText='background:none;border:0;color:#7fe3f5;padding:0;font:inherit'});a.append(t,d);row.append(a);if(!x.activo)row.style.opacity='.55';lst.append(row)});if(!lst.children.length)lst.append(elx('p','sub','Aún no hay mensajes en esta puerta.'))}
+ sel.onchange=pinta;bt.onclick=async()=>{er.textContent='';const v=ta.value.trim();if(!v)return er.textContent='Escribe el mensaje.';bt.disabled=true;const r=await SB.from('puerta_mensajes').insert({puerta:+sel.value,texto:v});bt.disabled=false;if(r.error)return er.textContent='No se pudo guardar.';ta.value='';toast('Agregado');pinta()};pinta()};
+renderAdminNatalia();
