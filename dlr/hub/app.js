@@ -64,7 +64,7 @@ function openAlb(on){$('albs').hidden=on;$('albv').hidden=!on;scrollTo(0,0)}$('a
 
 const AU='https://raw.githubusercontent.com/HelonUniverse/hub/3682399b9f8ac2f825fd36f7d229a1dc1523d96d/dlr/audio/';
 const T=[
-{f:'kodoish-pulso-sagrado-desde-la-red',n:'Kodoish',d:'Pulso Sagrado · 3:40',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@ecb48fe87331a0221f217b8a96f88d8de34da987/dlr/tiles/pulso.webp',pos:'center 38%'},
+{f:'kodoish-pulso-sagrado-desde-la-red',n:'Kodoish',d:'Pulso Sagrado · 3:40',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@977ca871b70ecdd46f244c017dae760b9c9c37da/dlr/tiles/kodoish.webp',pos:'center 45%'},
 {f:'waheguru-pulso-de-luz',n:'Waheguru',d:'Pulso de Luz · 3:33',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@0df4999786b0e98212cea35718f59093b8742e1e/dlr/tiles/waheguru.webp'},
 {f:'gayatri-mantra-pulso-de-luz',n:'Gayatri Mantra',d:'Pulso de Luz · 3:32',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@0df4999786b0e98212cea35718f59093b8742e1e/dlr/tiles/gayatri.webp',pos:'center 24%'},
 {f:'om-namah-shivaya-pulso-de-serenidad',n:'Om Namah Shivaya',d:'Pulso de Serenidad · 3:11',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@379491c73d91d999f4b7ae2328e88216b7f414fc/dlr/tiles/shivaya.webp',pos:'center 26%'},
