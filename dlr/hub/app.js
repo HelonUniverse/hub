@@ -18,7 +18,7 @@ const A=[
 {id:'geometria',g:'oraculos',n:'Geometría sagrada',u:API+'/api/a/geometria/__dlr/geometria.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@e3ad06a1e907f1d87409738ecc22d945c20a473f/dlr/tiles/geometria.webp'},
 {id:'dones',g:'estudio',n:'Despierta tus dones',u:API+'/api/a/dones'},
 {id:'dharma',g:'estudio',n:'Camino del Dharma',u:API+'/api/a/dharma'},
-{id:'biodec',g:'estudio',n:'Biodecodificación',u:API+'/api/a/biodec',img:CDN+'interior.webp'},
+{id:'biodec',g:'estudio',n:'Biodecodificación',u:API+'/api/a/biodec',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@3b1c52844e6b424c0bb804f7aefa54ff0b3d4113/dlr/tiles/biodec-tile.webp'},
 {id:'musica',g:'estudio',n:'Música',d:'Álbumes para conectar contigo',tab:'musica',wide:1,img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@84c5533e88f7bd244db79121a8a9f7400cd8c58d/dlr/tiles/musica.webp'}];
 const SB=supabase.createClient('https://xjmgtzlezsmpxfnyjrli.supabase.co','sb_publishable_kp75fFYItrQgpr47V5xpMQ_l-_AzCSz');
 let USER=null;const D={notes:[],saved:[],fav:{}};
