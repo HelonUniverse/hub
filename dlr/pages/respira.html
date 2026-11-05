@@ -41,11 +41,15 @@ h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 .say{text-align:center;font:400 34px 'Instrument Serif',serif;color:#f3e2b8;min-height:44px}
 .cd{text-align:center;color:var(--gold);font-size:15px;min-height:22px}
 .pick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
-.pick button{appearance:none;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:11px 4px;font-size:14px;cursor:pointer}.pick button.on{background:rgba(127,227,245,.16);box-shadow:0 0 14px rgba(80,220,255,.35)}</style></head><body><canvas id="bg"></canvas><main>
+.pick button{appearance:none;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:11px 4px;font-size:14px;cursor:pointer}.pick button.on{background:rgba(127,227,245,.16);box-shadow:0 0 14px rgba(80,220,255,.35)}.tec{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.tec button{appearance:none;text-align:left;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:10px 12px;cursor:pointer;line-height:1.2}
+.tec button b{display:block;font:400 18px/1.1 'Instrument Serif',serif;color:#f3e2b8}.tec button small{color:var(--mut);font-size:11.5px}
+.tec button.on{background:rgba(234,203,136,.14);border-color:rgba(234,203,136,.7);box-shadow:0 0 14px rgba(234,203,136,.25)}
+.tdesc{color:#cfd6ea;font-size:13.5px;margin:12px 2px 0;min-height:40px}.tec button:last-child:nth-child(odd){grid-column:1/-1}</style></head><body><canvas id="bg"></canvas><main>
 <div class="hero"><img src="https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/respira.webp" alt=""><div class="tt"><div class="eb">Pausa</div><h1>Respira <em>conmigo</em></h1><p class="lead">Inhala, sostén y exhala siguiendo el círculo.</p></div></div>
-<div class="card"><h2>¿Cuánto tiempo?</h2><div class="pick" id="pk"><button data-s="60" class="on">1 minuto</button><button data-s="180">3 minutos</button><button data-s="300">5 minutos</button></div>
+<div class="card"><h2>¿Qué necesitas hoy?</h2><div class="tec" id="tec"></div><p class="tdesc" id="tdesc"></p><h2 style="margin-top:16px">¿Cuánto tiempo?</h2><div class="pick" id="pk"><button data-s="60" class="on">1 minuto</button><button data-s="180">3 minutos</button><button data-s="300">5 minutos</button></div>
 <div class="pw"><div class="orb" id="orb"></div></div><div class="say" id="say">Listo cuando tú lo estés</div><div class="cd" id="cd"></div><button class="btn" id="go">Comenzar</button></div>
-<p class="note">Inhala 4 · sostén 4 · exhala 6. Si te mareas, respira normal y descansa.</p>
+<p class="note" id="tnote">Si te mareas, respira normal y descansa.</p>
 </main>
 <script>
 const $=i=>document.getElementById(i);
@@ -54,10 +58,21 @@ function gbtn(texto){const b=document.createElement('button');b.className='btn g
 let secs=60,tm=null,run=false,left=0;
 document.querySelectorAll('#pk button').forEach(b=>b.onclick=()=>{if(run)return;document.querySelectorAll('#pk button').forEach(x=>x.classList.toggle('on',x===b));secs=+b.dataset.s});
 const orb=$('orb'),say=$('say'),cd=$('cd');
-const ST=[['Inhala',4,1],['Sostén',4,1],['Exhala',6,.55],['Sostén',2,.55]];
+const T=[
+{id:'calma',n:'Calma',q:'Bajar el ritmo',d:'Inhala 4 · sostén 4 · exhala 6. La más suave para empezar.',p:[['Inhala',4,1],['Sostén',4,1],['Exhala',6,.55],['Sostén',2,.55]]},
+{id:'ansiedad',n:'Ansiedad',q:'Cuando estás acelerada',d:'Dos inhalaciones cortas y una exhalación muy larga. Ayuda a soltar la tensión rápido.',p:[['Inhala',2,.8],['Un poco más',1,1],['Exhala despacio',7,.5]]},
+{id:'dormir',n:'Dormir',q:'Antes de acostarte',d:'Método 4-7-8: inhala 4 · sostén 7 · exhala 8. Relaja el cuerpo para dormir.',p:[['Inhala',4,1],['Sostén',7,1],['Exhala',8,.5]]},
+{id:'enfoque',n:'Enfoque',q:'Para concentrarte',d:'Respiración en caja: 4 tiempos iguales. Ordena la mente.',p:[['Inhala',4,1],['Sostén',4,1],['Exhala',4,.55],['Sostén',4,.55]]},
+{id:'equilibrio',n:'Equilibrio',q:'Centrarte',d:'Inhala 5 · exhala 5. Un ritmo parejo que estabiliza.',p:[['Inhala',5,1],['Exhala',5,.55]]},
+{id:'soltar',n:'Soltar',q:'Tensión o enojo',d:'Inhala 4 y exhala 8 por la boca, como suspirando. Suelta lo que cargas.',p:[['Inhala',4,1],['Suelta',8,.45]]},
+{id:'energia',n:'Energía',q:'Despertar el cuerpo',d:'Respiración rápida y ligera por la nariz. Hazla sentada y para si te mareas.',p:[['Inhala',2,1],['Exhala',2,.55]]}];
+let tc=T[0],ST=tc.p;
+(function(){const b=$('tec');T.forEach(t=>{const e=document.createElement('button');e.innerHTML='<b></b><small></small>';e.firstChild.textContent=t.n;e.lastChild.textContent=t.q;e.onclick=()=>pick(t);e.dataset.id=t.id;b.append(e)});})();
+function pick(t){if(run)return;tc=t;ST=t.p;$('tdesc').textContent=t.d;document.querySelectorAll('#tec button').forEach(x=>x.classList.toggle('on',x.dataset.id===t.id))}
+pick(T[0]);
 function fmt(s){return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
-function stop(done){run=false;clearTimeout(tm);$('go').textContent='Comenzar';orb.style.transition='transform 2s ease-in-out';orb.style.transform='scale(.55)';say.textContent=done?'Muy bien. Quédate un momento con esta calma.':'Listo cuando tú lo estés';cd.textContent='';if(done){cd.append(gbtn('Hice una pausa de respiración de '+Math.round(secs/60)+' minuto(s). Me siento…'))}}
-function step(i){if(!run)return;const s=ST[i%4];say.textContent=s[0];orb.style.transition='transform '+s[1]+'s ease-in-out';orb.style.transform='scale('+s[2]+')';let t=s[1];const tick=()=>{if(!run)return;left--;cd.textContent=fmt(Math.max(left,0));t--;if(left<=0)return stop(true);if(t>0)tm=setTimeout(tick,1000);else step(i+1)};tm=setTimeout(tick,1000)}
+function stop(done){run=false;clearTimeout(tm);$('go').textContent='Comenzar';orb.style.transition='transform 2s ease-in-out';orb.style.transform='scale(.55)';say.textContent=done?'Muy bien. Quédate un momento con esta calma.':'Listo cuando tú lo estés';cd.textContent='';if(done){cd.append(gbtn('Hice la respiración «'+tc.n+'» de '+Math.round(secs/60)+' minuto(s). Me siento…'))}}
+function step(i){if(!run)return;const s=ST[i%ST.length];say.textContent=s[0];orb.style.transition='transform '+s[1]+'s ease-in-out';orb.style.transform='scale('+s[2]+')';let t=s[1];const tick=()=>{if(!run)return;left--;cd.textContent=fmt(Math.max(left,0));t--;if(left<=0)return stop(true);if(t>0)tm=setTimeout(tick,1000);else step(i+1)};tm=setTimeout(tick,1000)}
 $('go').onclick=()=>{if(run)return stop(false);run=true;left=secs;cd.textContent=fmt(left);$('go').textContent='Detener';step(0)}
 (function(){const c=document.getElementById('bg'),x=c.getContext('2d');let W,H,d,S=[],raf,last=0;const R=matchMedia('(prefers-reduced-motion: reduce)');
 function rs(){d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);const n=Math.min(70,Math.max(24,W*H/16000|0));S=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.14,vy:(Math.random()-.5)*.14,r:.6+Math.random()*1,p:Math.random()*6.28}));dr(0)}
