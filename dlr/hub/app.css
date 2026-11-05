@@ -126,3 +126,5 @@ nav button.on{background:linear-gradient(160deg,rgba(124,90,220,.6),rgba(30,30,9
 
 #tiles{display:block}.grp{margin-top:22px}.grp:first-child{margin-top:8px}.gh{display:flex;flex-direction:column;gap:2px;padding:0 4px}.gh b{font:400 23px/1.1 'Instrument Serif',Georgia,serif;color:#fff}.gh small{font-size:12.5px;color:#b8c4ee}.grp .tiles{margin-top:10px}.tiles.feat .tile{height:150px}.tiles.feat .tile:first-child{grid-column:1/-1;height:170px}
 .grp .tiles:not(.feat) .tile:last-child:nth-child(odd):not(.wide){grid-column:1/-1;height:132px}.grp .tiles:not(.feat) .tile:last-child:nth-child(odd):not(.wide) .art{background-size:cover;background-position:center 30%}.tile .t{right:40px;font-size:18px}
+
+.tr.im{background:linear-gradient(90deg,rgba(6,16,50,.92) 0,rgba(6,16,50,.6) 55%,rgba(6,16,50,.2) 100%),var(--im) center/cover!important;border-color:rgba(234,203,136,.4)!important;min-height:78px}
