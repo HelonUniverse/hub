@@ -11,7 +11,7 @@ const A=[
 {id:'luna',g:'oraculos',n:'Luna del día',u:API+'/api/a/luna/__dlr/luna.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/luna.webp'},
 {id:'sino',g:'oraculos',n:'Tarot de sí o no',u:API+'/api/a/sino/__dlr/sino.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/sino.webp'},
 {id:'astral',g:'oraculos',n:'Carta astral',u:API+'/api/a/astral/__dlr/astral.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/astral.webp'},
-{id:'semana',g:'oraculos',n:'Carta de la semana',u:API+'/api/a/semana/__dlr/semana.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/semana.webp'},
+{id:'semana',g:'oraculos',n:'Carta del día',u:API+'/api/a/semana/__dlr/semana.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/semana.webp'},
 {id:'respira',g:'oraculos',n:'Respira conmigo',u:API+'/api/a/respira/__dlr/respira.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/respira.webp'},
 {id:'afirmacion',g:'oraculos',n:'Afirmación del día',u:API+'/api/a/afirmacion/__dlr/afirmacion.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/afirmacion.webp'},
 {id:'dones',g:'estudio',n:'Despierta tus dones',u:API+'/api/a/dones'},
@@ -50,7 +50,7 @@ $('hello').textContent=hh<12?'Buenos días':hh<19?'Buenas tardes':'Buenas noches
 $('date').textContent=DIAS[now.getDay()]+' '+now.getDate()+' de '+MESES[now.getMonth()];
 let CARDS=[],today=null;const dkey=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
 Promise.resolve(CARDS_DATA).then(c=>{CARDS=c;let seed=0;for(const ch of dkey)seed=(seed*31+ch.charCodeAt(0))>>>0;today=CARDS[seed%CARDS.length];
-$('msgc').style.backgroundImage='url('+API+'/api/a/maestros/cards/'+today.i+'.webp)';$('msgn').textContent=today.n;$('msgv').textContent=today.v;$('msgs').textContent=today.s;updSave()}).catch(()=>{$('msgn').textContent='Tu mensaje te espera';$('msgs').textContent='Abre el Oráculo de los Maestros.'});
+$('msgc').style.backgroundImage='url('+API+'/api/a/maestros/cards/'+today.i+'.webp)';$('msgn').textContent=today.n;$('msgv').textContent=today.v;$('msgs').textContent=today.s;{const k=document.querySelector('#msg .k');if(k)k.textContent='Mensaje del día · por Natalia'}updSave()}).catch(()=>{$('msgn').textContent='Tu mensaje te espera';$('msgs').textContent='Abre el Oráculo de los Maestros.'});
 $('msg').onclick=()=>{if(!today)return openApp('maestros');const m=document.createElement('div');m.className='ob on';m.style.justifyContent='flex-start';m.style.paddingTop='calc(30px + env(safe-area-inset-top))';
 const card=document.createElement('div');card.className='msg';card.style.cssText='display:block;width:auto;max-width:360px;margin-top:14px;text-align:center;cursor:default;padding-bottom:16px';
 card.innerHTML='<div class="eb">MENSAJE DEL DÍA</div><div class="c" style="margin:12px auto;width:140px;transform:none"></div><div class="n" style="font-size:28px"></div><div class="v"></div><p class="s" style="font-size:15px;line-height:1.55;margin:8px 0 0"></p>';
