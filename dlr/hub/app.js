@@ -64,17 +64,17 @@ function openAlb(on){$('albs').hidden=on;$('albv').hidden=!on;scrollTo(0,0)}$('a
 
 const AU='https://raw.githubusercontent.com/HelonUniverse/hub/3682399b9f8ac2f825fd36f7d229a1dc1523d96d/dlr/audio/';
 const T=[
-{f:'kodoish-pulso-sagrado-desde-la-red',n:'Kodoish',d:'Pulso Sagrado · 3:40'},
-{f:'waheguru-pulso-de-luz',n:'Waheguru',d:'Pulso de Luz · 3:33',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@0df4999786b0e98212cea35718f59093b8742e1e/dlr/tiles/waheguru.webp'},
-{f:'gayatri-mantra-pulso-de-luz',n:'Gayatri Mantra',d:'Pulso de Luz · 3:32',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@0df4999786b0e98212cea35718f59093b8742e1e/dlr/tiles/gayatri.webp',pos:'center 24%'},
-{f:'om-namah-shivaya-pulso-de-serenidad',n:'Om Namah Shivaya',d:'Pulso de Serenidad · 3:11',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@379491c73d91d999f4b7ae2328e88216b7f414fc/dlr/tiles/shivaya.webp',pos:'center 26%'},
-{f:'om-gam-ganapataye-namaha-pulso-de-apertura',n:'Om Gam Ganapataye Namaha',d:'Pulso de Apertura · 3:14',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@30f18ab6e814bec52f64b70acd5d24afcdf6cdd8/dlr/tiles/ganapati.webp',pos:'center 22%'},
-{f:'om-hanumate-namaha-pulso-de-valenti-a',n:'Om Hanumate Namaha',d:'Pulso de Valentía · 3:33',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@30f18ab6e814bec52f64b70acd5d24afcdf6cdd8/dlr/tiles/hanuman.webp',pos:'center 2%'},
-{f:'hare-krishna-pulso-de-devocio-n',n:'Hare Krishna',d:'Pulso de Devoción · 3:46',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@fff99f55114ee26599d00b8929d1114fee42b1fd/dlr/tiles/krishna.webp',pos:'center 8%'},
-{f:'om-tare-tuttare-ture-soha-desde-la-red',n:'Om Tare Tuttare Ture Soha',d:'Desde la Red · 3:10',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@4c9c6d7d3adaedc96d2e2e46edadcac5a0f2d78f/dlr/tiles/tara.webp',pos:'center 8%'},
-{f:'om-namo-bhagavate-vasudevaya-desde-la-red',n:'Om Namo Bhagavate Vasudevaya',d:'Desde la Red · 3:34',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@b724719f5b2e969801b7a025912e55049655ba55/dlr/tiles/vasudeva.webp',pos:'center 8%'},
-{f:'om-namo-narayanaya-desde-la-red',n:'Om Namo Narayanaya',d:'Desde la Red · 3:33'},
-{f:'nombres-sagrados-pulso-celestial-desde-la-red',n:'Nombres Sagrados',d:'Pulso Celestial · 5:50'}];
+{f:'kodoish-pulso-sagrado-desde-la-red',n:'Kodoish',d:'Pulso Sagrado · 3:40',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@a7df994115639bdcea1857bbe9837b02d65eb648/dlr/tiles/kodoish.webp',pos:'center 45%'},
+{f:'waheguru-pulso-de-luz',n:'Waheguru',d:'Pulso de Luz · 3:33',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@a7df994115639bdcea1857bbe9837b02d65eb648/dlr/tiles/waheguru.webp'},
+{f:'gayatri-mantra-pulso-de-luz',n:'Gayatri Mantra',d:'Pulso de Luz · 3:32',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@a7df994115639bdcea1857bbe9837b02d65eb648/dlr/tiles/gayatri.webp',pos:'center 24%'},
+{f:'om-namah-shivaya-pulso-de-serenidad',n:'Om Namah Shivaya',d:'Pulso de Serenidad · 3:11',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@a7df994115639bdcea1857bbe9837b02d65eb648/dlr/tiles/shivaya.webp',pos:'center 26%'},
+{f:'om-gam-ganapataye-namaha-pulso-de-apertura',n:'Om Gam Ganapataye Namaha',d:'Pulso de Apertura · 3:14',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@a7df994115639bdcea1857bbe9837b02d65eb648/dlr/tiles/ganapati.webp',pos:'center 22%'},
+{f:'om-hanumate-namaha-pulso-de-valenti-a',n:'Om Hanumate Namaha',d:'Pulso de Valentía · 3:33',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@a7df994115639bdcea1857bbe9837b02d65eb648/dlr/tiles/hanuman.webp',pos:'center 2%'},
+{f:'hare-krishna-pulso-de-devocio-n',n:'Hare Krishna',d:'Pulso de Devoción · 3:46',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@a7df994115639bdcea1857bbe9837b02d65eb648/dlr/tiles/krishna.webp',pos:'center 8%'},
+{f:'om-tare-tuttare-ture-soha-desde-la-red',n:'Om Tare Tuttare Ture Soha',d:'Desde la Red · 3:10',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@a7df994115639bdcea1857bbe9837b02d65eb648/dlr/tiles/tara.webp',pos:'center 8%'},
+{f:'om-namo-bhagavate-vasudevaya-desde-la-red',n:'Om Namo Bhagavate Vasudevaya',d:'Desde la Red · 3:34',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@a7df994115639bdcea1857bbe9837b02d65eb648/dlr/tiles/vasudeva.webp',pos:'center 8%'},
+{f:'om-namo-narayanaya-desde-la-red',n:'Om Namo Narayanaya',d:'Desde la Red · 3:33',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@a7df994115639bdcea1857bbe9837b02d65eb648/dlr/tiles/narayana.webp',pos:'center 30%'},
+{f:'nombres-sagrados-pulso-celestial-desde-la-red',n:'Nombres Sagrados',d:'Pulso Celestial · 5:50',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@a7df994115639bdcea1857bbe9837b02d65eb648/dlr/tiles/nombres.webp',pos:'center 40%'}];
 let fav=D.fav,ti=-1,shuf=false,playing=false;const AUD=new Audio();AUD.preload='none';
 function row(t,i){const d=document.createElement('div');d.className='tr';d.innerHTML='<span class="p">▶</span><b><span></span><small></small></b><button class="h" aria-label="Favorito">♡</button>';if(t.img){d.classList.add('im');d.style.setProperty('--im','url('+t.img+')');if(t.pos)d.style.setProperty('--pos',t.pos)}d.querySelector('b span').textContent=t.n;d.querySelector('small').textContent=t.d;const h=d.querySelector('.h');const paint=()=>{h.textContent=fav[t.f]?'♥':'♡';h.classList.toggle('on',!!fav[t.f])};paint();
 h.onclick=async e=>{e.stopPropagation();fav[t.f]=!fav[t.f];paint();toast(fav[t.f]?'Agregado a favoritos':'Quitado de favoritos');if(cur==='yo')renderYo();if(!USER)return;if(fav[t.f])await SB.from('favoritos').upsert({usuario:USER.id,pista:t.f});else await SB.from('favoritos').delete().eq('usuario',USER.id).eq('pista',t.f)};d.onclick=()=>playAt(i);return d}
@@ -198,7 +198,7 @@ function renderAdminNatalia(){let box=document.getElementById('nat-admin');if(bo
 cargarNatalia();
 
 /* ===== Elige tu puerta: portales con mensajes de Natalia al azar ===== */
-const PUERTAS=[{n:'Primera puerta',s:'Para lo que sientes hoy',img:null},{n:'Segunda puerta',s:'Para lo que buscas',img:null},{n:'Tercera puerta',s:'Para lo que viene',img:null}];
+const PUERTAS=[{n:'Primera puerta',s:'Para lo que sientes hoy',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@PIN/dlr/tiles/puerta-1.webp'},{n:'Segunda puerta',s:'Para lo que buscas',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@PIN/dlr/tiles/puerta-2.webp'},{n:'Tercera puerta',s:'Para lo que viene',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@PIN/dlr/tiles/puerta-3.webp'}];
 function lastDoor(p){try{return localStorage.getItem('dlr_pt'+p)}catch(e){return null}}
 function setLastDoor(p,id){try{localStorage.setItem('dlr_pt'+p,id)}catch(e){}}
 async function mensajeDePuerta(p){let rows=[];try{const r=await SB.from('puerta_mensajes').select('id,texto').eq('puerta',p).eq('activo',true);rows=r.data||[]}catch(e){}
@@ -221,3 +221,39 @@ const _rAN=renderAdminNatalia;renderAdminNatalia=function(){_rAN();if(!ES_DUENO)
  async function pinta(){lst.textContent='';const r=await SB.from('puerta_mensajes').select('id,puerta,texto,activo').order('creado',{ascending:false});(r.data||[]).filter(x=>String(x.puerta)===sel.value).forEach(x=>{const row=elx('div','');row.style.cssText='border-top:1px solid rgba(255,255,255,.12);padding:10px 0';row.append(elx('p','',x.texto));const a=elx('div','');a.style.cssText='display:flex;gap:12px;margin-top:6px;font-size:13px';const t=elx('button','',x.activo?'Pausar':'Activar');t.onclick=async()=>{await SB.from('puerta_mensajes').update({activo:!x.activo}).eq('id',x.id);pinta()};const d=elx('button','','Borrar');d.onclick=async()=>{await SB.from('puerta_mensajes').delete().eq('id',x.id);pinta()};[t,d].forEach(b=>{b.style.cssText='background:none;border:0;color:#7fe3f5;padding:0;font:inherit'});a.append(t,d);row.append(a);if(!x.activo)row.style.opacity='.55';lst.append(row)});if(!lst.children.length)lst.append(elx('p','sub','Aún no hay mensajes en esta puerta.'))}
  sel.onchange=pinta;bt.onclick=async()=>{er.textContent='';const v=ta.value.trim();if(!v)return er.textContent='Escribe el mensaje.';bt.disabled=true;const r=await SB.from('puerta_mensajes').insert({puerta:+sel.value,texto:v});bt.disabled=false;if(r.error)return er.textContent='No se pudo guardar.';ta.value='';toast('Agregado');pinta()};pinta()};
 renderAdminNatalia();
+
+/* ===== Reproductor ampliado: imagen grande + explicación ===== */
+const EXPL={
+'kodoish-pulso-sagrado-desde-la-red':'Un pulso para la quietud profunda. Baja el ruido de la mente y te devuelve a tu centro, sin esfuerzo.',
+'waheguru-pulso-de-luz':'Trabaja la gratitud y el asombro. Abre espacio para sentirte parte de algo más grande que tu día a día.',
+'gayatri-mantra-pulso-de-luz':'Trabaja la claridad mental y la intuición. Ideal para empezar el día con enfoque y la mente despejada.',
+'om-namah-shivaya-pulso-de-serenidad':'Trabaja la calma interior y el soltar lo que ya no necesitas. Una transformación suave, desde adentro.',
+'om-gam-ganapataye-namaha-pulso-de-apertura':'Trabaja los comienzos. Ayuda a remover bloqueos, abrir camino y arrancar algo nuevo con confianza.',
+'om-hanumate-namaha-pulso-de-valenti-a':'Trabaja la fuerza, el coraje y la constancia. Para cuando algo se siente grande y necesitas sostenerte.',
+'hare-krishna-pulso-de-devocio-n':'Trabaja el corazón: la alegría, la ternura y la conexión con quienes amas y con lo que te inspira.',
+'om-tare-tuttare-ture-soha-desde-la-red':'Trabaja la protección y la compasión. Acompaña cuando sientes miedo, prisa o necesitas amabilidad contigo.',
+'om-namo-bhagavate-vasudevaya-desde-la-red':'Trabaja la confianza y el sostén. Te recuerda que no tienes que cargarlo todo sola.',
+'om-namo-narayanaya-desde-la-red':'Trabaja la paz y el equilibrio. Ayuda a mantener la calma aunque todo alrededor se mueva.',
+'nombres-sagrados-pulso-celestial-desde-la-red':'Una pieza larga para meditar. La repetición suave te lleva al silencio y a una sensación de amplitud.'};
+function fmt(s){s=Math.max(0,s|0);return (s/60|0)+':'+String(s%60).padStart(2,'0')}
+function prev(){if(AUD.currentTime>4)return AUD.currentTime=0;playAt((ti-1+T.length)%T.length)}
+let NP=null;
+function pintaNP(){if(!NP||ti<0)return;const t=T[ti];NP.querySelector('.np-img').style.backgroundImage='url('+(t.img||'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@84c5533e88f7bd244db79121a8a9f7400cd8c58d/dlr/tiles/cover-pulsos.webp')+')';NP.querySelector('h2').textContent=t.n;NP.querySelector('.np-d').textContent=t.d;NP.querySelector('.np-x').textContent=EXPL[t.f]||'';NP.querySelector('.np-pl').textContent=playing?'❚❚':'▶'}
+function tickNP(){if(!NP)return;const d=AUD.duration||0,c=AUD.currentTime||0;NP.querySelector('.np-bar i').style.width=(d?c/d*100:0)+'%';NP.querySelector('.np-t1').textContent=fmt(c);NP.querySelector('.np-t2').textContent=fmt(d)}
+function abrirNP(){if(ti<0||NP)return;const o=elx('div','np');o.innerHTML='<div class="np-grab"></div><button class="np-c" aria-label="Cerrar">⌄</button><div class="np-in"><div class="np-img" role="img"></div><div class="np-hd"><h2></h2><div class="np-d"></div></div><div class="np-k">Lo que trabaja</div><p class="np-x"></p><div class="np-bar"><i></i></div><div class="np-tt"><span class="np-t1">0:00</span><span class="np-t2">0:00</span></div><div class="np-ct"><button class="np-pv" aria-label="Anterior">⏮</button><button class="np-pl big" aria-label="Reproducir">▶</button><button class="np-nx" aria-label="Siguiente">⏭</button></div></div>';
+ o.querySelector('.np-c').onclick=cerrarNP;o.querySelector('.np-pl').onclick=toggle;o.querySelector('.np-nx').onclick=next;o.querySelector('.np-pv').onclick=prev;
+ o.querySelector('.np-bar').onclick=e=>{const r=e.currentTarget.getBoundingClientRect();if(AUD.duration)AUD.currentTime=(e.clientX-r.left)/r.width*AUD.duration};
+ arrastraNP(o);NP=o;document.body.append(o);pintaNP();tickNP();requestAnimationFrame(()=>o.classList.add('on'))}
+function arrastraNP(o){let y0=0,dy=0,on=false,t0=0;
+ o.addEventListener('touchstart',e=>{if(e.target.closest('.np-bar'))return;if(o.scrollTop>0)return;y0=e.touches[0].clientY;dy=0;on=true;t0=Date.now()},{passive:true});
+ o.addEventListener('touchmove',e=>{if(!on)return;dy=e.touches[0].clientY-y0;if(dy<=0||o.scrollTop>0){dy=0;o.style.transition='';o.style.transform='';return}o.style.transition='none';o.style.transform='translateY('+dy+'px)'},{passive:true});
+ o.addEventListener('touchend',()=>{if(!on)return;on=false;o.style.transition='';const v=dy/Math.max(1,Date.now()-t0);if(dy>110||(dy>40&&v>.5)){o.style.transform='';cerrarNP()}else o.style.transform=''},{passive:true})}
+(()=>{const m=$('mini');let y0=0,dy=0,on=false;
+ m.addEventListener('touchstart',e=>{y0=e.touches[0].clientY;dy=0;on=true},{passive:true});
+ m.addEventListener('touchmove',e=>{if(on)dy=e.touches[0].clientY-y0},{passive:true});
+ m.addEventListener('touchend',()=>{if(on&&dy<-35){m._sw=Date.now();abrirNP()}on=false},{passive:true});
+ const oi=$('mi').onclick;[$('mi'),$('thumb')].forEach(el=>{el.onclick=()=>{if(Date.now()-(m._sw||0)<400)return;abrirNP()}})})();
+function cerrarNP(){if(!NP)return;const o=NP;NP=null;o.classList.remove('on');setTimeout(()=>o.remove(),280)}
+$('mi').onclick=abrirNP;$('thumb').onclick=abrirNP;
+(()=>{const b=elx('button','','⌃');b.id='mup';b.setAttribute('aria-label','Ampliar');b.onclick=abrirNP;$('mini').insertBefore(b,$('mp'))})();
+AUD.addEventListener('timeupdate',tickNP);AUD.addEventListener('loadedmetadata',tickNP);AUD.addEventListener('play',pintaNP);AUD.addEventListener('pause',pintaNP);AUD.addEventListener('loadstart',()=>{pintaNP();tickNP()});
