@@ -7,6 +7,7 @@ const A=[
 {id:'codigos',g:'oraculos',n:'Códigos Sagrados',u:API+'/api/a/codigos'},
 {id:'pinaculo',g:'oraculos',n:'Pináculo',u:API+'/api/a/pinaculo'},
 {id:'tarot',g:'oraculos',n:'Tarot',u:API+'/api/a/tarot',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@186bfd9fca4ac346c7c92e3933c4306a82ff0461/dlr/tiles/tarot.webp'},
+{id:'angeles',g:'oraculos',n:'Números angelicales',u:API+'/api/a/angeles/__dlr/angeles.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@31080a5ebaac6866ada4a97512f0aba8fede3b28/dlr/tiles/angeles.webp'},
 {id:'dones',g:'estudio',n:'Despierta tus dones',u:API+'/api/a/dones'},
 {id:'dharma',g:'estudio',n:'Camino del Dharma',u:API+'/api/a/dharma'},
 {id:'biodec',g:'estudio',n:'Biodecodificación',u:API+'/api/a/biodec',img:CDN+'interior.webp'},
