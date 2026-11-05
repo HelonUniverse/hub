@@ -1,0 +1,135 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#06162c"><title>Carta astral · Desde la Red</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>:root{--cy:#7fe3f5;--gold:#eacb88;--mut:#a9c4d2;--line:rgba(127,227,245,.42)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:radial-gradient(ellipse at 50% -10%,#1d4f7c 0%,#0a2140 42%,#050d1f 90%) fixed;color:#eef9ff;font:15px/1.5 'Albert Sans',system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+button,input{font:inherit;color:inherit}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main{position:relative;z-index:1;max-width:620px;margin:auto;padding:calc(14px + env(safe-area-inset-top)) 18px 60px}
+.hero{text-align:center;padding:6px 0 10px}
+.eb{font-size:11px;letter-spacing:.24em;color:#8fd6e6;text-transform:uppercase}
+h1{font:400 clamp(34px,10vw,46px)/1.05 'Instrument Serif',Georgia,serif;margin:6px 0 4px}
+h1 em{color:var(--cy);font-style:italic}
+.lead{color:var(--mut);font-size:14px;margin:0 auto;max-width:420px}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:14px 0 4px}
+.tab{appearance:none;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:10px 2px;font-size:12px;cursor:pointer;line-height:1.2}
+.tab.on{background:rgba(127,227,245,.16);box-shadow:0 0 14px rgba(80,220,255,.35)}
+.card{border-radius:22px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(21,76,104,.55),rgba(8,32,54,.75));box-shadow:0 12px 34px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06);padding:18px;margin-top:14px}
+h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
+.in{width:100%;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:13px 14px;font-size:16px;outline:0;margin-top:10px}
+.in:focus{box-shadow:0 0 14px rgba(80,220,255,.35)}
+.btn{appearance:none;border:0;border-radius:999px;padding:13px 16px;background:linear-gradient(135deg,#8ff0ff,#1fb5dc);color:#06162c;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 6px 18px rgba(40,200,240,.35);width:100%;margin-top:12px}
+.btn.ghost{background:none;color:var(--cy);border:1px solid var(--line);box-shadow:none;font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
+.n{appearance:none;border:1px solid var(--line);border-radius:16px;background:rgba(6,22,44,.55);padding:14px 4px;cursor:pointer;font:400 26px/1 'Instrument Serif',serif;color:#f3e2b8;letter-spacing:.04em}
+.n.on{background:rgba(234,203,136,.16);border-color:rgba(234,203,136,.7);box-shadow:0 0 16px rgba(234,203,136,.3)}
+.res{margin-top:16px;text-align:center;animation:pop .5s cubic-bezier(.3,.8,.3,1)}
+@keyframes pop{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.big{font:400 76px/1 'Instrument Serif',serif;color:var(--gold);text-shadow:0 0 28px rgba(234,203,136,.55);letter-spacing:.06em}
+.res h3{font:400 26px/1.1 'Instrument Serif',serif;color:#f3e2b8;margin:6px 0 2px}
+.res .kw{color:var(--cy);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
+.res p{margin:10px 0 0;text-align:left;color:#dff1f7;font-size:14.5px;line-height:1.65}
+.res .pr{border:1px solid rgba(234,203,136,.35);border-radius:16px;padding:12px 14px;background:rgba(234,203,136,.07);margin-top:14px;text-align:left;font-size:14px;color:var(--gold)}
+.note{color:#8fa9b8;font-size:12px;text-align:center;margin:18px 6px 0}
+[hidden]{display:none!important}
+
+.btn.ghost{background:none;color:var(--cy);border:1px solid var(--line);box-shadow:none;font-weight:500}
+.btn[disabled]{opacity:.7}
+.cardimg{width:min(62%,230px);aspect-ratio:2/3;margin:6px auto 0;border-radius:14px;border:1px solid rgba(234,203,136,.55);box-shadow:0 10px 28px rgba(0,0,0,.55);overflow:hidden;background:radial-gradient(circle at 50% 40%,#1b5e86,#0a2140 70%);display:grid;place-items:center;font:400 22px/1.15 'Instrument Serif',serif;color:#f3e2b8;padding:10px;text-align:center}
+.cardimg img{width:100%;height:100%;object-fit:cover;display:block}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lab{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8fd6e6;margin:12px 0 -4px}
+.chk{display:flex;gap:8px;align-items:center;margin-top:12px;font-size:14px;color:var(--mut)}.chk input{width:18px;height:18px;accent-color:#1fb5dc}
+.sug{margin-top:6px}.sug button{display:block;width:100%;text-align:left;appearance:none;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:12px;padding:10px 12px;margin-top:6px;font-size:14px;cursor:pointer}
+.wheel{width:min(100%,360px);margin:6px auto 0;display:block}
+.pl{border-top:1px solid rgba(127,227,245,.2);padding:12px 0}.pl:first-child{border-top:0}
+.pl h3{font:400 21px/1.1 'Instrument Serif',serif;color:#f3e2b8;margin:0}.pl h3 span{font:400 22px sans-serif;color:var(--gold);margin-right:8px}
+.pl .kw{color:var(--cy);font-size:12.5px;margin:2px 0 4px}.pl p{margin:0;color:#dff1f7;font-size:14.5px;line-height:1.6}
+.tabl{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}.tabl td{padding:7px 4px;border-top:1px solid rgba(127,227,245,.15)}.tabl td:first-child{color:var(--gold);width:30px;font-size:18px}.tabl td:last-child{text-align:right;color:var(--mut)}
+.err{color:#ffb3c1;font-size:13.5px;text-align:center;margin-top:10px}
+#res{margin-top:6px}</style></head><body><canvas id="bg"></canvas><main>
+<div class="hero"><div class="eb">Oráculo</div><h1>Tu carta <em>astral</em></h1><p class="lead">El mapa del cielo en el momento en que naciste.</p></div>
+<div class="card" id="form"><h2>Tus datos de nacimiento</h2>
+<div class="lab">Fecha</div><input class="in" id="d" type="date">
+<div class="lab">Hora</div><input class="in" id="t" type="time"><label class="chk"><input type="checkbox" id="nt"> No sé mi hora de nacimiento</label>
+<div class="lab">Ciudad de nacimiento</div><input class="in" id="c" placeholder="Por ejemplo: Bogotá" autocomplete="off"><div class="sug" id="sg"></div>
+<div class="err" id="er"></div><button class="btn" id="go">Ver mi carta</button></div>
+<div id="res"></div>
+<p class="note">Cálculo astronómico aproximado (precisión cercana a 1°). Lectura simbólica para reflexionar. Sin la hora exacta no se puede calcular el Ascendente.</p>
+</main>
+<script>
+const $=i=>document.getElementById(i);
+function guardar(btn,texto){if(window.parent===window){btn.textContent='Ábrelo desde la app para guardar';return}parent.postMessage({dlr:'diario',texto:String(texto).slice(0,1800)},location.origin);btn.textContent='✓ Guardado en tu diario';btn.disabled=true}
+function gbtn(texto){const b=document.createElement('button');b.className='btn ghost';b.textContent='♡ Guardar en mi diario';b.onclick=()=>guardar(b,texto);return b}
+
+const SG=['Aries','Tauro','Géminis','Cáncer','Leo','Virgo','Libra','Escorpio','Sagitario','Capricornio','Acuario','Piscis'];
+const GS=['♈\uFE0E','♉\uFE0E','♊\uFE0E','♋\uFE0E','♌\uFE0E','♍\uFE0E','♎\uFE0E','♏\uFE0E','♐\uFE0E','♑\uFE0E','♒\uFE0E','♓\uFE0E'];
+const ST=['directa, rápida y valiente','estable, sensorial y constante','curiosa, ágil y comunicativa','sensible, protectora y emocional','cálida, creativa y generosa','cuidadosa, práctica y detallista','armónica, amable y equilibrada','intensa, profunda y apasionada','optimista, libre y aventurera','disciplinada, responsable y ambiciosa','original, independiente y solidaria','soñadora, empática e intuitiva'];
+const SOL=['Tu esencia es iniciativa y coraje. Naces para empezar cosas, abrir caminos y vivir con energía. Tu reto es la paciencia.','Tu esencia es la constancia y el disfrute. Buscas seguridad, belleza y lo que perdura. Tu reto es soltar la terquedad.','Tu esencia es la curiosidad y la palabra. Necesitas aprender, conectar y moverte. Tu reto es enfocarte.','Tu esencia es el cuidado y la memoria afectiva. Creas hogar y vínculo. Tu reto es no cargar con todo.','Tu esencia es el brillo y la generosidad. Necesitas expresarte y ser vista con cariño. Tu reto es no depender del aplauso.','Tu esencia es el servicio y el detalle. Mejoras lo que tocas con orden y observación. Tu reto es ser amable contigo.','Tu esencia es la armonía y la relación. Buscas equilibrio, belleza y justicia. Tu reto es decidir sin miedo al conflicto.','Tu esencia es la profundidad y la transformación. Sientes intensamente y renaces tras cada crisis. Tu reto es confiar.','Tu esencia es la búsqueda de sentido y libertad. Amplías horizontes con optimismo. Tu reto es sostener los compromisos.','Tu esencia es la construcción y la perseverancia. Subes paso a paso hacia metas claras. Tu reto es permitirte descansar.','Tu esencia es la originalidad y el ideal colectivo. Piensas distinto y quieres cambiar lo que no funciona. Tu reto es abrirte al afecto cercano.','Tu esencia es la sensibilidad y la imaginación. Sientes lo invisible y conectas con todos. Tu reto es poner límites.'];
+const LUN=['Sientes rápido y reaccionas con fuerza. Necesitas acción para calmarte y espacio para ser tú.','Te calma lo sencillo: comida rica, naturaleza, rutina y tacto. Necesitas seguridad para sentirte en paz.','Procesas lo que sientes hablándolo y escribiéndolo. Necesitas variedad y conversación.','Tu mundo emocional es profundo y protector. Te calma el hogar, la familia y sentirte a salvo.','Necesitas cariño y reconocimiento. Te calma crear, jugar y que te muestren aprecio sincero.','Te calma ordenar y ser útil. Tiendes a analizar lo que sientes; date permiso de sentir sin corregir.','Te calma la paz, la compañía y la belleza. Evitas el conflicto; aprende a decir lo que sientes.','Sientes con mucha intensidad y guardas tus emociones. Necesitas confianza total para abrirte.','Te calma la libertad y el movimiento. Necesitas sentido y horizonte, y huyes de lo que asfixia.','Contienes tus emociones y te exiges mucho. Te calma tener un plan y sentir que avanzas.','Necesitas espacio y mente abierta. Cuidas de los demás a tu manera, con cierta distancia.','Absorbes las emociones del entorno. Te calma el silencio, el agua, la música y el arte.'];
+const ASC=['Te muestras directa, enérgica y con iniciativa. Tu primera impresión es de fuerza y valentía.','Te muestras tranquila, segura y cálida. Tu presencia transmite calma y confianza.','Te muestras curiosa, ágil y conversadora. Tu primera impresión es de simpatía y mente rápida.','Te muestras sensible, amable y protectora. Se percibe tu lado cuidador.','Te muestras segura, luminosa y generosa. Tienes presencia y llamas la atención.','Te muestras discreta, atenta y organizada. Se percibe tu inteligencia práctica.','Te muestras amable, elegante y diplomática. Buscas agradar y crear armonía.','Te muestras reservada, magnética e intensa. Tu mirada impone respeto.','Te muestras alegre, abierta y aventurera. Transmites optimismo y ganas de explorar.','Te muestras seria, responsable y madura. Inspiras confianza y solidez.','Te muestras original, amistosa y diferente. Se nota tu independencia.','Te muestras suave, soñadora y empática. Se percibe tu sensibilidad y tu imaginación.'];
+const PN=[['Sol','☉','tu esencia'],['Luna','☽','tus emociones'],['Mercurio','☿','cómo piensas y hablas'],['Venus','♀','cómo amas y disfrutas'],['Marte','♂','cómo actúas y deseas'],['Júpiter','♃','dónde creces y tienes suerte'],['Saturno','♄','dónde te exiges y maduras'],['Urano','♅','dónde buscas cambio'],['Neptuno','♆','tu intuición y tus sueños'],['Plutón','♇','tu transformación profunda']];
+const D2R=Math.PI/180;const nr=x=>((x%360)+360)%360;
+function jd(ms){return ms/86400000+2440587.5}
+function sun(T){const L0=280.46646+36000.76983*T,M=357.52911+35999.05029*T,Mr=M*D2R;const C=(1.914602-0.004817*T)*Math.sin(Mr)+0.019993*Math.sin(2*Mr)+0.000289*Math.sin(3*Mr);return nr(L0+C-0.00569-0.00478*Math.sin((125.04-1934.136*T)*D2R))}
+function moon(T){const Lp=218.3164477+481267.88123421*T,D=297.8501921+445267.1114034*T,M=357.5291092+35999.0502909*T,Mp=134.9633964+477198.8675055*T,F=93.272095+483202.0175233*T;const s=x=>Math.sin(x*D2R);
+ return nr(Lp+6.288774*s(Mp)+1.274027*s(2*D-Mp)+0.658314*s(2*D)+0.213618*s(2*Mp)-0.185116*s(M)-0.114332*s(2*F)+0.058793*s(2*D-2*Mp)+0.057066*s(2*D-M-Mp)+0.053322*s(2*D+Mp)+0.045758*s(2*D-M)-0.040923*s(M-Mp)-0.034720*s(D)-0.030383*s(M+Mp)+0.015327*s(2*D-2*F)-0.012528*s(Mp+2*F)+0.010980*s(Mp-2*F))}
+const EL={me:[0.38709927,0.00000037,0.20563593,0.00001906,7.00497902,-0.00594749,252.25032350,149472.67411175,77.45779628,0.16047689,48.33076593,-0.12534081],
+ve:[0.72333566,0.00000390,0.00677672,-0.00004107,3.39467605,-0.00078890,181.97909950,58517.81538729,131.60246718,0.00268329,76.67984255,-0.27769418],
+em:[1.00000261,0.00000562,0.01671123,-0.00004392,-0.00001531,-0.01294668,100.46457166,35999.37244981,102.93768193,0.32327364,0,0],
+ma:[1.52371034,0.00001847,0.09339410,0.00007882,1.84969142,-0.00813131,-4.55343205,19140.30268499,-23.94362959,0.44441088,49.55953891,-0.29257343],
+ju:[5.20288700,-0.00011607,0.04838624,-0.00013253,1.30439695,-0.00183714,34.39644051,3034.74612775,14.72847983,0.21252668,100.47390909,0.20469106],
+sa:[9.53667594,-0.00125060,0.05386179,-0.00050991,2.48599187,0.00193609,49.95424423,1222.49362201,92.59887831,-0.41897216,113.66242448,-0.28867794],
+ur:[19.18916464,-0.00196176,0.04725744,-0.00004397,0.77263783,-0.00242939,313.23810451,428.48202785,170.95427630,0.40805281,74.01692503,0.04240589],
+ne:[30.06992276,0.00026291,0.00859048,0.00005105,1.77004347,0.00035372,-55.12002969,218.45945325,44.96476227,-0.32241464,131.78422574,-0.00508664],
+pl:[39.48211675,-0.00031596,0.24882730,0.00005170,17.14001206,0.00004818,238.92903833,145.20780515,224.06891629,-0.04062942,110.30393684,-0.01183482]};
+function helio(k,T){const e=EL[k];const a=e[0]+e[1]*T,ec=e[2]+e[3]*T,I=(e[4]+e[5]*T)*D2R,L=e[6]+e[7]*T,w=e[8]+e[9]*T,N=(e[10]+e[11]*T)*D2R;
+ const om=(w*D2R)-N;let M=nr(L-w)*D2R;M=((M+Math.PI)%(2*Math.PI)+2*Math.PI)%(2*Math.PI)-Math.PI;let E=M+ec*Math.sin(M);for(let i=0;i<8;i++)E=E-(E-ec*Math.sin(E)-M)/(1-ec*Math.cos(E));
+ const xv=a*(Math.cos(E)-ec),yv=a*Math.sqrt(1-ec*ec)*Math.sin(E);
+ const c=Math.cos,s=Math.sin;return[(c(om)*c(N)-s(om)*s(N)*c(I))*xv+(-s(om)*c(N)-c(om)*s(N)*c(I))*yv,(c(om)*s(N)+s(om)*c(N)*c(I))*xv+(-s(om)*s(N)+c(om)*c(N)*c(I))*yv,(s(om)*s(I))*xv+(c(om)*s(I))*yv]}
+function geo(k,T){const p=helio(k,T),e=helio('em',T);return nr(Math.atan2(p[1]-e[1],p[0]-e[0])/D2R)}
+function gmst(J){const T=(J-2451545)/36525;return nr(280.46061837+360.98564736629*(J-2451545)+0.000387933*T*T)}
+function angles(J,lat,lon){const T=(J-2451545)/36525,eps=(23.439291-0.0130042*T)*D2R,th=nr(gmst(J)+lon)*D2R;
+ const mc=nr(Math.atan2(Math.sin(th),Math.cos(th)*Math.cos(eps))/D2R);let asc=nr(Math.atan2(Math.cos(th),-(Math.sin(th)*Math.cos(eps)+Math.tan(lat*D2R)*Math.sin(eps)))/D2R);
+ if(((asc-mc+360)%360)>180)asc=nr(asc+180);return{asc,mc}}
+function tzOff(ms,tz){const f=new Intl.DateTimeFormat('en-US',{timeZone:tz,hourCycle:'h23',year:'numeric',month:'numeric',day:'numeric',hour:'numeric',minute:'numeric',second:'numeric'}).formatToParts(new Date(ms)).reduce((o,p)=>(o[p.type]=+p.value,o),{});return Date.UTC(f.year,f.month-1,f.day,f.hour,f.minute,f.second)-Math.floor(ms/1000)*1000}
+function toUTC(d,t,tz){const [y,m,dd]=d.split('-').map(Number),[h,mi]=t.split(':').map(Number);let g=Date.UTC(y,m-1,dd,h,mi);let u=g-tzOff(g,tz);u=g-tzOff(u,tz);return u}
+function fmtDeg(l){const s=Math.floor(l/30),d=l-s*30,dg=Math.floor(d),mn=Math.floor((d-dg)*60);return dg+'° '+String(mn).padStart(2,'0')+"' "+SG[s]}
+function wheel(pls,asc){const R=150,c=180;const rot=asc!=null?180-asc:180;const P=(l,r)=>{const a=(l+rot)*D2R;return[c+r*Math.cos(Math.PI-a+Math.PI)*-1,c-r*Math.sin(Math.PI-a+Math.PI)*-1]};
+ const pt=(l,r)=>{const a=(rot+l)*D2R;return[c+r*Math.cos(a),c-r*Math.sin(a)]};
+ let s='<svg class="wheel" viewBox="0 0 360 360"><circle cx="180" cy="180" r="158" fill="rgba(6,22,44,.55)" stroke="rgba(127,227,245,.5)"/><circle cx="180" cy="180" r="122" fill="none" stroke="rgba(127,227,245,.3)"/><circle cx="180" cy="180" r="62" fill="none" stroke="rgba(127,227,245,.2)"/>';
+ for(let i=0;i<12;i++){const a=pt(i*30,158),b=pt(i*30,122),m=pt(i*30+15,140);s+='<line x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'" stroke="rgba(127,227,245,.4)"/><text x="'+m[0]+'" y="'+m[1]+'" fill="#8fd6e6" font-size="17" text-anchor="middle" dominant-baseline="central">'+GS[i]+'</text>'}
+ if(asc!=null){const a=pt(asc,158),b=pt(asc,62);s+='<line x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'" stroke="#eacb88" stroke-width="2"/>'}
+ const used=[];pls.forEach(p=>{let r=100;let q=pt(p.l,r);for(let k=0;k<4&&used.some(u=>Math.hypot(u[0]-q[0],u[1]-q[1])<20);k++){r-=15;q=pt(p.l,r)}used.push(q);const e=pt(p.l,122);s+='<line x1="'+e[0]+'" y1="'+e[1]+'" x2="'+q[0]+'" y2="'+q[1]+'" stroke="rgba(234,203,136,.25)"/><text x="'+q[0]+'" y="'+q[1]+'" fill="#eacb88" font-size="19" text-anchor="middle" dominant-baseline="central">'+p.g+'\uFE0E</text>'});
+ return s+'</svg>'}
+let place=null;
+$('c').oninput=()=>{place=null;clearTimeout($('c')._t);const q=$('c').value.trim();$('sg').textContent='';if(q.length<3)return;$('c')._t=setTimeout(async()=>{try{const r=await fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(q)+'&count=5&language=es&format=json');const j=await r.json();$('sg').textContent='';(j.results||[]).forEach(x=>{const b=document.createElement('button');b.textContent=[x.name,x.admin1,x.country].filter(Boolean).join(', ');b.onclick=()=>{place=x;$('c').value=b.textContent;$('sg').textContent=''};$('sg').append(b)})}catch(e){}},350)};
+$('nt').onchange=()=>{$('t').disabled=$('nt').checked;$('t').style.opacity=$('nt').checked?.4:1};
+function P(cls,txt,tag){const e=document.createElement(tag||'p');if(cls)e.className=cls;e.textContent=txt;return e}
+$('go').onclick=()=>{const er=$('er');er.textContent='';const d=$('d').value,nt=$('nt').checked,t=nt?'12:00':$('t').value;
+ if(!d)return er.textContent='Escribe tu fecha de nacimiento.';if(!nt&&!t)return er.textContent='Escribe la hora o marca que no la sabes.';if(!place)return er.textContent='Elige tu ciudad de la lista que aparece al escribir.';
+ const u=toUTC(d,t,place.timezone||'UTC'),J=jd(u),T=(J-2451545)/36525;
+ const L=[sun(T),moon(T),geo('me',T),geo('ve',T),geo('ma',T),geo('ju',T),geo('sa',T),geo('ur',T),geo('ne',T),geo('pl',T)];
+ const pls=PN.map((p,i)=>({n:p[0],g:p[1],f:p[2],l:L[i]}));let an=null;if(!nt)an=angles(J,place.latitude,place.longitude);
+ const out=$('res');out.textContent='';const card=document.createElement('div');card.className='card';
+ card.append(P('', '','div'));const h=P('','Tu carta','h2');h.textContent='Tu cielo de nacimiento';card.append(h);
+ const sub=P('lead',d.split('-').reverse().join('/')+(nt?'':' · '+t)+' · '+$('c').value);sub.style.cssText='margin:0 0 4px;text-align:center';card.append(sub);
+ const wd=document.createElement('div');wd.innerHTML=wheel(pls,an?an.asc:null);card.append(wd);
+ const tb=document.createElement('table');tb.className='tabl';let rows=pls.map(p=>[p.g+'\uFE0E',p.n,fmtDeg(p.l)]);if(an)rows.unshift(['AC','Ascendente',fmtDeg(an.asc)],['MC','Medio cielo',fmtDeg(an.mc)]);
+ rows.forEach(r=>{const tr=document.createElement('tr');r.forEach(x=>{const td=document.createElement('td');td.textContent=x;tr.append(td)});tb.append(tr)});card.append(tb);out.append(card);
+ const c2=document.createElement('div');c2.className='card';const rd=document.createElement('div');let txt=[];
+ const add=(g,name,sign,kw,body)=>{const it=document.createElement('div');it.className='pl';const h3=document.createElement('h3');const sp=document.createElement('span');sp.textContent=g;h3.append(sp,name+' en '+sign);it.append(h3,P('kw',kw),P('',body));rd.append(it);txt.push(name+' en '+sign+': '+body)};
+ const si=Math.floor(L[0]/30),mi=Math.floor(L[1]/30);
+ add('☉\uFE0E','Sol',SG[si],'Tu esencia',SOL[si]);add('☽\uFE0E','Luna',SG[mi],'Tus emociones'+(nt?' (con la hora la posición exacta puede variar hasta 6°)':''),LUN[mi]);
+ if(an){const ai=Math.floor(an.asc/30);add('AC','Ascendente',SG[ai],'Cómo te perciben',ASC[ai])}
+ pls.slice(2).forEach(p=>{const i=Math.floor(p.l/30);add(p.g+'\uFE0E',p.n,SG[i],p.f.charAt(0).toUpperCase()+p.f.slice(1),'En esta área eres '+ST[i]+'.')});
+ c2.append(rd);c2.append(gbtn('Mi carta astral ('+d+', '+$('c').value+'): '+txt.slice(0,3).join(' ')));out.append(c2);
+ const rb=document.createElement('button');rb.className='btn ghost';rb.textContent='Calcular otra carta';rb.onclick=()=>{out.textContent='';$('form').hidden=false;scrollTo({top:0,behavior:'smooth'})};out.append(rb);$('form').hidden=true;scrollTo({top:0,behavior:'smooth'})}
+
+(function(){const c=document.getElementById('bg'),x=c.getContext('2d');let W,H,d,S=[],raf,last=0;const R=matchMedia('(prefers-reduced-motion: reduce)');
+function rs(){d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);const n=Math.min(70,Math.max(24,W*H/16000|0));S=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.14,vy:(Math.random()-.5)*.14,r:.6+Math.random()*1,p:Math.random()*6.28}));dr(0)}
+function dr(t){x.clearRect(0,0,W,H);const D=Math.min(140,Math.max(90,W*.17));for(let i=0;i<S.length;i++){const a=S[i];if(!R.matches){a.x=(a.x+a.vx+W)%W;a.y=(a.y+a.vy+H)%H}for(let j=i+1;j<S.length;j++){const b=S[j],q=Math.hypot(a.x-b.x,a.y-b.y);if(q<D){x.strokeStyle='rgba(115,222,239,'+(.2*(1-q/D)).toFixed(3)+')';x.lineWidth=.6;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}x.fillStyle='rgba(178,242,251,'+(.4+.25*Math.sin(t*.0007+a.p)).toFixed(3)+')';x.beginPath();x.arc(a.x,a.y,a.r,0,6.283);x.fill()}}
+function f(t){if(t-last>30){dr(t);last=t}raf=requestAnimationFrame(f)}
+addEventListener('resize',rs,{passive:true});rs();if(!R.matches)raf=requestAnimationFrame(f)})();
+
+</script></body></html>
