@@ -215,10 +215,19 @@ function prev(){if(AUD.currentTime>4)return AUD.currentTime=0;playAt((ti-1+T.len
 let NP=null;
 function pintaNP(){if(!NP||ti<0)return;const t=T[ti];NP.querySelector('.np-img').style.backgroundImage='url('+(t.img||'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@84c5533e88f7bd244db79121a8a9f7400cd8c58d/dlr/tiles/cover-pulsos.webp')+')';NP.querySelector('h2').textContent=t.n;NP.querySelector('.np-d').textContent=t.d;NP.querySelector('.np-x').textContent=EXPL[t.f]||'';NP.querySelector('.np-pl').textContent=playing?'❚❚':'▶'}
 function tickNP(){if(!NP)return;const d=AUD.duration||0,c=AUD.currentTime||0;NP.querySelector('.np-bar i').style.width=(d?c/d*100:0)+'%';NP.querySelector('.np-t1').textContent=fmt(c);NP.querySelector('.np-t2').textContent=fmt(d)}
-function abrirNP(){if(ti<0||NP)return;const o=elx('div','np');o.innerHTML='<button class="np-c" aria-label="Cerrar">⌄</button><div class="np-in"><div class="np-img" role="img"></div><div class="np-hd"><h2></h2><div class="np-d"></div></div><div class="np-k">Lo que trabaja</div><p class="np-x"></p><div class="np-bar"><i></i></div><div class="np-tt"><span class="np-t1">0:00</span><span class="np-t2">0:00</span></div><div class="np-ct"><button class="np-pv" aria-label="Anterior">⏮</button><button class="np-pl big" aria-label="Reproducir">▶</button><button class="np-nx" aria-label="Siguiente">⏭</button></div></div>';
+function abrirNP(){if(ti<0||NP)return;const o=elx('div','np');o.innerHTML='<div class="np-grab"></div><button class="np-c" aria-label="Cerrar">⌄</button><div class="np-in"><div class="np-img" role="img"></div><div class="np-hd"><h2></h2><div class="np-d"></div></div><div class="np-k">Lo que trabaja</div><p class="np-x"></p><div class="np-bar"><i></i></div><div class="np-tt"><span class="np-t1">0:00</span><span class="np-t2">0:00</span></div><div class="np-ct"><button class="np-pv" aria-label="Anterior">⏮</button><button class="np-pl big" aria-label="Reproducir">▶</button><button class="np-nx" aria-label="Siguiente">⏭</button></div></div>';
  o.querySelector('.np-c').onclick=cerrarNP;o.querySelector('.np-pl').onclick=toggle;o.querySelector('.np-nx').onclick=next;o.querySelector('.np-pv').onclick=prev;
  o.querySelector('.np-bar').onclick=e=>{const r=e.currentTarget.getBoundingClientRect();if(AUD.duration)AUD.currentTime=(e.clientX-r.left)/r.width*AUD.duration};
- NP=o;document.body.append(o);pintaNP();tickNP();requestAnimationFrame(()=>o.classList.add('on'))}
+ arrastraNP(o);NP=o;document.body.append(o);pintaNP();tickNP();requestAnimationFrame(()=>o.classList.add('on'))}
+function arrastraNP(o){let y0=0,dy=0,on=false,t0=0;
+ o.addEventListener('touchstart',e=>{if(e.target.closest('.np-bar'))return;if(o.scrollTop>0)return;y0=e.touches[0].clientY;dy=0;on=true;t0=Date.now()},{passive:true});
+ o.addEventListener('touchmove',e=>{if(!on)return;dy=e.touches[0].clientY-y0;if(dy<=0||o.scrollTop>0){dy=0;o.style.transition='';o.style.transform='';return}o.style.transition='none';o.style.transform='translateY('+dy+'px)'},{passive:true});
+ o.addEventListener('touchend',()=>{if(!on)return;on=false;o.style.transition='';const v=dy/Math.max(1,Date.now()-t0);if(dy>110||(dy>40&&v>.5)){o.style.transform='';cerrarNP()}else o.style.transform=''},{passive:true})}
+(()=>{const m=$('mini');let y0=0,dy=0,on=false;
+ m.addEventListener('touchstart',e=>{y0=e.touches[0].clientY;dy=0;on=true},{passive:true});
+ m.addEventListener('touchmove',e=>{if(on)dy=e.touches[0].clientY-y0},{passive:true});
+ m.addEventListener('touchend',()=>{if(on&&dy<-35){m._sw=Date.now();abrirNP()}on=false},{passive:true});
+ const oi=$('mi').onclick;[$('mi'),$('thumb')].forEach(el=>{el.onclick=()=>{if(Date.now()-(m._sw||0)<400)return;abrirNP()}})})();
 function cerrarNP(){if(!NP)return;const o=NP;NP=null;o.classList.remove('on');setTimeout(()=>o.remove(),280)}
 $('mi').onclick=abrirNP;$('thumb').onclick=abrirNP;
 (()=>{const b=elx('button','','⌃');b.id='mup';b.setAttribute('aria-label','Ampliar');b.onclick=abrirNP;$('mini').insertBefore(b,$('mp'))})();

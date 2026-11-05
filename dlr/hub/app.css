@@ -145,3 +145,6 @@ nav button.on{background:linear-gradient(160deg,rgba(124,90,220,.6),rgba(30,30,9
 .np-tt{display:flex;justify-content:space-between;font-size:12px;color:#a9b8e8;margin-top:6px}
 .np-ct{display:flex;justify-content:center;align-items:center;gap:26px;margin-top:14px}.np-ct button{appearance:none;border:0;background:none;color:#eef9ff;font-size:26px;padding:8px}.np-ct .big{width:68px;height:68px;border-radius:50%;background:linear-gradient(160deg,#7fe3f5,#5b8cff);color:#04122e;font-size:26px}
 #mup{font-size:18px!important}
+
+.np-grab{position:fixed;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:44px;height:5px;border-radius:5px;background:rgba(255,255,255,.35);z-index:2}
+.mini{touch-action:pan-x}.np{overscroll-behavior:contain}
