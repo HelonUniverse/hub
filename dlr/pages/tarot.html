@@ -23,7 +23,7 @@ h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 .note{color:#8fa9b8;font-size:12px;text-align:center;margin:18px 6px 0}
 [hidden]{display:none!important}
 /* cartas */
-.row{display:grid;gap:10px;margin-top:14px}.r1{grid-template-columns:minmax(0,170px);justify-content:center}.r3{grid-template-columns:repeat(3,1fr)}.r10{grid-template-columns:repeat(2,1fr)}
+.row{display:grid;gap:10px;margin-top:14px}.r1{grid-template-columns:minmax(0,290px);justify-content:center}.r3{grid-template-columns:minmax(0,300px);justify-content:center;gap:22px}.r10{grid-template-columns:repeat(2,1fr)}
 .slot{text-align:center}
 .slot .pn{font-size:10.5px;letter-spacing:.16em;color:#8fd6e6;text-transform:uppercase;margin-bottom:6px}
 .fl{perspective:900px;aspect-ratio:2/3;width:100%;cursor:pointer;border:0;background:none;padding:0;display:block}
@@ -76,6 +76,8 @@ h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 .slot.in{animation:pop .5s cubic-bezier(.3,.8,.3,1)}@keyframes pop{from{opacity:0;transform:translateY(40px) scale(.8)}to{opacity:1;transform:none}}
 .cnt{text-align:center;color:var(--gold);font-size:13.5px;margin-top:12px}
 .dia{display:flex;gap:16px;align-items:flex-start}.dia .slot{width:42%;flex:none}.dia .rd{margin:0;flex:1}
+
+#zoom{position:fixed;inset:0;z-index:50;background:rgba(3,6,24,.92);display:none;align-items:center;justify-content:center;padding:14px;cursor:zoom-out}#zoom.on{display:flex}#zoom img{max-width:100%;max-height:100%;border-radius:14px;box-shadow:0 0 60px rgba(140,100,255,.45)}#zoom img.rev{transform:rotate(180deg)}.fl.up{cursor:zoom-in}
 </style></head><body><canvas id="bg"></canvas><main>
 <div class="hero"><div class="eb">Oráculo</div><h1>Tarot <em>Desde la Red</em></h1><p class="lead">Respira, haz tu pregunta en silencio y deja que las cartas te hablen.</p></div>
 <div class="tabs"><button class="tab on" data-m="dia">Carta del día</button><button class="tab" data-m="tres">Tirada de 3</button><button class="tab" data-m="celta">Cruz celta</button></div>
@@ -282,4 +284,7 @@ function dr(t){x.clearRect(0,0,W,H);const D=Math.min(140,Math.max(90,W*.17));for
 function f(t){if(t-last>30){dr(t);last=t}raf=requestAnimationFrame(f)}
 addEventListener('resize',rs,{passive:true});rs();if(!R.matches)raf=requestAnimationFrame(f);
 document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(raf);if(!document.hidden&&!R.matches)raf=requestAnimationFrame(f)})})();
+
+(function(){const z=document.createElement('div');z.id='zoom';const zi=new Image();z.append(zi);document.body.append(z);z.onclick=()=>z.classList.remove('on');
+document.addEventListener('click',e=>{const f=e.target.closest&&e.target.closest('.fl.up');if(!f||!f._was)return;const im=f.querySelector('.face img');if(!im)return;zi.src=im.currentSrc||im.src;zi.className=f.querySelector('.fb.rev')?'rev':'';z.classList.add('on')});document.addEventListener('click',e=>{const f=e.target.closest&&e.target.closest('.fl');if(f)f._was=f.classList.contains('up')},true)})();
 </script></body></html>
