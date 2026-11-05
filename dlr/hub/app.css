@@ -164,3 +164,11 @@ nav button.on{background:linear-gradient(160deg,rgba(124,90,220,.6),rgba(30,30,9
 .mini{touch-action:pan-x}.np{overscroll-behavior:contain}
 .pt-door.im{border-radius:16px;min-height:0;aspect-ratio:543/941;padding:0 4px 10px;background:linear-gradient(180deg,rgba(6,16,50,0) 62%,rgba(6,16,50,.92) 100%),var(--im) center/cover}
 .pt-door.im b{font-size:15px;text-shadow:0 1px 8px rgba(0,0,0,.7)}.pt-door.im small{font-size:10.5px;text-shadow:0 1px 6px rgba(0,0,0,.8)}
+/* puertas que se abren */
+.pt-doors{perspective:900px}
+.pt-door.im{background:radial-gradient(ellipse at 50% 58%,#fffbe8 0%,#ffe29a 30%,#3b56b8 70%,#0b1a55 100%)}
+.pt-door .leaf{position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(6,16,50,0) 62%,rgba(6,16,50,.92) 100%),var(--im) center/cover;transform-origin:left center;transition:transform 1.15s cubic-bezier(.55,0,.25,1);backface-visibility:hidden}
+.pt-door.open .leaf{transform:rotateY(-84deg)}
+.pt-door b,.pt-door small{z-index:2;transition:opacity .5s}
+.pt-door.open b,.pt-door.open small{opacity:0}
+.pt-door.open{box-shadow:0 0 38px rgba(255,226,150,.65)}
