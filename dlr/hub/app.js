@@ -10,6 +10,7 @@ const A=[
 {id:'angeles',g:'oraculos',n:'Números angelicales',u:API+'/api/a/angeles/__dlr/angeles.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@31080a5ebaac6866ada4a97512f0aba8fede3b28/dlr/tiles/angeles.webp'},
 {id:'luna',g:'oraculos',n:'Luna del día',u:API+'/api/a/luna/__dlr/luna.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@7ac3c3a019008bac6735160697a929eb62121022/dlr/tiles/luna.webp'},
 {id:'sino',g:'oraculos',n:'Tarot de sí o no',u:API+'/api/a/sino/__dlr/sino.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@7ac3c3a019008bac6735160697a929eb62121022/dlr/tiles/sino.webp'},
+{id:'astral',g:'oraculos',n:'Carta astral',u:API+'/api/a/astral/__dlr/astral.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@afcaf657547a88494731621e4355d8c4ccb1c1a8/dlr/tiles/astral.webp'},
 {id:'semana',g:'oraculos',n:'Carta de la semana',u:API+'/api/a/semana/__dlr/semana.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@7ac3c3a019008bac6735160697a929eb62121022/dlr/tiles/semana.webp'},
 {id:'respira',g:'oraculos',n:'Respira conmigo',u:API+'/api/a/respira/__dlr/respira.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@7ac3c3a019008bac6735160697a929eb62121022/dlr/tiles/respira.webp'},
 {id:'afirmacion',g:'oraculos',n:'Afirmación del día',u:API+'/api/a/afirmacion/__dlr/afirmacion.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@7ac3c3a019008bac6735160697a929eb62121022/dlr/tiles/afirmacion.webp'},
