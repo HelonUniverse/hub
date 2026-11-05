@@ -70,7 +70,7 @@ const T=[
 {f:'om-namah-shivaya-pulso-de-serenidad',n:'Om Namah Shivaya',d:'Pulso de Serenidad · 3:11',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@379491c73d91d999f4b7ae2328e88216b7f414fc/dlr/tiles/shivaya.webp',pos:'center 26%'},
 {f:'om-gam-ganapataye-namaha-pulso-de-apertura',n:'Om Gam Ganapataye Namaha',d:'Pulso de Apertura · 3:14',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@30f18ab6e814bec52f64b70acd5d24afcdf6cdd8/dlr/tiles/ganapati.webp',pos:'center 22%'},
 {f:'om-hanumate-namaha-pulso-de-valenti-a',n:'Om Hanumate Namaha',d:'Pulso de Valentía · 3:33',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@30f18ab6e814bec52f64b70acd5d24afcdf6cdd8/dlr/tiles/hanuman.webp',pos:'center 2%'},
-{f:'hare-krishna-pulso-de-devocio-n',n:'Hare Krishna',d:'Pulso de Devoción · 3:46'},
+{f:'hare-krishna-pulso-de-devocio-n',n:'Hare Krishna',d:'Pulso de Devoción · 3:46',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@fff99f55114ee26599d00b8929d1114fee42b1fd/dlr/tiles/krishna.webp',pos:'center 8%'},
 {f:'om-tare-tuttare-ture-soha-desde-la-red',n:'Om Tare Tuttare Ture Soha',d:'Desde la Red · 3:10'},
 {f:'om-namo-bhagavate-vasudevaya-desde-la-red',n:'Om Namo Bhagavate Vasudevaya',d:'Desde la Red · 3:34'},
 {f:'om-namo-narayanaya-desde-la-red',n:'Om Namo Narayanaya',d:'Desde la Red · 3:33'},
