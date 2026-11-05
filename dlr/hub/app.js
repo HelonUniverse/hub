@@ -198,7 +198,7 @@ function renderAdminNatalia(){let box=document.getElementById('nat-admin');if(bo
 cargarNatalia();
 
 /* ===== Elige tu puerta: portales con mensajes de Natalia al azar ===== */
-const PUERTAS=[{n:'Primera puerta',s:'Para lo que sientes hoy',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@PIN/dlr/tiles/puerta-1.webp'},{n:'Segunda puerta',s:'Para lo que buscas',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@PIN/dlr/tiles/puerta-2.webp'},{n:'Tercera puerta',s:'Para lo que viene',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@PIN/dlr/tiles/puerta-3.webp'}];
+const PUERTAS=[{n:'Primera puerta',s:'Para lo que sientes hoy',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c0922367ec97c2acb5239272cc822d3eae8a90ba/dlr/tiles/puerta-1.webp'},{n:'Segunda puerta',s:'Para lo que buscas',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c0922367ec97c2acb5239272cc822d3eae8a90ba/dlr/tiles/puerta-2.webp'},{n:'Tercera puerta',s:'Para lo que viene',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c0922367ec97c2acb5239272cc822d3eae8a90ba/dlr/tiles/puerta-3.webp'}];
 function lastDoor(p){try{return localStorage.getItem('dlr_pt'+p)}catch(e){return null}}
 function setLastDoor(p,id){try{localStorage.setItem('dlr_pt'+p,id)}catch(e){}}
 async function mensajeDePuerta(p){let rows=[];try{const r=await SB.from('puerta_mensajes').select('id,texto').eq('puerta',p).eq('activo',true);rows=r.data||[]}catch(e){}
