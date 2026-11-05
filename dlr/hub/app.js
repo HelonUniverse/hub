@@ -65,9 +65,9 @@ function openAlb(on){$('albs').hidden=on;$('albv').hidden=!on;scrollTo(0,0)}$('a
 const AU='https://raw.githubusercontent.com/HelonUniverse/hub/3682399b9f8ac2f825fd36f7d229a1dc1523d96d/dlr/audio/';
 const T=[
 {f:'kodoish-pulso-sagrado-desde-la-red',n:'Kodoish',d:'Pulso Sagrado · 3:40'},
-{f:'waheguru-pulso-de-luz',n:'Waheguru',d:'Pulso de Luz · 3:33'},
-{f:'gayatri-mantra-pulso-de-luz',n:'Gayatri Mantra',d:'Pulso de Luz · 3:32'},
-{f:'om-namah-shivaya-pulso-de-serenidad',n:'Om Namah Shivaya',d:'Pulso de Serenidad · 3:11'},
+{f:'waheguru-pulso-de-luz',n:'Waheguru',d:'Pulso de Luz · 3:33',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@0df4999786b0e98212cea35718f59093b8742e1e/dlr/tiles/waheguru.webp'},
+{f:'gayatri-mantra-pulso-de-luz',n:'Gayatri Mantra',d:'Pulso de Luz · 3:32',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@0df4999786b0e98212cea35718f59093b8742e1e/dlr/tiles/gayatri.webp',pos:'center 24%'},
+{f:'om-namah-shivaya-pulso-de-serenidad',n:'Om Namah Shivaya',d:'Pulso de Serenidad · 3:11',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@379491c73d91d999f4b7ae2328e88216b7f414fc/dlr/tiles/shivaya.webp',pos:'center 26%'},
 {f:'om-gam-ganapataye-namaha-pulso-de-apertura',n:'Om Gam Ganapataye Namaha',d:'Pulso de Apertura · 3:14'},
 {f:'om-hanumate-namaha-pulso-de-valenti-a',n:'Om Hanumate Namaha',d:'Pulso de Valentía · 3:33'},
 {f:'hare-krishna-pulso-de-devocio-n',n:'Hare Krishna',d:'Pulso de Devoción · 3:46'},
@@ -76,14 +76,14 @@ const T=[
 {f:'om-namo-narayanaya-desde-la-red',n:'Om Namo Narayanaya',d:'Desde la Red · 3:33'},
 {f:'nombres-sagrados-pulso-celestial-desde-la-red',n:'Nombres Sagrados',d:'Pulso Celestial · 5:50'}];
 let fav=D.fav,ti=-1,shuf=false,playing=false;const AUD=new Audio();AUD.preload='none';
-function row(t,i){const d=document.createElement('div');d.className='tr';d.innerHTML='<span class="p">▶</span><b><span></span><small></small></b><button class="h" aria-label="Favorito">♡</button>';d.querySelector('b span').textContent=t.n;d.querySelector('small').textContent=t.d;const h=d.querySelector('.h');const paint=()=>{h.textContent=fav[t.f]?'♥':'♡';h.classList.toggle('on',!!fav[t.f])};paint();
+function row(t,i){const d=document.createElement('div');d.className='tr';d.innerHTML='<span class="p">▶</span><b><span></span><small></small></b><button class="h" aria-label="Favorito">♡</button>';if(t.img){d.classList.add('im');d.style.setProperty('--im','url('+t.img+')');if(t.pos)d.style.setProperty('--pos',t.pos)}d.querySelector('b span').textContent=t.n;d.querySelector('small').textContent=t.d;const h=d.querySelector('.h');const paint=()=>{h.textContent=fav[t.f]?'♥':'♡';h.classList.toggle('on',!!fav[t.f])};paint();
 h.onclick=async e=>{e.stopPropagation();fav[t.f]=!fav[t.f];paint();toast(fav[t.f]?'Agregado a favoritos':'Quitado de favoritos');if(cur==='yo')renderYo();if(!USER)return;if(fav[t.f])await SB.from('favoritos').upsert({usuario:USER.id,pista:t.f});else await SB.from('favoritos').delete().eq('usuario',USER.id).eq('pista',t.f)};d.onclick=()=>playAt(i);return d}
 T.forEach((t,i)=>$('list').append(row(t,i)));
 function setPlaying(p){playing=p;$('mp').textContent=p?'❚❚':'▶';$('play').textContent=p?'❚❚':'▶';mark()}
 AUD.onplay=()=>setPlaying(true);AUD.onpause=()=>setPlaying(false);AUD.onended=next;AUD.onerror=()=>{if(ti>=0)toast('No se pudo cargar el audio')};
 function mark(){document.querySelectorAll('.tr').forEach(d=>{d.classList.toggle('on',ti>=0&&d.dataset.f===T[ti].f);d.querySelector('.p').textContent=(ti>=0&&d.dataset.f===T[ti].f&&playing)?'❚❚':'▶'})}
-function playAt(i){ti=i;const t=T[i];$('mini').classList.add('on');$('mt').textContent=t.n;AUD.src=AU+t.f+'.mp3';AUD.play().catch(()=>{});mark();
-if('mediaSession' in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:t.n,artist:'Desde la Red',album:'Pulsos de Luz',artwork:[{src:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@8cfad65811dcf15e4b7250dbd1116e1c4bdc7209/dlr/tiles/icon-512.png',sizes:'512x512',type:'image/png'}]});navigator.mediaSession.setActionHandler('play',()=>AUD.play());navigator.mediaSession.setActionHandler('pause',()=>AUD.pause());navigator.mediaSession.setActionHandler('nexttrack',next);navigator.mediaSession.setActionHandler('previoustrack',()=>playAt((ti-1+T.length)%T.length))}catch(e){}}}
+function playAt(i){ti=i;const t=T[i];$('thumb').style.backgroundImage=t.img?'url('+t.img+')':'';$('mini').classList.add('on');$('mt').textContent=t.n;AUD.src=AU+t.f+'.mp3';AUD.play().catch(()=>{});mark();
+if('mediaSession' in navigator){try{navigator.mediaSession.metadata=new MediaMetadata({title:t.n,artist:'Desde la Red',album:'Pulsos de Luz',artwork:[{src:t.img||'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@8cfad65811dcf15e4b7250dbd1116e1c4bdc7209/dlr/tiles/icon-512.png',sizes:'512x512',type:t.img?'image/webp':'image/png'}]});navigator.mediaSession.setActionHandler('play',()=>AUD.play());navigator.mediaSession.setActionHandler('pause',()=>AUD.pause());navigator.mediaSession.setActionHandler('nexttrack',next);navigator.mediaSession.setActionHandler('previoustrack',()=>playAt((ti-1+T.length)%T.length))}catch(e){}}}
 function toggle(){if(ti<0)return playAt(shuf?Math.random()*T.length|0:0);AUD.paused?AUD.play():AUD.pause()}
 function next(){if(shuf){let j;do{j=Math.random()*T.length|0}while(j===ti&&T.length>1);playAt(j)}else playAt((ti+1)%T.length)}
 $('play').onclick=toggle;$('mp').onclick=toggle;$('mn').onclick=next;$('mx').onclick=()=>{AUD.pause();AUD.removeAttribute('src');ti=-1;$('mini').classList.remove('on');mark()};
