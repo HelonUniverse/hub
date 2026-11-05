@@ -134,3 +134,14 @@ nav button.on{background:linear-gradient(160deg,rgba(124,90,220,.6),rgba(30,30,9
 .albc{background:linear-gradient(90deg,rgba(6,16,50,.85) 0,rgba(6,16,50,.45) 60%,rgba(6,16,50,.15) 100%),url(https://cdn.jsdelivr.net/gh/HelonUniverse/hub@2cf942a3a4bf62dad11f6b8d4ec44e54345ab543/dlr/tiles/mantras-header.webp) 70% center/cover!important;border-color:rgba(234,203,136,.4)!important;min-height:92px}
 
 .tr.im{background:linear-gradient(90deg,rgba(6,16,50,.92) 0,rgba(6,16,50,.6) 55%,rgba(6,16,50,.2) 100%),var(--im) var(--pos,center)/cover!important;border-color:rgba(234,203,136,.4)!important;min-height:78px}
+
+.np{position:fixed;inset:0;z-index:70;background:radial-gradient(120% 70% at 50% 0,#1b3180 0,#07123a 60%,#030818 100%);transform:translateY(100%);transition:transform .32s cubic-bezier(.2,.8,.2,1);overflow:auto}.np.on{transform:none}
+.np-c{position:fixed;top:calc(10px + env(safe-area-inset-top));left:12px;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(6,22,44,.6);color:#fff;font-size:24px;line-height:1}
+.np-in{max-width:420px;margin:0 auto;padding:calc(64px + env(safe-area-inset-top)) 22px calc(36px + env(safe-area-inset-bottom));text-align:center}
+.np-img{width:100%;aspect-ratio:1;border-radius:26px;background:#0a1848 center/cover;border:1px solid rgba(234,203,136,.45);box-shadow:0 18px 60px rgba(0,0,0,.5),0 0 50px rgba(120,140,255,.25)}
+.np-hd{margin-top:20px}.np-hd h2{font:400 30px/1.1 'Instrument Serif',Georgia,serif;margin:0;color:#fff}.np-d{font-size:13px;color:#a9b8e8;margin-top:4px}
+.np-k{margin-top:22px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#f3dca0}.np-x{font:400 19px/1.45 'Instrument Serif',Georgia,serif;color:#e8eeff;margin:8px 0 0}
+.np-bar{height:6px;border-radius:6px;background:rgba(255,255,255,.18);margin-top:26px;cursor:pointer;padding:0;position:relative}.np-bar i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,#7fe3f5,#b79bff)}
+.np-tt{display:flex;justify-content:space-between;font-size:12px;color:#a9b8e8;margin-top:6px}
+.np-ct{display:flex;justify-content:center;align-items:center;gap:26px;margin-top:14px}.np-ct button{appearance:none;border:0;background:none;color:#eef9ff;font-size:26px;padding:8px}.np-ct .big{width:68px;height:68px;border-radius:50%;background:linear-gradient(160deg,#7fe3f5,#5b8cff);color:#04122e;font-size:26px}
+#mup{font-size:18px!important}

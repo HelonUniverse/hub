@@ -196,3 +196,30 @@ function renderAdminNatalia(){let box=document.getElementById('nat-admin');if(bo
  const first=host.querySelector('.card');host.insertBefore(box,first);pintaRec()}
 
 cargarNatalia();
+
+/* ===== Reproductor ampliado: imagen grande + explicación ===== */
+const EXPL={
+'kodoish-pulso-sagrado-desde-la-red':'Un pulso para la quietud profunda. Baja el ruido de la mente y te devuelve a tu centro, sin esfuerzo.',
+'waheguru-pulso-de-luz':'Trabaja la gratitud y el asombro. Abre espacio para sentirte parte de algo más grande que tu día a día.',
+'gayatri-mantra-pulso-de-luz':'Trabaja la claridad mental y la intuición. Ideal para empezar el día con enfoque y la mente despejada.',
+'om-namah-shivaya-pulso-de-serenidad':'Trabaja la calma interior y el soltar lo que ya no necesitas. Una transformación suave, desde adentro.',
+'om-gam-ganapataye-namaha-pulso-de-apertura':'Trabaja los comienzos. Ayuda a remover bloqueos, abrir camino y arrancar algo nuevo con confianza.',
+'om-hanumate-namaha-pulso-de-valenti-a':'Trabaja la fuerza, el coraje y la constancia. Para cuando algo se siente grande y necesitas sostenerte.',
+'hare-krishna-pulso-de-devocio-n':'Trabaja el corazón: la alegría, la ternura y la conexión con quienes amas y con lo que te inspira.',
+'om-tare-tuttare-ture-soha-desde-la-red':'Trabaja la protección y la compasión. Acompaña cuando sientes miedo, prisa o necesitas amabilidad contigo.',
+'om-namo-bhagavate-vasudevaya-desde-la-red':'Trabaja la confianza y el sostén. Te recuerda que no tienes que cargarlo todo sola.',
+'om-namo-narayanaya-desde-la-red':'Trabaja la paz y el equilibrio. Ayuda a mantener la calma aunque todo alrededor se mueva.',
+'nombres-sagrados-pulso-celestial-desde-la-red':'Una pieza larga para meditar. La repetición suave te lleva al silencio y a una sensación de amplitud.'};
+function fmt(s){s=Math.max(0,s|0);return (s/60|0)+':'+String(s%60).padStart(2,'0')}
+function prev(){if(AUD.currentTime>4)return AUD.currentTime=0;playAt((ti-1+T.length)%T.length)}
+let NP=null;
+function pintaNP(){if(!NP||ti<0)return;const t=T[ti];NP.querySelector('.np-img').style.backgroundImage='url('+(t.img||'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@84c5533e88f7bd244db79121a8a9f7400cd8c58d/dlr/tiles/cover-pulsos.webp')+')';NP.querySelector('h2').textContent=t.n;NP.querySelector('.np-d').textContent=t.d;NP.querySelector('.np-x').textContent=EXPL[t.f]||'';NP.querySelector('.np-pl').textContent=playing?'❚❚':'▶'}
+function tickNP(){if(!NP)return;const d=AUD.duration||0,c=AUD.currentTime||0;NP.querySelector('.np-bar i').style.width=(d?c/d*100:0)+'%';NP.querySelector('.np-t1').textContent=fmt(c);NP.querySelector('.np-t2').textContent=fmt(d)}
+function abrirNP(){if(ti<0||NP)return;const o=elx('div','np');o.innerHTML='<button class="np-c" aria-label="Cerrar">⌄</button><div class="np-in"><div class="np-img" role="img"></div><div class="np-hd"><h2></h2><div class="np-d"></div></div><div class="np-k">Lo que trabaja</div><p class="np-x"></p><div class="np-bar"><i></i></div><div class="np-tt"><span class="np-t1">0:00</span><span class="np-t2">0:00</span></div><div class="np-ct"><button class="np-pv" aria-label="Anterior">⏮</button><button class="np-pl big" aria-label="Reproducir">▶</button><button class="np-nx" aria-label="Siguiente">⏭</button></div></div>';
+ o.querySelector('.np-c').onclick=cerrarNP;o.querySelector('.np-pl').onclick=toggle;o.querySelector('.np-nx').onclick=next;o.querySelector('.np-pv').onclick=prev;
+ o.querySelector('.np-bar').onclick=e=>{const r=e.currentTarget.getBoundingClientRect();if(AUD.duration)AUD.currentTime=(e.clientX-r.left)/r.width*AUD.duration};
+ NP=o;document.body.append(o);pintaNP();tickNP();requestAnimationFrame(()=>o.classList.add('on'))}
+function cerrarNP(){if(!NP)return;const o=NP;NP=null;o.classList.remove('on');setTimeout(()=>o.remove(),280)}
+$('mi').onclick=abrirNP;$('thumb').onclick=abrirNP;
+(()=>{const b=elx('button','','⌃');b.id='mup';b.setAttribute('aria-label','Ampliar');b.onclick=abrirNP;$('mini').insertBefore(b,$('mp'))})();
+AUD.addEventListener('timeupdate',tickNP);AUD.addEventListener('loadedmetadata',tickNP);AUD.addEventListener('play',pintaNP);AUD.addEventListener('pause',pintaNP);AUD.addEventListener('loadstart',()=>{pintaNP();tickNP()});
