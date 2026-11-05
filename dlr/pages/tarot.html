@@ -264,7 +264,7 @@ function run(){const M=MODES[mode],out=$('out'),n=M.n;out.textContent='';
 }
 function reveal(ids,revs,slots,row,q){const M=MODES[mode],out=$('out');
  const items=ids.map((id,i)=>({c:DECK[id],rev:revs[i],pos:M.pos?M.pos[i][0]:'',hint:M.pos?M.pos[i][1]:''}));
- const rd=reading(items);rd.prepend(buildAI(items,q));rd.hidden=true;out.append(rd);
+ const rd=reading(items);rd.prepend(buildAI(items,q));{const tx=(q?'Pregunta: '+q+'. ':'')+MODES[mode].t+': '+items.map(it=>(it.pos?it.pos+' — ':'')+it.c.name+(it.rev?' (invertida)':'')+' ('+it.c.kw+')').join('; ')+'.';const gb=document.createElement('button');gb.className='btn ghost';gb.textContent='♡ Guardar en mi diario';gb.onclick=()=>{if(window.parent===window){gb.textContent='Ábrelo desde la app para guardar';return}parent.postMessage({dlr:'diario',texto:tx.slice(0,1800)},location.origin);gb.textContent='✓ Guardado en tu diario';gb.disabled=true};rd.append(gb)}rd.hidden=true;out.append(rd);
  $('again').hidden=false;$('again').textContent=mode==='dia'?'Elegir otra carta':'Barajar de nuevo';
  const hint=document.createElement('p');hint.className='note';hint.style.margin='12px 0 0';hint.textContent=M.n===1?'Toca la carta para voltearla.':'Toca cada carta para voltearla, o ';
  if(M.n>1){const a=document.createElement('a');a.href='#';a.style.color='var(--cy)';a.textContent='voltearlas todas';a.onclick=e=>{e.preventDefault();slots.forEach((s,i)=>setTimeout(s._flip,i*350));done()};hint.append(a)}

@@ -1,0 +1,169 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#06162c"><title>Carta de la semana · Desde la Red</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>:root{--cy:#7fe3f5;--gold:#eacb88;--mut:#a9c4d2;--line:rgba(127,227,245,.42)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:radial-gradient(ellipse at 50% -10%,#1d4f7c 0%,#0a2140 42%,#050d1f 90%) fixed;color:#eef9ff;font:15px/1.5 'Albert Sans',system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+button,input{font:inherit;color:inherit}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main{position:relative;z-index:1;max-width:620px;margin:auto;padding:calc(14px + env(safe-area-inset-top)) 18px 60px}
+.hero{text-align:center;padding:6px 0 10px}
+.eb{font-size:11px;letter-spacing:.24em;color:#8fd6e6;text-transform:uppercase}
+h1{font:400 clamp(34px,10vw,46px)/1.05 'Instrument Serif',Georgia,serif;margin:6px 0 4px}
+h1 em{color:var(--cy);font-style:italic}
+.lead{color:var(--mut);font-size:14px;margin:0 auto;max-width:420px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 4px}
+.tab{appearance:none;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:10px 4px;font-size:13px;cursor:pointer;line-height:1.2}
+.tab.on{background:rgba(127,227,245,.16);box-shadow:0 0 14px rgba(80,220,255,.35)}
+.card{border-radius:22px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(21,76,104,.55),rgba(8,32,54,.75));box-shadow:0 12px 34px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06);padding:18px;margin-top:14px}
+h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
+.in{width:100%;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:13px 14px;font-size:16px;outline:0;margin-top:10px}
+.in:focus{box-shadow:0 0 14px rgba(80,220,255,.35)}
+.btn{appearance:none;border:0;border-radius:999px;padding:13px 16px;background:linear-gradient(135deg,#8ff0ff,#1fb5dc);color:#06162c;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 6px 18px rgba(40,200,240,.35);width:100%;margin-top:12px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
+.n{appearance:none;border:1px solid var(--line);border-radius:16px;background:rgba(6,22,44,.55);padding:14px 4px;cursor:pointer;font:400 26px/1 'Instrument Serif',serif;color:#f3e2b8;letter-spacing:.04em}
+.n.on{background:rgba(234,203,136,.16);border-color:rgba(234,203,136,.7);box-shadow:0 0 16px rgba(234,203,136,.3)}
+.res{margin-top:16px;text-align:center;animation:pop .5s cubic-bezier(.3,.8,.3,1)}
+@keyframes pop{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.big{font:400 76px/1 'Instrument Serif',serif;color:var(--gold);text-shadow:0 0 28px rgba(234,203,136,.55);letter-spacing:.06em}
+.res h3{font:400 26px/1.1 'Instrument Serif',serif;color:#f3e2b8;margin:6px 0 2px}
+.res .kw{color:var(--cy);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
+.res p{margin:10px 0 0;text-align:left;color:#dff1f7;font-size:14.5px;line-height:1.65}
+.res .pr{border:1px solid rgba(234,203,136,.35);border-radius:16px;padding:12px 14px;background:rgba(234,203,136,.07);margin-top:14px;text-align:left;font-size:14px;color:var(--gold)}
+.note{color:#8fa9b8;font-size:12px;text-align:center;margin:18px 6px 0}
+[hidden]{display:none!important}
+
+.btn.ghost{background:none;color:var(--cy);border:1px solid var(--line);box-shadow:none;font-weight:500}
+.btn[disabled]{opacity:.7}
+.cardimg{width:min(62%,230px);aspect-ratio:2/3;margin:6px auto 0;border-radius:14px;border:1px solid rgba(234,203,136,.55);box-shadow:0 10px 28px rgba(0,0,0,.55);overflow:hidden;background:radial-gradient(circle at 50% 40%,#1b5e86,#0a2140 70%);display:grid;place-items:center;font:400 22px/1.15 'Instrument Serif',serif;color:#f3e2b8;padding:10px;text-align:center}
+.cardimg img{width:100%;height:100%;object-fit:cover;display:block}
+.sub2{text-align:center;color:var(--mut);font-size:13px}
+.nm{font:400 30px/1.1 'Instrument Serif',serif;color:#f3e2b8;text-align:center;margin-top:14px}.kw{color:var(--gold);text-align:center;font-size:13px;margin-top:2px}
+.tx{margin:12px 0 0;color:#dff1f7;font-size:14.5px;line-height:1.65}
+.pr{border:1px solid rgba(234,203,136,.35);border-radius:16px;padding:12px 14px;background:rgba(234,203,136,.07);margin:14px 0 12px;font-size:14px;color:var(--gold)}</style></head><body><canvas id="bg"></canvas><main>
+<div class="hero"><div class="eb">Cada semana</div><h1>Carta de <em>la semana</em></h1><p class="lead">Una carta que te acompaña de lunes a domingo.</p></div>
+<div class="card"><div class="sub2" id="wk"></div><div class="cardimg" id="ci"></div><div class="nm" id="nm"></div><div class="kw" id="kw"></div><p class="tx" id="tx"></p><div class="pr" id="pr"></div><div id="gd"></div></div>
+<p class="note">La carta cambia cada lunes y es la misma para todas durante la semana.</p>
+</main>
+<script>
+const $=i=>document.getElementById(i);
+function guardar(btn,texto){if(window.parent===window){btn.textContent='Ábrelo desde la app para guardar';return}parent.postMessage({dlr:'diario',texto:String(texto).slice(0,1800)},location.origin);btn.textContent='✓ Guardado en tu diario';btn.disabled=true}
+function gbtn(texto){const b=document.createElement('button');b.className='btn ghost';b.textContent='♡ Guardar en mi diario';b.onclick=()=>guardar(b,texto);return b}
+const MAY=[
+['El Loco','Inicio y confianza','Un comienzo nuevo te llama. Da el paso con ligereza y curiosidad, aunque no tengas todo claro.','Imprudencia o miedo a empezar. Mira dónde vas antes de saltar, sin dejar de moverte.'],
+['El Mago','Voluntad y recursos','Ya tienes lo que necesitas. Es momento de actuar y dar forma a tu idea.','Energía dispersa o dudas sobre tu valor. Elige una sola cosa y enfócate.'],
+['La Sacerdotisa','Intuición y silencio','Escucha tu voz interior. La respuesta llega cuando haces silencio.','Ignoras lo que sientes. Vuelve a tu cuerpo y a tu calma.'],
+['La Emperatriz','Abundancia y cuidado','Tiempo de crear, nutrir y recibir. Lo que cuidas florece.','Descuidas tus propias necesidades o te sobreexiges cuidando a otros.'],
+['El Emperador','Estructura y liderazgo','Pon orden y límites claros. Una base firme te da libertad.','Rigidez o control en exceso. Suaviza sin perder tu centro.'],
+['El Hierofante','Tradición y guía','Aprende de quien sabe y de lo que ya funcionó. Hay sabiduría en lo conocido.','Cuestiona reglas que ya no te sirven. Busca tu propia manera.'],
+['Los Enamorados','Elección y unión','Una decisión del corazón. Elige según tus valores, con honestidad.','Desajuste entre lo que dices y lo que sientes. Revisa lo que de verdad quieres.'],
+['El Carro','Dirección y avance','Avanzas con determinación. Si sostienes el rumbo, llegas.','Pierdes el rumbo o la fuerza se dispersa. Retoma las riendas.'],
+['La Fuerza','Valor sereno','Tu fuerza es la calma y la ternura, no la presión.','Inseguridad o agotamiento. Recuerda tu valor y descansa.'],
+['El Ermitaño','Búsqueda interior','Un tiempo a solas para ver con claridad. Lo que buscas está dentro.','Aislamiento excesivo. Permítete compartir lo que descubres.'],
+['La Rueda de la Fortuna','Ciclos y cambio','Todo se mueve. Llega un giro; acompáñalo con confianza.','Resistencia al cambio. Soltar lo que ya terminó abre el siguiente ciclo.'],
+['La Justicia','Equilibrio y verdad','Actúa con honestidad y observa las consecuencias. Se cosecha lo sembrado.','Evasión de responsabilidades. Mira los hechos tal como son.'],
+['El Colgado','Pausa y otra mirada','Detente y cambia de perspectiva. La espera tiene un sentido.','Estancamiento por miedo a soltar. Decide qué estás dispuesta a dejar.'],
+['La Muerte','Cierre y renovación','Algo termina para que algo nuevo nazca. Deja ir con gratitud.','Te aferras a lo que ya cumplió su ciclo. Permite el cambio.'],
+['La Templanza','Armonía y paciencia','Mezcla con medida. El equilibrio llega poco a poco.','Exceso o desajuste. Vuelve a tu ritmo.'],
+['El Diablo','Ataduras y deseos','Mira qué te ata: hábitos, miedos, apegos. Verlo ya te libera.','Te sueltas de una atadura. Cuida no cambiarla por otra.'],
+['La Torre','Ruptura que libera','Cae lo que no tenía base. Es sacudida, y también despeje.','Evitas un cambio necesario. Mejor derribar con consciencia que esperar el golpe.'],
+['La Estrella','Esperanza y sanación','Calma después de la tormenta. Confía: te estás renovando.','Desánimo. Vuelve a lo pequeño que te da luz.'],
+['La Luna','Misterio e intuición','No todo se ve con claridad. Atiende tus sueños y no decidas desde el miedo.','La niebla se despeja. Lo oculto sale a la luz.'],
+['El Sol','Alegría y claridad','Vitalidad, éxito y verdad a plena luz. Disfruta lo logrado.','Alegría contenida o expectativas altas. El brillo sigue ahí.'],
+['El Juicio','Llamado y renacer','Un llamado a ser más tú. Haz las paces con el pasado y avanza.','Duda o autocrítica. Perdónate para poder seguir.'],
+['El Mundo','Plenitud y cierre','Un ciclo se completa. Celebra lo recorrido; ya estás lista para otro.','Falta un último paso. Termina lo pendiente con calma.']];
+const PAL=['Fuego','Agua','Aire','Tierra'];
+const SU=[
+{n:'Bastos',el:'fuego',c:'#ffb86b',t:'Acción, impulso y creatividad'},
+{n:'Copas',el:'agua',c:'#7fe3f5',t:'Emociones, vínculos y sensibilidad'},
+{n:'Espadas',el:'aire',c:'#b9c8ff',t:'Mente, palabra y decisiones'},
+{n:'Oros',el:'tierra',c:'#eacb88',t:'Cuerpo, trabajo y recursos'}];
+const RK=['As','Dos','Tres','Cuatro','Cinco','Seis','Siete','Ocho','Nueve','Diez','Sota','Caballero','Reina','Rey'];
+/* [palabra, derecha, invertida] por palo (Bastos, Copas, Espadas, Oros) y rango */
+const MIN=[[
+['Chispa','Nace una idea con mucha energía. Enciende el proyecto.','Ganas sin dirección. Falta combustible o claridad.'],
+['Plan','Decides entre quedarte o expandirte. Planea con visión.','Miedo a salir de lo conocido. Tu plan necesita un primer paso.'],
+['Horizonte','Tus planes empiezan a dar frutos. Mira lejos.','Retrasos. Revisa si el camino es el correcto.'],
+['Celebración','Hogar, logro y alegría compartida. Hay base firme.','Inestabilidad o tensión en casa. Cuida los cimientos.'],
+['Choque','Competencia y roces. Aprovecha el desacuerdo para afinar ideas.','Evitas el conflicto. Habla con claridad y tranquilidad.'],
+['Victoria','Reconocimiento y logro. Tu esfuerzo se ve.','Dudas sobre tu éxito. No compares tu paso con el de otros.'],
+['Defensa','Defiendes tu postura. Sostén lo tuyo con firmeza.','Te sientes abrumada. Pide apoyo.'],
+['Movimiento','Todo se acelera. Llegan noticias y avances.','Prisa que desordena. Respira antes de actuar.'],
+['Resistencia','Cansancio, pero casi llegas. No abandones ahora.','Agotamiento. Descansar también es avanzar.'],
+['Carga','Llevas demasiado. Delega y suelta lo que no es tuyo.','Te liberas de un peso. Comparte la carga.'],
+['Explorador','Noticia o idea nueva. Curiosidad y ganas de probar.','Entusiasmo sin constancia. Termina lo que empiezas.'],
+['Aventura','Pasión y acción rápida. Cuida no dejarte llevar por el impulso.','Impaciencia. Frena un momento y elige tu rumbo.'],
+['Carisma','Calidez, seguridad y magnetismo. Inspiras a otros.','Celos o inseguridad. Vuelve a confiar en tu luz.'],
+['Visión','Liderazgo creativo. Convierte la visión en un plan real.','Autoritarismo o expectativas muy altas. Escucha más.']],
+[
+['Apertura','El corazón se abre: amor, intuición, un regalo emocional.','Emoción bloqueada. Permítete sentir.'],
+['Unión','Conexión recíproca y respeto. Un vínculo equilibrado.','Desajuste en una relación. Habla desde el corazón.'],
+['Alegría','Celebración con tus personas queridas. Disfruta.','Exceso o chisme. Cuida con quién compartes.'],
+['Pausa','Apatía o desinterés. Mira lo que se te ofrece antes de rechazarlo.','Vuelve el interés. Algo nuevo despierta.'],
+['Duelo','Pérdida y tristeza. Aún quedan copas en pie: mira lo que sí tienes.','Empiezas a sanar y a mirar adelante.'],
+['Recuerdo','Nostalgia, infancia y ternura. Un recuerdo trae calma.','Vivir en el pasado. Regresa al presente.'],
+['Sueños','Muchas opciones y fantasías. Elige con los pies en la tierra.','Claridad: sabes lo que es real y lo que no.'],
+['Partida','Dejas atrás lo que ya no llena. Buscas algo más profundo.','Miedo a irte o a quedarte. Decide con honestidad.'],
+['Deseo cumplido','Satisfacción y bienestar. Lo que pediste llega.','Satisfacción superficial. Pregúntate qué falta de verdad.'],
+['Plenitud','Armonía en la familia y el corazón. Bienestar compartido.','Desajuste en el hogar. Conversa con ternura.'],
+['Mensajero','Noticia afectuosa, creatividad e inspiración.','Inmadurez emocional o bloqueo creativo.'],
+['Romántico','Propuesta, encanto y sensibilidad. Sigue tu corazón.','Promesas sin hechos. Mira la coherencia.'],
+['Empatía','Compasión e intuición profunda. Cuida tu sensibilidad.','Te absorbes las emociones ajenas. Pon límites.'],
+['Calma','Equilibrio emocional y sabiduría afectiva.','Reprimes lo que sientes. Exprésalo con calma.']],
+[
+['Claridad','Verdad que corta la confusión. Una idea nítida.','Mente nublada. Espera antes de decidir.'],
+['Tregua','Decisión pendiente. Cerrar los ojos no la resuelve.','Sale a la luz lo que evitabas. Elige.'],
+['Dolor','Tristeza o verdad dura que duele. Atraviésala con ternura.','Sanación. Dejas ir el dolor.'],
+['Descanso','Pausa para recuperar la mente. Necesitas calma.','Inquietud. Vuelve a descansar de verdad.'],
+['Conflicto','Una pelea que deja un costo. Elige tus batallas.','Reconciliación o cansancio de pelear.'],
+['Travesía','Tránsito hacia aguas más tranquilas. Te alejas de lo difícil.','Resistencia a avanzar. Suelta el lastre.'],
+['Estrategia','Ingenio y discreción. Cuida que no sea evasión.','Te sinceras. Dices la verdad.'],
+['Bloqueo','Te sientes atrapada. La salida está en cambiar de mirada.','Te liberas. Encuentras una salida.'],
+['Insomnio','Ansiedad y preocupaciones nocturnas. Habla de ello.','La angustia cede. Pide apoyo.'],
+['Cierre','Un final doloroso que ya tocó fondo. Desde aquí se levanta.','Te niegas a soltar. Deja que termine.'],
+['Observadora','Curiosidad, mente vivaz y deseo de saber.','Palabras hirientes o cotilleo. Piensa antes de hablar.'],
+['Decisión','Acción directa y mente rápida. Cuida la prisa.','Impulsividad. Escucha antes de embestir.'],
+['Lucidez','Honestidad y juicio claro. Experiencia que enseña.','Frialdad o dureza. Suaviza la verdad.'],
+['Autoridad','Mente justa y firme. Decide con lógica y ética.','Abuso de poder o rigidez mental.']],
+[
+['Semilla','Oportunidad material: trabajo, salud, un nuevo comienzo.','Oportunidad perdida o mal planeada. Revisa los detalles.'],
+['Equilibrio','Manejas varias cosas a la vez. Flexibilidad.','Desorden de tiempos o dinero. Prioriza.'],
+['Oficio','Trabajo en equipo y maestría. Tu esfuerzo se nota.','Falta de coordinación. Pide y da claridad.'],
+['Seguridad','Cuidas lo que tienes. Estabilidad, a veces con apego.','Aferrarte demasiado. Suelta un poco el control.'],
+['Escasez','Dificultad económica o sensación de falta. Pide ayuda.','Mejora gradual. Vuelve la esperanza.'],
+['Generosidad','Dar y recibir en equilibrio. Compartir.','Desequilibrio al dar o recibir. Cuida los acuerdos.'],
+['Paciencia','Esperas el fruto de tu trabajo. Evalúa y sigue.','Impaciencia o esfuerzo mal enfocado.'],
+['Práctica','Aprendizaje y dedicación a tu oficio. Mejora paso a paso.','Perfeccionismo o descuido. Busca el punto medio.'],
+['Autonomía','Logro propio, disfrute y confort ganados con esfuerzo.','Dependencia o exceso de trabajo sin disfrutar.'],
+['Legado','Prosperidad duradera, familia y raíces.','Tensiones familiares o económicas. Revisa acuerdos.'],
+['Aprendiz','Estudio y oportunidad práctica. Empieza con paso firme.','Falta de constancia. Baja a lo concreto.'],
+['Constancia','Trabajo firme y confiable. Avanza sin prisa.','Estancamiento o terquedad. Muévete un poco.'],
+['Nutrición','Generosidad práctica, hogar y cuidado.','Descuido propio por cuidar a todos.'],
+['Abundancia','Prosperidad estable y buen criterio con los recursos.','Materialismo o miedo a perder. Recuerda lo esencial.']]];
+const POS3=[['Pasado','Lo que te trajo hasta aquí'],['Presente','Lo que vives ahora'],['Futuro','Hacia dónde te llevas']];
+const CELTA=[['Tu momento','El corazón del asunto'],['El desafío','Lo que cruza tu camino'],['La raíz','Lo que sostiene la situación'],['El pasado','Lo que ya se va'],['La meta','Lo que buscas o podría ser'],['Lo próximo','Lo que se acerca'],['Tú','Tu actitud ante esto'],['Tu entorno','Lo que te rodea e influye'],['Esperanzas y miedos','Lo que deseas y temes'],['El desenlace','Hacia dónde apunta todo']];
+const IMG='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@19833ce1f7c60610fe77e5d6fe969264e18f36c2/dlr/tarot/';
+const ROM=['0','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV','XVI','XVII','XVIII','XIX','XX','XXI'];
+const DECK=[];
+MAY.forEach((c,i)=>DECK.push({id:i,name:c[0],kw:c[1],up:c[2],rv:c[3],mark:ROM[i],col:'#eacb88',sub:'Arcano mayor'}));
+SU.forEach((s,si)=>RK.forEach((r,ri)=>{const m=MIN[si][ri];DECK.push({id:22+si*14+ri,name:r+' de '+s.n,kw:m[0],up:m[1],rv:m[2],mark:ri<10?String(ri+1):['S','C','R','K'][ri-10],col:s.c,sub:s.n+' · '+s.el})}));
+
+
+function rnd(n){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]%n}
+
+function monday(d){const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());const w=(x.getDay()+6)%7;x.setDate(x.getDate()-w);return x}
+const now=new Date(),mo=monday(now),su=new Date(mo);su.setDate(su.getDate()+6);
+const wn=Math.floor(Date.UTC(mo.getFullYear(),mo.getMonth(),mo.getDate())/604800000);const c=DECK[(Math.imul(wn,2654435761)>>>0)%78];
+const fmt=x=>x.toLocaleDateString('es',{day:'numeric',month:'short'});
+$('wk').textContent='Semana del '+fmt(mo)+' al '+fmt(su);
+const ci=$('ci');ci.textContent=c.name;const im=new Image();im.alt=c.name;im.onload=()=>{ci.textContent='';ci.style.padding='0';ci.append(im)};im.src=IMG+String(c.id).padStart(2,'0')+'.webp';
+$('nm').textContent=c.name;$('kw').textContent=c.kw;$('tx').textContent=c.up;
+const TIPS=['Elige un momento cada día para recordar esta carta.','Escribe cómo se ve esta carta en tu semana.','Al final de la semana, anota qué cambió.'];
+$('pr').textContent='Para esta semana: '+TIPS[wn%3];
+$('gd').append(gbtn('Carta de la semana (del '+fmt(mo)+' al '+fmt(su)+'): '+c.name+' — '+c.kw+'. '+c.up));
+(function(){const c=document.getElementById('bg'),x=c.getContext('2d');let W,H,d,S=[],raf,last=0;const R=matchMedia('(prefers-reduced-motion: reduce)');
+function rs(){d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);const n=Math.min(70,Math.max(24,W*H/16000|0));S=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.14,vy:(Math.random()-.5)*.14,r:.6+Math.random()*1,p:Math.random()*6.28}));dr(0)}
+function dr(t){x.clearRect(0,0,W,H);const D=Math.min(140,Math.max(90,W*.17));for(let i=0;i<S.length;i++){const a=S[i];if(!R.matches){a.x=(a.x+a.vx+W)%W;a.y=(a.y+a.vy+H)%H}for(let j=i+1;j<S.length;j++){const b=S[j],q=Math.hypot(a.x-b.x,a.y-b.y);if(q<D){x.strokeStyle='rgba(115,222,239,'+(.2*(1-q/D)).toFixed(3)+')';x.lineWidth=.6;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}x.fillStyle='rgba(178,242,251,'+(.4+.25*Math.sin(t*.0007+a.p)).toFixed(3)+')';x.beginPath();x.arc(a.x,a.y,a.r,0,6.283);x.fill()}}
+function f(t){if(t-last>30){dr(t);last=t}raf=requestAnimationFrame(f)}
+addEventListener('resize',rs,{passive:true});rs();if(!R.matches)raf=requestAnimationFrame(f)})();
+
+</script></body></html>

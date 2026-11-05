@@ -11,14 +11,15 @@ main{position:relative;z-index:1;max-width:620px;margin:auto;padding:calc(14px +
 h1{font:400 clamp(34px,10vw,46px)/1.05 'Instrument Serif',Georgia,serif;margin:6px 0 4px}
 h1 em{color:var(--cy);font-style:italic}
 .lead{color:var(--mut);font-size:14px;margin:0 auto;max-width:420px}
-.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 4px}
-.tab{appearance:none;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:10px 4px;font-size:13px;cursor:pointer;line-height:1.2}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:14px 0 4px}
+.tab{appearance:none;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:10px 2px;font-size:12px;cursor:pointer;line-height:1.2}
 .tab.on{background:rgba(127,227,245,.16);box-shadow:0 0 14px rgba(80,220,255,.35)}
 .card{border-radius:22px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(21,76,104,.55),rgba(8,32,54,.75));box-shadow:0 12px 34px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06);padding:18px;margin-top:14px}
 h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 .in{width:100%;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:13px 14px;font-size:16px;outline:0;margin-top:10px}
 .in:focus{box-shadow:0 0 14px rgba(80,220,255,.35)}
 .btn{appearance:none;border:0;border-radius:999px;padding:13px 16px;background:linear-gradient(135deg,#8ff0ff,#1fb5dc);color:#06162c;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 6px 18px rgba(40,200,240,.35);width:100%;margin-top:12px}
+.btn.ghost{background:none;color:var(--cy);border:1px solid var(--line);box-shadow:none;font-weight:500}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
 .n{appearance:none;border:1px solid var(--line);border-radius:16px;background:rgba(6,22,44,.55);padding:14px 4px;cursor:pointer;font:400 26px/1 'Instrument Serif',serif;color:#f3e2b8;letter-spacing:.04em}
 .n.on{background:rgba(234,203,136,.16);border-color:rgba(234,203,136,.7);box-shadow:0 0 16px rgba(234,203,136,.3)}
@@ -33,10 +34,11 @@ h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 [hidden]{display:none!important}
 </style></head><body><canvas id="bg"></canvas><main>
 <div class="hero"><div class="eb">Oráculo</div><h1>Números <em>angelicales</em></h1><p class="lead">Los números que se repiten en tu camino traen un mensaje. Descubre qué te quieren decir.</p></div>
-<div class="tabs"><button class="tab on" data-m="rep">Lo que veo</button><button class="tab" data-m="otro">Otro número</button><button class="tab" data-m="camino">Mi camino</button></div>
+<div class="tabs"><button class="tab on" data-m="rep">Lo que veo</button><button class="tab" data-m="otro">Otro número</button><button class="tab" data-m="nombre">Mi nombre</button><button class="tab" data-m="camino">Mi camino</button></div>
 <div class="card">
  <section id="m-rep"><h2>Números que se repiten</h2><p class="lead" style="margin:0">Toca el que has visto últimamente.</p><div class="grid" id="g"></div></section>
  <section id="m-otro" hidden><h2>Escribe tu número</h2><p class="lead" style="margin:0">Una hora, una placa, un total… cualquier número que te llame la atención.</p><input class="in" id="inum" inputmode="numeric" maxlength="12" placeholder="Por ejemplo 1234 o 11:11"><button class="btn" id="bnum">Ver su mensaje</button></section>
+ <section id="m-nombre" hidden><h2>Los números de tu nombre</h2><p class="lead" style="margin:0">Escribe tu nombre completo, como aparece al nacer.</p><input class="in" id="inom" maxlength="60" placeholder="Nombre y apellidos"><button class="btn" id="bnom">Descubrir mis números</button></section>
  <section id="m-camino" hidden><h2>Tu número de camino</h2><p class="lead" style="margin:0">Con tu fecha de nacimiento descubres el número que guía tu vida.</p><input class="in" id="ifec" type="date"><button class="btn" id="bfec">Descubrir mi número</button></section>
  <div id="out"></div>
 </div>
@@ -44,6 +46,8 @@ h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 </main>
 <script>
 const $=i=>document.getElementById(i);
+function guardar(btn,texto){if(window.parent===window){btn.textContent='Ábrelo desde la app para guardar';return}parent.postMessage({dlr:'diario',texto:String(texto).slice(0,1800)},location.origin);btn.textContent='✓ Guardado en tu diario';btn.disabled=true}
+function gbtn(texto){const b=document.createElement('button');b.className='btn ghost';b.textContent='♡ Guardar en mi diario';b.onclick=()=>guardar(b,texto);return b}
 const R={
 0:['Ciclo y todo es posible','Un punto de partida','Estás en un umbral. Se cierra una etapa y todo vuelve a ser posible. Confía en el proceso y en lo que empieza.','Respira hondo y pregúntate qué quieres comenzar de cero.'],
 1:['Inicio y voluntad','Nuevos comienzos','Algo nuevo nace y tus pensamientos tienen fuerza. Lo que enfocas ahora se vuelve realidad: elige con cuidado y con ganas.','Escribe una intención clara para hoy y vívela con confianza.'],
@@ -77,13 +81,21 @@ const LIST=['000','111','222','333','444','555','666','777','888','999','1010','
 function root(s){let n=String(s).replace(/\D/g,'');if(!n)return null;let t=0;for(const c of n)t+=+c;while(t>9&&![11,22,33].includes(t)){t=String(t).split('').reduce((a,c)=>a+ +c,0)}return t}
 function show(big,key,title,body,extra){const o=$('out');o.textContent='';const w=document.createElement('div');w.className='res';
  const add=(t,c,tag)=>{const e=document.createElement(tag||'div');if(c)e.className=c;e.textContent=t;w.append(e);return e};
- add(big,'big');add(R[key][1],'kw');add(title,'',  'h3');add(body,'','p');if(extra)add(extra,'','p');add('Para practicar: '+R[key][3],'pr');o.append(w);w.scrollIntoView({behavior:'smooth',block:'nearest'})}
+ add(big,'big');add(R[key][1],'kw');add(title,'',  'h3');add(body,'','p');if(extra)add(extra,'','p');add('Para practicar: '+R[key][3],'pr');w.append(gbtn(big+' · '+title+'. '+body+' Para practicar: '+R[key][3]));o.append(w);w.scrollIntoView({behavior:'smooth',block:'nearest'})}
 const g=$('g');LIST.forEach(k=>{const b=document.createElement('button');b.className='n';b.textContent=k;b.onclick=()=>{g.querySelectorAll('.n').forEach(x=>x.classList.remove('on'));b.classList.add('on');const s=SP[k];show(k,s[1],s[2],s[3],'Número raíz '+s[1]+': '+R[s[1]][0]+'. '+R[s[1]][2])};g.append(b)});
 $('bnum').onclick=()=>{const v=$('inum').value.trim(),d=v.replace(/\D/g,'');if(!d)return;if(SP[d]){const s=SP[d];return show(d,s[1],s[2],s[3],'Número raíz '+s[1]+': '+R[s[1]][0]+'. '+R[s[1]][2])}
  const r=root(d),k=R[r];show(v,r,k[0],'Sumando sus cifras llegas al '+r+'. '+k[2])};
 $('inum').onkeydown=e=>{if(e.key==='Enter')$('bnum').onclick()};
+
+const TB={A:1,J:1,S:1,B:2,K:2,T:2,C:3,L:3,U:3,D:4,M:4,V:4,E:5,N:5,W:5,F:6,O:6,X:6,G:7,P:7,Y:7,H:8,Q:8,Z:8,I:9,R:9};
+function red(t){while(t>9&&![11,22,33].includes(t))t=String(t).split('').reduce((a,c)=>a+ +c,0);return t}
+$('bnom').onclick=()=>{const raw=$('inom').value.trim();if(!raw)return;const n=raw.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/[^A-Z]/g,'');if(!n)return;
+ let all=0,vo=0,co=0;for(const c of n){const v=TB[c];all+=v;if('AEIOU'.includes(c))vo+=v;else co+=v}
+ const e=red(all),a=red(vo),p=red(co),k=R[e];
+ show(String(e),e,'Número de expresión: '+k[0],'Sumando todas las letras de tu nombre llegas al '+e+'. '+k[2],'Tu alma (lo que deseas por dentro) es el '+red(vo)+': '+R[a][0]+'. Tu personalidad (cómo te ven) es el '+p+': '+R[p][0]+'.')};
+$('inom').onkeydown=e=>{if(e.key==='Enter')$('bnom').onclick()};
 $('bfec').onclick=()=>{const v=$('ifec').value;if(!v)return;const r=root(v),k=R[r];show(String(r),r,k[0],'Tu número de camino es el '+r+'. '+k[2])};
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));['rep','otro','camino'].forEach(m=>$('m-'+m).hidden=m!==b.dataset.m);$('out').textContent=''});
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));['rep','otro','nombre','camino'].forEach(m=>$('m-'+m).hidden=m!==b.dataset.m);$('out').textContent=''});
 (function(){const c=document.getElementById('bg'),x=c.getContext('2d');let W,H,d,S=[],raf,last=0;const R=matchMedia('(prefers-reduced-motion: reduce)');
 function rs(){d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);const n=Math.min(70,Math.max(24,W*H/16000|0));S=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.14,vy:(Math.random()-.5)*.14,r:.6+Math.random()*1,p:Math.random()*6.28}));dr(0)}
 function dr(t){x.clearRect(0,0,W,H);const D=Math.min(140,Math.max(90,W*.17));for(let i=0;i<S.length;i++){const a=S[i];if(!R.matches){a.x=(a.x+a.vx+W)%W;a.y=(a.y+a.vy+H)%H}for(let j=i+1;j<S.length;j++){const b=S[j],q=Math.hypot(a.x-b.x,a.y-b.y);if(q<D){x.strokeStyle='rgba(115,222,239,'+(.2*(1-q/D)).toFixed(3)+')';x.lineWidth=.6;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}x.fillStyle='rgba(178,242,251,'+(.4+.25*Math.sin(t*.0007+a.p)).toFixed(3)+')';x.beginPath();x.arc(a.x,a.y,a.r,0,6.283);x.fill()}}
