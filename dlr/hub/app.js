@@ -16,8 +16,8 @@ const A=[
 {id:'afirmacion',g:'oraculos',n:'Afirmación del día',u:API+'/api/a/afirmacion/__dlr/afirmacion.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/afirmacion.webp'},
 {id:'suenos',g:'oraculos',n:'Intérprete de sueños',u:API+'/api/a/suenos/__dlr/suenos.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@6387e0fc5da67d8fb5443e22e00d17ff86bd81a3/dlr/tiles/suenos.webp'},
 {id:'geometria',g:'oraculos',n:'Geometría sagrada',u:API+'/api/a/geometria/__dlr/geometria.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@e3ad06a1e907f1d87409738ecc22d945c20a473f/dlr/tiles/geometria.webp'},
-{id:'dones',g:'estudio',n:'Despierta tus dones',u:API+'/api/a/dones'},
-{id:'dharma',g:'estudio',n:'Camino del Dharma',u:API+'/api/a/dharma'},
+{id:'dones',g:'estudio',n:'Despierta tus dones',u:API+'/api/a/dones',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@e15d7bde2a248540d677ec57d9beb19448ff4b28/dlr/tiles/dones-tile.webp'},
+{id:'dharma',g:'estudio',n:'Camino del Dharma',u:API+'/api/a/dharma',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@e15d7bde2a248540d677ec57d9beb19448ff4b28/dlr/tiles/dharma-tile.webp'},
 {id:'biodec',g:'estudio',n:'Biodecodificación',u:API+'/api/a/biodec',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@3b1c52844e6b424c0bb804f7aefa54ff0b3d4113/dlr/tiles/biodec-tile.webp'},
 {id:'musica',g:'estudio',n:'Música',d:'Álbumes para conectar contigo',tab:'musica',wide:1,img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@84c5533e88f7bd244db79121a8a9f7400cd8c58d/dlr/tiles/musica.webp'}];
 const SB=supabase.createClient('https://xjmgtzlezsmpxfnyjrli.supabase.co','sb_publishable_kp75fFYItrQgpr47V5xpMQ_l-_AzCSz');
