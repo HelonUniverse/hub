@@ -52,7 +52,7 @@ nav button.on{color:#fff;background:linear-gradient(160deg,rgba(40,140,180,.55),
 iframe#frame{flex:1;width:100%;border:0;background:#06162c}
 .load{position:absolute;inset:60px 0 0;display:grid;place-items:center;color:var(--mut);pointer-events:none;font-size:13px}
 .note{font-size:12px;color:#7fa3b4;text-align:center;margin-top:28px}
-.cover{width:min(66vw,260px);aspect-ratio:520/468;margin:10px auto 0;border-radius:22px;border:1.5px solid var(--cy);box-shadow:0 0 0 4px rgba(127,227,245,.12),0 0 34px rgba(80,210,245,.45),0 18px 40px rgba(0,0,0,.5);background:url(https://cdn.jsdelivr.net/gh/HelonUniverse/hub@84c5533e88f7bd244db79121a8a9f7400cd8c58d/dlr/tiles/cover-pulsos.webp) center/cover}
+.cover{width:min(92vw,460px);aspect-ratio:16/9;margin:10px auto 0;border-radius:22px;border:1.5px solid var(--cy);box-shadow:0 0 0 4px rgba(127,227,245,.12),0 0 34px rgba(80,210,245,.45),0 18px 40px rgba(0,0,0,.5);background:url(https://cdn.jsdelivr.net/gh/HelonUniverse/hub@53148cc30c4c885e9b58b10d2961704d4000e1d8/dlr/tiles/cover-pulsos2.webp) center/cover}
 .alb{text-align:center;font:400 26px/1.1 'Instrument Serif',serif;margin:16px 0 2px}
 .meta{text-align:center;color:var(--mut);font-size:13px}
 .ctl{display:flex;justify-content:center;align-items:center;gap:22px;margin:16px 0 10px}
@@ -71,7 +71,7 @@ iframe#frame{flex:1;width:100%;border:0;background:#06162c}
 .tr .h.on{color:#ff8fb1}
 .mini{position:fixed;left:12px;right:12px;bottom:calc(var(--nav) + 8px);z-index:28;display:none;align-items:center;gap:10px;padding:7px 10px;border-radius:16px;border:1px solid var(--line);background:rgba(6,22,44,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(0,0,0,.5)}
 .mini.on{display:flex}
-.thumb{width:48px;height:48px;border-radius:10px;flex:none;background:url(https://cdn.jsdelivr.net/gh/HelonUniverse/hub@84c5533e88f7bd244db79121a8a9f7400cd8c58d/dlr/tiles/cover-pulsos.webp) center/cover;cursor:pointer}
+.thumb{width:48px;height:48px;border-radius:10px;flex:none;background:url(https://cdn.jsdelivr.net/gh/HelonUniverse/hub@53148cc30c4c885e9b58b10d2961704d4000e1d8/dlr/tiles/cover-pulsos-sq.webp) center/cover;cursor:pointer}
 .mi{flex:1;min-width:0;cursor:pointer}
 .mi b{display:block;font:400 16px 'Instrument Serif',serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bar{height:3px;border-radius:4px;background:rgba(127,227,245,.2);margin-top:6px;overflow:hidden}
@@ -112,7 +112,7 @@ textarea{width:100%;min-height:96px;border-radius:12px;border:1px solid var(--li
 .toast.on{opacity:1}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-.albc{appearance:none;display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:12px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(21,76,104,.55),rgba(8,32,54,.75));box-shadow:0 8px 22px rgba(0,0,0,.4);cursor:pointer;margin-top:8px}.albc .th{flex:none;width:68px;height:68px;border-radius:14px;border:1px solid var(--cy);background:url(https://cdn.jsdelivr.net/gh/HelonUniverse/hub@84c5533e88f7bd244db79121a8a9f7400cd8c58d/dlr/tiles/cover-pulsos.webp) center/cover}.albc b{display:block;font:400 22px/1.1 'Instrument Serif',serif}.albc small{color:var(--mut);font-size:12.5px}.albc .ar{margin-left:auto;color:var(--cy);font-size:20px}
+.albc{appearance:none;display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:12px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(21,76,104,.55),rgba(8,32,54,.75));box-shadow:0 8px 22px rgba(0,0,0,.4);cursor:pointer;margin-top:8px}.albc .th{flex:none;width:68px;height:68px;border-radius:14px;border:1px solid var(--cy);background:url(https://cdn.jsdelivr.net/gh/HelonUniverse/hub@53148cc30c4c885e9b58b10d2961704d4000e1d8/dlr/tiles/cover-pulsos-sq.webp) center/cover}.albc b{display:block;font:400 22px/1.1 'Instrument Serif',serif}.albc small{color:var(--mut);font-size:12.5px}.albc .ar{margin-left:auto;color:var(--cy);font-size:20px}
 
 /* Toque violeta de marca */
 body{background:radial-gradient(ellipse at 85% 0%,rgba(130,86,236,.24) 0%,transparent 55%),radial-gradient(ellipse at 5% 40%,rgba(36,98,230,.5) 0%,transparent 58%),radial-gradient(ellipse at 90% 75%,rgba(30,110,235,.32) 0%,transparent 55%),radial-gradient(ellipse at 50% 110%,rgba(24,150,190,.28) 0%,transparent 50%),linear-gradient(#0a1850,#0a1d4a 60%,#050b24) fixed}
