@@ -8,7 +8,7 @@ const A=[
 {id:'pinaculo',g:'oraculos',n:'Pináculo',u:API+'/api/a/pinaculo'},
 {id:'tarot',g:'oraculos',n:'Tarot',u:API+'/api/a/tarot',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@186bfd9fca4ac346c7c92e3933c4306a82ff0461/dlr/tiles/tarot.webp'},
 {id:'angeles',g:'oraculos',n:'Números angelicales',u:API+'/api/a/angeles/__dlr/angeles.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/angeles.webp'},
-{id:'luna',g:'oraculos',n:'Luna del día',u:API+'/api/a/luna/__dlr/luna.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/luna.webp'},
+{id:'luna',g:'oraculos',n:'Luna del día',u:API+'/api/a/luna/__dlr/luna.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@cd23f325b1f7b2e75ba15ac4232784204cba229c/dlr/tiles/luna.webp'},
 {id:'sino',g:'oraculos',n:'Tarot de sí o no',u:API+'/api/a/sino/__dlr/sino.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/sino.webp'},
 {id:'astral',g:'oraculos',n:'Carta astral',u:API+'/api/a/astral/__dlr/astral.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/astral.webp'},
 {id:'semana',g:'oraculos',n:'Carta del día',u:API+'/api/a/semana/__dlr/semana.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/semana.webp'},
