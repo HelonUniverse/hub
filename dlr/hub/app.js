@@ -14,6 +14,7 @@ const A=[
 {id:'semana',g:'oraculos',n:'Carta del día',u:API+'/api/a/semana/__dlr/semana.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/semana.webp'},
 {id:'respira',g:'oraculos',n:'Respira conmigo',u:API+'/api/a/respira/__dlr/respira.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/respira.webp'},
 {id:'afirmacion',g:'oraculos',n:'Afirmación del día',u:API+'/api/a/afirmacion/__dlr/afirmacion.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/afirmacion.webp'},
+{id:'geometria',g:'oraculos',n:'Geometría sagrada',u:API+'/api/a/geometria/__dlr/geometria.html',img:'https://cdn.jsdelivr.net/gh/HelonUniverse/hub@e3ad06a1e907f1d87409738ecc22d945c20a473f/dlr/tiles/geometria.webp'},
 {id:'dones',g:'estudio',n:'Despierta tus dones',u:API+'/api/a/dones'},
 {id:'dharma',g:'estudio',n:'Camino del Dharma',u:API+'/api/a/dharma'},
 {id:'biodec',g:'estudio',n:'Biodecodificación',u:API+'/api/a/biodec',img:CDN+'interior.webp'},
@@ -25,7 +26,7 @@ const LS={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v===nu
 function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),1800)}
 
 function tile(a){const b=document.createElement('button');b.className='tile'+(a.wide?' wide':'');b.innerHTML='<span class="art"></span><span class="sh"></span><span class="t"></span><span class="ar">→</span>';b.querySelector('.art').style.setProperty('--i','url('+(a.img||CDN+a.id+'.webp')+')');if(a.wide){const d=document.createElement('span');d.className='d';d.textContent=a.d;b.append(d)}b.querySelector('.t').textContent=a.n;b.onclick=()=>a.tab?show(a.tab):openApp(a.id);return b}
-const GR=[['Hoy para ti','Un momento rápido para empezar bien',['afirmacion','luna','respira'],1],['Pregúntale a las cartas','Cuando necesitas una respuesta',['tarot','sino','semana']],['Conócete','Tu mapa, tus números, tu código',['astral','angeles','codigos','pinaculo']],['Guías y energía','Mensajes, piedras y símbolos',['maestros','cristales','runas']],['Aprende','Estudio a tu ritmo',['dones','dharma','biodec']],['Escucha','Música para conectar',['musica']]];
+const GR=[['Hoy para ti','Un momento rápido para empezar bien',['afirmacion','luna','respira'],1],['Pregúntale a las cartas','Cuando necesitas una respuesta',['tarot','sino','semana']],['Conócete','Tu mapa, tus números, tu código',['astral','angeles','codigos','geometria','pinaculo']],['Guías y energía','Mensajes, piedras y símbolos',['maestros','cristales','runas']],['Aprende','Estudio a tu ritmo',['dones','dharma','biodec']],['Escucha','Música para conectar',['musica']]];
 GR.forEach(([t,sub,ids,big])=>{const w=document.createElement('div');w.className='grp';const h=document.createElement('div');h.className='gh';h.innerHTML='<b></b><small></small>';h.querySelector('b').textContent=t;h.querySelector('small').textContent=sub;const g=document.createElement('div');g.className='tiles'+(big?' feat':'');g.append(...ids.map(i=>A.find(a=>a.id===i)).filter(Boolean).map(tile));w.append(h,g);$('tiles').append(w)});
 ['oraculos','estudio'].forEach(g=>$('g-'+g).append(...A.filter(a=>a.g===g).map(tile)));
 
