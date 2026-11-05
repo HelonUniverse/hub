@@ -48,10 +48,10 @@ const DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'
 const now=new Date(),hh=now.getHours();
 $('hello').textContent=hh<12?'Buenos días':hh<19?'Buenas tardes':'Buenas noches';
 $('date').textContent=DIAS[now.getDay()]+' '+now.getDate()+' de '+MESES[now.getMonth()];
-let CARDS=[],today=null;const dkey=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
+let CARDS=[],today=null;window.__t=()=>today;const dkey=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
 Promise.resolve(CARDS_DATA).then(c=>{CARDS=c;let seed=0;for(const ch of dkey)seed=(seed*31+ch.charCodeAt(0))>>>0;today=CARDS[seed%CARDS.length];
 $('msgc').style.backgroundImage='url('+API+'/api/a/maestros/cards/'+today.i+'.webp)';$('msgn').textContent=today.n;$('msgv').textContent=today.v;$('msgs').textContent=today.s;{const k=document.querySelector('#msg .k');if(k)k.textContent='Mensaje del día · por Natalia'}updSave()}).catch(()=>{$('msgn').textContent='Tu mensaje te espera';$('msgs').textContent='Abre el Oráculo de los Maestros.'});
-$('msg').onclick=()=>{if(!today)return openApp('maestros');const m=document.createElement('div');m.className='ob on';m.style.justifyContent='flex-start';m.style.paddingTop='calc(30px + env(safe-area-inset-top))';
+$('msg').onclick=()=>{if(NAT)return abrirNatalia();if(!today)return openApp('maestros');const m=document.createElement('div');m.className='ob on';m.style.justifyContent='flex-start';m.style.paddingTop='calc(30px + env(safe-area-inset-top))';
 const card=document.createElement('div');card.className='msg';card.style.cssText='display:block;width:auto;max-width:360px;margin-top:14px;text-align:center;cursor:default;padding-bottom:16px';
 card.innerHTML='<div class="eb">MENSAJE DEL DÍA</div><div class="c" style="margin:12px auto;width:140px;transform:none"></div><div class="n" style="font-size:28px"></div><div class="v"></div><p class="s" style="font-size:15px;line-height:1.55;margin:8px 0 0"></p>';
 card.querySelector('.c').style.backgroundImage='url('+API+'/api/a/maestros/cards/'+today.i+'.webp)';card.querySelector('.n').textContent=today.n;card.querySelector('.v').textContent=today.v;card.querySelector('.s').textContent=today.m;
@@ -59,7 +59,7 @@ const q=document.createElement('p');q.className='lead';q.style.cssText='margin-t
 const bt=document.createElement('button');bt.className='btn';bt.style.marginTop='18px';bt.textContent='Cerrar';bt.onclick=()=>m.remove();
 m.append(card,q,bt);document.body.append(m)};
 function updSave(){const s=D.saved;const on=today&&s.some(x=>x.d===dkey);$('save-msg').textContent=(on?'♥ Guardado':'♡ Guardar mensaje');$('save-msg').classList.toggle('on',!!on)}
-$('save-msg').onclick=async()=>{if(!today||!USER)return;if(D.saved.some(x=>x.d===dkey)){D.saved=D.saved.filter(x=>x.d!==dkey);updSave();toast('Quitado de tus guardados');await SB.from('guardados').delete().eq('usuario',USER.id).eq('dia',dkey)}else{D.saved.unshift({d:dkey,i:today.i,n:today.n,v:today.v,s:today.s,m:today.m});updSave();toast('Guardado en Mi espacio');await SB.from('guardados').upsert({usuario:USER.id,dia:dkey,carta:today.i,nombre:today.n,virtud:today.v,frase:today.s,mensaje:today.m},{onConflict:'usuario,dia'})}};
+$('save-msg').onclick=async()=>{const today=NAT?{i:0,n:NAT.titulo||'Mensaje de Natalia',v:'Natalia',s:NAT.texto.slice(0,120),m:NAT.texto}:window.__t();if(!today||!USER)return;if(D.saved.some(x=>x.d===dkey)){D.saved=D.saved.filter(x=>x.d!==dkey);updSave();toast('Quitado de tus guardados');await SB.from('guardados').delete().eq('usuario',USER.id).eq('dia',dkey)}else{D.saved.unshift({d:dkey,i:today.i,n:today.n,v:today.v,s:today.s,m:today.m});updSave();toast('Guardado en Mi espacio');await SB.from('guardados').upsert({usuario:USER.id,dia:dkey,carta:today.i,nombre:today.n,virtud:today.v,frase:today.s,mensaje:today.m},{onConflict:'usuario,dia'})}};
 function openAlb(on){$('albs').hidden=on;$('albv').hidden=!on;scrollTo(0,0)}$('alb-mantras').onclick=()=>openAlb(true);$('albback').onclick=()=>openAlb(false);$('go-music').onclick=()=>{show('musica');openAlb(true);if(!playing)toggle()};
 
 const AU='https://raw.githubusercontent.com/HelonUniverse/hub/3682399b9f8ac2f825fd36f7d229a1dc1523d96d/dlr/audio/';
@@ -126,7 +126,7 @@ else $('a-err').textContent=/Invalid login/i.test(m)?'Correo o contraseña incor
 $('a-go').disabled=false};
 $('a-resend').onclick=async()=>{const em=$('a-email').value.trim().toLowerCase();if(!em){$('a-err').style.color='#ffb3c1';$('a-err').textContent='Escribe tu correo.';return}try{if(mode==='rcode')await SB.auth.resetPasswordForEmail(em);else await SB.auth.resend({type:'signup',email:em});$('a-err').style.color='#9ff0c8';$('a-err').textContent='Te enviamos un código nuevo.'}catch(e){$('a-err').style.color='#ffb3c1';$('a-err').textContent='No se pudo reenviar. Espera un momento.'}};
 $('logout').onclick=async()=>{await SB.auth.signOut()};
-SB.auth.onAuthStateChange((ev,session)=>{USER=session?session.user:null;if(USER){$('auth').classList.remove('on');loadAll();if(ev==='PASSWORD_RECOVERY'&&!inReset){const p=prompt('Escribe tu contraseña nueva (mínimo 6 caracteres):');if(p&&p.length>=6)SB.auth.updateUser({password:p}).then(()=>toast('Contraseña actualizada'))}}else{D.notes=[];D.saved=[];for(const k in fav)delete fav[k];amode('in');$('auth').classList.add('on')}});
+SB.auth.onAuthStateChange((ev,session)=>{USER=session?session.user:null;chequeaDueno();if(USER){$('auth').classList.remove('on');loadAll();if(ev==='PASSWORD_RECOVERY'&&!inReset){const p=prompt('Escribe tu contraseña nueva (mínimo 6 caracteres):');if(p&&p.length>=6)SB.auth.updateUser({password:p}).then(()=>toast('Contraseña actualizada'))}}else{D.notes=[];D.saved=[];for(const k in fav)delete fav[k];amode('in');$('auth').classList.add('on')}});
 
 const OB=[['Bienvenida a Desde la Red','Un espacio para explorar, escuchar y volver a ti. Muchas voces, una misma red.'],['Elige tu puerta','Oráculos, cristales, runas, códigos y más. Toca una puerta y entra a tu ritmo.'],['Tu mensaje y tu música','Cada día te espera un mensaje. Los mantras siguen sonando mientras navegas, y en "Yo" guardas tu diario y favoritos.']];let obi=0;
 function ob(){const o=OB[obi];$('obt').textContent=o[0];$('obp').textContent=o[1];$('obd').innerHTML=OB.map((_,i)=>'<i class="'+(i===obi?'on':'')+'"></i>').join('');$('obn').textContent=obi<OB.length-1?'Siguiente':'Empezar'}
@@ -142,3 +142,57 @@ let deferred=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();
 function rs(){const d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);S=Array.from({length:Math.min(80,Math.max(28,W*H/14000|0))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,r:.7+Math.random()*1.1,p:Math.random()*6.3}))}
 function dr(t){x.clearRect(0,0,W,H);const D=Math.min(150,Math.max(95,W*.18));S.forEach((a,i)=>{if(!rm.matches){a.x=(a.x+a.vx+W)%W;a.y=(a.y+a.vy+H)%H}for(let j=i+1;j<S.length;j++){const b=S[j],q=Math.hypot(a.x-b.x,a.y-b.y);if(q<D){x.strokeStyle='rgba(115,222,239,'+(.26*(1-q/D)).toFixed(3)+')';x.lineWidth=.7;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}x.fillStyle='rgba(185,245,252,'+(.45+.3*Math.sin(t*.0007+a.p)).toFixed(2)+')';x.beginPath();x.arc(a.x,a.y,a.r,0,6.3);x.fill()});if(!rm.matches)requestAnimationFrame(dr)}
 addEventListener('resize',rs);rs();requestAnimationFrame(dr)})();
+
+/* ===== Mensaje del día de Natalia ===== */
+let NAT=null,ES_DUENO=false;
+function elx(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+function isoHoy(){const n=new Date();return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0')}
+async function cargarNatalia(){try{const r=await SB.from('dia_mensajes').select('*').eq('publicado',true).eq('dia',isoHoy()).order('creado',{ascending:false}).limit(1);NAT=r.data&&r.data[0]||null}catch(e){NAT=null}
+ if(NAT){const c=$('msgc');if(NAT.media_tipo==='imagen'&&NAT.media_url)c.style.backgroundImage='url('+NAT.media_url+')';$('msgn').textContent=NAT.titulo||'Mensaje de Natalia';$('msgv').textContent='Con cariño, Natalia';$('msgs').textContent=NAT.texto.length>110?NAT.texto.slice(0,107)+'…':NAT.texto;const k=document.querySelector('#msg .k');if(k)k.textContent='Mensaje del día · por Natalia';if(NAT.media_tipo==='video'){c.style.backgroundImage='';c.classList.add('vid');c.textContent='▶'}}}
+async function chequeaDueno(){ES_DUENO=false;if(USER){try{const r=await SB.rpc('es_dueno');ES_DUENO=r.data===true}catch(e){}}renderAdminNatalia()}
+function abrirNatalia(){const m=elx('div','ob on');m.style.justifyContent='flex-start';m.style.paddingTop='calc(30px + env(safe-area-inset-top))';m.style.alignItems='center';
+ const card=elx('div','msg');card.style.cssText='display:block;width:100%;max-width:380px;text-align:center;cursor:default;padding:0 0 16px;overflow:hidden';
+ card.append(elx('div','eb','MENSAJE DEL DÍA · POR NATALIA'));
+ if(NAT.media_url&&NAT.media_tipo==='imagen'){const im=new Image();im.src=NAT.media_url;im.alt='';im.style.cssText='width:100%;border-radius:16px;margin:12px 0;display:block';card.append(im)}
+ if(NAT.media_url&&NAT.media_tipo==='video'){const v=document.createElement('video');v.src=NAT.media_url;v.controls=true;v.playsInline=true;v.preload='metadata';v.style.cssText='width:100%;border-radius:16px;margin:12px 0;background:#000;display:block';card.append(v)}
+ if(NAT.titulo){const n=elx('div','n',NAT.titulo);n.style.fontSize='28px';card.append(n)}
+ const tx=elx('p','s',NAT.texto);tx.style.cssText='font-size:15px;line-height:1.6;margin:10px 14px 0;text-align:left;white-space:pre-wrap';card.append(tx);
+ if(NAT.mantra){const i=T.findIndex(t=>t.f===NAT.mantra);if(i>=0){const b=elx('button','btn ghost','♪ Escuchar: '+T[i].n);b.style.cssText='margin:14px auto 0;width:auto';b.onclick=()=>playAt(i);card.append(b)}}
+ const cm=elx('div','');cm.style.cssText='text-align:left;margin:18px 14px 0';card.append(cm);
+ const bp=elx('button','btn ghost','Escribirle a Natalia (privado)');bp.style.cssText='margin:14px auto 0;width:auto';bp.onclick=()=>escribirNatalia();card.append(bp);
+ const bt=elx('button','btn','Cerrar');bt.style.marginTop='14px';bt.onclick=()=>{const v=m.querySelector('video');if(v)v.pause();m.remove()};
+ m.append(card,bt);document.body.append(m);pintaComentarios(cm)}
+async function pintaComentarios(box){box.textContent='';box.append(elx('h3','','Comentarios'));const lista=elx('div','');box.append(lista);
+ const r=await SB.from('dia_comentarios').select('*').eq('mensaje',NAT.id).order('creado',{ascending:true}).limit(100);const L=(r.data||[]);
+ if(!L.length)lista.append(elx('p','empty','Sé la primera persona en comentar.'));
+ L.forEach(c=>{const e=elx('div','entry');if(c.oculto)e.style.opacity='.5';e.append(elx('time','',(c.nombre||'Persona')+(c.oculto?' · oculto':'')));e.append(elx('p','',c.texto));
+  const acts=elx('div','');acts.style.cssText='display:flex;gap:12px;margin-top:4px';
+  if(USER&&c.usuario!==USER.id){const rp=elx('button','','Reportar');rp.onclick=async()=>{await SB.from('dia_reportes').insert({comentario:c.id});rp.textContent='Reportado';rp.disabled=true;toast('Gracias, lo revisaremos')};acts.append(rp)}
+  if(USER&&(c.usuario===USER.id||ES_DUENO)){const bd=elx('button','','Borrar');bd.onclick=async()=>{await SB.from('dia_comentarios').delete().eq('id',c.id);pintaComentarios(box)};acts.append(bd)}
+  if(ES_DUENO){const oc=elx('button','',c.oculto?'Mostrar':'Ocultar');oc.onclick=async()=>{await SB.from('dia_comentarios').update({oculto:!c.oculto}).eq('id',c.id);pintaComentarios(box)};acts.append(oc)}
+  e.append(acts);lista.append(e)});
+ if(!USER){const b=elx('button','btn ghost','Entra para comentar');b.style.cssText='width:auto;margin-top:10px';b.onclick=()=>$('auth').classList.add('on');box.append(b);return}
+ const ta=document.createElement('textarea');ta.placeholder='Escribe un comentario con respeto…';ta.maxLength=600;ta.style.cssText='width:100%;margin-top:10px;min-height:70px';box.append(ta);
+ const bs=elx('button','btn','Comentar');bs.style.cssText='width:auto;margin-top:8px';bs.onclick=async()=>{const t=ta.value.trim();if(!t)return;bs.disabled=true;const nom=(USER.user_metadata&&USER.user_metadata.nombre)||'Persona';const x=await SB.from('dia_comentarios').insert({mensaje:NAT.id,nombre:nom,texto:t});bs.disabled=false;if(x.error)return toast('No se pudo enviar');ta.value='';pintaComentarios(box)};box.append(bs)}
+function escribirNatalia(){if(!USER){$('auth').classList.add('on');return}const m=elx('div','ob on');const h=elx('h1','','Escríbele a Natalia');const p=elx('p','','Solo ella lo leerá.');const ta=document.createElement('textarea');ta.maxLength=1500;ta.placeholder='Tu mensaje…';ta.style.cssText='width:100%;max-width:360px;min-height:140px';
+ const bs=elx('button','btn','Enviar');bs.style.marginTop='12px';bs.onclick=async()=>{const t=ta.value.trim();if(!t)return;bs.disabled=true;const nom=(USER.user_metadata&&USER.user_metadata.nombre)||'Persona';const x=await SB.from('dia_privados').insert({mensaje:NAT?NAT.id:null,nombre:nom,texto:t});if(x.error){bs.disabled=false;return toast('No se pudo enviar')}toast('Enviado a Natalia');m.remove()};
+ const bc=elx('button','btn ghost','Cancelar');bc.style.marginTop='10px';bc.onclick=()=>m.remove();m.append(h,p,ta,bs,bc);document.body.append(m)}
+function renderAdminNatalia(){let box=document.getElementById('nat-admin');if(box)box.remove();if(!ES_DUENO)return;const host=document.querySelector('#s-yo');box=elx('div','card');box.id='nat-admin';
+ box.append(elx('h3','','Publicar mensaje del día'));
+ const f=document.createElement('div');f.innerHTML='<input class="in" id="na-fecha" type="date"><input class="in" id="na-tit" placeholder="Título (opcional)" maxlength="80"><textarea id="na-txt" placeholder="Tu mensaje…" maxlength="2000" style="min-height:110px"></textarea><label class="sub" style="display:block;margin-top:8px">Imagen o video (opcional, hasta 60 MB)</label><input id="na-file" type="file" accept="image/*,video/*" style="width:100%;margin-top:4px"><label class="sub" style="display:block;margin-top:10px">Mantra (opcional)</label><select class="in" id="na-man"><option value="">Sin mantra</option></select><div class="err" id="na-err"></div>';
+ box.append(f);const sel=f.querySelector('#na-man');T.forEach(t=>{const o=document.createElement('option');o.value=t.f;o.textContent=t.n;sel.append(o)});f.querySelector('#na-fecha').value=isoHoy();
+ const bp=elx('button','btn','Publicar');bp.style.marginTop='10px';box.append(bp);
+ const rec=elx('div','');rec.style.marginTop='14px';box.append(rec);
+ const inb=elx('div','');inb.style.marginTop='14px';box.append(inb);
+ bp.onclick=async()=>{const er=f.querySelector('#na-err');er.textContent='';const txt=f.querySelector('#na-txt').value.trim();if(!txt)return er.textContent='Escribe el mensaje.';bp.disabled=true;bp.textContent='Publicando…';
+  let url=null,tipo=null;const fl=f.querySelector('#na-file').files[0];
+  if(fl){if(fl.size>62914560){bp.disabled=false;bp.textContent='Publicar';return er.textContent='El archivo pesa más de 60 MB.'}tipo=fl.type.startsWith('video')?'video':'imagen';const ext=(fl.name.split('.').pop()||'bin').toLowerCase().replace(/[^a-z0-9]/g,'');const path=Date.now()+'-'+Math.random().toString(36).slice(2,8)+'.'+ext;
+   const up=await SB.storage.from('dia').upload(path,fl,{contentType:fl.type,upsert:false});if(up.error){bp.disabled=false;bp.textContent='Publicar';return er.textContent='No se pudo subir el archivo.'}url=SB.storage.from('dia').getPublicUrl(path).data.publicUrl}
+  const x=await SB.from('dia_mensajes').insert({dia:f.querySelector('#na-fecha').value||isoHoy(),titulo:f.querySelector('#na-tit').value.trim()||null,texto:txt,media_url:url,media_tipo:tipo,mantra:sel.value||null});
+  bp.disabled=false;bp.textContent='Publicar';if(x.error)return er.textContent='No se pudo publicar.';
+  f.querySelector('#na-txt').value='';f.querySelector('#na-tit').value='';f.querySelector('#na-file').value='';toast('Mensaje publicado');await cargarNatalia();pintaRec()};
+ async function pintaRec(){rec.textContent='';rec.append(elx('h3','','Tus mensajes recientes'));const r=await SB.from('dia_mensajes').select('id,dia,titulo,texto,publicado').order('creado',{ascending:false}).limit(8);(r.data||[]).forEach(mm=>{const e=elx('div','entry');e.append(elx('time','',mm.dia+(mm.publicado?'':' · oculto')+(mm.titulo?' · '+mm.titulo:'')));e.append(elx('p','',mm.texto.slice(0,120)));const b=elx('button','','Borrar');b.onclick=async()=>{if(!confirm('¿Borrar este mensaje?'))return;await SB.from('dia_mensajes').delete().eq('id',mm.id);await cargarNatalia();pintaRec()};e.append(b);rec.append(e)});
+  inb.textContent='';inb.append(elx('h3','','Mensajes para ti'));const q=await SB.from('dia_privados').select('*').order('creado',{ascending:false}).limit(20);const Q=q.data||[];if(!Q.length)inb.append(elx('p','empty','Aún no hay mensajes.'));Q.forEach(pm=>{const e=elx('div','entry');e.append(elx('time','',(pm.nombre||'Persona')+' · '+new Date(pm.creado).toLocaleDateString('es')+(pm.leido?'':' · nuevo')));e.append(elx('p','',pm.texto));if(!pm.leido){const b=elx('button','','Marcar leído');b.onclick=async()=>{await SB.from('dia_privados').update({leido:true}).eq('id',pm.id);pintaRec()};e.append(b)}inb.append(e)})}
+ const first=host.querySelector('.card');host.insertBefore(box,first);pintaRec()}
+
+cargarNatalia();
