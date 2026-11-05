@@ -125,3 +125,4 @@ nav button.on{background:linear-gradient(160deg,rgba(124,90,220,.6),rgba(30,30,9
 .btn{background:linear-gradient(135deg,#a98bff,#6b4fe0);color:#fff}
 
 #tiles{display:block}.grp{margin-top:22px}.grp:first-child{margin-top:8px}.gh{display:flex;flex-direction:column;gap:2px;padding:0 4px}.gh b{font:400 23px/1.1 'Instrument Serif',Georgia,serif;color:#fff}.gh small{font-size:12.5px;color:#b8c4ee}.grp .tiles{margin-top:10px}.tiles.feat .tile{height:150px}.tiles.feat .tile:first-child{grid-column:1/-1;height:170px}
+.grp .tiles:not(.feat) .tile:last-child:nth-child(odd):not(.wide){grid-column:1/-1;height:132px}.grp .tiles:not(.feat) .tile:last-child:nth-child(odd):not(.wide) .art{background-size:cover;background-position:center 30%}.tile .t{right:40px;font-size:18px}
