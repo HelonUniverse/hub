@@ -1,25 +1,25 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#06162c"><title>Carta astral · Desde la Red</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<style>:root{--cy:#7fe3f5;--gold:#eacb88;--mut:#a9c4d2;--line:rgba(127,227,245,.42)}
+<style>:root{--cy:#7fe3f5;--gold:#eacb88;--mut:#a9c4d2;--line:rgba(234,203,136,.38)}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%}
-body{background:radial-gradient(ellipse at 50% -10%,#1d4f7c 0%,#0a2140 42%,#050d1f 90%) fixed;color:#eef9ff;font:15px/1.5 'Albert Sans',system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+body{background:radial-gradient(ellipse at 15% 8%,rgba(98,60,170,.45) 0%,transparent 55%),radial-gradient(ellipse at 90% 30%,rgba(24,150,170,.30) 0%,transparent 55%),linear-gradient(#070b24,#0a1233 55%,#050816) fixed;color:#eef9ff;font:15px/1.5 'Albert Sans',system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
 button,input{font:inherit;color:inherit}
 #bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 main{position:relative;z-index:1;max-width:620px;margin:auto;padding:calc(14px + env(safe-area-inset-top)) 18px 60px}
-.hero{text-align:center;padding:6px 0 10px}
-.eb{font-size:11px;letter-spacing:.24em;color:#8fd6e6;text-transform:uppercase}
+.hero{position:relative;margin:calc(-14px - env(safe-area-inset-top)) -18px 0;height:250px;overflow:hidden;text-align:left;padding:0}.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:68% 50%}.hero:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,11,36,.88) 0%,rgba(7,11,36,.35) 55%,transparent 100%),linear-gradient(0deg,#070b24 0%,transparent 38%)}.hero .tt{position:absolute;left:20px;bottom:28px;z-index:2;max-width:54%}.hero h1{font-size:clamp(28px,8.4vw,38px)}
+.eb{font-size:11px;letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
 h1{font:400 clamp(34px,10vw,46px)/1.05 'Instrument Serif',Georgia,serif;margin:6px 0 4px}
-h1 em{color:var(--cy);font-style:italic}
-.lead{color:var(--mut);font-size:14px;margin:0 auto;max-width:420px}
+h1 em{color:var(--gold);font-style:italic}
+.lead{color:#cfd6ea;font-size:14px;margin:0;max-width:420px}
 .tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:14px 0 4px}
 .tab{appearance:none;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:10px 2px;font-size:12px;cursor:pointer;line-height:1.2}
 .tab.on{background:rgba(127,227,245,.16);box-shadow:0 0 14px rgba(80,220,255,.35)}
-.card{border-radius:22px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(21,76,104,.55),rgba(8,32,54,.75));box-shadow:0 12px 34px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06);padding:18px;margin-top:14px}
+.card{border-radius:22px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(52,36,110,.55),rgba(10,18,52,.82));backdrop-filter:blur(6px);box-shadow:0 12px 34px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06);padding:18px;margin-top:14px}
 h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 .in{width:100%;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:13px 14px;font-size:16px;outline:0;margin-top:10px}
 .in:focus{box-shadow:0 0 14px rgba(80,220,255,.35)}
-.btn{appearance:none;border:0;border-radius:999px;padding:13px 16px;background:linear-gradient(135deg,#8ff0ff,#1fb5dc);color:#06162c;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 6px 18px rgba(40,200,240,.35);width:100%;margin-top:12px}
-.btn.ghost{background:none;color:var(--cy);border:1px solid var(--line);box-shadow:none;font-weight:500}
+.btn{appearance:none;border:0;border-radius:999px;padding:13px 16px;background:linear-gradient(135deg,#f6e3ae,#d9b45f);color:#1a1230;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 6px 18px rgba(234,203,136,.30);width:100%;margin-top:12px}
+.btn.ghost{background:none;color:var(--gold);border:1px solid var(--line);box-shadow:none;font-weight:500}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
 .n{appearance:none;border:1px solid var(--line);border-radius:16px;background:rgba(6,22,44,.55);padding:14px 4px;cursor:pointer;font:400 26px/1 'Instrument Serif',serif;color:#f3e2b8;letter-spacing:.04em}
 .n.on{background:rgba(234,203,136,.16);border-color:rgba(234,203,136,.7);box-shadow:0 0 16px rgba(234,203,136,.3)}
@@ -48,7 +48,7 @@ h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 .tabl{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}.tabl td{padding:7px 4px;border-top:1px solid rgba(127,227,245,.15)}.tabl td:first-child{color:var(--gold);width:30px;font-size:18px}.tabl td:last-child{text-align:right;color:var(--mut)}
 .err{color:#ffb3c1;font-size:13.5px;text-align:center;margin-top:10px}
 #res{margin-top:6px}</style></head><body><canvas id="bg"></canvas><main>
-<div class="hero"><div class="eb">Oráculo</div><h1>Tu carta <em>astral</em></h1><p class="lead">El mapa del cielo en el momento en que naciste.</p></div>
+<div class="hero"><img src="https://cdn.jsdelivr.net/gh/HelonUniverse/hub@c5a36e7c83a867b82e22b92569fd942a1e1372be/dlr/tiles/astral.webp" alt=""><div class="tt"><div class="eb">Oráculo</div><h1>Tu carta <em>astral</em></h1><p class="lead">El mapa del cielo en el momento en que naciste.</p></div></div>
 <div class="card" id="form"><h2>Tus datos de nacimiento</h2>
 <div class="lab">Fecha</div><input class="in" id="d" type="date">
 <div class="lab">Hora</div><input class="in" id="t" type="time"><label class="chk"><input type="checkbox" id="nt"> No sé mi hora de nacimiento</label>
@@ -128,7 +128,7 @@ $('go').onclick=()=>{const er=$('er');er.textContent='';const d=$('d').value,nt=
 
 (function(){const c=document.getElementById('bg'),x=c.getContext('2d');let W,H,d,S=[],raf,last=0;const R=matchMedia('(prefers-reduced-motion: reduce)');
 function rs(){d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);const n=Math.min(70,Math.max(24,W*H/16000|0));S=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.14,vy:(Math.random()-.5)*.14,r:.6+Math.random()*1,p:Math.random()*6.28}));dr(0)}
-function dr(t){x.clearRect(0,0,W,H);const D=Math.min(140,Math.max(90,W*.17));for(let i=0;i<S.length;i++){const a=S[i];if(!R.matches){a.x=(a.x+a.vx+W)%W;a.y=(a.y+a.vy+H)%H}for(let j=i+1;j<S.length;j++){const b=S[j],q=Math.hypot(a.x-b.x,a.y-b.y);if(q<D){x.strokeStyle='rgba(115,222,239,'+(.2*(1-q/D)).toFixed(3)+')';x.lineWidth=.6;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}x.fillStyle='rgba(178,242,251,'+(.4+.25*Math.sin(t*.0007+a.p)).toFixed(3)+')';x.beginPath();x.arc(a.x,a.y,a.r,0,6.283);x.fill()}}
+function dr(t){x.clearRect(0,0,W,H);const D=Math.min(140,Math.max(90,W*.17));for(let i=0;i<S.length;i++){const a=S[i];if(!R.matches){a.x=(a.x+a.vx+W)%W;a.y=(a.y+a.vy+H)%H}for(let j=i+1;j<S.length;j++){const b=S[j],q=Math.hypot(a.x-b.x,a.y-b.y);if(q<D){x.strokeStyle='rgba(234,203,136,'+(.2*(1-q/D)).toFixed(3)+')';x.lineWidth=.6;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}x.fillStyle='rgba(255,236,190,'+(.4+.25*Math.sin(t*.0007+a.p)).toFixed(3)+')';x.beginPath();x.arc(a.x,a.y,a.r,0,6.283);x.fill()}}
 function f(t){if(t-last>30){dr(t);last=t}raf=requestAnimationFrame(f)}
 addEventListener('resize',rs,{passive:true});rs();if(!R.matches)raf=requestAnimationFrame(f)})();
 
