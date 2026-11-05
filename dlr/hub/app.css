@@ -172,3 +172,7 @@ nav button.on{background:linear-gradient(160deg,rgba(124,90,220,.6),rgba(30,30,9
 .pt-door b,.pt-door small{z-index:2;transition:opacity .5s}
 .pt-door.open b,.pt-door.open small{opacity:0}
 .pt-door.open{box-shadow:0 0 38px rgba(255,226,150,.65)}
+/* luz que aparece al abrir la puerta */
+.pt-door.im{background:url(https://cdn.jsdelivr.net/gh/HelonUniverse/hub@f2d5aad4b17c66d8b0ab84772c490d59e8efdc54/dlr/tiles/luz.webp) center/cover}
+.pt-msg.show{background:linear-gradient(rgba(6,16,50,.5),rgba(6,16,50,.62)),url(https://cdn.jsdelivr.net/gh/HelonUniverse/hub@f2d5aad4b17c66d8b0ab84772c490d59e8efdc54/dlr/tiles/luz.webp) center/cover;border-color:rgba(255,226,150,.7);box-shadow:0 0 34px rgba(255,214,120,.35)}
+.pt-msg.show p{text-shadow:0 1px 10px rgba(0,0,0,.55)}
