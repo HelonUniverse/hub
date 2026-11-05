@@ -31,7 +31,7 @@ h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 .fl.up .fi{transform:rotateY(180deg)}
 .fa,.fb{position:absolute;inset:0;border-radius:12px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .fa{border:1px solid var(--line);background:radial-gradient(circle at 50% 40%,#1b5e86,#0a2140 70%);display:grid;place-items:center}
-.fa svg{width:62%;opacity:.9}
+.fa img,.fc img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
 .fb{transform:rotateY(180deg);border:1px solid rgba(234,203,136,.55);box-shadow:0 8px 22px rgba(0,0,0,.5)}
 .fb.rev .face{transform:rotate(180deg)}
 .face{position:absolute;inset:0;background:#06162c}
@@ -217,7 +217,7 @@ let L='';for(let i=1;i<N;i++){const j=Math.floor(r()*i);L+=`<line x1="${P[i][0]}
 const D=P.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="${p[2]*1.6}" fill="${c.col}"/><circle cx="${p[0]}" cy="${p[1]}" r="${p[2]*4}" fill="${c.col}" opacity=".12"/>`).join('');
 return`<svg viewBox="0 0 200 300"><defs><radialGradient id="g${c.id}" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#1d5a82"/><stop offset="1" stop-color="#06162c"/></radialGradient></defs><rect width="200" height="300" fill="url(#g${c.id})"/><rect x="8" y="8" width="184" height="284" rx="8" fill="none" stroke="${c.col}" stroke-opacity=".55"/><g stroke="${c.col}" stroke-opacity=".5" stroke-width="1">${L}</g>${D}<text x="100" y="46" text-anchor="middle" fill="${c.col}" font-family="Instrument Serif,serif" font-size="26">${c.mark}</text><text x="100" y="282" text-anchor="middle" fill="#eef9ff" font-family="Instrument Serif,serif" font-size="15">${c.name}</text></svg>`}
 function face(c){const d=document.createElement('div');d.className='face';d.innerHTML=art(c);const im=new Image();im.alt=c.name;im.onload=()=>{d.textContent='';d.append(im);const fl=d.closest('.fl');if(fl)fl.style.aspectRatio=im.naturalWidth+'/'+im.naturalHeight};im.src=IMG+String(c.id).padStart(2,'0')+'.webp';return d}
-const BACK='<svg viewBox="0 0 100 100"><g fill="none" stroke="#eacb88" stroke-opacity=".8" stroke-width="1.2"><circle cx="50" cy="50" r="30"/><path d="M50 18 L58 42 L82 50 L58 58 L50 82 L42 58 L18 50 L42 42 Z"/></g><circle cx="50" cy="50" r="2.5" fill="#eacb88"/></svg>';
+const BACK='<img src="'+IMG+'back.webp" alt="" draggable="false">';
 function slot(c,rev,label){const s=document.createElement('div');s.className='slot';
  if(label){const p=document.createElement('div');p.className='pn';p.textContent=label;s.append(p)}
  const f=document.createElement('button');f.className='fl';f.setAttribute('aria-label','Voltear carta');
