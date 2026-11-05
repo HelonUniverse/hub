@@ -115,7 +115,7 @@ textarea{width:100%;min-height:96px;border-radius:12px;border:1px solid var(--li
 .albc{appearance:none;display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:12px;border-radius:18px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(21,76,104,.55),rgba(8,32,54,.75));box-shadow:0 8px 22px rgba(0,0,0,.4);cursor:pointer;margin-top:8px}.albc .th{flex:none;width:68px;height:68px;border-radius:14px;border:1px solid var(--cy);background:url(https://cdn.jsdelivr.net/gh/HelonUniverse/hub@84c5533e88f7bd244db79121a8a9f7400cd8c58d/dlr/tiles/cover-pulsos.webp) center/cover}.albc b{display:block;font:400 22px/1.1 'Instrument Serif',serif}.albc small{color:var(--mut);font-size:12.5px}.albc .ar{margin-left:auto;color:var(--cy);font-size:20px}
 
 /* Toque violeta de marca */
-body{background:radial-gradient(ellipse at 85% 0%,rgba(140,84,236,.6) 0%,transparent 55%),radial-gradient(ellipse at 5% 45%,rgba(110,60,200,.45) 0%,transparent 55%),radial-gradient(ellipse at 50% 110%,rgba(24,150,170,.25) 0%,transparent 50%),linear-gradient(#0c0a38,#0a1233 60%,#06091e) fixed}
+body{background:radial-gradient(ellipse at 85% 0%,rgba(130,86,236,.42) 0%,transparent 55%),radial-gradient(ellipse at 5% 40%,rgba(36,98,230,.5) 0%,transparent 58%),radial-gradient(ellipse at 90% 75%,rgba(30,110,235,.32) 0%,transparent 55%),radial-gradient(ellipse at 50% 110%,rgba(24,150,190,.28) 0%,transparent 50%),linear-gradient(#0a1448,#0a1a46 60%,#050b22) fixed}
 :root{--line:rgba(160,150,240,.45)}
 h1 em,.eb,.msg .k{color:#c3b2ff}
 .msg{background:linear-gradient(160deg,rgba(96,66,190,.62),rgba(12,18,56,.82))}
