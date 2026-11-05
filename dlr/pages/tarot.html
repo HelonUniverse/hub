@@ -230,7 +230,7 @@ function run(){const M=MODES[mode],out=$('out');out.textContent='';let ids,revs;
  const q=$('q').value.trim();if(q&&mode!=='dia'){const e=document.createElement('p');e.className='lead';e.style.cssText='margin:14px auto 0;font-style:italic;text-align:center';e.textContent='“'+q+'”';out.append(e)}
  const row=document.createElement('div');row.className='row '+(M.cls||'r1');const slots=ids.map((id,i)=>slot(DECK[id],revs[i],M.pos?M.pos[i][0]:''));row.append(...slots);out.append(row);
  const items=ids.map((id,i)=>({c:DECK[id],rev:revs[i],pos:M.pos?M.pos[i][0]:'',hint:M.pos?M.pos[i][1]:''}));
- const rd=reading(items);rd.append(buildAI(items,q));rd.hidden=true;out.append(rd);
+ const rd=reading(items);rd.prepend(buildAI(items,q));rd.hidden=true;out.append(rd);
  $('go').hidden=true;$('again').hidden=mode==='dia';
  const hint=document.createElement('p');hint.className='note';hint.style.margin='12px 0 0';hint.textContent=M.n===1?'Toca la carta para voltearla.':'Toca cada carta para voltearla, o ';
  if(M.n>1){const a=document.createElement('a');a.href='#';a.style.color='var(--cy)';a.textContent='voltearlas todas';a.onclick=e=>{e.preventDefault();slots.forEach((s,i)=>setTimeout(s._flip,i*350));done()};hint.append(a)}
