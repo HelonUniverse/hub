@@ -105,12 +105,12 @@ function wheel(pls,asc){const R=150,c=180;const rot=asc!=null?180-asc:180;const 
 let place=null;
 const nrm=x=>x.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
 function showSug(list){const g=$('sg');g.textContent='';if(!list.length){const m=document.createElement('div');m.className='note';m.style.margin='8px 0 0';m.textContent='No encontré esa ciudad. Prueba con el nombre solo (ej. Ponce) o con otra ciudad cercana.';g.append(m);return}list.forEach(x=>{const b=document.createElement('button');b.textContent=[x.name,x.admin1,x.country].filter(Boolean).join(', ');b.onclick=async()=>{$('c').value=b.textContent;g.textContent='';if(!x.timezone){try{const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude='+x.latitude+'&longitude='+x.longitude+'&timezone=auto&current=temperature_2m');x.timezone=(await r.json()).timezone}catch(e){}}place=x};g.append(b)})}
-async function geo(q){const parts=q.split(',').map(s=>s.trim()).filter(Boolean),name=parts[0],rest=nrm(parts.slice(1).join(' '));let res=[];
+async function geoCity(q){const parts=q.split(',').map(s=>s.trim()).filter(Boolean),name=parts[0],rest=nrm(parts.slice(1).join(' '));let res=[];
  try{const r=await fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(name)+'&count=15&language=es&format=json');res=(await r.json()).results||[]}catch(e){}
  if(rest)res=res.filter(x=>nrm([x.admin1,x.country,x.admin2].filter(Boolean).join(' ')).includes(rest)||rest.split(' ').every(w=>nrm([x.admin1,x.country,x.admin2].filter(Boolean).join(' ')).includes(w)));
  if(!res.length){try{const r=await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=6&accept-language=es&addressdetails=1&q='+encodeURIComponent(q));const j=await r.json();res=j.map(x=>{const a=x.address||{};return{name:a.city||a.town||a.village||a.municipality||a.county||x.display_name.split(',')[0],admin1:a.state||a.region,country:a.country,latitude:+x.lat,longitude:+x.lon}})}catch(e){}}
  return res.slice(0,6)}
-$('c').oninput=()=>{place=null;clearTimeout($('c')._t);const q=$('c').value.trim();$('sg').textContent='';if(q.length<3)return;$('c')._t=setTimeout(async()=>{const l=await geo(q);if($('c').value.trim()===q)showSug(l)},400)};
+$('c').oninput=()=>{place=null;clearTimeout($('c')._t);const q=$('c').value.trim();$('sg').textContent='';if(q.length<3)return;$('c')._t=setTimeout(async()=>{const l=await geoCity(q);if($('c').value.trim()===q)showSug(l)},400)};
 $('nt').onchange=()=>{$('t').disabled=$('nt').checked;$('t').style.opacity=$('nt').checked?.4:1};
 function P(cls,txt,tag){const e=document.createElement(tag||'p');if(cls)e.className=cls;e.textContent=txt;return e}
 $('go').onclick=()=>{const er=$('er');er.textContent='';const d=$('d').value,nt=$('nt').checked,t=nt?'12:00':$('t').value;
@@ -119,7 +119,7 @@ $('go').onclick=()=>{const er=$('er');er.textContent='';const d=$('d').value,nt=
  const L=[sun(T),moon(T),geo('me',T),geo('ve',T),geo('ma',T),geo('ju',T),geo('sa',T),geo('ur',T),geo('ne',T),geo('pl',T)];
  const pls=PN.map((p,i)=>({n:p[0],g:p[1],f:p[2],l:L[i]}));let an=null;if(!nt)an=angles(J,place.latitude,place.longitude);
  const out=$('res');out.textContent='';const card=document.createElement('div');card.className='card';
- card.append(P('', '','div'));const h=P('','Tu carta','h2');h.textContent='Tu cielo de nacimiento';card.append(h);
+ const h=P('','Tu carta','h2');h.textContent='Tu cielo de nacimiento';card.append(h);
  const sub=P('lead',d.split('-').reverse().join('/')+(nt?'':' · '+t)+' · '+$('c').value);sub.style.cssText='margin:0 0 4px;text-align:center';card.append(sub);
  const wd=document.createElement('div');wd.innerHTML=wheel(pls,an?an.asc:null);card.append(wd);
  const tb=document.createElement('table');tb.className='tabl';let rows=pls.map(p=>[p.g+'\uFE0E',p.n,fmtDeg(p.l)]);if(an)rows.unshift(['AC','Ascendente',fmtDeg(an.asc)],['MC','Medio cielo',fmtDeg(an.mc)]);
