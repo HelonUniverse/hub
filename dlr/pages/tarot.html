@@ -49,6 +49,20 @@ h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 .rd p{margin:0;color:#dff1f7;font-size:14.5px;line-height:1.6}
 .rd h3 span.tag{display:inline-block;font:600 10px 'Albert Sans';letter-spacing:.14em;text-transform:uppercase;color:#06162c;background:var(--gold);border-radius:999px;padding:2px 8px;margin:0 0 0 8px;vertical-align:3px}
 .q{margin-top:12px}
+
+.ai{margin-top:16px;border-top:1px solid rgba(127,227,245,.2);padding-top:14px}
+.ai .btn.go{background:linear-gradient(135deg,#f5dca0,#d9b25f);box-shadow:0 6px 18px rgba(234,203,136,.3)}
+.ai h3.t{font:400 24px/1.15 'Instrument Serif',serif;color:#f3e2b8;margin:2px 0 6px}
+.ai .tx{margin:0 0 10px;color:#dff1f7;font-size:14.5px;line-height:1.65}
+.ai .cn{font:500 10.5px 'Albert Sans';letter-spacing:.16em;color:#8fd6e6;text-transform:uppercase;margin-top:14px}
+.ai .cn b{display:block;font:400 19px 'Instrument Serif',serif;letter-spacing:0;text-transform:none;color:#f3e2b8}
+.ai .sy{border:1px solid rgba(234,203,136,.35);border-radius:16px;padding:12px 14px;background:rgba(234,203,136,.07);margin-top:14px}
+.ai .pr{color:var(--gold);font-size:14px;margin:10px 0 4px}.ai .qq{font-style:italic;color:var(--mut);font-size:14px}
+.ai .err{color:#ffb3c1;font-size:13.5px;text-align:center;margin-top:10px}
+.ai .ld{text-align:center;color:var(--mut);font-size:14px;padding:14px 0}
+.ai .msg{border-radius:14px;padding:10px 12px;margin-top:8px;font-size:14.5px;line-height:1.6}
+.ai .msg.u{background:rgba(127,227,245,.12);margin-left:24px}.ai .msg.a{background:rgba(6,22,44,.55);border:1px solid rgba(127,227,245,.2);margin-right:10px}
+.ai .fu{display:flex;gap:8px;margin-top:12px}.ai .fu .in{flex:1}.ai .fu .btn{width:auto;margin:0;padding:0 18px}
 .dia{display:flex;gap:16px;align-items:flex-start}.dia .slot{width:42%;flex:none}.dia .rd{margin:0;flex:1}
 </style></head><body><canvas id="bg"></canvas><main>
 <div class="hero"><div class="eb">Oráculo</div><h1>Tarot <em>Desde la Red</em></h1><p class="lead">Respira, haz tu pregunta en silencio y deja que las cartas te hablen.</p></div>
@@ -162,6 +176,26 @@ const ROM=['0','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XI
 const DECK=[];
 MAY.forEach((c,i)=>DECK.push({id:i,name:c[0],kw:c[1],up:c[2],rv:c[3],mark:ROM[i],col:'#eacb88',sub:'Arcano mayor'}));
 SU.forEach((s,si)=>RK.forEach((r,ri)=>{const m=MIN[si][ri];DECK.push({id:22+si*14+ri,name:r+' de '+s.n,kw:m[0],up:m[1],rv:m[2],mark:ri<10?String(ri+1):['S','C','R','K'][ri-10],col:s.c,sub:s.n+' · '+s.el})}));
+
+const FN='https://xjmgtzlezsmpxfnyjrli.supabase.co/functions/v1/desdelared-tarot',KEY='sb_publishable_kp75fFYItrQgpr47V5xpMQ_l-_AzCSz';
+async function callAI(body){const r=await fetch(FN,{method:'POST',headers:{'content-type':'application/json',apikey:KEY},body:JSON.stringify(body)});let d={};try{d=await r.json()}catch(e){}if(!r.ok)throw new Error(d.error||'No pudimos conectar para la lectura. Inténtalo de nuevo en un momento.');return d}
+function P(cls,txt,tag){const e=document.createElement(tag||'p');if(cls)e.className=cls;e.textContent=txt;return e}
+function buildAI(items,q){const w=document.createElement('div');w.className='ai';
+ const b=document.createElement('button');b.className='btn go';b.textContent='✦ Lectura con IA de tu tirada';w.append(b);
+ const box=document.createElement('div');w.append(box);const cards=items.map(i=>({id:i.c.id,rev:i.rev,pos:i.pos||''}));
+ b.onclick=async()=>{b.hidden=true;box.textContent='';box.append(P('ld','Leyendo tus cartas…'));
+  try{const d=await callAI({mode:'read',cards,question:q});box.textContent='';
+   box.append(P('t',d.title,'h3'),P('tx',d.intro));
+   d.cards.forEach((c,i)=>{const it=items[i],cn=document.createElement('div');cn.className='cn';cn.textContent=it.pos||'Tu carta';const nb=document.createElement('b');nb.textContent=it.c.name+(it.rev?' (invertida)':'');cn.append(nb);box.append(cn,P('tx',c.text))});
+   const sy=document.createElement('div');sy.className='sy';sy.append(P('cn','En conjunto'),P('tx',d.synthesis),P('pr','Para practicar: '+d.practice),P('qq',d.question));box.append(sy);
+   const hist=[],log=document.createElement('div'),fu=document.createElement('div');fu.className='fu';
+   const inp=document.createElement('input');inp.className='in';inp.maxLength=300;inp.placeholder='¿Quieres preguntar algo más sobre estas cartas?';
+   const go=document.createElement('button');go.className='btn';go.textContent='Preguntar';fu.append(inp,go);box.append(log,fu);
+   const ask=async()=>{const t=inp.value.trim();if(!t)return;inp.value='';go.disabled=true;log.append(P('msg u',t,'div'));const ld=P('msg a','…','div');log.append(ld);
+    try{const r=await callAI({mode:'chat',cards,question:q,followup:t,history:hist.slice(-6)});ld.textContent=r.answer;hist.push({role:'user',content:t},{role:'assistant',content:r.answer})}catch(e){ld.textContent=e.message}go.disabled=false};
+   go.onclick=ask;inp.onkeydown=e=>{if(e.key==='Enter')ask()};
+  }catch(e){box.textContent='';box.append(P('err',e.message));b.hidden=false;b.textContent='Intentar de nuevo'}};
+ return w}
 function rnd(n){const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]%n}
 function shuffle(n){const a=DECK.map((_,i)=>i);for(let i=a.length-1;i>0;i--){const j=rnd(i+1);[a[i],a[j]]=[a[j],a[i]]}return a.slice(0,n)}
 function seeded(s){return()=>{s^=s<<13;s^=s>>>17;s^=s<<5;return((s>>>0)%100000)/100000}}
@@ -196,7 +230,7 @@ function run(){const M=MODES[mode],out=$('out');out.textContent='';let ids,revs;
  const q=$('q').value.trim();if(q&&mode!=='dia'){const e=document.createElement('p');e.className='lead';e.style.cssText='margin:14px auto 0;font-style:italic;text-align:center';e.textContent='“'+q+'”';out.append(e)}
  const row=document.createElement('div');row.className='row '+(M.cls||'r1');const slots=ids.map((id,i)=>slot(DECK[id],revs[i],M.pos?M.pos[i][0]:''));row.append(...slots);out.append(row);
  const items=ids.map((id,i)=>({c:DECK[id],rev:revs[i],pos:M.pos?M.pos[i][0]:'',hint:M.pos?M.pos[i][1]:''}));
- const rd=reading(items);rd.hidden=true;out.append(rd);
+ const rd=reading(items);rd.append(buildAI(items,q));rd.hidden=true;out.append(rd);
  $('go').hidden=true;$('again').hidden=mode==='dia';
  const hint=document.createElement('p');hint.className='note';hint.style.margin='12px 0 0';hint.textContent=M.n===1?'Toca la carta para voltearla.':'Toca cada carta para voltearla, o ';
  if(M.n>1){const a=document.createElement('a');a.href='#';a.style.color='var(--cy)';a.textContent='voltearlas todas';a.onclick=e=>{e.preventDefault();slots.forEach((s,i)=>setTimeout(s._flip,i*350));done()};hint.append(a)}
