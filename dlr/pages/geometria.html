@@ -43,7 +43,7 @@ h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 .pr{border:1px solid rgba(234,203,136,.35);border-radius:16px;padding:12px 14px;background:rgba(234,203,136,.07);margin-top:14px;font-size:14px;color:var(--gold)}
 .nx{display:flex;gap:10px;margin-top:14px;margin-bottom:12px}.nx div{flex:1;border:1px solid var(--line);background:rgba(234,203,136,.05);border-radius:14px;padding:10px;text-align:center;font-size:12.5px;color:var(--mut)}.nx b{display:block;font:400 18px 'Instrument Serif',serif;color:#f3e2b8}
 .hero .tt{max-width:46%}.hero img{object-position:62% 50%}
-.fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.sl{display:block;margin-top:12px;font-size:13px;color:var(--mut)}.sel{width:100%;margin-top:6px;padding:14px 40px 14px 14px;font-size:16px;color:var(--gold);background:rgba(10,18,44,.7) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23eacb88' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 14px center;border:1px solid var(--line);border-radius:14px;appearance:none;-webkit-appearance:none;font-family:inherit}.sel option{color:#111;background:#fff}.or{text-align:center;color:var(--mut);font-size:13px;margin:14px 0 10px}.fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
 .fb{appearance:none;border:1px solid var(--line);border-radius:16px;background:rgba(6,22,44,.55);padding:8px 4px 6px;cursor:pointer;color:#f3e2b8;font-size:11.5px;line-height:1.15;display:flex;flex-direction:column;align-items:center;gap:4px}
 .fb svg{width:100%;max-width:56px;height:auto}.fb.on{background:rgba(234,203,136,.16);border-color:rgba(234,203,136,.75);box-shadow:0 0 16px rgba(234,203,136,.3)}
 .fig{width:min(78%,260px);aspect-ratio:1;margin:8px auto 0;position:relative}
@@ -63,8 +63,7 @@ h2{font:400 24px/1.1 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
 .fig .fim.rd{border-radius:50%}
 </style></head><body><canvas id="bg"></canvas><main>
 <div class="hero"><img src="https://cdn.jsdelivr.net/gh/HelonUniverse/hub@e3ad06a1e907f1d87409738ecc22d945c20a473f/dlr/tiles/geometria.webp" alt=""><div class="tt"><div class="eb">Contemplación</div><h1>Geometría <em>sagrada</em></h1><p class="lead">Formas para mirar con calma.</p></div></div>
-<div class="today"><span id="tdt">Tu forma de hoy</span><button id="tdb">Verla</button></div>
-<div class="card"><h2>Elige una forma</h2><div class="sub2" style="text-align:left">Toca una para verla dibujarse y leer qué representa.</div><div class="fgrid" id="fg"></div></div>
+<div class="card"><h2>Busca una forma</h2><label class="sl" for="sel">Elige por nombre</label><select id="sel" class="sel"><option value="">Elige una forma…</option></select><div class="or">o deja que el día te la regale</div><button class="btn" id="rnd">✦ Sacar una forma al azar</button></div>
 <div class="card dtl" id="dt" hidden><div class="fig big2" id="fi"></div><h2 id="nm"></h2><div class="tag" id="tg"></div><p class="tx" id="ds"></p><p class="tx" id="ob" style="color:var(--mut)"></p><div class="pr" id="hy"></div><div class="row2"><button class="btn" id="cm">Contemplar 1 minuto</button></div><div id="gd"></div></div>
 <p class="note">Las formas son un símbolo para contemplar y reflexionar. Los significados son tradicionales y simbólicos, no científicos.</p>
 </main>
@@ -146,10 +145,10 @@ const F=[
 const svg=i=>'<svg viewBox="0 0 100 100" aria-hidden="true">'+F[i].g()+'</svg>';
 const fig=i=>F[i].im?'<img src="'+F[i].im+'" alt="'+F[i].n+'" class="fim'+(F[i].rd?' rd':'')+'">':svg(i);
 let cur=-1;
-F.forEach((f,i)=>{const b=document.createElement('button');b.className='fb';b.innerHTML='<svg viewBox="0 0 100 100" aria-hidden="true" style="stroke:#f3dda0;fill:none;stroke-width:2.2">'+f.g().replace(/style="[^"]*"/g,'').replace(/pathLength="1"/g,'')+'</svg><span>'+f.n+'</span>';b.onclick=()=>show(i);$('fg').append(b)});
-function show(i){cur=i;[...$('fg').children].forEach((b,j)=>b.classList.toggle('on',j===i));const f=F[i];$('dt').hidden=false;$('fi').innerHTML=fig(i);$('nm').textContent=f.n;$('tg').textContent=f.t;$('ds').textContent=f.d;$('ob').textContent='Qué observar: '+f.o;$('hy').textContent='Para hoy: '+f.h;$('gd').textContent='';$('gd').append(gbtn('Geometría sagrada · '+f.n+' ('+f.t+'). '+f.d+' Para hoy: '+f.h));$('dt').scrollIntoView({behavior:'smooth',block:'start'})}
-const n0=new Date(),di=(n0.getFullYear()*372+n0.getMonth()*31+n0.getDate())%F.length;
-$('tdt').textContent='Tu forma de hoy: '+F[di].n;$('tdb').onclick=()=>show(di);
+F.map((f,i)=>[f.n,i]).sort((p,q)=>p[0].localeCompare(q[0],'es')).forEach(([n,i])=>{const o=document.createElement('option');o.value=i;o.textContent=n;$('sel').append(o)});
+$('sel').onchange=()=>{if($('sel').value!=='')show(+$('sel').value)};
+$('rnd').onclick=()=>{let k;do{k=Math.floor(Math.random()*F.length)}while(F.length>1&&k===cur);show(k)};
+function show(i){cur=i;$('sel').value=i;const f=F[i];$('dt').hidden=false;$('fi').innerHTML=fig(i);$('nm').textContent=f.n;$('tg').textContent=f.t;$('ds').textContent=f.d;$('ob').textContent='Qué observar: '+f.o;$('hy').textContent='Para hoy: '+f.h;$('gd').textContent='';$('gd').append(gbtn('Geometría sagrada · '+f.n+' ('+f.t+'). '+f.d+' Para hoy: '+f.h));$('dt').scrollIntoView({behavior:'smooth',block:'start'})}
 let tm=null;
 $('cm').onclick=()=>{$('mf').innerHTML=fig(cur);$('med').hidden=false;let s=60,ph=0;const bt=['Inhala…','Exhala…'];$('mb').textContent=bt[0];$('mt').textContent=s+' s';clearInterval(tm);tm=setInterval(()=>{s--;if(s%4===0){ph=1-ph;$('mb').textContent=bt[ph]}$('mt').textContent=s+' s';if(s<=0){clearInterval(tm);$('mb').textContent='Gracias por detenerte.';$('mt').textContent='';$('mx').textContent='Volver'}},1000)};
 $('mx').onclick=()=>{clearInterval(tm);$('med').hidden=true;$('mx').textContent='Terminar'};
