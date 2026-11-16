@@ -1,0 +1,413 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#06162c"><title>Cursos · Desde la Red</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>:root{--cy:#7fe3f5;--gold:#eacb88;--mut:#a9c4d2;--line:rgba(234,203,136,.38)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:radial-gradient(ellipse at 15% 8%,rgba(98,60,170,.45) 0%,transparent 55%),radial-gradient(ellipse at 90% 30%,rgba(24,150,170,.30) 0%,transparent 55%),linear-gradient(#070b24,#0a1233 55%,#050816) fixed;color:#eef9ff;font:15px/1.55 'Albert Sans',system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+button,textarea{font:inherit;color:inherit}
+main{max-width:620px;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 18px 70px}
+.eb{font-size:11px;letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
+h1{font:400 clamp(34px,10vw,46px)/1.05 'Instrument Serif',Georgia,serif;margin:6px 0 4px}
+h1 em{color:var(--gold);font-style:italic}
+h2{font:400 26px/1.1 'Instrument Serif',serif;margin:0 0 8px;color:#f3e2b8}
+h3{font:400 20px/1.15 'Instrument Serif',serif;margin:0 0 6px;color:#f3e2b8}
+.lead{color:#cfd6ea;font-size:14.5px;margin:6px 0 0}
+.card{border-radius:22px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(52,36,110,.55),rgba(10,18,52,.82));box-shadow:0 12px 34px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06);padding:18px;margin-top:14px}
+.gt{margin:26px 2px 0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.cc{display:block;width:100%;text-align:left;appearance:none;cursor:pointer;position:relative;overflow:hidden;border-radius:22px;border:1px solid var(--line);margin-top:12px;padding:18px 18px 16px 84px;background:radial-gradient(circle at 0% 50%,hsla(var(--h),70%,55%,.38),transparent 55%),linear-gradient(160deg,rgba(40,34,100,.62),rgba(8,16,50,.9));box-shadow:0 10px 28px rgba(0,0,0,.42)}
+.cc .gl{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:26px;color:#fff3cf;background:radial-gradient(circle at 35% 30%,hsla(var(--h),80%,70%,.9),hsla(var(--h),60%,30%,.9));box-shadow:0 0 22px hsla(var(--h),90%,65%,.55),inset 0 0 0 1px rgba(255,255,255,.35)}
+.cc b{display:block;font:400 22px/1.1 'Instrument Serif',serif;color:#f6e7bf}
+.cc span.s{display:block;color:var(--mut);font-size:12.5px;margin-top:4px}
+.pb{height:5px;border-radius:9px;background:rgba(255,255,255,.12);margin-top:10px;overflow:hidden}.pb i{display:block;height:100%;background:linear-gradient(90deg,#f6e3ae,#d9b45f);border-radius:9px}
+.back{appearance:none;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:999px;padding:8px 14px;font-size:13px;color:var(--gold);cursor:pointer;margin-bottom:10px}
+.tag{color:var(--cy);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;margin:2px 0 0}
+.btn{appearance:none;border:0;border-radius:999px;padding:13px 16px;background:linear-gradient(135deg,#f6e3ae,#d9b45f);color:#1a1230;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 6px 18px rgba(234,203,136,.3);width:100%;margin-top:12px}
+.btn.ghost{background:none;color:var(--gold);border:1px solid var(--line);box-shadow:none;font-weight:500}
+.btn[disabled]{opacity:.7}
+.row2{display:flex;gap:10px}.row2 .btn{flex:1}
+details{border-radius:18px;border:1px solid var(--line);background:rgba(6,22,44,.5);margin-top:12px;padding:0 16px}
+summary{cursor:pointer;padding:14px 0;color:#f3e2b8;font:400 20px 'Instrument Serif',serif;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}summary:after{content:'+';color:var(--gold);font:400 22px 'Albert Sans'}details[open] summary:after{content:'–'}
+details>div{padding:0 0 14px}
+.ml{display:flex;gap:12px;align-items:center;width:100%;text-align:left;appearance:none;cursor:pointer;border-radius:18px;border:1px solid var(--line);background:rgba(6,22,44,.55);padding:13px 14px;margin-top:9px}
+.ml .n{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:400 18px 'Instrument Serif',serif;color:#f3e2b8;border:1px solid var(--line)}
+.ml.ok .n{background:linear-gradient(135deg,#f6e3ae,#d9b45f);color:#1a1230;border:0}
+.ml b{display:block;font-weight:500;color:#f3e2b8;font-size:15px;line-height:1.25}.ml small{display:block;color:var(--mut);font-size:12.5px;margin-top:2px}
+.steps{display:flex;gap:6px;margin:12px 0 0}
+.st{flex:1;appearance:none;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:12px;padding:9px 4px;font-size:12.5px;cursor:pointer;color:var(--mut)}
+.st.on{background:rgba(127,227,245,.16);color:#eef9ff;box-shadow:0 0 14px rgba(80,220,255,.3)}
+.rd p{margin:0 0 12px;color:#dff1f7;font-size:15px;line-height:1.7}
+.rd ul{margin:0 0 12px;padding-left:20px;color:#dff1f7;line-height:1.65}.rd li{margin-bottom:5px}
+.rd b{color:#f3e2b8;font-weight:600}
+.sub{color:var(--mut);font-size:13px;margin:-2px 0 12px}
+.q{margin-top:16px}.q label{display:block;color:#f3e2b8;font-size:14.5px;line-height:1.45;margin-bottom:6px}
+textarea{width:100%;min-height:84px;resize:vertical;border:1px solid var(--line);background:rgba(6,22,44,.6);border-radius:14px;padding:12px 14px;font-size:16px;outline:0;line-height:1.5}
+textarea:focus{box-shadow:0 0 14px rgba(80,220,255,.35)}
+.paso{border:1px solid rgba(234,203,136,.4);border-radius:16px;padding:12px 14px;background:rgba(234,203,136,.07);margin-top:16px;font-size:14px;color:var(--gold)}.paso b{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:3px}
+.rec{border-left:3px solid var(--gold);padding:4px 0 4px 12px;margin-top:14px;color:#cfe3ec;font-size:14px}.rec b{color:var(--gold);font-size:11px;letter-spacing:.2em;text-transform:uppercase;display:block;margin-bottom:3px}.rec li{margin:2px 0}
+.mini{border:1px solid var(--line);border-radius:16px;background:rgba(6,22,44,.5);padding:12px 14px;margin:0 0 10px}.mini h3{font-size:18px;margin:0 0 4px}.mini p{font-size:13.5px!important;margin:0 0 5px!important;color:#cfe3ec!important;line-height:1.55!important}
+.note{color:#8fa9b8;font-size:12px;text-align:center;margin:20px 6px 0}
+.done{text-align:center;padding:8px 0}.done .big{font:400 54px/1 'Instrument Serif',serif;color:var(--gold);text-shadow:0 0 24px rgba(234,203,136,.55)}
+[hidden]{display:none!important}
+</style></head><body><main id="app"></main><script>
+const RES='¿Qué parte de esta lectura resuena conmigo hoy?';
+const RESN='Puedes explorar lo que resuena sin convertirlo en una verdad definitiva sobre ti.';
+const ASK='¿Qué me trae a estas páginas?';
+function linaje(x){
+const M=x==='materno';const per=M?'madre':'padre';const mi=M?'mi madre':'mi padre';const tu=M?'tu madre':'tu padre';const fam=M?'materna':'paterna';
+return {
+id:'linaje-'+x,hue:M?330:215,glyph:M?'♀':'♂',grupo:'sanar',
+t:'Sanar el linaje '+x,
+tag:'Mirar lo recibido, soltar lo que no te corresponde, elegir qué transmitir',
+desc:'Una guía de autoconocimiento para explorar la relación con '+tu+' y las historias de su familia, y decidir conscientemente qué quieres conservar.',
+tiempo:'6 módulos · 20 a 30 min cada uno',
+esp:['La relación con '+tu+' y las historias de su familia forman parte de lo que recibiste. Este cuaderno te invita a mirar lo que hubo, distinguir hechos de interpretaciones y elegir respuestas nuevas en tu presente, sin convertir el pasado en una explicación única de tu vida.','No necesitas conocer todos los detalles de la historia familiar ni contactar a nadie para completar la guía. Puedes trabajar con lo que sabes, dejar preguntas abiertas o centrarte únicamente en tu experiencia actual.','Aquí encontrarás seis módulos con lecturas breves, preguntas y ejercicios. Puedes dedicar entre 20 y 30 minutos a cada módulo y hacer pausas. No hay fechas ni un ritmo obligatorio.'],
+trae:'¿Qué me gustaría comprender o cambiar de mi experiencia actual?',
+cuidado:['Este es un material de reflexión personal. No es terapia, no busca diagnosticar ni permite atribuir todos tus patrones actuales únicamente a la relación con '+tu+'.','Una historia familiar puede tener distintas versiones. Un relato no demuestra qué sintió otra persona ni determina tu destino. Es válido escribir “no lo sé” y conservar esa incertidumbre.','No necesitas perdonar, reconciliarte ni contactar a '+tu+' para avanzar. Puedes reconocer el contexto de otra persona y, al mismo tiempo, respetar tus propios límites.','Si una pregunta te resulta demasiado intensa, déjala. Mira a tu alrededor, siente el apoyo de la silla y vuelve a una actividad cotidiana. Si necesitas compañía para explorar un tema, puedes buscar apoyo profesional.'],
+pausa:['Señales que me indican que necesito una pausa:','Personas, lugares o actividades que me ayudan a sentir apoyo:'],
+mods:[
+{t:'Reconocer',s:'Mirar lo que recibiste sin minimizar ni idealizar.',h:'¿Qué recibí de '+mi+'?',
+c:['Antes de cambiar nada, hace falta ver con claridad lo que hubo. Muchas personas minimizan o idealizan la relación con su '+per+'. Ambas posturas pueden impedir ver con nitidez.',
+M?'Puedes preguntarte: ¿Qué recibí? (cuidado, exigencia, presencia emocional, silencios, formas de querer, miedos, sobrecarga, disponibilidad…). ¿Qué necesité y no estuvo disponible? ¿Qué sí estuvo, aunque imperfecto?':'Puedes preguntarte: ¿Qué recibí? (presencia, ausencia, formas de cuidar, de exigir, silencios, valores, miedos…). ¿Qué necesité y no estuvo disponible? ¿Qué sí estuvo, aunque imperfecto?',
+'Permítete reconocer tanto el cariño como el dolor. Ambos pueden coexistir. No tienes que elegir solo una versión de la historia.'],
+r:['¿Qué recibí de '+mi+' que sí me nutrió?','¿Qué necesité y no estuvo disponible?','¿Qué me duele aún hoy al recordarlo?'],
+p:{t:'Las tres columnas',i:'Escribe sin censura. No hace falta que sea “justo” ni equilibrado. Solo verdadero.',f:['Lo que recibí:','Lo que me dolió:','Lo que hoy elijo:'],paso:'Elige una acción pequeña que puedas realizar esta semana a partir de lo que escribiste en la tercera columna.'}},
+{t:'Hechos e interpretaciones',s:'Separar lo ocurrido de las conclusiones sobre ti.',h:'¿Qué concluí sobre mí?',
+c:['Hay una diferencia importante entre lo que ocurrió y lo que concluiste sobre ti a partir de eso.',
+M?'“Mi madre estaba siempre ocupada o preocupada” describe una experiencia. “Yo no era suficiente para que me mirara” es una conclusión sobre ti. La segunda frase suele sentirse como verdad, pero es una interpretación. Y las interpretaciones se pueden cuestionar.':'“Mi padre estuvo ausente” describe una experiencia. “No estuvo porque yo no valía” es una conclusión sobre ti. La segunda frase suele sentirse como verdad, pero es una interpretación. Y las interpretaciones se pueden cuestionar.',
+'Puedes reconocer el dolor de lo ocurrido sin convertir esa experiencia en una sentencia sobre tu valor'+(M?' o tu capacidad de ser amada.':'.')],
+r:['¿Qué frases me repito sobre mí misma en relación con '+mi+'?','¿Cuáles de esas frases son hechos y cuáles son conclusiones?','¿Qué conclusión estoy lista para cuestionar?'],
+p:{t:'Reescribir la historia sobre mí',f:['Frase original que me repito:','Reescrita (solo lo que puedo afirmar + una posibilidad nueva):','Otra frase original:','Reescrita:'],paso:'Completa: “Aprendí a… Hoy puedo practicar…” con una acción pequeña y concreta.'}},
+{t:'Patrones presentes',s:'Observar cómo se manifiesta hoy en tu vida.',h:'¿Cómo se manifiesta hoy?',
+c:['Los patrones no siempre se sienten “de la familia”. A veces se disfrazan de personalidad o de “así soy yo”. Observar sin forzar conclusiones es un paso poderoso.',
+M?'Puedes fijarte en: ¿Te cuesta priorizarte? ¿Sientes que tienes que cuidar de los demás antes que de ti? ¿Te resulta difícil recibir? ¿Evitas el conflicto para no “hacer daño”? ¿Cargas con responsabilidades emocionales que no te corresponden? ¿Sientes culpa al poner límites?':'Puedes fijarte en: ¿Te cuesta pedir apoyo? ¿Confiar? ¿Expresar enojo? ¿Poner límites? ¿Asumes responsabilidades que no te corresponden? ¿Sientes que tienes que “poder sola” incluso cuando estás agotada?',
+'No asumas automáticamente que todo viene de tu familia '+fam+'. A veces hay otras influencias. El objetivo es observar, no diagnosticar.'],
+r:[M?'¿En qué situaciones recientes noté dificultad para priorizarme, recibir o poner límites?':'¿En qué situaciones recientes noté dificultad para pedir, confiar o poner límites?','¿Qué me dije a mí misma en esas situaciones?','¿Qué hubiera querido poder hacer de otra forma?'],
+p:{t:'Mapa de un patrón actual',f:['Situación concreta reciente:','Qué sentí en el cuerpo:','Qué me dije:','Qué hice o dejé de hacer:'],paso:'Elige una de esas situaciones y escribe una respuesta diferente que podrías probar la próxima vez.'}},
+{t:'Respuestas nuevas',s:'Practicar una acción diferente, aunque sea pequeña.',h:'¿Qué puedo practicar hoy?',
+c:['La sanación no ocurre solo por entender. Ocurre cuando empiezas a responder de forma distinta en el presente, aunque sea en escala pequeña.',
+M?'No se trata de convertirte de repente en otra persona. Se trata de practicar una respuesta nueva en una situación concreta: decir que no sin sobreexplicar, pedir ayuda, dejar de cargar con lo que no te corresponde, permitirte recibir, o cuidar de ti sin sentir que estás fallando.':'No se trata de convertirte de repente en otra persona. Se trata de practicar una respuesta nueva en una situación concreta: decir no, pedir ayuda, dejar de asumir una responsabilidad que no te corresponde, expresar un límite con calma, o permitirte sentir enojo sin actuar de forma impulsiva ni reprimirlo.'],
+r:['¿Qué respuesta habitual quiero empezar a soltar?','¿Qué respuesta nueva me gustaría practicar?','¿Qué me frena a practicarla?'],
+p:{t:'Una acción pequeña',i:'Elige solo una. Debe ser concreta, realizable y un poco incómoda (pero no aterradora).',f:['Mi acción concreta esta semana:','¿Cuándo la haré?','¿Qué necesito para apoyarme a hacerlo?'],paso:'Después de hacerla, anota qué notaste en el cuerpo, en las emociones y en la relación. No busques un resultado “perfecto”. Busca información.'}},
+{t:'Lo que nutre',s:'Conservar lo valioso sin justificar el dolor.',h:'¿Qué quiero conservar?',
+c:['Sanar no significa rechazar todo lo que vino de '+tu+' o de su familia. Puedes valorar aprendizajes, recuerdos, valores'+(M?', formas de cuidar o de sostener':' o formas de ser')+' que te nutren, sin justificar lo que te lastimó.','Honrar lo bueno no borra el dolor. Y reconocer el dolor no anula lo bueno. Ambas cosas pueden existir al mismo tiempo.'],
+r:['¿Qué valores, gestos o aprendizajes de '+mi+' o de su linaje quiero seguir cultivando?','¿Qué quiero dejar de transmitir o de repetir?','¿Cómo puedo honrar lo bueno sin minimizar el dolor?'],
+p:{t:'Lo que elijo conservar',f:['Tres cosas que quiero conservar y cultivar:','Una cosa que elijo no seguir transmitiendo:'],paso:'Elige una de las tres cosas que quieres conservar y escribe una forma concreta de practicarla esta semana.'}},
+{t:'Integración',s:'Transformar lo observado en una elección presente.',h:'¿Qué quiero llevarme de este proceso?',
+c:['Has mirado lo que recibiste, has separado hechos de interpretaciones, has observado patrones y has practicado respuestas nuevas. Ahora puedes transformar lo observado en una elección presente.','No necesitas perdonar, reconciliarte ni contactar a '+tu+' para avanzar. El trabajo que haces contigo misma es válido y suficiente.','Si hubo abuso, negligencia grave o recuerdos que te desbordan, un profesional con experiencia en trauma puede acompañarte de forma segura. Pedir ese apoyo es un acto de cuidado.'],
+r:['¿Qué descubrí o recordé que me parece importante?','¿Qué ya no quiero seguir cargando?','¿Qué quiero practicar con más constancia a partir de ahora?'],
+p:{t:'Mi elección presente',f:['Una frase que resume lo que elijo a partir de hoy:','Una acción concreta que quiero mantener en las próximas semanas:'],paso:'Escribe una frase que te permita avanzar sin tener que resolverlo todo. Por ejemplo: “Puedo mirar mi historia y seguir eligiendo mi presente”.'}}],
+cierre:['Gracias por mirar con honestidad. Eso ya es un acto de sanación.','Puedes volver a estos ejercicios tantas veces como necesites. Cada vez que eliges conscientemente una respuesta nueva, estás tejiendo una herencia distinta.']};}
+
+const CURSOS=[
+{id:'nino-interior',hue:285,glyph:'✧',grupo:'sanar',
+t:'El niño interior',tag:'Reconocer, escuchar y cuidar a quien fue y sigue siendo parte de ti',
+desc:'Una guía práctica para conectar con las partes más jóvenes de ti, entender cómo influyen en tu presente y ofrecerles una respuesta más cuidadosa.',
+tiempo:'6 módulos',
+esp:['Dentro de cada persona adulta hay partes que se formaron en la infancia: formas de sentir, de reaccionar, de necesitar y de protegerse. A esas partes se les suele llamar “niño interior”.','Esta guía no busca que “vuelvas a ser niña” ni que te quedes atrapada en el pasado. Te invita a reconocer cómo esas partes siguen operando hoy, a escucharlas con un poco más de cuidado y a responder desde tu yo adulto.','Puedes trabajar con lo que recuerdas y con lo que sientes ahora. No necesitas recuperar todos los recuerdos para empezar.'],
+trae:'¿Qué siento cuando escucho la expresión “niño interior”?',
+cuidado:['Este es un material de reflexión personal. No es terapia ni sustituye el acompañamiento profesional. Explorar el niño interior puede activar emociones o recuerdos intensos.','Si en algún momento sientes que te desbordas, haz una pausa. Vuelve a tu cuerpo, mira a tu alrededor y retoma solo cuando te sientas más disponible. Si necesitas apoyo, busca un profesional con experiencia en trauma o apego.','No necesitas forzar recuerdos ni “sanar” todo de una vez. Puedes avanzar de a poco, con respeto hacia tu ritmo.'],
+pausa:['Señales de que necesito una pausa:','Personas o actividades que me ayudan a aterrizar:'],
+mods:[
+{t:'Qué es el niño interior',s:'Una mirada clara y sin idealización.',h:'Una forma de hablar de las partes jóvenes de ti',
+c:['El “niño interior” es una metáfora útil para referirse a las partes de ti que se formaron en la infancia: sus necesidades, miedos, formas de protegerse y de buscar amor o seguridad.','No es una entidad separada ni un personaje que debas “encontrar”. Es una forma de nombrar experiencias y reacciones que todavía operan en tu presente cuando algo te toca de cerca.','Reconocerlo no significa quedarte en el pasado. Significa poder responder a esas partes desde una posición más adulta y cuidadosa.'],
+r:['¿Qué imágenes o sensaciones me vienen cuando pienso en mi infancia?','¿Hay alguna parte de mí que todavía reacciona como si fuera más pequeña?','¿Qué me genera acercarme a este tema (curiosidad, resistencia, ternura, miedo…)?']},
+{t:'Cómo se manifiesta hoy',s:'Reconocer sus señales en el presente.',h:'Señales en el presente',
+c:['El niño interior no siempre se presenta como un recuerdo. A veces aparece como una reacción desproporcionada, un miedo intenso a ser rechazada, una necesidad urgente de aprobación, o la sensación de no poder pedir ayuda.','También puede mostrarse como la parte que se asusta, que se esconde, que se enoja o que necesita ser vista. Observar estas manifestaciones con curiosidad (y sin juzgarlas de inmediato) es un primer paso importante.'],
+r:['¿En qué situaciones actuales siento que “reacciono como niña”?','¿Qué emociones o impulsos aparecen en esos momentos?','¿Qué suele necesitar esa parte de mí cuando se activa?']},
+{t:'Qué necesitó y no recibió',s:'Escuchar sin quedar atrapada en el pasado.',h:'Escuchar sin quedarte atrapada',
+c:['Muchas heridas del niño interior tienen que ver con necesidades que no fueron suficientemente vistas, validadas o sostenidas: seguridad, cariño, protección, permiso para sentir, espacio para ser.','Reconocer lo que faltó no es para culpar a nadie ni para quedarte en el reclamo. Es para poder ofrecerte hoy, desde tu yo adulto, algo de lo que entonces no estuvo disponible.'],
+r:['¿Qué necesitó esa parte de mí que siente que no recibió lo suficiente?','¿Cómo reaccionó entonces para protegerse?','¿Qué de eso sigue presente en mi forma de relacionarme hoy?']},
+{t:'Responder desde el adulto',s:'Ofrecer cuidado desde quien eres ahora.',h:'Ofrecer cuidado desde quien eres ahora',
+c:['El trabajo con el niño interior no consiste en que la niña interior “se haga cargo” de tu vida adulta. Consiste en que tu yo actual pueda reconocerla, validar lo que sintió y responderle con más cuidado del que recibió entonces.','Eso puede verse como: permitirte sentir sin juzgarte, darte seguridad cuando hay miedo, no abandonarte cuando aparece la vergüenza, o hablarte con más respeto en los momentos difíciles.'],
+r:['¿Qué le diría hoy a esa parte más joven de mí si pudiera hablarle con cariño?','¿Qué necesitaría escuchar de mí como adulta?','¿Qué gesto concreto podría ofrecerle esta semana?'],
+p:{t:'Una respuesta adulta',f:['Una situación reciente en la que se activó una parte más joven:','Qué necesitaba esa parte:','Qué le ofrezco ahora desde mi yo adulto:'],paso:'Practica decirte (en voz alta o por escrito) una frase de cuidado dirigida a esa parte cuando notes que se activa.'}},
+{t:'Prácticas de conexión',s:'Gestos concretos de vínculo interno.',h:'Gestos concretos de vínculo interno',
+c:['Además de la comprensión, el niño interior se beneficia de gestos concretos y repetidos: darte permiso para descansar, jugar un poco, llorar si lo necesitas, protegerte de situaciones que te desbordan, o simplemente notarte con más suavidad.','No se trata de grandes rituales. Se trata de ir construyendo evidencia de que ahora hay alguien (tú) que puede sostenerte un poco mejor.'],
+r:['¿Qué gesto simple de cuidado podría ofrecerme esta semana?','¿Qué actividad me conecta con una sensación más liviana o más protegida?','¿Qué me frena a practicar ese gesto con más frecuencia?'],
+p:{t:'Mi práctica de cuidado',f:['Una práctica concreta de conexión o cuidado que quiero sostener:','¿Cuándo la haré?'],paso:'Realízala al menos una vez esta semana y anota cómo te sentiste después.'}},
+{t:'Integración',s:'Llevar este cuidado a tu vida diaria.',h:'Llevar este cuidado a tu vida diaria',
+c:['Has explorado qué es el niño interior, cómo se manifiesta, qué necesitó y cómo puedes responderle desde tu yo adulto. Ahora puedes elegir una forma concreta de seguir cultivando ese vínculo.','No se trata de “sanar” de una vez por todas. Se trata de ir construyendo una relación interna más respetuosa y cuidadosa con el tiempo.'],
+r:[],
+p:{t:'Mi elección presente',f:['Lo más importante que me llevo de este proceso:','Una forma concreta en la que quiero seguir cuidando a esa parte de mí:'],paso:'Escribe una frase que te recuerde que puedes estar de tu lado. Por ejemplo: “Puedo escuchar a esa parte de mí y responderle con más cuidado”.'}}],
+cierre:['Gracias por acercarte a estas partes de ti con honestidad y respeto.','Cada vez que reconoces una reacción antigua, la validas y le ofreces una respuesta más cuidadosa, estás tejiendo un vínculo interno más seguro y amable.']},
+
+{id:'limites-sanos',hue:25,glyph:'◇',grupo:'sanar',
+t:'Límites sanos',tag:'Aprender a decir no, proteger tu energía y elegir con claridad',
+desc:'Una guía práctica para reconocer dónde te cuesta poner límites, entender por qué te cuesta y empezar a practicarlos de forma clara y respetuosa.',
+tiempo:'6 módulos',
+esp:['Los límites no son muros para alejar a los demás. Son una forma de cuidar tu energía, tu tiempo y tu bienestar, y de relacionarte desde un lugar más honesto.','Muchas personas aprendieron a priorizar la comodidad de otros, a evitar el conflicto o a sentir culpa al decir que no. Esta guía te invita a mirar esos patrones y a practicar límites de forma concreta y respetuosa.','No necesitas convertirte en alguien “duro” ni cortar relaciones. Puedes empezar con límites pequeños y claros en tu vida diaria.'],
+trae:'¿En qué áreas de mi vida siento que más necesito límites?',
+cuidado:['Este es un material de reflexión personal. No es terapia ni sustituye el acompañamiento profesional. Poner límites puede activar culpa, miedo o incomodidad. Eso es normal.','No necesitas hacerlo perfecto ni de golpe. Puedes practicar de a poco, empezando por situaciones de bajo riesgo.','Si al explorar estos temas aparecen emociones muy intensas o recuerdos difíciles, haz una pausa y busca apoyo si lo necesitas.'],
+pausa:['Señales de que necesito una pausa:','Personas o recursos que me ayudan a sentirme más segura:'],
+mods:[
+{t:'Qué son los límites',s:'Una mirada clara y práctica.',h:'¿Qué es realmente un límite?',
+c:['Un límite es una forma de comunicar qué estás disponible a dar, recibir o permitir, y qué no. No es un castigo ni una forma de controlar a los demás. Es una declaración sobre ti.','Los límites pueden ser de tiempo, de energía, de contacto físico, de temas de conversación, de favores, de disponibilidad emocional, entre otros. Cuando faltan, suele aparecer el resentimiento, el agotamiento o la sensación de que “todo el mundo se aprovecha”.','Poner un límite no garantiza que la otra persona lo acepte de buen grado. Tu responsabilidad es expresarlo con claridad. La reacción del otro no es tu responsabilidad.'],
+r:['¿Qué ideas tenía sobre los límites antes de esta guía?','¿Asocio los límites con egoísmo, dureza o conflicto?','¿Qué me gustaría que los límites me permitieran en mi vida?']},
+{t:'Por qué me cuestan',s:'Entender los obstáculos sin juzgarme.',h:'¿Qué me lo pone difícil?',
+c:['A muchas personas les cuesta poner límites porque aprendieron que decir que no generaba rechazo, enojo o decepción. Otras sienten que su valor está ligado a estar siempre disponibles.','También puede haber miedo al conflicto, culpa, o la creencia de que “si realmente me quisieran, no tendría que poner límites”. Estas ideas se pueden cuestionar.','Entender por qué te cuesta no es una excusa para no practicar. Es una forma de acercarte a ti con más comprensión mientras empiezas a cambiar.'],
+r:['¿Qué miedo aparece cuando pienso en poner un límite?','¿Qué me suelo decir para no ponerlo?','¿De qué me protege (o cree protegerme) el no poner límites?']},
+{t:'Dónde los necesito',s:'Identificar áreas concretas de mi vida.',h:'Identificar áreas concretas',
+c:['Los límites se practican en situaciones reales. Por eso es útil mirar áreas específicas: familia, pareja, trabajo, amistades, redes sociales, tiempo personal, favores, temas de conversación…','No hace falta trabajar todas a la vez. Elige una o dos donde el costo de no poner límites ya se está notando (cansancio, resentimiento, sensación de desborde).'],
+r:['¿En qué relaciones o situaciones siento más desborde o resentimiento?','¿Qué estoy permitiendo que ya no quiero seguir permitiendo?','¿Cuál sería un área de bajo riesgo para empezar a practicar?'],
+p:{t:'Mi mapa de límites',f:['Área de mi vida donde más necesito un límite ahora:','Qué estoy permitiendo actualmente:','Qué me gustaría permitir en su lugar:'],paso:'Elige un solo límite pequeño y concreto en esa área para practicar esta semana.'}},
+{t:'Cómo expresarlos',s:'Practicar formas claras y respetuosas.',h:'Formas claras y respetuosas',
+c:['Un límite claro suele ser breve, concreto y centrado en ti. No necesita una larga justificación ni pedir permiso.',{b:'Ejemplos de formulaciones útiles:',ul:['“Hoy no puedo.”','“No me resulta cómodo hablar de este tema.”','“Puedo ayudarte el jueves, no antes.”','“Necesito un rato a solas, luego conversamos.”']},'No es necesario convencer a la otra persona. Tu tarea es expresar el límite. La aceptación o no de ese límite es responsabilidad del otro.'],
+r:['¿Qué forma de expresar límites me resulta más natural o más difícil?','¿Suelo sobreexplicar o disculparme en exceso cuando digo que no?','¿Qué frase simple me gustaría practicar?'],
+p:{t:'Practicar una frase',f:['El límite concreto que quiero practicar esta semana:','La frase con la que lo voy a expresar:','¿Con quién o en qué situación lo practicaré?'],paso:'Practícalo una vez. Después anota qué notaste en el cuerpo y en la emoción.'}},
+{t:'Sostener el límite',s:'Qué hacer cuando aparece la culpa o la presión.',h:'Cuando aparece la culpa o la presión',
+c:['Poner el límite es solo el primer paso. Después puede aparecer culpa, presión de la otra persona, dudas o el impulso de retractarte.','Sostener el límite no significa ser inflexible siempre. Significa no abandonarlo solo por incomodidad o por el malestar del otro. Puedes revisar un límite más adelante si realmente quieres, no por culpa automática.','Es útil tener frases de refuerzo internas, como: “Puedo tolerar esta incomodidad” o “Mi límite es válido aunque no le guste a la otra persona”.'],
+r:['¿Qué suele pasar en mí después de poner un límite (culpa, miedo, alivio…)?','¿Qué me ayuda a no retractarme de inmediato?','¿Qué frase interna me gustaría usar cuando aparezca la presión?']},
+{t:'Integración',s:'Elegir un límite pequeño y realista.',h:'Elegir un límite pequeño y realista',
+c:['Has explorado qué son los límites, por qué te cuestan, dónde los necesitas y cómo expresarlos. Ahora puedes elegir uno solo, pequeño y concreto, para practicarlo en las próximas semanas.','La habilidad de poner límites se construye con repetición. Cada vez que lo haces, aunque sea imperfecto, estás entrenando una forma nueva de cuidarte.'],
+r:[],
+p:{t:'Mi límite presente',f:['El límite concreto que elijo practicar a partir de ahora:','La frase con la que lo voy a expresar:','Cómo voy a sostenerme si aparece culpa o presión:'],paso:'Escribe una frase que te recuerde que tus límites son válidos. Por ejemplo: “Puedo decir que no y seguir siendo una persona cuidadosa”.'}}],
+cierre:['Gracias por explorar este tema con honestidad. Poner límites es una forma concreta de cuidarte.','Cada vez que expresas con claridad lo que sí y lo que no estás disponible a dar, estás tejiendo relaciones más honestas y un vínculo más respetuoso contigo misma.']},
+
+{id:'vinculo-conmigo',hue:175,glyph:'❋',grupo:'sanar',
+t:'Sanar el vínculo conmigo misma',tag:'Volver a mí con honestidad, cuidado y elección',
+desc:'Una guía práctica para mirar cómo te hablas, cómo te tratas y cómo puedes empezar a construir una relación más amable y consciente contigo misma.',
+tiempo:'6 módulos',
+esp:['La relación más larga que tendrás es la que tienes contigo misma. Cómo te hablas, cómo te juzgas, cómo te cuidas (o no) y cómo te abandonas influye en casi todas las áreas de tu vida.','Esta guía no busca que te “quieras” de un día para otro ni que fuerces frases positivas. Te invita a mirar con honestidad cómo es hoy tu vínculo interno y a practicar formas más amables y realistas de estar contigo.','Puedes trabajar con lo que sientes ahora. No necesitas haber resuelto nada antes de empezar. Aquí encontrarás seis módulos con lecturas breves, preguntas y ejercicios prácticos.'],
+trae:'¿Cómo describiría hoy mi forma de tratarme?',
+cuidado:['Este es un material de reflexión personal. No es terapia ni sustituye el acompañamiento profesional. Si al explorar estos temas surgen recuerdos o emociones muy intensas, está bien pausar y buscar apoyo.','No necesitas forzarte a “quererte” ni a sentir gratitud todo el tiempo. A veces el primer paso es simplemente dejar de tratarte con tanta dureza.','Si una pregunta te resulta demasiado intensa, déjala. Vuelve a tu cuerpo, mira a tu alrededor y retoma cuando te sientas más disponible.'],
+pausa:['Señales de que necesito una pausa:','Personas o actividades que me ayudan a sentirme más sostenida:'],
+mods:[
+{t:'Cómo me hablo',s:'Escuchar el tono de la voz interna.',h:'¿Cuál es el tono de mi voz interna?',
+c:['La forma en que te hablas a ti misma influye en cómo te sientes y en lo que te permites. Muchas personas tienen una voz interna crítica, exigente o descalificadora que se activó hace tiempo y sigue operando en piloto automático.','No se trata de silenciar esa voz de golpe ni de reemplazarla con frases forzadas. El primer paso es escucharla con curiosidad: ¿qué dice? ¿con qué tono? ¿cuándo aparece con más fuerza?','Puedes empezar a responderle con un poco más de honestidad y menos dureza, sin pretender que todo se transforme de inmediato.'],
+r:['¿Qué frases me repito con más frecuencia cuando cometo un error o no llego a lo que esperaba?','¿Con qué tono me hablo en esos momentos (exigente, descalificador, indiferente, compasivo…)?','¿Qué me gustaría poder decirme en su lugar?'],
+p:{t:'Reescribir mi voz interna',f:['Frase crítica habitual:','Versión más honesta y menos dura:'],paso:'Elige una situación de esta semana en la que normalmente te hablarías con dureza. Practica decirte la versión más amable que escribiste.'}},
+{t:'Cómo me trato',s:'Observar mis acciones hacia mí misma.',h:'¿Qué acciones demuestran cómo me trato?',
+c:['El vínculo contigo misma no se construye solo con pensamientos. También se construye con acciones: cómo descansas, cómo comes, cómo te hablas cuando estás cansada, si te permites pedir ayuda, si cumples lo que te prometes o si te abandonas en silencio.','Observar estas acciones sin juicio extremo te permite ver con más claridad dónde estás y dónde te gustaría estar. No se trata de volverte perfecta, sino de ser más consciente.'],
+r:['¿De qué formas concretas me cuido actualmente?','¿De qué formas concretas me descuido o me abandono?','¿Qué acción de cuidado he estado posponiendo?'],
+p:{t:'Una acción de trato amable',i:'Elige una sola acción concreta de cuidado que puedas hacer esta semana. Debe ser realista y no depender de que “tengas ganas”.',f:['Mi acción de cuidado esta semana:','¿Cuándo la haré?'],paso:'Después de hacerla, anota cómo te sentiste. No busques un gran cambio. Busca información.'}},
+{t:'Dónde me abandono',s:'Reconocer los momentos de desconexión.',h:'¿En qué momentos dejo de estar conmigo?',
+c:['El abandono de sí misma no siempre se siente dramático. A veces se disfraza de productividad, de cuidar a otros, de no querer “molestar” o de restarle importancia a lo que sientes.','Reconocer estos momentos no es para culparte. Es para recuperar la posibilidad de elegirte aunque sea un poco más en el presente.'],
+r:['¿En qué situaciones suelo dejarme de lado?','¿Qué me digo para justificar ese abandono?','¿Qué necesitaría para no abandonarme tanto en esos momentos?'],
+p:{t:'Mapa de un abandono',f:['Situación reciente en la que me abandoné:','Qué sentí:','Qué me dije:','Qué podría haber hecho diferente (aunque sea mínimo):'],paso:'Elige una de esas situaciones y escribe una respuesta más cuidada que podrías probar la próxima vez.'}},
+{t:'Qué necesito',s:'Aprender a identificar y validar mis necesidades.',h:'¿Sé identificar lo que necesito?',
+c:['Muchas personas aprendieron a priorizar las necesidades de otros y a desconectarse de las propias. Con el tiempo, se vuelve difícil incluso saber qué se necesita: descanso, espacio, apoyo, silencio, movimiento, contención…','Recuperar el vínculo empieza, en parte, por volver a preguntarte con honestidad: ¿qué necesito ahora? Y por validar esa respuesta aunque no sea cómoda o “productiva”.'],
+r:['¿Qué necesito hoy que he estado ignorando?','¿Qué me impide validar o atender esa necesidad?','¿Qué pequeña forma de atenderla estaría a mi alcance?'],
+p:{t:'Validar una necesidad',f:['Una necesidad real que tengo ahora:','Una forma concreta y pequeña de atenderla esta semana:'],paso:'Practica decirte en voz alta o por escrito: “Esto es lo que necesito ahora, y está bien”.'}},
+{t:'Practicar el cuidado',s:'Pequeñas acciones concretas de vínculo.',h:'El cuidado se construye con acciones repetidas',
+c:['El vínculo contigo misma no se repara solo con comprensión. También necesita gestos concretos y repetidos en el tiempo: cumplirte una promesa pequeña, descansar cuando lo necesitas, hablarte con un poco más de respeto, pedir ayuda, decir que no.','No se trata de grandes transformaciones. Se trata de acumular evidencia de que puedes estar de tu lado.'],
+r:['¿Qué gesto de cuidado hacia mí me resultaría más significativo ahora?','¿Qué me frena a practicarlo con más constancia?','¿Qué apoyo necesitaría para sostenerlo?'],
+p:{t:'Mi práctica de cuidado',f:['Una práctica concreta de cuidado que quiero sostener las próximas semanas:','¿Con qué frecuencia la haré?','¿Cómo sabré que la estoy cumpliendo?'],paso:'Empieza esta semana con una sola vez. Anota cómo te sentiste después.'}},
+{t:'Integración',s:'Elegir una forma más amable de estar conmigo.',h:'Elegir una forma más amable de estar conmigo',
+c:['Has mirado cómo te hablas, cómo te tratas, dónde te abandonas y qué necesitas. Ahora puedes elegir una forma un poco más consciente y amable de estar contigo misma.','No se trata de convertirte en otra persona. Se trata de ir construyendo, con acciones pequeñas, un vínculo interno más honesto y menos hostil.','Puedes volver a estos ejercicios tantas veces como necesites. El vínculo se cultiva con el tiempo.'],
+r:[],
+p:{t:'Mi elección presente',f:['Lo más importante que descubrí sobre mi vínculo conmigo misma:','Una forma concreta en la que quiero tratarme a partir de ahora:'],paso:'Escribe una frase que te recuerde que puedes estar de tu lado. Por ejemplo: “Puedo hablarme con más respeto aunque todavía no lo sienta del todo”.'}}],
+cierre:['Gracias por mirarte con honestidad. Eso ya es un acto de vínculo.','Cada vez que eliges hablarte con un poco menos de dureza, cuidarte aunque sea en algo pequeño o no abandonarte del todo, estás tejiendo una relación distinta contigo misma.']},
+
+linaje('materno'),linaje('paterno'),
+
+{id:'registros-akashicos',hue:262,glyph:'☉',grupo:'comprender',
+t:'Registros Akáshicos',tag:'Qué son, cómo intervienen, cómo te ayudan y cómo conectar',
+desc:'Una guía sencilla y práctica para comprender los Registros Akáshicos y acercarte a ellos con claridad, respeto y sin misterio innecesario.',
+tiempo:'5 módulos · 15 a 25 min cada uno',
+esp:['Los Registros Akáshicos son un tema que genera mucha curiosidad y, a veces, también confusión. Esta guía busca ofrecerte una mirada clara y práctica: qué son, cómo se entiende que intervienen, de qué manera pueden ayudarte y cómo puedes acercarte a ellos sin presión ni promesas mágicas.','No necesitas creer en todo ni tener experiencias previas para leer estas páginas. Puedes tomar lo que resuene y dejar el resto. El objetivo es que salgas con más claridad, no con más misterio.','Aquí encontrarás cinco módulos con lecturas breves, preguntas y ejercicios. Puedes dedicar entre 15 y 25 minutos a cada uno y hacer pausas cuando lo necesites.'],
+trae:'¿Qué me gustaría comprender o experimentar en relación con los Registros?',
+cuidado:['Este es un material de reflexión personal. No es terapia ni sustituye el acompañamiento profesional. Los Registros Akáshicos, tal como se presentan aquí, se entienden como una herramienta de autoconocimiento y claridad, no como un oráculo que decide por ti.','Ninguna lectura o conexión con los Registros debe usarse para diagnosticar, predecir el futuro con certeza o transferir la responsabilidad de tus decisiones a una fuente externa.','Si en algún momento sientes confusión, miedo o dependencia de “mensajes”, haz una pausa. Vuelve a tu cuerpo, a tu respiración y a las decisiones concretas de tu vida diaria.','Es válido no conectar, no sentir nada especial o no estar de acuerdo con alguna idea. Tu discernimiento siempre es más importante que cualquier información recibida.'],
+pausa:['Señales de que necesito una pausa o más tierra:'],
+mods:[
+{t:'Qué son',s:'Una mirada clara sobre los Registros Akáshicos.',h:'¿Qué se entiende por Registros Akáshicos?',
+c:['Los Registros Akáshicos se describen tradicionalmente como un campo de información o memoria que contiene el registro de todas las experiencias del alma: lo vivido, lo aprendido, las intenciones y las posibilidades. No son un lugar físico, sino una metáfora de un archivo sutil de conciencia.','No pertenecen a una religión específica. Han sido mencionados en distintas tradiciones de forma simbólica. En el contexto actual se entienden más como una herramienta de autoconocimiento que como un dogma.','Importante: nadie “posee” los Registros. Se habla de acceder o sintonizar con esa información, no de controlarla. La calidad de lo que se recibe depende mucho del estado interno de quien se acerca.'],
+r:['¿Qué ideas o imágenes tenía yo sobre los Registros Akáshicos antes de esta guía?','¿Qué me genera curiosidad y qué me genera duda o resistencia?','¿Qué me gustaría comprender con más claridad?']},
+{t:'Cómo intervienen',s:'De qué manera se entiende que operan.',h:'¿De qué manera se entiende que actúan?',
+c:['Los Registros no “intervienen” como una fuerza externa que cambia tu vida por sí sola. Se entiende que ofrecen información, perspectivas y claridad para que tú puedas elegir con más conciencia.','La información puede llegar en forma de sensaciones, imágenes, palabras, emociones o una comprensión repentina. No siempre es espectacular. A veces es simplemente una confirmación de algo que ya intuías.','No dictan el futuro ni quitan el libre albedrío. Más bien iluminan patrones, posibles orígenes de bloqueos y caminos disponibles. La decisión y la acción siguen siendo tuyas.','También es importante distinguir entre una información útil y una proyección o deseo propio. Por eso el discernimiento y la práctica de aterrizar lo recibido en la vida cotidiana son esenciales.'],
+r:['¿He tenido alguna experiencia (aunque sea sutil) que ahora podría relacionar con este tipo de información?','¿Qué diferencia hay para mí entre recibir orientación y entregar mi poder de decisión?','¿Qué necesito para sentirme segura al explorar este tema?']},
+{t:'Cómo te ayudan',s:'Beneficios prácticos y límites.',h:'¿De qué manera pueden ser útiles?',
+c:['Cuando se abordan con madurez, los Registros Akáshicos pueden ayudar de varias formas prácticas:',{ul:['Aportar claridad sobre patrones repetitivos en tu vida.','Ofrecer una mirada más amplia sobre heridas o bloqueos, sin quedarte atrapada en la culpa.','Facilitar comprensión y compasión hacia ti misma y hacia otras personas.','Señalar recursos internos o caminos posibles que no estabas viendo.','Apoyar procesos de cierre, perdón o liberación emocional (siempre desde tu elección).']},'No sustituyen el trabajo personal, la terapia ni las decisiones concretas. Funcionan mejor como un apoyo a tu propio proceso de autoconocimiento y acción.','Tampoco garantizan resultados específicos. La utilidad real se mide en cómo integras lo recibido en tu forma de vivir, relacionarte y elegirte.'],
+r:['¿En qué área de mi vida me gustaría tener más claridad o comprensión?','¿Qué espero de los Registros y qué estoy dispuesta a hacer yo con la información?','¿Qué sería para mí una forma sana y equilibrada de usar esta herramienta?']},
+{t:'Cómo conectar',s:'Una forma sencilla y respetuosa de acercarte.',h:'Una forma sencilla y respetuosa de acercarte',
+c:['Existen distintos métodos y oraciones de apertura. Aquí te proponemos un acercamiento simple, centrado en la presencia y el respeto, sin rituales complejos.',
+{b:'1. Prepara el espacio interno.',t:'Busca un momento tranquilo. Respira varias veces. Nota tu cuerpo. No necesitas estar en un estado especial, solo presente y con intención clara.'},
+{b:'2. Formula una pregunta o intención.',t:'Mejor una pregunta abierta y específica que una demanda vaga. Ejemplos: “¿Qué necesito comprender sobre este patrón?” o “¿Qué recurso tengo disponible ahora?”.'},
+{b:'3. Abre con respeto.',t:'Puedes usar una frase sencilla como: “Me abro a la información que sea para mi mayor bien y claridad en este momento”. No es obligatorio usar palabras específicas; la intención importa más.'},
+{b:'4. Escucha y registra.',t:'Quédate en silencio unos minutos. Nota sensaciones, imágenes, palabras o simplemente una sensación de calma. Escribe lo que surja sin juzgarlo de inmediato.'},
+{b:'5. Cierra y aterriza.',t:'Agradece (aunque no hayas sentido nada espectacular). Vuelve a tu cuerpo. Haz algo cotidiano después: beber agua, caminar, anotar una acción concreta.'}],
+r:[],
+p:{t:'Practicar la conexión',i:'Elige una pregunta sencilla y realista para explorar hoy.',f:['Mi pregunta:','Después de unos minutos de silencio o de escritura libre, anota lo que surgió (aunque sea poco o nada):'],paso:'Elige una pequeña acción concreta que puedas hacer hoy a partir de lo que notaste o de la claridad que buscas.'}},
+{t:'Integración',s:'Llevar lo comprendido a tu vida cotidiana.',h:'Llevar lo comprendido a la vida real',
+c:['La verdadera utilidad de cualquier herramienta espiritual se mide en cómo cambia tu forma de vivir, decidir y relacionarte. La información por sí sola no transforma; la integración sí.','Después de explorar los Registros (o de simplemente leer sobre ellos), pregúntate: ¿Qué elijo hacer diferente? ¿Qué límite quiero respetar? ¿Qué conversación necesito tener? ¿Qué cuidado concreto me quiero dar?','Mantén siempre tu poder de discernimiento. Si algo que recibes te genera miedo, dependencia o te aleja de tu responsabilidad, es una señal para aterrizar y revisar.','Puedes volver a estas páginas cuando lo necesites. No hay una forma “correcta” de conectar. Hay una forma que te sirve a ti, en este momento de tu vida.'],
+r:[],
+p:{t:'Mi elección presente',f:['Lo más importante que me llevo de esta guía:','Una forma concreta en la que quiero usar (o no usar) esta herramienta a partir de ahora:'],paso:'Escribe una frase que te recuerde que tú sigues siendo quien elige. Por ejemplo: “Puedo recibir orientación y seguir siendo responsable de mis decisiones”.'}}],
+cierre:['Gracias por explorar con honestidad y discernimiento. Eso ya es una forma de cuidar tu camino.','Los Registros Akáshicos, cuando se abordan con madurez, pueden ser un apoyo para verte con más claridad. Pero el verdadero registro que más importa es el que escribes cada día con tus elecciones.']},
+
+{id:'reiki-1',hue:150,glyph:'✦',grupo:'reiki',reiki:1,
+t:'Reiki · Nivel 1',tag:'Historia, principios, chakras y tratamiento con las manos',
+desc:'Manual del primer nivel: de dónde viene el Reiki, cómo se entiende, los chakras y las posiciones de las manos para dar un tratamiento y para ti misma.',
+tiempo:'7 módulos',
+esp:['Este curso reúne el manual de Reiki Nivel 1. Es un material de estudio: lo puedes leer a tu ritmo, volver a él cuando quieras y usar la libreta de cada módulo para tus notas.','El Reiki se presenta aquí como un sistema de armonización y autocuidado mediante la imposición de las manos. No reemplaza ningún tratamiento médico.'],
+trae:'¿Qué me trae al Reiki?',
+cuidado:['Reiki no reemplaza los tratamientos médicos. No se hacen diagnósticos ni pronósticos.','Las sintonizaciones las realiza un Maestro Reiki; este curso es el material de estudio que las acompaña.'],
+pausa:[],
+mods:[
+{t:'Historia del Reiki',s:'Usui, Hayashi y Takata.',h:'Una tradición que pasó de maestro en maestro',
+c:['Aunque no existe documentación escrita, la tradición oral ha pasado de maestro en maestro de forma piramidal. Por eso existen distintas versiones sobre el origen del Reiki, pero todas coinciden en lo básico.',
+{b:'Mikao Usui.',t:'Según la tradición, el Reiki fue redescubierto alrededor de 1870 por Mikao Usui, un doctor y sacerdote japonés que enseñaba en la Universidad Doshisha de Kioto. Sus alumnos le preguntaron cómo sanaba Jesucristo a los enfermos y por qué ya no existía en el mundo alguien capaz de hacer esas sanaciones. Usui no supo responder, y comenzó una búsqueda de diez años.'},
+'Según una versión viajó a Estados Unidos y estudió en la Universidad de Chicago; otra versión sostiene que esa parte se añadió después para darle más credibilidad en Occidente. En la India y el Tíbet estudió sutras en monasterios budistas y encontró un manuscrito con símbolos y procedimientos atribuidos a Buda.',
+'Por indicación del abad de un monasterio zen, Usui se retiró 21 días a meditar, ayunar y orar en el monte Kurama. Al amanecer del día 21 vio una esfera luminosa que entró por su tercer ojo, y los símbolos del Reiki quedaron grabados en él. Se cuenta que al bajar del monte ocurrieron las cuatro primeras sanaciones.',
+'Años después, trabajando con personas en situación de calle en Kioto, comprendió que había curado el cuerpo pero no había enseñado la gratitud y la responsabilidad por la propia vida. De ahí concluyó: todo acto recibido exige una contrapartida del receptor que otorgue valor a lo recibido.',
+{b:'Hayashi y Takata.',t:'Hacia 1925 el Dr. Chujiro Hayashi, oficial retirado de la marina, recibió la maestría de manos de Usui. Sistematizó la técnica, creó las posiciones de las manos y abrió una clínica de Reiki en Japón que funcionó hasta 1940.'},
+'Hawayo Takata, nacida en Hawái en 1900, llegó a la clínica de Hayashi con problemas de salud, recibió Reiki a diario y se recuperó. Hayashi accedió a enseñarle el primer y segundo nivel (1936–1937) y, en 1938, el tercer nivel y la maestría. Takata abrió el Reiki al mundo convirtiendo en maestros a 22 personas, mayormente de Estados Unidos y Canadá.',
+'Esta técnica no solo habla de sanación: va hacia la armonización. Una persona armonizada es una persona equilibrada, y a eso tiende el tratamiento: la armonía integral a nivel físico, mental, emocional y espiritual.'],
+rec:['Tradición oral: hay varias versiones, todas coinciden en lo básico.','Usui → Hayashi → Takata.','Objetivo del Reiki: armonía física, mental, emocional y espiritual.']},
+{t:'Reglas y principios',s:'Las dos reglas básicas y los cinco principios éticos.',h:'Lo que Usui comprendió',
+c:['Las experiencias de Usui lo llevaron a comprender que, para que ocurra un cambio y se mantenga, hay que actuar en lo físico, lo mental, lo emocional y lo espiritual, y que la persona debe participar activamente y desear ese cambio. Por eso formuló dos reglas básicas:',
+{b:'Primera regla.',t:'Todas las personas tratadas deben pedir su propio tratamiento. Quien no lo pide todavía tiene una parte de sí que se resiste a ser sanada, y esa decisión debe ser respetada.'},
+{b:'Segunda regla.',t:'Todo tratamiento debe ir acompañado de una contrapartida, sea de la clase que sea. Es esencial que haya un intercambio de energía entre quien transmite y quien recibe, para que se involucre en su propia sanación.'},
+{b:'Los cinco principios éticos:',ul:['Solo por hoy no te preocupes.','Solo por hoy no te irrites.','Solo por hoy vive honestamente.','Honra a tus padres, maestros y ancianos.','Da gracias y demuestra gratitud a todas las cosas y seres vivientes.']}],
+rec:['Cada persona pide su propio tratamiento.','Todo tratamiento lleva una contrapartida.','Los cinco principios: “solo por hoy…”.']},
+{t:'Qué es el Reiki',s:'Energía vital universal, guiada.',h:'Rei + Ki',
+c:['El Reiki es un sistema de sanación, autosanación y reequilibrio bioenergético mediante la transmisión de la Energía Universal a través de la imposición de manos. Se trabaja canalizando hacia los cuerpos sutiles la energía sanadora, que incide sobre los bloqueos que perturban la libre circulación de la energía.',
+'La palabra Reiki es de origen japonés y se compone de dos sílabas: REI, Energía Universal (la inteligencia cósmica que ordena y regula el funcionamiento universal), y KI, la fuerza vital que anima a todo ser viviente. En China es el Chi, en la India el Prana, en Hawái el mana.',
+'Unidas, significan: energía vital universal dirigida o guiada espiritualmente. Una característica del Ki es que puede dirigirse con el pensamiento a la distancia y en el tiempo.',
+'Todos somos capaces de transmitir la energía Reiki: basta con recibir las sintonizaciones de un Maestro Reiki, que ajusta el nivel de vibración de nuestro campo energético. Con ellas se abre el canal energético y queda conectado para siempre; la energía fluye con el simple gesto de la imposición de manos y la disposición de la voluntad.'],
+rec:['REI = energía universal; KI = fuerza vital.','Se canaliza con la imposición de manos.','Las sintonizaciones las da un Maestro Reiki.']},
+{t:'Reiki y chakras',s:'Los siete centros de energía principales.',h:'Puertas de entrada de la energía vital',
+c:['La energía vital ingresa a nuestro organismo por unas puertas de entrada llamadas chakras, y luego fluye por canales llamados meridianos y nadis. “Chakra” significa en sánscrito rueda o disco que gira. Según el manual, cuando la energía no circula con fluidez aparece el malestar, y los pensamientos o sentimientos negativos hacia uno mismo o hacia los demás interfieren en su flujo.','Hay siete chakras principales y veintiún secundarios. Los principales están conectados con el canal energético que coincide con la médula espinal.',
+{cards:[
+{h:'1 · Raíz',p:['Base de la columna, a la altura del coxis. Color rojo. Supervivencia, salud física, estabilidad y arraigo. Elemento tierra.']},
+{h:'2 · Sexual / abdomen',p:['Debajo del ombligo. Color naranja. Sexualidad y emociones. Elemento agua.']},
+{h:'3 · Plexo solar',p:['Por encima del ombligo. Color amarillo. Poder personal. Elemento fuego, que transforma.']},
+{h:'4 · Corazón',p:['A la altura del corazón. Verde (a veces rosa). Amor. Elemento aire.']},
+{h:'5 · Garganta',p:['A la altura de la garganta. Azul claro. Comunicación con los demás.']},
+{h:'6 · Tercer ojo',p:['Entre las cejas. Violeta. Intuición, imaginación, facultades extrasensoriales. Elemento luz.']},
+{h:'7 · Corona',p:['Parte superior de la cabeza. Blanco violeta. Conocimiento, comprensión y entendimiento. Nos comunica con el Yo superior.']}]}],
+rec:['7 chakras principales, 21 secundarios.','Cada uno con su color, su tema y su elemento.']},
+{t:'Dar un tratamiento',s:'Cómo preparar y sostener una sesión completa.',h:'Un tratamiento completo, paso a paso',
+c:[{ul:['Busca la mayor comodidad para quien recibe, y también para ti: darás Reiki durante un rato largo.','Armoniza la sala como creas conveniente: música, sahumerios, lámparas de sal, etc.','Lávate las manos antes y después de cada tratamiento.','Habla con la persona para establecer una buena comunicación: explica de qué se trata y responde sus preguntas.','Al comenzar, indícale que cierre los ojos y se mantenga en calma. No necesita hacer ningún ejercicio previo: solo dejar fluir la energía.','Mantén los brazos y las manos lo más relajados posible.','Antes de comenzar, date Reiki a ti misma por unos momentos.','Si tienes guías espirituales, puedes pedirles su asistencia para ser un mejor canal.','Realiza todas las posiciones sin dejar de tocar a la persona en ningún momento y mantén cada una un mínimo de tres minutos.','Al finalizar, no la invites a levantarse bruscamente: dale tiempo para reestablecerse.','Cuando la persona se haya ido, es un buen momento para trabajar en tus propios proyectos: el ambiente queda cargado de energía Reiki.']},
+{b:'Para recordar:',t:'un tratamiento Reiki son cuatro sesiones consecutivas durante cuatro días seguidos. También puede darse de forma paulatina, por ejemplo una vez por semana, según las posibilidades y necesidades de la persona.'},
+{ul:['No realizar diagnósticos ni pronósticos.','Reiki no reemplaza los tratamientos médicos.','Se pueden producir reacciones al tratamiento, pero no son indispensables.','La persona que recibe determina la sanación, no quien da el tratamiento.','No se utiliza energía personal para los tratamientos.','Ambas personas permanecen descalzas y con ropa cómoda.']}],
+rec:['Mínimo tres minutos por posición.','Cuatro sesiones en cuatro días seguidos.','Sin diagnósticos, sin reemplazar la atención médica.']},
+{t:'Guía de posiciones',s:'Cabeza, frente, espalda y pies.',h:'Posiciones de las manos',
+c:['Estas son las posiciones de las manos para tratar a otra persona, con lo que el manual indica para cada una. Las fotos de cada posición están en tu manual impreso.',
+{cards:[
+{h:'Cabeza 1',p:['Físico: equilibra pituitaria y pineal; ojos, zona sinusal, dientes y mandíbula.','Emocional: excluye estímulos externos, alivia la ansiedad.','Mental: balance, claridad. Espiritual: volver al Yo interior, meditación.']},
+{h:'Cabeza 2',p:['Físico: cerebro; dolores de cabeza, mareos.','Emocional: equilibra ambos hemisferios; serenidad.','Mental: creatividad, memoria, calma. Espiritual: expande la conciencia.']},
+{h:'Cabeza 3',p:['Físico: base del cerebro, cerebelo, occipital; habla, visión, conciliar el sueño.','Emocional: relajación, calma, mejora el descanso.','Mental: bienestar y serenidad. Espiritual: apertura de conciencia.']},
+{h:'Cabeza 4',p:['Puntos de acupuntura: intestinos, corazón, riñones, estómago, hígado y sordera.']},
+{h:'Cabeza 5',p:['Físico: circulación, amígdalas, garganta, laringe, tiroides.','Emocional: autoconfianza, autoestima, alegría; disminuye enojo y resentimiento.','Mental: calma y claridad. Espiritual: la garganta como centro de fuerza y creatividad.']},
+{h:'Frente 6',p:['Físico: corazón, pulmones y timo; circulación y drenaje linfático.','Emocional: capacidad de amar; suaviza enojo, resentimiento, envidia.','Espiritual: amor incondicional, alegría, estabilidad.']},
+{h:'Frente 7',p:['Físico: hígado, estómago, vesícula; digestión.','Emocional: relajación, alivio del estrés y los temores.','Mental: claridad y enfoque.']},
+{h:'Frente 8',p:['Físico: sector inferior del hígado, páncreas, vesícula, vejiga, colon transverso.','Emocional: disminuye la necesidad de control; favorece la fortaleza.','Espiritual: aceptación sin necesidad de control.']},
+{h:'Frente 9',p:['Físico: drenaje linfático, intestinos, vejiga, ovarios, útero, próstata.','Emocional: salud sexual; libera temores y ansiedad.','Mental: flexibilidad y adaptabilidad.']},
+{h:'Frente 10',p:['Físico: corazón y pulmones.','Emocional: alivia sentimientos negativos y estimula los positivos (alegría, entusiasmo, creatividad).','Espiritual: poder interior y fortaleza.']},
+{h:'Espalda 11 a 14',p:['11: trapecio, zona traqueolumbar, sistema nervioso (como la 6).','12: como la posición 7.','13: glándulas suprarrenales y riñones (como la 8).','14: coxis, sistema nervioso y ciática (como la 9).']},
+{h:'Espalda 15',p:['Ambas manos sobre los huecos poplíteos (detrás de las rodillas): favorece la circulación y el descanso de las piernas.']},
+{h:'Espalda 16 · Pies',p:['Yema de los dedos de las manos tocando la de los pies. Reflejo de los órganos del cuerpo; conexión con la tierra y uno de los puntos energéticos más importantes.']}]}],
+rec:['16 posiciones: cabeza, frente, espalda y pies.','Cada una mantenida mínimo tres minutos.']},
+{t:'Autotratamiento y posturas',s:'Para ti, en cualquier momento.',h:'Darte Reiki a ti misma',
+c:['El manual propone posiciones de autotratamiento: las mismas zonas de cabeza (1 a 5), frente (6 a 10) y espalda (11 a 16), hechas con tus propias manos.',
+{b:'Armonización de chakras.',t:'Se hace con las manos en pares: una mano sobre el chakra coronario y otra sobre el raíz; una sobre el laríngeo y otra sobre el plexo solar; las dos manos sobre el corazón; una sobre el tercer ojo y la otra sobre el sexual.'},
+{b:'Posturas especiales:',ul:['Una mano sobre la frente y la otra sobre el dorso de la cabeza: “enchufe cósmico”, ayuda a recargar las energías propias o del receptor.','Una mano sobre el corazón y la otra sobre el hara: ayuda para el insomnio; da una sensación agradable al comenzar el sueño.','Ambas manos sobre el chakra del corazón: efecto similar, trata más las emociones.','Una mano sobre el corazón y la otra sobre el plexo: efecto similar a la primera.','Una mano en la nuca y la otra sobre el hara: normaliza el funcionamiento intestinal.']}],
+rec:['Date Reiki antes de dar un tratamiento.','El “enchufe cósmico” recarga energías.']}],
+cierre:['Has recorrido el manual del primer nivel. Puedes volver a cada módulo cuando quieras.','Recuerda lo esencial: pedir el tratamiento, ofrecer una contrapartida, dar gracias, y que el Reiki acompaña —no reemplaza— la atención médica.']},
+
+{id:'reiki-2',hue:50,glyph:'∞',grupo:'reiki',reiki:1,
+t:'Reiki · Nivel 2',tag:'Símbolos, envío a distancia, limpieza de ambientes',
+desc:'Manual del segundo nivel: los tres símbolos, su uso, el envío de Reiki a distancia, la limpieza de ambientes y el tratamiento mental.',
+tiempo:'5 módulos',
+esp:['Este curso reúne el manual de Reiki Nivel 2. Es un material de estudio para quienes ya hicieron el primer nivel y recibieron las sintonizaciones del segundo.','Los dibujos de los símbolos están en tu manual impreso; aquí encuentras sus nombres, significados y formas de uso.'],
+trae:'¿Qué espero del segundo nivel?',
+cuidado:['Reiki no reemplaza la atención médica. No se hacen diagnósticos ni pronósticos.','No se envía Reiki durante una intervención quirúrgica (la energía podría interferir con la anestesia) ni a alguien que esté realizando una actividad que requiera su máxima atención, como conducir.'],
+pausa:[],
+mods:[
+{t:'Los símbolos Reiki',s:'Origen y cómo usarlos.',h:'Tres símbolos para el segundo nivel',
+c:['Según las enseñanzas Reiki, hay tres símbolos que pueden emplear quienes practican el segundo nivel: Cho Ku Rei, Sei He Ki y Hon Sha Ze Sho Nen.','Los símbolos provienen de una tradición espiritual rica en imágenes e íconos: la escuela Tendai del budismo tántrico japonés. Aunque el Reiki se constituyó como un sistema aparte de las religiones, es correcto recordar el trasfondo cultural en el que Mikao Usui lo desarrolló. Como practicante de Ki-Ko (la forma japonesa del yoga o chi-kung), estaba familiarizado con el uso de símbolos para meditar y modificar la conciencia.',
+{b:'Cómo usarlos correctamente.',t:'Se dibujan con la mayor coordinación posible entre la mano dominante y el tercer ojo, con los dedos en la misma posición que para dar Reiki y usando la yema del dedo medio como guía. Lo que dibuja el símbolo es, en realidad, el chakra de la mano. Mientras se dibuja, se visualiza en color violeta brillante, como un delgado tubo de neón.'},
+'Se dibujan, por ejemplo, sobre una zona del cuerpo de la persona, a corta distancia y sin tocarla, o proyectándolos a distancia. Luego se “instalan” nombrándolos tres veces mentalmente. Algunas personas los dibujan solo al principio del tratamiento; otras, cada vez que cambian la posición de las manos: queda a criterio de cada una.'],
+rec:['Tres símbolos en el segundo nivel.','Se dibujan con la mano, se visualizan en violeta y se nombran tres veces.']},
+{t:'Significado de cada símbolo',s:'Cho Ku Rei, Sei He Ki, Hon Sha Ze Sho Nen y Hosanna.',h:'Qué hace cada uno',
+c:[{cards:[
+{h:'1 · Cho Ku Rei',p:['“Enfoca e incrementa la energía.” Es como un interruptor: abre el paso al flujo de la energía y aumenta el caudal que canalizamos. También se usa para protección. Actúa sobre los tres primeros chakras. Se recomienda en color dorado, al principio y al final de cada sesión; para sellar un tratamiento se dibuja uno grande sobre la espalda de quien recibe. También potencia y protege a los otros símbolos: se dibuja después del símbolo que se quiere potenciar.']},
+{h:'2 · Sei He Ki',p:['Símbolo mental y emocional: purificación, equilibrio y armonía. Envía energía a las capas emocionales y mentales del aura; actúa sobre los cuatro chakras superiores y armoniza los dos hemisferios cerebrales. Ayuda a traer conciencia sobre emociones reprimidas y patrones mentales, y es útil también con adicciones, fobias y patrones de comportamiento.']},
+{h:'3 · Hon Sha Ze Sho Nen',p:['“Ni pasado, ni presente, ni futuro.” Es la llave para la sesión a distancia: el puente entre dos mundos. Se usa para enviar Reiki a personas, proyectos y situaciones pasadas o futuras. Actúa a nivel mental y kármico, y se relaciona con los chakras laríngeo, tercer ojo y coronario. Se recomienda visualizarlo en violeta.']},
+{h:'Hosanna',p:['Símbolo de Reiki tibetano no tradicional. Se usa para limpiar y proteger energéticamente ambientes, y para disolver situaciones o relaciones negativas. Se puede dibujar con ambas manos, visualizándolo como una llama violeta y nombrándolo tres veces al terminar cada parte del dibujo.']}]}],
+rec:['Cho Ku Rei: enfoca y protege.','Sei He Ki: mental y emocional.','Hon Sha Ze Sho Nen: distancia.','Hosanna: limpieza de ambientes.']},
+{t:'Envío a distancia',s:'El “sándwich” y sus variantes.',h:'Reiki sin estar presente',
+c:['Los tratamientos Reiki también se pueden realizar en ausencia de la persona. El método más formal del plan de estudios usa tus piernas como referencia: la rodilla derecha representa la cabeza de quien recibe; el muslo derecho, el frente; el muslo izquierdo, la espalda.',
+{b:'El “sándwich”:',ul:['Cho Ku Rei','Hon Sha Ze Sho Nen','Nombre de la persona y fecha de nacimiento','Cho Ku Rei','Sei He Ki','Cho Ku Rei','Dar 5 minutos de Reiki']},
+'Al terminar las tres secuencias de 5 minutos (15 minutos en total), se sella el tratamiento con un Cho Ku Rei.',
+{b:'Variantes:',ul:['Con las palmas en posición de rezo, dibujando los símbolos sobre la otra mano: tres secuencias de 5 minutos para cabeza, frente y espalda.','Sobre una foto de la persona: al menos 15 minutos de Reiki general.','A través de una persona voluntaria como vehículo, con el tratamiento completo y la intención de que llegue a quien lo necesita.','Con un objeto referente, como si fuera la persona.','Sobre ti misma, 15 minutos en el plexo solar con las dos manos, decretando que eres voluntaria de quien recibe.','Visualizando a la persona en miniatura entre tus manos.','Escribiendo su nombre, apellido y fecha de nacimiento en un papel y sosteniéndolo 15 minutos.']},
+'También puede enfocarse en un chakra particular (por ejemplo, el raíz si hay preocupaciones económicas o de vivienda; el sexual y el corazón si hay temas de pareja). Con Reiki se pueden tratar vínculos entre personas, y también situaciones antiguas, presentes o futuras, siendo muy claras con lo que se solicita: cuanto más datos, mejor llega la energía a destino.',
+{b:'Conclusión:',ul:['La clave del envío a distancia es el símbolo Hon Sha Ze Sho Nen.','Se enuncia tres veces el destino al que se quiere enviar Reiki.','Los tratamientos básicos duran 15 minutos y pueden dirigirse a personas, proyectos, situaciones, viviendas, objetos, ciudades.','A personas conviene hacerlo cuatro días seguidos; a situaciones, idealmente una vez al día, sabiendo que resolver un conflicto puede llevar días, meses o años.']},
+{b:'No se envía Reiki:',ul:['Durante una intervención quirúrgica (la energía podría afectar la anestesia).','Cuando la persona realiza una actividad que requiere su máxima atención, como conducir.']}],
+rec:['Sándwich: Cho Ku Rei · HSZSN · nombre y fecha · Cho Ku Rei · Sei He Ki · Cho Ku Rei.','3 secuencias de 5 minutos = 15 minutos, y se sella.']},
+{t:'Limpieza de ambientes',s:'Con Hosanna y los símbolos.',h:'Armonizar un espacio',
+c:[{ul:['Haz el símbolo Cho Ku Rei como protección hacia ti misma.','Desde el centro de la habitación, dibuja hacia una de las esquinas inferiores el Cho Ku Rei y nómbralo tres veces. Llévalo por el zócalo con las manos en el sentido de las agujas del reloj y, en cada esquina, dibújalo e instálalo nombrándolo tres veces, hasta volver al primer rincón.','Repite el procedimiento desde el ángulo al cielorraso.','Dibuja el símbolo Hosanna en el medio de una pared, ocupándola completa de arriba abajo, nómbralo tres veces y trasládalo por todas las paredes como un rodillo gigante, hasta terminar donde empezó. Durante el proceso no hace falta dibujar ni nombrar de nuevo.','Dibuja y deja instalado en cada esquina, de arriba abajo, el símbolo Hon Sha Ze Sho Nen.','Sella con un Cho Ku Rei en el medio de cada pared, techo, piso y centro de la habitación antes de salir, y otro en la entrada desde el lado de afuera. En total, siete Cho Ku Rei.']}],
+rec:['Siete Cho Ku Rei de sello.','Hosanna se traslada por las paredes “como un rodillo”.']},
+{t:'Símbolos en el tratamiento',s:'Orden de uso y tratamiento mental.',h:'Aplicar los símbolos en una sesión',
+c:['Para familiarizarte con el uso de los símbolos, el manual sugiere aplicarlos todos en cada posición, en este orden: Hon Sha Ze Sho Nen, Sei He Ki y Cho Ku Rei. Como no se conoce la raíz del problema, así se envía la energía a todos los planos posibles del segundo nivel. Con la práctica, puedes guiarte por tu percepción.',
+{b:'Tratamiento mental.',t:'Se usa comúnmente para eliminar hábitos nocivos no deseados o para potenciar metas y proyectos, en ti o en otras personas. Primero conversa con quien recibe para saber qué desea trabajar; durante el tratamiento, la persona se concentra en lo que desea lograr.'},
+{ul:['Parada detrás de la persona sentada, dibuja un Cho Ku Rei a cada lado de la nuca.','Dibuja el símbolo Sei He Ki sobre la nuca.','Da tres minutos de Reiki con ambas manos a cada lado de la nuca.','Muévete a un lado, coloca una mano en la nuca y otra en el coronario durante tres minutos, con frases positivas.','Mueve la mano desde el coronario hacia el frente; visualiza e introduce los tres símbolos Usui en el coronario, uno tras otro, hasta completar otros tres minutos.','Repite los dos pasos anteriores.','Sella todo con un Cho Ku Rei.']}],
+rec:['Orden: Hon Sha Ze Sho Nen · Sei He Ki · Cho Ku Rei.','Tratamiento mental: nuca, coronario y frases positivas.']}],
+cierre:['Has recorrido el manual del segundo nivel. Vuelve a cada módulo para practicar a tu ritmo.','Recuerda: Reiki acompaña —no reemplaza— la atención médica.']}
+];
+const $=i=>document.getElementById(i);
+const KEY='dlr-cursos-v1';
+let S={};try{S=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){S={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function cs(id){return S[id]||(S[id]={})}
+function ms(id,i){const c=cs(id);return c['m'+i]||(c['m'+i]={})}
+function prog(c){const k=cs(c.id);let d=0;c.mods.forEach((m,i)=>{if((k['m'+i]||{}).ok)d++});return [d,c.mods.length]}
+let V={v:'home'};
+function go(v){V=v;render();scrollTo(0,0)}
+function para(x){
+ if(typeof x==='string')return '<p>'+esc(x)+'</p>';
+ if(x.cards)return x.cards.map(k=>'<div class="mini"><h3>'+esc(k.h)+'</h3>'+k.p.map(t=>'<p>'+esc(t)+'</p>').join('')+'</div>').join('');
+ let h='';if(x.b&&x.t)h+='<p><b>'+esc(x.b)+'</b> '+esc(x.t)+'</p>';else if(x.b)h+='<p><b>'+esc(x.b)+'</b></p>';
+ if(x.ul)h+='<ul>'+x.ul.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul>';return h}
+function ta(id,key,label,val){return '<div class="q"><label>'+esc(label)+'</label><textarea data-c="'+id+'" data-k="'+key+'" rows="3">'+esc(val||'')+'</textarea></div>'}
+function home(){
+ const gr=[['sanar','Para sanar y cuidarte'],['comprender','Para comprender'],['reiki','Reiki']];
+ let h='<div class="eb">Desde la Red</div><h1>Tus <em>cursos</em></h1><p class="lead">Guías para recorrer a tu ritmo: lees, te preguntas, practicas y todo queda guardado en tu teléfono.</p>';
+ gr.forEach(([g,n])=>{h+='<div class="gt">'+n+'</div>';CURSOS.filter(c=>c.grupo===g).forEach(c=>{const [d,t]=prog(c);
+  h+='<button class="cc" style="--h:'+c.hue+'" data-go="'+c.id+'"><span class="gl">'+c.glyph+'</span><b>'+esc(c.t)+'</b><span class="s">'+esc(c.tiempo)+(d?' · '+d+' de '+t+' completos':'')+'</span><div class="pb"><i style="width:'+Math.round(d/t*100)+'%"></i></div></button>'})});
+ h+='<p class="note">Material de reflexión y estudio. No reemplaza terapia ni atención médica.</p>';return h}
+function course(c){
+ const [d,t]=prog(c),k=cs(c.id);
+ let h='<button class="back" data-go="">← Cursos</button><div class="eb">'+esc(c.tiempo)+'</div><h1>'+esc(c.t)+'</h1><p class="tag">'+esc(c.tag)+'</p><p class="lead">'+esc(c.desc)+'</p><div class="pb"><i style="width:'+Math.round(d/t*100)+'%"></i></div>';
+ h+='<details><summary>Antes de empezar</summary><div class="rd">'+c.esp.map(para).join('')+(c.trae?ta(c.id,'trae',c.reiki?c.trae:'¿Qué me trae a estas páginas? '+c.trae,k.trae):'')+'<h3 style="margin-top:14px">Cómo cuidar este proceso</h3>'+c.cuidado.map(para).join('')+c.pausa.map((p,i)=>ta(c.id,'pa'+i,p,k['pa'+i])).join('')+'</div></details>';
+ h+='<div class="gt">Tu recorrido</div>';
+ c.mods.forEach((m,i)=>{const ok=(k['m'+i]||{}).ok;h+='<button class="ml'+(ok?' ok':'')+'" data-m="'+i+'"><span class="n">'+(ok?'✓':i+1)+'</span><span><b>'+esc(m.t)+'</b><small>'+esc(m.s)+'</small></span></button>'});
+ if(d===t)h+='<div class="card done"><div class="big">✦</div><h2>Curso completo</h2>'+c.cierre.map(para).join('')+'</div>';
+ else h+='<details><summary>Cierre</summary><div class="rd">'+c.cierre.map(para).join('')+'</div></details>';
+ return h}
+function stepsOf(c,m){return c.reiki?['Leer','Mis notas']:['Comprender'].concat(m.r.length?['Reflexionar']:[],m.p?['Practicar']:[])}
+function mod(c,i){
+ const m=c.mods[i],k=ms(c.id,i),st=stepsOf(c,m),s=Math.min(V.s||0,st.length-1);
+ let h='<button class="back" data-go="'+c.id+'">← '+esc(c.t)+'</button><div class="eb">Módulo '+(i+1)+' de '+c.mods.length+'</div><h1 style="font-size:clamp(30px,9vw,40px)">'+esc(m.t)+'</h1>';
+ h+='<div class="steps">'+st.map((x,j)=>'<button class="st'+(j===s?' on':'')+'" data-s="'+j+'">'+x+'</button>').join('')+'</div><div class="card rd">';
+ const nm=st[s];
+ if(nm==='Comprender'||nm==='Leer'){h+='<h2>'+esc(m.h)+'</h2>'+m.c.map(para).join('');if(m.rec)h+='<div class="rec"><b>Para recordar</b><ul>'+m.rec.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul></div>'}
+ else if(nm==='Reflexionar'){h+='<h2>Escuchar mi experiencia</h2><p class="sub">'+esc(RESN)+'</p>'+ta(c.id,'m'+i+'r',RES,k.res)+m.r.map((q,j)=>ta(c.id,'m'+i+'r'+j,q,(k.r||{})[j])).join('')}
+ else if(nm==='Practicar'){h+='<h2>'+esc(m.p.t)+'</h2>'+(m.p.i?'<p class="sub">'+esc(m.p.i)+'</p>':'')+m.p.f.map((q,j)=>ta(c.id,'m'+i+'p'+j,q,(k.p||{})[j])).join('')+'<div class="paso"><b>Un paso en el presente</b>'+esc(m.p.paso)+'</div>'}
+ else{h+='<h2>Mis notas</h2><p class="sub">Escribe lo que quieras recordar de este módulo.</p>'+ta(c.id,'m'+i+'n','Notas',k.n)}
+ h+='</div><div class="row2">'+(s>0?'<button class="btn ghost" data-s="'+(s-1)+'">Anterior</button>':'')+(s<st.length-1?'<button class="btn" data-s="'+(s+1)+'">Siguiente</button>':'<button class="btn" id="fin">'+(k.ok?'Módulo completo ✓':'Marcar módulo completo')+'</button>')+'</div>';
+ if(s===st.length-1&&(c.reiki?k.n:(k.res||k.r||k.p)))h+='<button class="btn ghost" id="dia">♡ Guardar mis respuestas en mi diario</button>';
+ return h}
+function render(){
+ const a=$('app');let c=CURSOS.find(x=>x.id===V.c);
+ a.innerHTML=V.v==='home'?home():V.v==='course'?course(c):mod(c,V.i)}
+function gather(c,i){const m=c.mods[i],k=ms(c.id,i);let o=c.t+' · '+m.t+'\n';
+ if(c.reiki){if(k.n)o+='\n'+k.n}else{if(k.res)o+='\n'+RES+'\n'+k.res+'\n';(m.r||[]).forEach((q,j)=>{const v=(k.r||{})[j];if(v)o+='\n'+q+'\n'+v+'\n'});if(m.p)(m.p.f||[]).forEach((q,j)=>{const v=(k.p||{})[j];if(v)o+='\n'+q+'\n'+v+'\n'})}
+ return o.trim().slice(0,1800)}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.go!==undefined){go(b.dataset.go?{v:'course',c:b.dataset.go}:{v:'home'});return}
+ if(b.dataset.m!==undefined){go({v:'mod',c:V.c,i:+b.dataset.m,s:0});return}
+ if(b.dataset.s!==undefined){V.s=+b.dataset.s;render();scrollTo(0,0);return}
+ const c=CURSOS.find(x=>x.id===V.c);
+ if(b.id==='fin'){const k=ms(c.id,V.i);k.ok=1;save();const nx=V.i+1;if(nx<c.mods.length)go({v:'mod',c:c.id,i:nx,s:0});else go({v:'course',c:c.id})}
+ if(b.id==='dia'){if(window.parent===window){b.textContent='Ábrelo desde la app para guardar';return}parent.postMessage({dlr:'diario',texto:gather(c,V.i)},location.origin);b.textContent='✓ Guardado en tu diario';b.disabled=true}
+});
+let T;document.addEventListener('input',e=>{const t=e.target;if(t.tagName!=='TEXTAREA')return;const id=t.dataset.c,key=t.dataset.k,k=cs(id);
+ let m;if(key==='trae'||/^pa\d+$/.test(key))k[key]=t.value;
+ else if(m=/^m(\d+)(r|p|n)(\d*)$/.exec(key)){const o=ms(id,+m[1]);if(m[2]==='n')o.n=t.value;else if(m[2]==='r'&&m[3]==='')o.res=t.value;else{const f=m[2];o[f]=o[f]||{};o[f][m[3]]=t.value}}
+ clearTimeout(T);T=setTimeout(save,300)});
+addEventListener('pagehide',save);
+if(CURSOS.length){const q=new URLSearchParams(location.search).get('c');if(q&&CURSOS.find(x=>x.id===q))V={v:'course',c:q}}
+render();
+</script></body></html>
