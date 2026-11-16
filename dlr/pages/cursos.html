@@ -450,6 +450,7 @@ function ta(id,key,label,val){return '<div class="q"><label>'+esc(label)+'</labe
 function home(){
  const gr=[['sanar','Para sanar y cuidarte'],['comprender','Para comprender'],['reiki','Reiki']];
  let h='<div class="eb">Desde la Red</div><h1>Tus <em>cursos</em></h1><p class="lead">Guías para recorrer a tu ritmo: lees, te preguntas, practicas y todo queda guardado en tu teléfono.</p>';
+ h+='<div class="gt">Programas con lecciones</div>';[['dones','Despierta tus dones','Tres enseñanzas para descubrir tus dones',268,'✧'],['dharma','Camino del Dharma','Lecciones para encontrar tu camino',45,'☸'],['biodec','Biodecodificación','Qué dice tu cuerpo de lo que sientes',160,'❋']].forEach(([id,n,d,hu,gl])=>{h+='<button class="cc" style="--h:'+hu+'" data-open="'+id+'"><span class="gl">'+gl+'</span><b>'+n+'</b><span class="s">'+d+'</span></button>'});
  gr.forEach(([g,n])=>{h+='<div class="gt">'+n+'</div>';CURSOS.filter(c=>c.grupo===g).forEach(c=>{const [d,t]=prog(c);
   h+='<button class="cc" style="--h:'+c.hue+'" data-go="'+c.id+'"><span class="gl">'+c.glyph+'</span><b>'+esc(c.t)+'</b><span class="s">'+esc(c.tiempo)+(d?' · '+d+' de '+t+' completos':'')+'</span><div class="pb"><i style="width:'+Math.round(d/t*100)+'%"></i></div></button>'})});
  h+='<p class="note">Material de reflexión y estudio. No reemplaza terapia ni atención médica.</p>';return h}
@@ -483,6 +484,7 @@ function gather(c,i){const m=c.mods[i],k=ms(c.id,i);let o=c.t+' · '+m.t+'\n';
  return o.trim().slice(0,1800)}
 document.addEventListener('click',e=>{
  const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.open){parent.postMessage({dlr:'abrir',id:b.dataset.open},location.origin);return}
  if(b.dataset.go!==undefined){go(b.dataset.go?{v:'course',c:b.dataset.go}:{v:'home'});return}
  if(b.dataset.m!==undefined){go({v:'mod',c:V.c,i:+b.dataset.m,s:0});return}
  if(b.dataset.s!==undefined){V.s=+b.dataset.s;render();scrollTo(0,0);return}
