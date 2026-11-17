@@ -49,6 +49,8 @@ textarea:focus{box-shadow:0 0 14px rgba(80,220,255,.35)}
 .note{color:#8fa9b8;font-size:12px;text-align:center;margin:20px 6px 0}
 .done{text-align:center;padding:8px 0}.done .big{font:400 54px/1 'Instrument Serif',serif;color:var(--gold);text-shadow:0 0 24px rgba(234,203,136,.55)}
 [hidden]{display:none!important}
+.sync{font-size:11.5px;color:var(--mut);text-align:center;margin:18px 0 0;letter-spacing:.02em}
+.an h2{margin-bottom:4px}.an .dt{font-size:12px;color:var(--mut);margin-bottom:10px}.an h3{font:400 19px/1.2 'Instrument Serif',serif;color:#f6e7bf;margin:18px 0 6px}.an p{margin:0 0 10px}.an ul{margin:0;padding-left:18px}.an li{margin:0 0 9px}.an .cu{border:1px solid rgba(255,215,140,.4);border-radius:14px;padding:12px 14px;margin-bottom:14px;background:rgba(255,215,140,.08)}.an .nt{font-size:12px;color:var(--mut);margin-top:16px}
 </style></head><body><main id="app"></main><script>
 const RES='¿Qué parte de esta lectura resuena conmigo hoy?';
 const RESN='Puedes explorar lo que resuena sin convertirlo en una verdad definitiva sobre ti.';
@@ -450,9 +452,9 @@ function para(x){
 function ta(id,key,label,val){return '<div class="q"><label>'+esc(label)+'</label><textarea data-c="'+id+'" data-k="'+key+'" rows="3">'+esc(val||'')+'</textarea></div>'}
 function home(){
  const gr=[['sanar','Para sanar y cuidarte'],['comprender','Para comprender'],['reiki','Reiki']];
- let h='<div class="eb">Desde la Red</div><h1>Tus <em>cursos</em></h1><p class="lead">Guías para recorrer a tu ritmo: lees, te preguntas, practicas y todo queda guardado en tu teléfono.</p>';
-const COV={'nino-interior':1,'limites-sanos':1,'vinculo-conmigo':1,'linaje-materno':1,'linaje-paterno':1,'antes-de-nacer':1,'volver-a-mi':1,'registros-akashicos':1,'reiki-1':1,'reiki-2':1};Object.keys(COV).forEach(k=>COV[k]='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@b7dcbd633d75e949b4b339799d726736ad3d2eee/dlr/tiles/cursos/'+k+'.webp');
- h+='<div class="gt">Programas con lecciones</div>';[['dones','Despierta tus dones','Tres enseñanzas para descubrir tus dones',268,'✧'],['dharma','Camino del Dharma','Lecciones para encontrar tu camino',45,'☸'],['biodec','Biodecodificación','Qué dice tu cuerpo de lo que sientes',160,'❋']].forEach(([id,n,d,hu,gl])=>{h+='<button class="cc" style="--h:'+hu+'" data-open="'+id+'"><span class="gl">'+gl+'</span><b>'+n+'</b><span class="s">'+d+'</span></button>'});
+ let h='<div class="eb">Desde la Red</div><h1>Tus <em>cursos</em></h1><p class="lead">Guías para recorrer a tu ritmo: lees, te preguntas, practicas y todo queda guardado en tu cuenta.</p>';
+const PIC='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@4efe7eb601abe71454e304bae942cdd0479b8d3a/dlr/tiles/cursos/';const COV={'nino-interior':1,'limites-sanos':1,'vinculo-conmigo':1,'linaje-materno':1,'linaje-paterno':1,'antes-de-nacer':1,'volver-a-mi':1,'registros-akashicos':1,'reiki-1':1,'reiki-2':1};Object.keys(COV).forEach(k=>COV[k]='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@b7dcbd633d75e949b4b339799d726736ad3d2eee/dlr/tiles/cursos/'+k+'.webp');
+ h+='<div class="gt">Programas con lecciones</div>';[['dones','Despierta tus dones','Tres enseñanzas para descubrir tus dones',268,'✧'],['dharma','Camino del Dharma','Lecciones para encontrar tu camino',45,'☸'],['biodec','Biodecodificación','Qué dice tu cuerpo de lo que sientes',160,'❋']].forEach(([id,n,d,hu,gl])=>{h+='<button class="cc hv" style="--h:'+hu+';--cv:url('+PIC+id+'.webp)" data-open="'+id+'"><span class="gl">'+gl+'</span><b>'+n+'</b><span class="s">'+d+'</span></button>'});
  gr.forEach(([g,n])=>{h+='<div class="gt">'+n+'</div>';CURSOS.filter(c=>c.grupo===g).forEach(c=>{const [d,t]=prog(c);
   const cv=COV[c.id];h+='<button class="cc'+(cv?' hv':'')+'" style="--h:'+c.hue+(cv?';--cv:url('+cv+')':'')+'" data-go="'+c.id+'"><span class="gl">'+c.glyph+'</span><b>'+esc(c.t)+'</b><span class="s">'+esc(c.tiempo)+(d?' · '+d+' de '+t+' completos':'')+'</span><div class="pb"><i style="width:'+Math.round(d/t*100)+'%"></i></div></button>'})});
  h+='<p class="note">Material de reflexión y estudio. No reemplaza terapia ni atención médica.</p>';return h}
@@ -464,7 +466,8 @@ function course(c){
  c.mods.forEach((m,i)=>{const ok=(k['m'+i]||{}).ok;h+='<button class="ml'+(ok?' ok':'')+'" data-m="'+i+'"><span class="n">'+(ok?'✓':i+1)+'</span><span><b>'+esc(m.t)+'</b><small>'+esc(m.s)+'</small></span></button>'});
  if(d===t)h+='<div class="card done"><div class="big">✦</div><h2>Curso completo</h2>'+c.cierre.map(para).join('')+'</div>';
  else h+='<details><summary>Cierre</summary><div class="rd">'+c.cierre.map(para).join('')+'</div></details>';
- return h}
+ if(d===t)h+='<div class="card an" id="an">'+anHtml(c)+'</div>';
+ return h+'<div class="sync" id="sync">'+syncTxt()+'</div>'}
 function stepsOf(c,m){return c.reiki?['Leer','Mis notas']:['Comprender'].concat(m.r.length?['Reflexionar']:[],m.p?['Practicar']:[])}
 function mod(c,i){
  const m=c.mods[i],k=ms(c.id,i),st=stepsOf(c,m),s=Math.min(V.s||0,st.length-1);
@@ -477,10 +480,60 @@ function mod(c,i){
  else{h+='<h2>Mis notas</h2><p class="sub">Escribe lo que quieras recordar de este módulo.</p>'+ta(c.id,'m'+i+'n','Notas',k.n)}
  h+='</div><div class="row2">'+(s>0?'<button class="btn ghost" data-s="'+(s-1)+'">Anterior</button>':'')+(s<st.length-1?'<button class="btn" data-s="'+(s+1)+'">Siguiente</button>':'<button class="btn" id="fin">'+(k.ok?'Módulo completo ✓':'Marcar módulo completo')+'</button>')+'</div>';
  if(s===st.length-1&&(c.reiki?k.n:(k.res||k.r||k.p)))h+='<button class="btn ghost" id="dia">♡ Guardar mis respuestas en mi diario</button>';
- return h}
+ return h+'<div class="sync" id="sync">'+syncTxt()+'</div>'}
+/* ---- guardado permanente en la cuenta ---- */
+const SBU='https://xjmgtzlezsmpxfnyjrli.supabase.co',SBK='sb_publishable_kp75fFYItrQgpr47V5xpMQ_l-_AzCSz';
+function sess(){try{const k=Object.keys(localStorage).find(x=>/^sb-.*-auth-token$/.test(x));if(!k)return null;let j=JSON.parse(localStorage.getItem(k));j=j&&j.currentSession||j;if(j&&j.access_token&&j.user&&(!j.expires_at||j.expires_at>Date.now()/1000+15))return j}catch(e){}return null}
+function api(path,o){const x=sess();if(!x)return Promise.reject(new Error('nosess'));o=o||{};return fetch(SBU+path,Object.assign({},o,{headers:Object.assign({apikey:SBK,authorization:'Bearer '+x.access_token,'content-type':'application/json'},o.headers||{})}))}
+let DIRTY={},SY='', PT;
+function syncTxt(){return SY==='ok'?'✓ Guardado en tu cuenta':SY==='pend'?'Guardando…':SY==='off'?'Guardado en este teléfono. Entra a tu cuenta para no perderlo.':''}
+function setSync(v){SY=v;const e=$('sync');if(e)e.textContent=syncTxt()}
+function mark(id){DIRTY[id]=1;setSync(sess()?'pend':'off');clearTimeout(PT);PT=setTimeout(push,1500)}
+async function push(){const x=sess();if(!x){setSync('off');return}const ids=Object.keys(DIRTY);if(!ids.length){setSync('ok');return}let bad=0;
+ for(const id of ids){try{const r=await api('/rest/v1/curso_respuestas?on_conflict=usuario,curso',{method:'POST',headers:{prefer:'resolution=merge-duplicates,return=minimal'},keepalive:true,body:JSON.stringify({usuario:x.user.id,curso:id,datos:S[id]||{},actualizado:new Date((S[id]&&S[id]._t)||Date.now()).toISOString()})});if(r.ok)delete DIRTY[id];else bad=1}catch(e){bad=1}}
+ setSync(bad?'off':'ok');if(bad)PT=setTimeout(push,20000)}
+async function pull(){try{const r=await api('/rest/v1/curso_respuestas?select=curso,datos,actualizado');if(!r.ok)return;const rows=await r.json();let changed=false;const seen={};
+ rows.forEach(w=>{seen[w.curso]=1;const rt=new Date(w.actualizado).getTime(),l=S[w.curso];if(!l||(l._t||0)<rt){S[w.curso]=Object.assign({},w.datos,{_t:rt});changed=true}else if((l._t||0)>rt)DIRTY[w.curso]=1});
+ Object.keys(S).forEach(id=>{if(!seen[id]&&Object.keys(S[id]).some(k=>/^m\d|trae|^pa/.test(k)))DIRTY[id]=1});
+ if(changed){save();const a=document.activeElement;if(!(a&&a.tagName==='TEXTAREA'))render()}
+ await push()}catch(e){setSync(sess()?'':'off')}}
+document.addEventListener('visibilitychange',()=>{if(document.hidden){save();if(Object.keys(DIRTY).length)push()}});
+/* ---- análisis de cierre ---- */
+const AN={};
+function respuestas(c){const k=cs(c.id);let o='';
+ if(k.trae)o+='['+(c.reiki?'Antes de empezar':'Qué me trae a este curso')+']\n'+k.trae+'\n\n';
+ (c.pausa||[]).forEach((q,i)=>{if(k['pa'+i])o+='['+q+']\n'+k['pa'+i]+'\n\n'});
+ c.mods.forEach((m,i)=>{const w=k['m'+i]||{};let t='';
+  if(c.reiki){if(w.n)t+='Notas: '+w.n+'\n'}else{if(w.res)t+='['+RES+']\n'+w.res+'\n';(m.r||[]).forEach((q,j)=>{const v=(w.r||{})[j];if(v)t+='['+q+']\n'+v+'\n'});if(m.p)(m.p.f||[]).forEach((q,j)=>{const v=(w.p||{})[j];if(v)t+='['+q+']\n'+v+'\n'})}
+  if(t)o+='--- Módulo '+(i+1)+': '+m.t+' ---\n'+t+'\n'});
+ return o.trim()}
+function li(a){return a&&a.length?'<ul>'+a.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul>':''}
+function anHtml(c){const a=AN[c.id]||{};
+ if(a.st==='load')return '<h2>Tu análisis</h2><p>Leyendo tu recorrido con calma… puede tardar unos segundos.</p>';
+ if(a.d){const d=a.d;let h='<h2>Tu análisis</h2><div class="dt">'+(a.t?new Date(a.t).toLocaleDateString('es',{day:'numeric',month:'long',year:'numeric'}):'')+'</div>';
+  if(d.cuidado)h+='<div class="cu">'+esc(d.cuidado)+'</div>';
+  h+='<p>'+esc(d.resumen)+'</p><h3>Lo que se repite</h3>'+li(d.patrones);
+  if(d.conexiones.length)h+='<h3>Cómo se conectan tus respuestas</h3>'+li(d.conexiones);
+  if(d.fortalezas.length)h+='<h3>Lo que ya tienes</h3>'+li(d.fortalezas);
+  if(d.mirar.length)h+='<h3>Para mirar con calma</h3>'+li(d.mirar);
+  if(d.paso)h+='<h3>Un paso</h3><p>'+esc(d.paso)+'</p>';
+  if(d.pregunta)h+='<h3>Una pregunta para llevarte</h3><p>'+esc(d.pregunta)+'</p>';
+  h+='<p class="nt">Es una lectura automática basada solo en lo que escribiste, para reflexionar. No es un diagnóstico ni reemplaza terapia.</p><button class="btn ghost" data-an="again">Actualizar mi análisis</button>';
+  if(a.e)h+='<p class="nt">'+esc(a.e)+'</p>';return h}
+ if(a.st==='consent')return '<h2>Tu análisis</h2><p>Para escribirlo, tus respuestas de este curso se envían a un servicio externo de análisis automático. No se publican ni se comparten, y el resultado se guarda en tu cuenta: solo tú lo ves.</p><div class="row2"><button class="btn ghost" data-an="no">Ahora no</button><button class="btn" data-an="go">Sí, hacer mi análisis</button></div>'+(a.e?'<p class="nt">'+esc(a.e)+'</p>':'');
+ return '<h2>Tu análisis</h2><p>Termina tu recorrido con una mirada de conjunto: patrones, conexiones y un paso, a partir de lo que escribiste en este curso.</p><button class="btn" data-an="ask">Ver mi análisis</button>'+(a.e?'<p class="nt">'+esc(a.e)+'</p>':'')}
+function anPaint(c){const e=$('an');if(e&&V.c===c.id)e.innerHTML=anHtml(c)}
+async function anLoad(c){try{const r=await api('/rest/v1/curso_analisis?curso=eq.'+encodeURIComponent(c.id)+'&select=contenido,creado');if(!r.ok)return;const j=await r.json();if(j[0]){AN[c.id]=Object.assign(AN[c.id]||{},{d:j[0].contenido,t:j[0].creado});anPaint(c)}}catch(e){}}
+async function anRun(c,force){const x=sess();if(!x){AN[c.id]={e:'Entra a tu cuenta para ver tu análisis.',d:(AN[c.id]||{}).d,t:(AN[c.id]||{}).t};anPaint(c);return}
+ const prev=AN[c.id]||{};AN[c.id]={st:'load',d:prev.d,t:prev.t};anPaint(c);
+ try{await push();const r=await fetch(SBU+'/functions/v1/desdelared-cursos',{method:'POST',headers:{apikey:SBK,authorization:'Bearer '+x.access_token,'content-type':'application/json'},body:JSON.stringify({curso:c.id,titulo:c.t,respuestas:respuestas(c),forzar:!!force})});const j=await r.json().catch(()=>({}));
+  if(r.ok&&j.analisis)AN[c.id]={d:j.analisis,t:j.creado};else AN[c.id]={d:prev.d,t:prev.t,e:j.error||'No pudimos generar tu análisis ahora. Inténtalo de nuevo en un momento.'}}
+ catch(e){AN[c.id]={d:prev.d,t:prev.t,e:'No pudimos conectar. Revisa tu internet e inténtalo de nuevo.'}}
+ anPaint(c)}
+
 function render(){
  const a=$('app');let c=CURSOS.find(x=>x.id===V.c);
- a.innerHTML=V.v==='home'?home():V.v==='course'?course(c):mod(c,V.i)}
+ a.innerHTML=V.v==='home'?home():V.v==='course'?course(c):mod(c,V.i);if(V.v==='course'&&prog(c)[0]===prog(c)[1]&&!(AN[c.id]&&(AN[c.id].d||AN[c.id].ld))){AN[c.id]=Object.assign(AN[c.id]||{},{ld:1});anLoad(c)}}
 function gather(c,i){const m=c.mods[i],k=ms(c.id,i);let o=c.t+' · '+m.t+'\n';
  if(c.reiki){if(k.n)o+='\n'+k.n}else{if(k.res)o+='\n'+RES+'\n'+k.res+'\n';(m.r||[]).forEach((q,j)=>{const v=(k.r||{})[j];if(v)o+='\n'+q+'\n'+v+'\n'});if(m.p)(m.p.f||[]).forEach((q,j)=>{const v=(k.p||{})[j];if(v)o+='\n'+q+'\n'+v+'\n'})}
  return o.trim().slice(0,1800)}
@@ -491,14 +544,15 @@ document.addEventListener('click',e=>{
  if(b.dataset.m!==undefined){go({v:'mod',c:V.c,i:+b.dataset.m,s:0});return}
  if(b.dataset.s!==undefined){V.s=+b.dataset.s;render();scrollTo(0,0);return}
  const c=CURSOS.find(x=>x.id===V.c);
- if(b.id==='fin'){const k=ms(c.id,V.i);k.ok=1;save();const nx=V.i+1;if(nx<c.mods.length)go({v:'mod',c:c.id,i:nx,s:0});else go({v:'course',c:c.id})}
+ if(b.dataset.an&&c){const m=b.dataset.an,a=AN[c.id]=AN[c.id]||{};if(m==='ask'){a.st='consent';a.e='';anPaint(c)}else if(m==='no'){a.st='';anPaint(c)}else if(m==='go')anRun(c,false);else if(m==='again')anRun(c,true);return}
+ if(b.id==='fin'){const k=ms(c.id,V.i);k.ok=1;cs(c.id)._t=Date.now();save();mark(c.id);const nx=V.i+1;if(nx<c.mods.length)go({v:'mod',c:c.id,i:nx,s:0});else go({v:'course',c:c.id})}
  if(b.id==='dia'){if(window.parent===window){b.textContent='Ábrelo desde la app para guardar';return}parent.postMessage({dlr:'diario',texto:gather(c,V.i)},location.origin);b.textContent='✓ Guardado en tu diario';b.disabled=true}
 });
 let T;document.addEventListener('input',e=>{const t=e.target;if(t.tagName!=='TEXTAREA')return;const id=t.dataset.c,key=t.dataset.k,k=cs(id);
  let m;if(key==='trae'||/^pa\d+$/.test(key))k[key]=t.value;
  else if(m=/^m(\d+)(r|p|n)(\d*)$/.exec(key)){const o=ms(id,+m[1]);if(m[2]==='n')o.n=t.value;else if(m[2]==='r'&&m[3]==='')o.res=t.value;else{const f=m[2];o[f]=o[f]||{};o[f][m[3]]=t.value}}
- clearTimeout(T);T=setTimeout(save,300)});
+ cs(id)._t=Date.now();clearTimeout(T);T=setTimeout(()=>{save();mark(id)},300)});
 addEventListener('pagehide',save);
 if(CURSOS.length){const q=(new URLSearchParams(location.search).get('c')||new URLSearchParams(location.hash.slice(1)).get('c'));if(q&&CURSOS.find(x=>x.id===q))V={v:'course',c:q}}
-render();
+render();pull();
 </script></body></html>
