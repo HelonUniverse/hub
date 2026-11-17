@@ -499,6 +499,6 @@ let T;document.addEventListener('input',e=>{const t=e.target;if(t.tagName!=='TEX
  else if(m=/^m(\d+)(r|p|n)(\d*)$/.exec(key)){const o=ms(id,+m[1]);if(m[2]==='n')o.n=t.value;else if(m[2]==='r'&&m[3]==='')o.res=t.value;else{const f=m[2];o[f]=o[f]||{};o[f][m[3]]=t.value}}
  clearTimeout(T);T=setTimeout(save,300)});
 addEventListener('pagehide',save);
-if(CURSOS.length){const q=new URLSearchParams(location.search).get('c');if(q&&CURSOS.find(x=>x.id===q))V={v:'course',c:q}}
+if(CURSOS.length){const q=(new URLSearchParams(location.search).get('c')||new URLSearchParams(location.hash.slice(1)).get('c'));if(q&&CURSOS.find(x=>x.id===q))V={v:'course',c:q}}
 render();
 </script></body></html>
