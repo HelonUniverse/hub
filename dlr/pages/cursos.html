@@ -50,7 +50,7 @@ textarea:focus{box-shadow:0 0 14px rgba(80,220,255,.35)}
 .done{text-align:center;padding:8px 0}.done .big{font:400 54px/1 'Instrument Serif',serif;color:var(--gold);text-shadow:0 0 24px rgba(234,203,136,.55)}
 [hidden]{display:none!important}
 .sync{font-size:11.5px;color:var(--mut);text-align:center;margin:18px 0 0;letter-spacing:.02em}
-.an h2{margin-bottom:4px}.an .dt{font-size:12px;color:var(--mut);margin-bottom:10px}.an h3{font:400 19px/1.2 'Instrument Serif',serif;color:#f6e7bf;margin:18px 0 6px}.an p{margin:0 0 10px}.an ul{margin:0;padding-left:18px}.an li{margin:0 0 9px}.an .cu{border:1px solid rgba(255,215,140,.4);border-radius:14px;padding:12px 14px;margin-bottom:14px;background:rgba(255,215,140,.08)}.an .nt{font-size:12px;color:var(--mut);margin-top:16px}
+.au .ai{margin-bottom:12px}.au .ai:last-child{margin:0}.au b{display:block;font-weight:500;margin-bottom:6px}.au small{color:var(--mut);font-weight:400}.au audio{width:100%}.an h2{margin-bottom:4px}.an .dt{font-size:12px;color:var(--mut);margin-bottom:10px}.an h3{font:400 19px/1.2 'Instrument Serif',serif;color:#f6e7bf;margin:18px 0 6px}.an p{margin:0 0 10px}.an ul{margin:0;padding-left:18px}.an li{margin:0 0 9px}.an .cu{border:1px solid rgba(255,215,140,.4);border-radius:14px;padding:12px 14px;margin-bottom:14px;background:rgba(255,215,140,.08)}.an .nt{font-size:12px;color:var(--mut);margin-top:16px}
 </style></head><body><main id="app"></main><script>
 const RES='¿Qué parte de esta lectura resuena conmigo hoy?';
 const RESN='Puedes explorar lo que resuena sin convertirlo en una verdad definitiva sobre ti.';
@@ -396,6 +396,7 @@ desc:'Diario de siete días: reflexiones, preguntas y pequeños pasos para escuc
 tiempo:'7 días · 10 minutos al día',
 esp:['Hay días en los que estamos para todo y para todos, y dejamos nuestra propia voz para el final. Este diario es una invitación a hacerle un lugar. Aquí puedes escribir con sinceridad, sin buscar respuestas perfectas.','No tienes que convertirte en otra persona para empezar. Puedes llegar como estás, tomar lo que te sirva y dejar lo que hoy no necesites.',{b:'Tu encuentro de diez minutos:',ul:['1 minuto · Detente y observa cómo llegas.','2 minutos · Lee la reflexión y prueba el ejercicio.','5 minutos · Responde las preguntas a tu manera.','2 minutos · Elige el pequeño paso del día.']},'No es necesario hacer los siete días seguidos. Continúa a tu ritmo.'],
 trae:'',
+audios:[['Audio 1','1:50','audio-1.m4a'],['Audio 2','1:20','audio-2.m4a']],
 cuidado:['Este es un recurso de reflexión personal, no una terapia. Puedes saltar cualquier pregunta o detenerte si te resulta intensa. No necesitas explorar recuerdos dolorosos para participar.'],
 pausa:[],
 mods:[
@@ -453,7 +454,7 @@ function ta(id,key,label,val){return '<div class="q"><label>'+esc(label)+'</labe
 function home(){
  const gr=[['sanar','Para sanar y cuidarte'],['comprender','Para comprender'],['reiki','Reiki']];
  let h='<div class="eb">Desde la Red</div><h1>Tus <em>cursos</em></h1><p class="lead">Guías para recorrer a tu ritmo: lees, te preguntas, practicas y todo queda guardado en tu cuenta.</p>';
-const PIC='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@4efe7eb601abe71454e304bae942cdd0479b8d3a/dlr/tiles/cursos/';const COV={'nino-interior':1,'limites-sanos':1,'vinculo-conmigo':1,'linaje-materno':1,'linaje-paterno':1,'antes-de-nacer':1,'volver-a-mi':1,'registros-akashicos':1,'reiki-1':1,'reiki-2':1};Object.keys(COV).forEach(k=>COV[k]='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@b7dcbd633d75e949b4b339799d726736ad3d2eee/dlr/tiles/cursos/'+k+'.webp');
+const AUD='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@SHA/dlr/audio/';const PIC='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@4efe7eb601abe71454e304bae942cdd0479b8d3a/dlr/tiles/cursos/';const COV={'nino-interior':1,'limites-sanos':1,'vinculo-conmigo':1,'linaje-materno':1,'linaje-paterno':1,'antes-de-nacer':1,'volver-a-mi':1,'registros-akashicos':1,'reiki-1':1,'reiki-2':1};Object.keys(COV).forEach(k=>COV[k]='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@b7dcbd633d75e949b4b339799d726736ad3d2eee/dlr/tiles/cursos/'+k+'.webp');
  h+='<div class="gt">Programas con lecciones</div>';[['dones','Despierta tus dones','Tres enseñanzas para descubrir tus dones',268,'✧'],['dharma','Camino del Dharma','Lecciones para encontrar tu camino',45,'☸'],['biodec','Biodecodificación','Qué dice tu cuerpo de lo que sientes',160,'❋']].forEach(([id,n,d,hu,gl])=>{h+='<button class="cc hv" style="--h:'+hu+';--cv:url('+PIC+id+'.webp)" data-open="'+id+'"><span class="gl">'+gl+'</span><b>'+n+'</b><span class="s">'+d+'</span></button>'});
  gr.forEach(([g,n])=>{h+='<div class="gt">'+n+'</div>';CURSOS.filter(c=>c.grupo===g).forEach(c=>{const [d,t]=prog(c);
   const cv=COV[c.id];h+='<button class="cc'+(cv?' hv':'')+'" style="--h:'+c.hue+(cv?';--cv:url('+cv+')':'')+'" data-go="'+c.id+'"><span class="gl">'+c.glyph+'</span><b>'+esc(c.t)+'</b><span class="s">'+esc(c.tiempo)+(d?' · '+d+' de '+t+' completos':'')+'</span><div class="pb"><i style="width:'+Math.round(d/t*100)+'%"></i></div></button>'})});
@@ -462,6 +463,7 @@ function course(c){
  const [d,t]=prog(c),k=cs(c.id);
  let h='<button class="back" data-go="">← Cursos</button><div class="eb">'+esc(c.tiempo)+'</div><h1>'+esc(c.t)+'</h1><p class="tag">'+esc(c.tag)+'</p><p class="lead">'+esc(c.desc)+'</p><div class="pb"><i style="width:'+Math.round(d/t*100)+'%"></i></div>';
  h+='<details><summary>Antes de empezar</summary><div class="rd">'+c.esp.map(para).join('')+(c.trae?ta(c.id,'trae',c.reiki?c.trae:'¿Qué me trae a estas páginas? '+c.trae,k.trae):'')+'<h3 style="margin-top:14px">Cómo cuidar este proceso</h3>'+c.cuidado.map(para).join('')+c.pausa.map((p,i)=>ta(c.id,'pa'+i,p,k['pa'+i])).join('')+'</div></details>';
+ if(c.audios)h+='<div class="gt">Para escuchar</div><div class="card au">'+c.audios.map(a=>'<div class="ai"><b>'+esc(a[0])+' <small>'+a[1]+'</small></b><audio controls preload="none" src="'+AUD+c.id+'/'+a[2]+'"></audio></div>').join('')+'</div>';
  h+='<div class="gt">Tu recorrido</div>';
  c.mods.forEach((m,i)=>{const ok=(k['m'+i]||{}).ok;h+='<button class="ml'+(ok?' ok':'')+'" data-m="'+i+'"><span class="n">'+(ok?'✓':i+1)+'</span><span><b>'+esc(m.t)+'</b><small>'+esc(m.s)+'</small></span></button>'});
  if(d===t)h+='<div class="card done"><div class="big">✦</div><h2>Curso completo</h2>'+c.cierre.map(para).join('')+'</div>';
