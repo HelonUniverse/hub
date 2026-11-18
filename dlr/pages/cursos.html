@@ -459,7 +459,7 @@ const PIC='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@4efe7eb601abe71454e304b
  gr.forEach(([g,n])=>{h+='<div class="gt">'+n+'</div>';CURSOS.filter(c=>c.grupo===g).forEach(c=>{const [d,t]=prog(c);
   const cv=COV[c.id];h+='<button class="cc'+(cv?' hv':'')+'" style="--h:'+c.hue+(cv?';--cv:url('+cv+')':'')+'" data-go="'+c.id+'"><span class="gl">'+c.glyph+'</span><b>'+esc(c.t)+'</b><span class="s">'+esc(c.tiempo)+(d?' · '+d+' de '+t+' completos':'')+'</span><div class="pb"><i style="width:'+Math.round(d/t*100)+'%"></i></div></button>'})});
  h+='<p class="note">Material de reflexión y estudio. No reemplaza terapia ni atención médica.</p>';return h}
-const AUD='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@be2d5718194a13fdbcef4aa58063fe8963f36422/dlr/audio/';
+const AUD='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@aff24dd65e08af3595b4292bbc7bc69da92f2cc8/dlr/audio/';
 function course(c){
  const [d,t]=prog(c),k=cs(c.id);
  let h='<button class="back" data-go="">← Cursos</button><div class="eb">'+esc(c.tiempo)+'</div><h1>'+esc(c.t)+'</h1><p class="tag">'+esc(c.tag)+'</p><p class="lead">'+esc(c.desc)+'</p><div class="pb"><i style="width:'+Math.round(d/t*100)+'%"></i></div>';
