@@ -396,11 +396,11 @@ desc:'Diario de siete días: reflexiones, preguntas y pequeños pasos para escuc
 tiempo:'7 días · 10 minutos al día',
 esp:['Hay días en los que estamos para todo y para todos, y dejamos nuestra propia voz para el final. Este diario es una invitación a hacerle un lugar. Aquí puedes escribir con sinceridad, sin buscar respuestas perfectas.','No tienes que convertirte en otra persona para empezar. Puedes llegar como estás, tomar lo que te sirva y dejar lo que hoy no necesites.',{b:'Tu encuentro de diez minutos:',ul:['1 minuto · Detente y observa cómo llegas.','2 minutos · Lee la reflexión y prueba el ejercicio.','5 minutos · Responde las preguntas a tu manera.','2 minutos · Elige el pequeño paso del día.']},'No es necesario hacer los siete días seguidos. Continúa a tu ritmo.'],
 trae:'',
-audios:[['Audio 1','1:50','audio-1.m4a'],['Audio 2','1:20','audio-2.m4a']],
+audios:[['Bienvenida','1:45','audio-1.m4a']],
 cuidado:['Este es un recurso de reflexión personal, no una terapia. Puedes saltar cualquier pregunta o detenerte si te resulta intensa. No necesitas explorar recuerdos dolorosos para participar.'],
 pausa:[],
 mods:[
-{t:'Día 1 · Cómo estoy hoy',s:'Escucharme sin exigirme estar bien.',h:'Escucharme sin exigirme estar bien',nores:1,
+{t:'Día 1 · Cómo estoy hoy',s:'Escucharme sin exigirme estar bien.',audio:['Para escuchar hoy','1:18','audio-2.m4a'],h:'Escucharme sin exigirme estar bien',nores:1,
 c:['A veces seguimos adelante sin preguntarnos cómo estamos. Respondemos, resolvemos y acompañamos. Hoy puedes dejar un momento esas tareas y escucharte. No necesitas encontrar una emoción bonita ni explicar todo lo que sientes. Tal vez haya cansancio, alegría, enojo o varias cosas juntas. Darles un nombre puede ayudarte a reconocer este momento, sin convertirlo en una definición de quién eres.',{b:'Una práctica breve.',t:'Apoya los pies y mira a tu alrededor. Observa tres detalles del lugar. Luego completa: «Hoy me siento…». Si no encuentras una palabra, describe cómo ha sido tu día.'}],
 r:['¿Qué siento hoy y en qué momento lo noté?','¿Cómo puedo tratarme con amabilidad esta tarde?'],
 p:{t:'Mi pequeño paso',f:[],paso:'Haz una pausa de dos minutos antes de tu próxima tarea. Hoy puedo empezar por reconocer cómo estoy.'}},
@@ -459,7 +459,7 @@ const PIC='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@4efe7eb601abe71454e304b
  gr.forEach(([g,n])=>{h+='<div class="gt">'+n+'</div>';CURSOS.filter(c=>c.grupo===g).forEach(c=>{const [d,t]=prog(c);
   const cv=COV[c.id];h+='<button class="cc'+(cv?' hv':'')+'" style="--h:'+c.hue+(cv?';--cv:url('+cv+')':'')+'" data-go="'+c.id+'"><span class="gl">'+c.glyph+'</span><b>'+esc(c.t)+'</b><span class="s">'+esc(c.tiempo)+(d?' · '+d+' de '+t+' completos':'')+'</span><div class="pb"><i style="width:'+Math.round(d/t*100)+'%"></i></div></button>'})});
  h+='<p class="note">Material de reflexión y estudio. No reemplaza terapia ni atención médica.</p>';return h}
-const AUD='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@aff24dd65e08af3595b4292bbc7bc69da92f2cc8/dlr/audio/';
+const AUD='https://cdn.jsdelivr.net/gh/HelonUniverse/hub@d5a01e5687a916d7fc4236aceb3dbd9d4714c11a/dlr/audio/';
 function course(c){
  const [d,t]=prog(c),k=cs(c.id);
  let h='<button class="back" data-go="">← Cursos</button><div class="eb">'+esc(c.tiempo)+'</div><h1>'+esc(c.t)+'</h1><p class="tag">'+esc(c.tag)+'</p><p class="lead">'+esc(c.desc)+'</p><div class="pb"><i style="width:'+Math.round(d/t*100)+'%"></i></div>';
@@ -477,7 +477,7 @@ function mod(c,i){
  let h='<button class="back" data-go="'+c.id+'">← '+esc(c.t)+'</button><div class="eb">Módulo '+(i+1)+' de '+c.mods.length+'</div><h1 style="font-size:clamp(30px,9vw,40px)">'+esc(m.t)+'</h1>';
  h+='<div class="steps">'+st.map((x,j)=>'<button class="st'+(j===s?' on':'')+'" data-s="'+j+'">'+x+'</button>').join('')+'</div><div class="card rd">';
  const nm=st[s];
- if(nm==='Comprender'||nm==='Leer'){h+='<h2>'+esc(m.h)+'</h2>'+m.c.map(para).join('');if(m.rec)h+='<div class="rec"><b>Para recordar</b><ul>'+m.rec.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul></div>'}
+ if(nm==='Comprender'||nm==='Leer'){h+='<h2>'+esc(m.h)+'</h2>'+m.c.map(para).join('');if(m.rec)h+='<div class="rec"><b>Para recordar</b><ul>'+m.rec.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul></div>';if(m.audio)h+='<div class="au"><div class="ai"><b>'+esc(m.audio[0])+' <small>'+m.audio[1]+'</small></b><audio controls preload="none" src="'+AUD+c.id+'/'+m.audio[2]+'"></audio></div></div>'}
  else if(nm==='Reflexionar'){h+='<h2>Escuchar mi experiencia</h2><p class="sub">'+esc(RESN)+'</p>'+(m.nores?'':ta(c.id,'m'+i+'r',RES,k.res))+m.r.map((q,j)=>ta(c.id,'m'+i+'r'+j,q,(k.r||{})[j])).join('')}
  else if(nm==='Practicar'){h+='<h2>'+esc(m.p.t)+'</h2>'+(m.p.i?'<p class="sub">'+esc(m.p.i)+'</p>':'')+m.p.f.map((q,j)=>ta(c.id,'m'+i+'p'+j,q,(k.p||{})[j])).join('')+'<div class="paso"><b>Un paso en el presente</b>'+esc(m.p.paso)+'</div>'}
  else{h+='<h2>Mis notas</h2><p class="sub">Escribe lo que quieras recordar de este módulo.</p>'+ta(c.id,'m'+i+'n','Notas',k.n)}
