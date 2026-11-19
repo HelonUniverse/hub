@@ -1,0 +1,1 @@
+{"rewrites":[{"source":"/api/a/:id/","destination":"/api/a/:id"},{"source":"/api/a/:id/:a","destination":"/api/a/:id?p=:a"},{"source":"/api/a/:id/:a/:b","destination":"/api/a/:id?p=:a/:b"},{"source":"/api/a/:id/:a/:b/:c","destination":"/api/a/:id?p=:a/:b/:c"},{"source":"/api/a/:id/:a/:b/:c/:d","destination":"/api/a/:id?p=:a/:b/:c/:d"}]}

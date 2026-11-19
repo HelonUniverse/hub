@@ -1,0 +1,42 @@
+/* Diseño común Desde la Red — base: Maestros + Cristales */
+html[data-dlr-app]{--bg:#06162c;--txt:#eef9ff;--ink:#eef9ff;--muted:#a9c4d2;--aqua:#7fe3f5;--cyan:#7fe3f5;--gold:#eacb88;--card:#0c2a45;--panel:#0c2a45;--line:#2c6a85}
+html[data-dlr-app] body{background:radial-gradient(ellipse at 50% -10%,#1d4f7c 0%,#0a2140 42%,#050d1f 90%) fixed!important;color:#eef9ff!important;font-family:'Albert Sans',system-ui,sans-serif!important}
+html[data-dlr-app] h1,html[data-dlr-app] h2,html[data-dlr-app] h3{font-family:'Instrument Serif',Georgia,serif!important;font-weight:400!important;letter-spacing:-.01em}
+html[data-dlr-app] h1 em,html[data-dlr-app] h1 span,html[data-dlr-app] .a{color:#7fe3f5}
+/* Menú interno → barra de pestañas arriba (solo queda el menú grande abajo) */
+html[data-dlr-app=maestros] nav.tabs,html[data-dlr-app=cristales] nav.bottom-nav,html[data-dlr-app=interior] nav.bottom{
+position:fixed!important;top:0!important;bottom:auto!important;left:0!important;right:0!important;transform:none!important;margin:0!important;width:100%!important;max-width:none!important;height:52px!important;min-height:0!important;padding:6px 10px!important;border-radius:0!important;border:0!important;border-bottom:1px solid #2c6a85!important;background:rgba(6,22,44,.88)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex!important;flex-direction:row!important;align-items:center;justify-content:center;gap:6px;z-index:60!important;box-shadow:none!important}
+html[data-dlr-app=maestros] nav.tabs>*,html[data-dlr-app=cristales] nav.bottom-nav>*,html[data-dlr-app=interior] nav.bottom>*{flex:1 1 0!important;min-width:0;height:38px!important;display:flex!important;flex-direction:row!important;align-items:center;justify-content:center;gap:6px;padding:0 8px!important;border-radius:999px!important;font-size:13px!important;white-space:nowrap}
+html[data-dlr-app=maestros] nav.tabs svg,html[data-dlr-app=cristales] nav.bottom-nav svg,html[data-dlr-app=interior] nav.bottom svg{width:16px!important;height:16px!important;margin:0!important}
+html[data-dlr-app=maestros] body,html[data-dlr-app=cristales] body,html[data-dlr-app=interior] body{padding-top:56px!important;padding-bottom:0!important}
+html[data-dlr-app=maestros] #app{top:56px!important}
+html[data-dlr-app=maestros] nav.tabs .in{display:flex!important;flex-direction:row!important;width:100%!important;gap:6px;padding:0!important;margin:0!important;background:none!important;border:0!important;box-shadow:none!important;border-radius:0!important}
+html[data-dlr-app=maestros] nav.tabs .in>button{flex:1 1 0;display:flex!important;flex-direction:row!important;align-items:center;justify-content:center;gap:6px;height:38px;font-size:13px;border-radius:999px;padding:0 8px}
+html[data-dlr-app=maestros] .top{display:none!important}
+html[data-dlr-app=cristales] header.top img.dlr-logo{display:none!important}
+/* Música (página del sitio) dentro de la app */
+html[data-dlr-app=web] #stage>header,html[data-dlr-app=web] #stage>footer,html[data-dlr-app=web] #drawer,html[data-dlr-app=web] #veil{display:none!important}
+html[data-dlr-app=web] #stage>main{padding-top:10px!important}
+/* Runas: inicio con logo, título y botones reales */
+html[data-dlr-app=runas] .app{background:none!important}
+html[data-dlr-app=runas] #home .b1art{background:none!important;aspect-ratio:auto!important;position:relative}
+html[data-dlr-app=runas] #home .b1art::before{content:"";display:block;width:100%;padding-top:65.7%;background:url(/api/a/runas/home.webp) 0 32.4%/100% auto no-repeat;-webkit-mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent)}
+html[data-dlr-app=runas] #home .controls{position:static!important;height:auto!important;display:grid!important;grid-template-rows:none!important;gap:12px!important;padding:6px 6% 34px!important}
+html[data-dlr-app=runas] #home .controls .action{opacity:1!important;position:relative!important;height:auto!important;min-height:66px!important;display:flex!important;align-items:center;gap:15px;padding:14px 18px!important;border:1px solid rgba(127,227,245,.5)!important;border-radius:20px!important;background:linear-gradient(160deg,rgba(21,76,104,.55),rgba(8,32,54,.75))!important;box-shadow:0 8px 22px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06)!important}
+html[data-dlr-app=runas] .dlr-hero{text-align:center;padding:calc(22px + env(safe-area-inset-top)) 20px 0}
+html[data-dlr-app=runas] .dlr-hero img{width:132px;height:auto;display:block;margin:0 auto 18px}
+html[data-dlr-app=runas] .dlr-hero h1{font:400 clamp(40px,12vw,52px)/1 'Instrument Serif',Georgia,serif;margin:0 0 6px}
+html[data-dlr-app=runas] .dlr-hero p{margin:0;color:#a9c4d2;font-size:14px;letter-spacing:.04em}
+/* Códigos: mismo estilo que el resto de la app */
+html[data-dlr-app=codigos]{--violet:#7fe3f5;--panel:#0c2a45}
+html[data-dlr-app=codigos] header.nav{display:flex!important;justify-content:center!important;padding:calc(18px + env(safe-area-inset-top)) 16px 6px!important;border:0!important}
+html[data-dlr-app=codigos] header.nav .brand{display:flex;justify-content:center;width:100%}
+html[data-dlr-app=codigos] header.nav .brand img{width:138px!important;height:auto!important;object-fit:contain}
+html[data-dlr-app=codigos] header.nav .brand span{display:none!important}
+html[data-dlr-app=codigos] .guide,html[data-dlr-app=codigos] .panel,html[data-dlr-app=codigos] .insight{background:linear-gradient(160deg,rgba(21,76,104,.55),rgba(8,32,54,.78))!important;border:1px solid rgba(127,227,245,.42)!important;box-shadow:0 12px 34px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06)!important}
+html[data-dlr-app=codigos] .chip,html[data-dlr-app=codigos] .result{background:rgba(6,22,44,.62)!important;border-color:rgba(127,227,245,.35)!important}
+html[data-dlr-app=codigos] .result.active{border-color:#eacb88!important;background:rgba(21,76,104,.6)!important}
+html[data-dlr-app=codigos] .btn{background:linear-gradient(135deg,#8ff0ff,#1fb5dc)!important;color:#06162c!important;border:0!important;font-weight:600;box-shadow:0 6px 18px rgba(40,200,240,.35)!important}
+html[data-dlr-app=codigos] .btn.alt{background:rgba(6,22,44,.6)!important;color:#7fe3f5!important;border:1px solid rgba(127,227,245,.42)!important;box-shadow:none!important}
+html[data-dlr-app=codigos] .orb{background:radial-gradient(circle,rgba(110,225,245,.4),rgba(0,0,0,0) 68%)!important;border-color:rgba(234,203,136,.55)!important}
+html[data-dlr-app=codigos] .circle{background:radial-gradient(circle,rgba(40,140,180,.38),#0a2a45 65%)!important}

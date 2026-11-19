@@ -1,0 +1,98 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Música y Mantras · Desde la Red</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--cy:#7fe3f5;--gold:#eacb88;--mut:#a9c4d2;--line:rgba(127,227,245,.42)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:radial-gradient(ellipse at 50% -10%,#1d4f7c 0%,#0a2140 42%,#050d1f 90%) fixed;color:#eef9ff;font:15px/1.5 'Albert Sans',system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+main{position:relative;z-index:1;max-width:560px;margin:auto;padding:14px 18px 120px;text-align:center}
+.eb{font-size:11px;letter-spacing:.24em;color:#8fd6e6}
+h1{font:400 clamp(32px,9.5vw,42px)/1.05 'Instrument Serif',Georgia,serif;margin:10px 0 4px}
+.lead{color:var(--mut);font-size:14px;margin:0 0 18px}
+.cover{width:min(74vw,290px);aspect-ratio:520/468;margin:0 auto;border-radius:22px;border:1.5px solid var(--cy);box-shadow:0 0 0 4px rgba(127,227,245,.12),0 0 34px rgba(80,210,245,.45),0 18px 40px rgba(0,0,0,.5);background:url(https://cdn.jsdelivr.net/gh/HelonUniverse/hub@84c5533e88f7bd244db79121a8a9f7400cd8c58d/dlr/tiles/cover-pulsos.webp) center/cover}
+.alb{font:400 26px/1.1 'Instrument Serif',serif;margin:16px 0 2px}
+.meta{color:var(--mut);font-size:13px}
+.ctl{display:flex;justify-content:center;align-items:center;gap:22px;margin:16px 0 10px}
+.big{appearance:none;border:0;width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8ff0ff,#1fb5dc 60%,#0f6f93);box-shadow:0 0 26px rgba(80,220,255,.6),0 8px 20px rgba(0,0,0,.4);color:#06162c;font-size:26px;cursor:pointer;display:grid;place-items:center}
+.sq{appearance:none;border:1px solid var(--line);background:rgba(6,22,44,.6);color:var(--cy);width:48px;height:40px;border-radius:12px;font-size:18px;cursor:pointer}
+.sq.on{background:rgba(127,227,245,.18);box-shadow:0 0 14px rgba(80,220,255,.4)}
+.list .div{margin:18px 0 6px}
+.div{display:flex;align-items:center;gap:12px;margin:14px 0 12px;font:400 20px 'Instrument Serif',serif}
+.div:before,.div:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold));opacity:.8}.div:after{background:linear-gradient(90deg,var(--gold),transparent)}
+.list{display:flex;flex-direction:column;gap:9px;text-align:left}
+.tr{display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:14px;border:1px solid var(--line);background:rgba(6,22,44,.62);cursor:pointer}
+.tr.on{box-shadow:0 0 0 1px var(--cy),0 0 16px rgba(80,220,255,.35)}
+.tr .p{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--cy);font-size:13px;flex:none}
+.tr b{flex:1;font:400 18px 'Instrument Serif',serif}
+.tr small{display:block;color:var(--mut);font:12px 'Albert Sans',sans-serif;margin-top:-2px}
+.tr .h{appearance:none;border:0;background:none;color:#cfe9f2;font-size:20px;cursor:pointer;padding:4px}
+.tr .h.on{color:#ff8fb1}
+.mini{position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:5;display:none;align-items:center;gap:12px;padding:8px 10px;border-radius:16px;border:1px solid var(--line);background:rgba(6,22,44,.94);backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.mini.on{display:flex}
+.thumb{width:56px;height:56px;border-radius:10px;flex:none;background:url(https://cdn.jsdelivr.net/gh/HelonUniverse/hub@84c5533e88f7bd244db79121a8a9f7400cd8c58d/dlr/tiles/cover-pulsos.webp) center/cover}
+.yt{width:56px;height:56px;border-radius:10px;overflow:hidden;flex:none;background:#000}
+.yt iframe{width:100%;height:100%;border:0;pointer-events:none}
+.mi{flex:1;min-width:0;text-align:left}
+.mi b{display:block;font:400 17px 'Instrument Serif',serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar{height:4px;border-radius:4px;background:rgba(127,227,245,.2);margin-top:7px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7fe3f5,#2fb4de)}
+.mini button{appearance:none;border:0;background:none;color:#eef9ff;font-size:22px;cursor:pointer;padding:4px}
+</style></head><body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<main>
+<div class="eb">ORÁCULOS · CONEXIÓN · CONCIENCIA</div>
+<h1>Música y Mantras</h1>
+<p class="lead">Haz una pausa. Encuentra tu ritmo.</p>
+<div class="cover" role="img" aria-label="Mantras · Pulsos de Luz"></div>
+<div class="alb">Pulsos de Luz</div>
+<div class="meta" id="meta">11 mantras · Desde la Red</div>
+<div class="ctl"><button class="big" id="play" aria-label="Reproducir">▶</button><button class="sq" id="shuf" aria-label="Aleatorio">⇄</button></div>
+<div class="div">Escucha y conecta</div>
+<div class="list" id="list"></div>
+</main>
+<div class="mini" id="mini"><div class="thumb" id="thumb"></div><div class="yt" style="display:none"><div id="yt"></div></div><div class="mi"><b id="mt">—</b><div class="bar"><i id="pb"></i></div></div><button id="mp" aria-label="Pausa">❚❚</button><button id="mn" aria-label="Siguiente">⏭</button></div>
+<script>
+const AU='https://raw.githubusercontent.com/HelonUniverse/hub/3682399b9f8ac2f825fd36f7d229a1dc1523d96d/dlr/audio/';
+const T=[
+{f:'kodoish-pulso-sagrado-desde-la-red',n:'Kodoish',d:'Pulso Sagrado · 3:40'},
+{f:'waheguru-pulso-de-luz',n:'Waheguru',d:'Pulso de Luz · 3:33'},
+{f:'gayatri-mantra-pulso-de-luz',n:'Gayatri Mantra',d:'Pulso de Luz · 3:32'},
+{f:'om-namah-shivaya-pulso-de-serenidad',n:'Om Namah Shivaya',d:'Pulso de Serenidad · 3:11'},
+{f:'om-gam-ganapataye-namaha-pulso-de-apertura',n:'Om Gam Ganapataye Namaha',d:'Pulso de Apertura · 3:14'},
+{f:'om-hanumate-namaha-pulso-de-valenti-a',n:'Om Hanumate Namaha',d:'Pulso de Valentía · 3:33'},
+{f:'hare-krishna-pulso-de-devocio-n',n:'Hare Krishna',d:'Pulso de Devoción · 3:46'},
+{f:'om-tare-tuttare-ture-soha-desde-la-red',n:'Om Tare Tuttare Ture Soha',d:'Desde la Red · 3:10'},
+{f:'om-namo-bhagavate-vasudevaya-desde-la-red',n:'Om Namo Bhagavate Vasudevaya',d:'Desde la Red · 3:34'},
+{f:'om-namo-narayanaya-desde-la-red',n:'Om Namo Narayanaya',d:'Desde la Red · 3:33'},
+{f:'nombres-sagrados-pulso-celestial-desde-la-red',n:'Nombres Sagrados',d:'Pulso Celestial · 5:50'},
+{yt:'6jb_qCfMYK4',n:'Kodoish Adonai',d:'Versión suave · video'},
+{yt:'oNEZuNsx4kM',n:'Te encuentro en mí',d:'Llamas gemelas · video'},
+{yt:'zA-bC-XnGFU',n:'Activación del tercer ojo',d:'Meditación guiada con cuencos · video'},
+{yt:'2hf1TUd6_pI',n:'Anahí',d:'Canto meditativo con cuencos · video'},
+{yt:'gJ8kn71d3ic',n:'Sound Reset',d:'Cuencos tibetanos y de cristal · video'}];
+const $=i=>document.getElementById(i);let fav={};try{fav=JSON.parse(localStorage.getItem('dlr-fav')||'{}')}catch(e){}
+let cur=-1,shuf=false,P=null,ready=false,playing=false,mode='';const A=new Audio();A.preload='none';
+function key(t){return t.f||t.yt}
+function row(t,i){const d=document.createElement('div');d.className='tr';d.innerHTML='<span class="p">▶</span><b></b><button class="h" aria-label="Favorito">♡</button>';d.querySelector('b').innerHTML='<span></span><small></small>';d.querySelector('b span').textContent=t.n;d.querySelector('small').textContent=t.d;const h=d.querySelector('.h');if(fav[key(t)]){h.textContent='♥';h.classList.add('on')}
+h.onclick=e=>{e.stopPropagation();const k=key(t);fav[k]=!fav[k];h.textContent=fav[k]?'♥':'♡';h.classList.toggle('on',!!fav[k]);try{localStorage.setItem('dlr-fav',JSON.stringify(fav))}catch(x){}};
+d.onclick=()=>playAt(i);return d}
+T.forEach((t,i)=>{if(i===11){const h=document.createElement('div');h.className='div';h.textContent='Canciones y meditaciones';$('list').append(h)}$('list').append(row(t,i))});
+const tag=document.createElement('script');tag.src='https://www.youtube.com/iframe_api';document.head.append(tag);
+window.onYouTubeIframeAPIReady=()=>{P=new YT.Player('yt',{width:56,height:56,playerVars:{playsinline:1,controls:0,rel:0,modestbranding:1},events:{onReady:()=>{ready=true},onStateChange:e=>{if(mode!=='yt')return;setPlaying(e.data===1);if(e.data===0)next()}}})};
+function setPlaying(p){playing=p;$('mp').textContent=p?'❚❚':'▶';$('play').textContent=p?'❚❚':'▶';mark()}
+A.onplay=()=>setPlaying(true);A.onpause=()=>setPlaying(false);A.onended=next;
+function mark(){document.querySelectorAll('.tr').forEach((d,i)=>{d.classList.toggle('on',i===cur);d.querySelector('.p').textContent=i===cur&&playing?'❚❚':'▶'})}
+function playAt(i){cur=i;const t=T[i];$('mini').classList.add('on');$('mt').textContent=t.n;
+if(t.f){if(ready&&mode==='yt')P.stopVideo();mode='mp3';$('yt').parentElement.style.display='none';$('thumb').style.display='block';A.src=AU+t.f+'.mp3';A.play().catch(()=>{})}
+else{A.pause();mode='yt';$('thumb').style.display='none';$('yt').parentElement.style.display='block';if(ready){P.loadVideoById(t.yt);P.playVideo()}}
+mark()}
+function toggle(){if(cur<0)return playAt(shuf?Math.random()*T.length|0:0);if(mode==='mp3'){A.paused?A.play():A.pause()}else if(ready){playing?P.pauseVideo():P.playVideo()}}
+function next(){if(shuf){let j;do{j=Math.random()*T.length|0}while(j===cur&&T.length>1);playAt(j)}else playAt((cur+1)%T.length)}
+$('play').onclick=toggle;$('mp').onclick=toggle;$('mn').onclick=next;
+$('shuf').onclick=()=>{shuf=!shuf;$('shuf').classList.toggle('on',shuf)};
+setInterval(()=>{if(cur<0)return;let d=0,c=0;if(mode==='mp3'){d=A.duration||0;c=A.currentTime||0}else if(ready&&P.getDuration){d=P.getDuration()||0;c=P.getCurrentTime()||0}$('pb').style.width=(d?c/d*100:0)+'%'},500);
+(function(){const c=$('bg'),x=c.getContext('2d'),rm=matchMedia('(prefers-reduced-motion:reduce)');let W,H,S=[];
+function rs(){const d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0);S=Array.from({length:Math.min(70,Math.max(26,W*H/15000|0))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,r:.7+Math.random()*1.1,p:Math.random()*6.3}))}
+function dr(t){x.clearRect(0,0,W,H);const D=Math.min(150,Math.max(95,W*.18));S.forEach((a,i)=>{if(!rm.matches){a.x=(a.x+a.vx+W)%W;a.y=(a.y+a.vy+H)%H}for(let j=i+1;j<S.length;j++){const b=S[j],q=Math.hypot(a.x-b.x,a.y-b.y);if(q<D){x.strokeStyle='rgba(115,222,239,'+(.26*(1-q/D)).toFixed(3)+')';x.lineWidth=.7;x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.stroke()}}x.fillStyle='rgba(185,245,252,'+(.45+.3*Math.sin(t*.0007+a.p)).toFixed(2)+')';x.beginPath();x.arc(a.x,a.y,a.r,0,6.3);x.fill()});if(!rm.matches)requestAnimationFrame(dr)}
+addEventListener('resize',rs);rs();requestAnimationFrame(dr)})();
+</script></body></html>

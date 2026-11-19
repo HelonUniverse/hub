@@ -1,0 +1,67 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#06162c"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Desde la Red"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/HelonUniverse/hub@8cfad65811dcf15e4b7250dbd1116e1c4bdc7209/dlr/tiles/icon-180.png"><title>Desde la Red</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.min.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HelonUniverse/hub@__SHA__/dlr/hub/app.css"></head><body>
+<canvas id="dlr-bg" aria-hidden="true"></canvas>
+<main>
+<img class="logo" src="logo.webp" alt="Desde la Red">
+
+<section id="s-inicio" class="screen">
+<div class="greet"><small id="date"></small><b id="hello"></b></div>
+<button class="msg" id="msg" aria-label="Mensaje del día"><span class="c" id="msgc"></span><span><span class="k">Mensaje del día</span><span class="n" id="msgn"></span><span class="v" id="msgv"></span><span class="s" id="msgs"></span></span><span class="go">Leer completo →</span></button>
+<div class="row"><button class="pill" id="save-msg">♡ Guardar mensaje</button><button class="pill" id="go-music">♪ Escuchar un mantra</button></div>
+<div class="hero"><div class="eb">ORÁCULOS · CONEXIÓN · CONCIENCIA</div><div class="star">✦</div><h1>Elige tu puerta</h1><p class="lead">Un espacio para explorar a tu ritmo.</p></div>
+<div class="tiles" id="tiles"></div>
+<p class="note">Las lecturas son simbólicas, para la reflexión personal. No sustituyen la atención médica ni predicen el futuro.</p>
+</section>
+
+<section id="s-oraculos" class="screen" hidden><h2>Oráculos</h2><p class="sub">Consulta símbolos, piedras y mensajes.</p><div class="tiles" id="g-oraculos"></div></section>
+<section id="s-estudio" class="screen" hidden><h2>Cursos</h2><p class="sub">Aprende a tu ritmo, a tu manera.</p><div class="tiles" id="g-estudio"></div></section>
+
+<section id="s-musica" class="screen" hidden>
+<div class="hero"><div class="eb">ORÁCULOS · CONEXIÓN · CONCIENCIA</div><h1>Música</h1><p class="lead">Haz una pausa. Encuentra tu ritmo.</p></div>
+<div id="albs"><h2>Álbumes</h2>
+<button class="albc" id="alb-mantras"><span class="th"></span><span class="tx"><b>Mantras</b><small>Pulsos de Luz · 11 mantras</small></span><span class="ar">→</span></button>
+<p class="sub" style="margin-top:14px;text-align:center">Pronto llegarán más álbumes.</p></div>
+<div id="albv" hidden><button class="btn ghost" id="albback" style="width:auto;margin:8px 0 0">← Álbumes</button>
+<div class="cover" role="img" aria-label="Mantras · Pulsos de Luz"></div>
+<div class="alb">Mantras</div><div class="meta">Pulsos de Luz · 11 mantras · Desde la Red</div>
+<div class="ctl"><button class="big" id="play" aria-label="Reproducir">▶</button><button class="sq" id="shuf" aria-label="Aleatorio">⇄</button></div>
+<div class="div">Escucha y conecta</div>
+<div class="list" id="list"></div></div>
+</section>
+
+<section id="s-yo" class="screen" hidden>
+<h2>Mi espacio</h2><div class="who"><div class="av" id="av">·</div><div><b id="who-n">—</b><small id="who-e"></small></div></div><p class="sub">Tu diario, tus mensajes y tus favoritos, guardados en tu cuenta.</p>
+<div class="card"><h3>Mi diario</h3><textarea id="note" placeholder="¿Qué sentiste hoy? Escribe libremente…"></textarea><div class="row" style="margin-top:8px"><button class="btn" id="note-save">Guardar</button></div><div id="notes"></div></div>
+<div class="card"><h3>Mensajes guardados</h3><div id="saved"></div></div>
+<div class="card"><h3>Mantras favoritos</h3><div id="favs"></div></div>
+<div class="card"><h3>Instalar en el teléfono</h3><p class="empty" id="inst">En iPhone: toca Compartir y luego "Agregar a pantalla de inicio". En Android: menú ⋮ y "Instalar app".</p></div>
+<p class="note">Desde la Red · <a href="https://www.desdelared.net/privacidad.html" target="_blank" rel="noopener" style="color:#7fe3f5">Privacidad</a> · <a href="https://www.desdelared.net/terminos.html" target="_blank" rel="noopener" style="color:#7fe3f5">Términos</a><br><button class="btn ghost" id="tour" style="margin-top:10px">Ver la bienvenida otra vez</button> <button class="btn ghost" id="logout" style="margin-top:10px">Cerrar sesión</button></p>
+</section>
+</main>
+
+<div class="viewer" id="viewer"><div class="vbar"><button id="back">← Volver</button><strong id="vname"></strong></div><div class="load" id="load">Abriendo…</div><iframe id="frame" title="Oráculo" allow="autoplay;clipboard-write;camera"></iframe></div>
+
+<div class="mini" id="mini"><div class="thumb" id="thumb"></div><div class="mi" id="mi"><b id="mt">—</b><div class="bar"><i id="pb"></i></div></div><button id="mp" aria-label="Pausa">❚❚</button><button id="mn" aria-label="Siguiente">⏭</button><button id="mx" aria-label="Cerrar">✕</button></div>
+
+<nav>
+<button data-t="inicio"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>Inicio</button>
+<button data-t="oraculos"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Oráculos</button>
+<button data-t="estudio"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6C10 4.5 6 4 3 5v14c3-1 7-.5 9 1 2-1.5 6-2 9-1V5c-3-1-7-.5-9 1z"/><path d="M12 6v14"/></svg>Cursos</button>
+<button data-t="musica"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l11-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>Música</button>
+<button data-t="yo"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Yo</button>
+</nav>
+
+<div class="ob" id="ob"><img src="logo.webp" alt=""><h1 id="obt"></h1><p id="obp"></p><div class="dots" id="obd"></div><button class="btn" id="obn">Siguiente</button><button class="btn ghost" id="obs" style="margin-top:10px">Saltar</button></div>
+<div class="auth" id="auth"><form id="af" autocomplete="on"><img src="logo.webp" alt=""><h1 id="at">Entra a tu espacio</h1><p class="lead" id="al">Tu cuenta guarda tu diario, tus mensajes y tus favoritos.</p>
+<input class="in" id="a-nombre" placeholder="Tu nombre" autocomplete="name" style="display:none">
+<input class="in" id="a-email" type="email" placeholder="Correo electrónico" autocomplete="email" required inputmode="email">
+<input class="in" id="a-code" placeholder="Código del correo" inputmode="numeric" autocomplete="one-time-code" maxlength="10" style="display:none">
+<input class="in" id="a-pass" type="password" placeholder="Contraseña" autocomplete="current-password" minlength="6">
+<div class="err" id="a-err"></div>
+<button class="btn" id="a-go" type="submit">Entrar</button>
+<p class="sw" id="a-sw"><span>¿No tienes cuenta?</span> <button type="button" id="a-toggle">Crear cuenta</button><br><button type="button" id="a-forgot">Olvidé mi contraseña</button><button type="button" id="a-resend" style="display:none">Reenviar código</button></p>
+</form></div>
+<div class="toast" id="toast"></div>
+
+<script src="cards-data.js"></script><script src="https://cdn.jsdelivr.net/gh/HelonUniverse/hub@__SHA__/dlr/hub/app.js"></script></body></html>
